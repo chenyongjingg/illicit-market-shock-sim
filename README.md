@@ -16,6 +16,12 @@ python verify_release.py     # 25 checks, ~2 s, no GPU, no network
 
 If that prints `ALL PASS`, the numbers in this README are the numbers in the shipped files.
 
+**The tree the manuscript was written against is tag `v1.0.3`** — `runs/analysis.json` at
+`7f7f8928f45e28e8…` from the code tree `f4328c4a7b0c1b5a`. The earlier tags `v1.0.0`–`v1.0.2` predate
+the D-107 fix to the paired-test method and carry no *p*-values for the four paired comparisons
+(`wilcoxon_p: null`); the paper's Section 3.6 and its subnormal *p*-value convention describe the
+`v1.0.3` tree, not those. The older tags are kept as history, not as the archival copy.
+
 ---
 
 ## If you are reviewing the paper
