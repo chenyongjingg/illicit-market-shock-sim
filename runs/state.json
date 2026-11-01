@@ -1,0 +1,5 @@
+{
+ "extraction_gate": "FAIL",
+ "extraction_gate_scope": "relations only (entity gate NOT_ESTIMABLE)",
+ "gold_relation_f1": 0.05025125628140704
+}

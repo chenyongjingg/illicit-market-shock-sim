@@ -1,0 +1,453 @@
+{
+ "generated_utc": "2026-11-01T05:41:42Z",
+ "nodes": 3461,
+ "edges": 2367,
+ "node_types": {
+  "Campaign": 110,
+  "Threat-Actor": 277,
+  "Malware": 941,
+  "Tool": 336,
+  "Infrastructure": 544,
+  "Platform": 373,
+  "Other": 466,
+  "Indicator": 272,
+  "Account": 5,
+  "Criminal-LLM-Service": 36,
+  "Victim-Sector": 98,
+  "Jailbreak-Service": 2,
+  "Stolen-Account-Pool": 1
+ },
+ "edge_relations": {
+  "attributed-to": 34,
+  "uses": 1470,
+  "targets": 252,
+  "part-of": 32,
+  "hosts": 133,
+  "operates": 27,
+  "distributes": 126,
+  "related-to": 264,
+  "communicates-with": 18,
+  "provides": 7,
+  "depends-on": 2,
+  "trades": 1,
+  "buys": 1
+ },
+ "edge_validation": {
+  "CURATED": 1365,
+  "EXTRACTED": 991,
+  "UNVALIDATED_RELATION": 11
+ },
+ "provenance": {
+  "mitre-attack": 1365,
+  "llm-extract": 1002
+ },
+ "node_provenance": {
+  "mitre-attack": 1077,
+  "llm-extract": 2384
+ },
+ "extracted_nodes": 2384,
+ "ai_typed_nodes": 39,
+ "relation_endpoint_type_fallbacks": 327,
+ "relation_label_remapped_to_related_to": 254,
+ "ai_nodes": 70,
+ "traditional_nodes": 3391,
+ "ai_subnet_definition": "type_plus_1hop",
+ "calls_edges": 0,
+ "ai_edges": 38,
+ "backbone_edges": 1365,
+ "market_edges": 11,
+ "synthetic_records_kept": 1175,
+ "synthetic_conditions_distinct": 700,
+ "synthetic_counts_note": "records_kept = lines in synthetic.jsonl; conditions_distinct = distinct (normalised source, relation, normalised target); draws = synth_stats.generated, larger than both",
+ "months_present": 96,
+ "snapshots": {
+  "2012-04": {
+   "nodes": 8,
+   "edges": 7
+  },
+  "2014-03": {
+   "nodes": 2,
+   "edges": 1
+  },
+  "2014-11": {
+   "nodes": 2,
+   "edges": 1
+  },
+  "2015-01": {
+   "nodes": 7,
+   "edges": 6
+  },
+  "2015-06": {
+   "nodes": 3,
+   "edges": 2
+  },
+  "2015-10": {
+   "nodes": 12,
+   "edges": 10
+  },
+  "2015-11": {
+   "nodes": 2,
+   "edges": 1
+  },
+  "2016-03": {
+   "nodes": 15,
+   "edges": 13
+  },
+  "2016-04": {
+   "nodes": 11,
+   "edges": 8
+  },
+  "2016-06": {
+   "nodes": 9,
+   "edges": 7
+  },
+  "2016-07": {
+   "nodes": 5,
+   "edges": 4
+  },
+  "2016-09": {
+   "nodes": 7,
+   "edges": 6
+  },
+  "2016-10": {
+   "nodes": 2,
+   "edges": 1
+  },
+  "2016-12": {
+   "nodes": 8,
+   "edges": 6
+  },
+  "2017-01": {
+   "nodes": 5,
+   "edges": 4
+  },
+  "2017-02": {
+   "nodes": 9,
+   "edges": 6
+  },
+  "2017-03": {
+   "nodes": 10,
+   "edges": 8
+  },
+  "2017-04": {
+   "nodes": 15,
+   "edges": 10
+  },
+  "2017-05": {
+   "nodes": 9,
+   "edges": 6
+  },
+  "2017-07": {
+   "nodes": 11,
+   "edges": 8
+  },
+  "2017-08": {
+   "nodes": 6,
+   "edges": 4
+  },
+  "2017-09": {
+   "nodes": 34,
+   "edges": 29
+  },
+  "2017-10": {
+   "nodes": 10,
+   "edges": 9
+  },
+  "2018-03": {
+   "nodes": 6,
+   "edges": 4
+  },
+  "2018-04": {
+   "nodes": 4,
+   "edges": 2
+  },
+  "2018-05": {
+   "nodes": 5,
+   "edges": 3
+  },
+  "2018-06": {
+   "nodes": 6,
+   "edges": 4
+  },
+  "2018-07": {
+   "nodes": 6,
+   "edges": 5
+  },
+  "2018-11": {
+   "nodes": 2,
+   "edges": 1
+  },
+  "2018-12": {
+   "nodes": 2,
+   "edges": 1
+  },
+  "2019-01": {
+   "nodes": 10,
+   "edges": 8
+  },
+  "2019-03": {
+   "nodes": 5,
+   "edges": 4
+  },
+  "2019-04": {
+   "nodes": 11,
+   "edges": 10
+  },
+  "2019-05": {
+   "nodes": 3,
+   "edges": 2
+  },
+  "2019-06": {
+   "nodes": 4,
+   "edges": 3
+  },
+  "2019-10": {
+   "nodes": 8,
+   "edges": 7
+  },
+  "2020-02": {
+   "nodes": 10,
+   "edges": 9
+  },
+  "2020-03": {
+   "nodes": 4,
+   "edges": 3
+  },
+  "2020-07": {
+   "nodes": 3,
+   "edges": 2
+  },
+  "2021-01": {
+   "nodes": 14,
+   "edges": 12
+  },
+  "2021-09": {
+   "nodes": 4,
+   "edges": 3
+  },
+  "2021-11": {
+   "nodes": 39,
+   "edges": 23
+  },
+  "2021-12": {
+   "nodes": 2,
+   "edges": 1
+  },
+  "2022-01": {
+   "nodes": 2,
+   "edges": 1
+  },
+  "2022-02": {
+   "nodes": 4,
+   "edges": 2
+  },
+  "2022-03": {
+   "nodes": 16,
+   "edges": 9
+  },
+  "2022-04": {
+   "nodes": 4,
+   "edges": 2
+  },
+  "2022-05": {
+   "nodes": 10,
+   "edges": 5
+  },
+  "2022-06": {
+   "nodes": 3,
+   "edges": 2
+  },
+  "2022-07": {
+   "nodes": 2,
+   "edges": 1
+  },
+  "2022-09": {
+   "nodes": 2,
+   "edges": 1
+  },
+  "2022-10": {
+   "nodes": 2,
+   "edges": 1
+  },
+  "2022-11": {
+   "nodes": 2,
+   "edges": 1
+  },
+  "2023-01": {
+   "nodes": 2,
+   "edges": 1
+  },
+  "2023-03": {
+   "nodes": 28,
+   "edges": 16
+  },
+  "2023-04": {
+   "nodes": 62,
+   "edges": 50
+  },
+  "2023-05": {
+   "nodes": 35,
+   "edges": 22
+  },
+  "2023-06": {
+   "nodes": 5,
+   "edges": 3
+  },
+  "2023-08": {
+   "nodes": 7,
+   "edges": 5
+  },
+  "2023-09": {
+   "nodes": 32,
+   "edges": 22
+  },
+  "2023-10": {
+   "nodes": 25,
+   "edges": 15
+  },
+  "2023-11": {
+   "nodes": 38,
+   "edges": 24
+  },
+  "2023-12": {
+   "nodes": 12,
+   "edges": 11
+  },
+  "2024-01": {
+   "nodes": 8,
+   "edges": 5
+  },
+  "2024-02": {
+   "nodes": 5,
+   "edges": 4
+  },
+  "2024-03": {
+   "nodes": 3,
+   "edges": 2
+  },
+  "2024-04": {
+   "nodes": 16,
+   "edges": 11
+  },
+  "2024-05": {
+   "nodes": 2,
+   "edges": 1
+  },
+  "2024-07": {
+   "nodes": 2,
+   "edges": 1
+  },
+  "2024-08": {
+   "nodes": 4,
+   "edges": 2
+  },
+  "2024-09": {
+   "nodes": 3,
+   "edges": 2
+  },
+  "2024-10": {
+   "nodes": 8,
+   "edges": 4
+  },
+  "2024-11": {
+   "nodes": 2,
+   "edges": 1
+  },
+  "2024-12": {
+   "nodes": 9,
+   "edges": 7
+  },
+  "2025-01": {
+   "nodes": 2,
+   "edges": 1
+  },
+  "2025-02": {
+   "nodes": 4,
+   "edges": 2
+  },
+  "2025-03": {
+   "nodes": 11,
+   "edges": 10
+  },
+  "2025-04": {
+   "nodes": 5,
+   "edges": 4
+  },
+  "2025-05": {
+   "nodes": 2,
+   "edges": 1
+  },
+  "2025-06": {
+   "nodes": 19,
+   "edges": 13
+  },
+  "2025-07": {
+   "nodes": 27,
+   "edges": 20
+  },
+  "2025-08": {
+   "nodes": 9,
+   "edges": 6
+  },
+  "2025-09": {
+   "nodes": 19,
+   "edges": 12
+  },
+  "2025-10": {
+   "nodes": 26,
+   "edges": 17
+  },
+  "2025-11": {
+   "nodes": 15,
+   "edges": 12
+  },
+  "2025-12": {
+   "nodes": 8,
+   "edges": 5
+  },
+  "2026-01": {
+   "nodes": 7,
+   "edges": 4
+  },
+  "2026-02": {
+   "nodes": 20,
+   "edges": 13
+  },
+  "2026-03": {
+   "nodes": 25,
+   "edges": 19
+  },
+  "2026-04": {
+   "nodes": 20,
+   "edges": 13
+  },
+  "2026-05": {
+   "nodes": 39,
+   "edges": 31
+  },
+  "2026-06": {
+   "nodes": 7,
+   "edges": 5
+  },
+  "2026-07": {
+   "nodes": 8,
+   "edges": 5
+  },
+  "2026-08": {
+   "nodes": 19,
+   "edges": 13
+  },
+  "2026-09": {
+   "nodes": 22,
+   "edges": 14
+  },
+  "2026-10": {
+   "nodes": 33,
+   "edges": 22
+  }
+ },
+ "missing_month_policy": "report only; no interpolation (P2-2)",
+ "extraction_gate": "FAIL",
+ "extraction_gate_scope": "relations only",
+ "temporal_note": "backbone edges timestamp=None (static); snapshots use event_time only"
+}

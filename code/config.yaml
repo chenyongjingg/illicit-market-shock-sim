@@ -1,0 +1,115 @@
+# MDPI3 pipeline configuration -- values are recorded verbatim in MANIFEST.json
+project: MDPI3
+plan_doc: D:/MDPI3/MDPI3_方案完善版.docx
+plan_sha256: 6c6ec4bb0e3f999a85eab3d3256c50f5236c41e4d3a19b23b892aeaf81ab070c
+root: /root/mdpi3
+
+model:
+  name: Qwen/Qwen2.5-7B-Instruct
+  path: /root/mdpi3/models/Qwen2.5-7B-Instruct
+  revision: master            # ModelScope revision string; exact shard sha256 recorded in MANIFEST
+  dtype: bfloat16             # plan says 4-bit; bf16 registered as DEVIATION D-06
+  # 384 truncated 158/649 extraction answers mid-JSON (all unbalanced braces; 94/138 = 68% of the
+  # MISP events, i.e. the market-side evidence) — DEVIATIONS D-32. 2,048 rather than a smaller
+  # raise: a cap only binds on answers that would not have stopped at EOS anyway, so the extra
+  # headroom is free on every well-behaved answer.
+  max_new_tokens: 2048
+  temperature: 0.3
+  top_p: 0.9
+  batch_size: 8
+
+ingest:
+  attack_stix_url: https://raw.githubusercontent.com/mitre-attack/attack-stix-data/master/enterprise-attack/enterprise-attack.json
+  cisa_kev_url: https://www.cisa.gov/sites/default/files/feeds/known_exploited_vulnerabilities.json
+  misp_manifest_url: https://www.circl.lu/doc/misp/feed-osint/manifest.json
+  misp_event_url: https://www.circl.lu/doc/misp/feed-osint/{uuid}.json
+  misp_max_events: 420
+  misp_workers: 12            # parallel fetch: sequential measured ~3 s/event
+  misp_budget_s: 900          # wall-clock cap for the MISP block (>=80 docs required)
+  arxiv_queries:
+    - 'abs:"dark web" AND (abs:LLM OR abs:"language model")'
+    - 'abs:"cybercrime" AND (abs:LLM OR abs:"generative AI")'
+    - 'abs:"underground market" AND abs:AI'
+    - 'abs:"jailbreak" AND abs:service'
+    - 'abs:"threat intelligence" AND abs:"large language model"'
+    - 'abs:"AI-as-a-service" OR abs:"crime-as-a-service"'
+    - 'abs:"phishing" AND abs:"large language model"'
+  arxiv_max_per_query: 60
+  vendor_urls:
+    - https://halcyon.ai/
+    - https://www.trendmicro.com/vinfo/us/security/news/
+  min_documents: 200
+
+extraction:
+  sc_samples: 3
+  max_docs: 720
+  text_chars: 4000          # prompt text cap; 1,800 cut 121/649 docs (D-32), 4,000 cuts 36/649
+  gate_f1: 0.80
+  # Evidence-grounding floor for the s1b check (the NLI entailment filter of plan §5.1 has no model
+  # on this box, D-34). Below this rate the run records a deviation instead of silently passing.
+  grounding_min_rate: 0.85
+  cache: /root/mdpi3/data/cache/llm.sqlite
+
+synthetic:
+  n_samples: 1200
+  ppl_max: 80.0
+  max_new_tokens: 220
+  safety_blocklist: ["http://", "https://", "onion", "wallet", "0x", "curl ", "python ", "import ", "ssh ", "password:", "BEGIN ", "-----BEGIN", "eval(", "exec("]
+
+graph:
+  snapshots: monthly
+  min_ai_nodes_for_rq1: 50
+  bootstrap: 300
+  null_rewires: 20
+
+gnn:
+  hidden: 64
+  layers: 2
+  epochs: 60
+  lr: 0.01
+  neg_samples: 2000
+  seed: 20261101
+
+simulation:
+  n_agents: 500
+  n_turns: 60
+  seeds: 30
+  policy_states: 1200
+  policy_agreement_n: 200
+  policy_agreement_threshold: 0.70
+  r_dyn_window: 60
+  t_rec_frac: 0.90
+  t_max: 50                  # = n_turns - T0 (post-shock window), see DESIGN.md 4
+  shock_cost_per_level: 0.08  # B: supply cost shock per intensity level (D-21)
+  shock_demand_per_level: 0.08  # C: demand shock per intensity level (D-21)
+  a_removal_mode: degrade     # A removes Top-k services and degrades their hosting platforms (D-21)
+  # Plan §5.3/§5.5 read literally give strategy A a SET of four centrality orders for the Top-k
+  # strike, and R_struct is the mean AUC over all four attacks; the plan names NO single main order.
+  # This run fixes ONE order for the A arm (gnn) because one grid had to be specified before the
+  # numbers existed. That choice is registered as D-46 -- it is NOT a plan provision, and the words
+  # "pre-registered main arm" may not be used for it. The other three orders run as a separate
+  # sensitivity arm (A scenarios only) and are NEVER averaged into the composite R.
+  topk_order: gnn             # A-arm order for this run: GNN embedding centrality; see D-46
+  topk_sensitivity: [degree, betweenness, pagerank]
+  topk_sensitivity_arm: llm   # sensitivity runs use the LLM arm only (rule arm has no LLM layer)
+  weights: {alpha: 0.3333333333, beta: 0.3333333333, gamma: 0.3333333334}
+  strategies: [A, B, C, AB, AC, BC, ABC]   # 3^k grid -> 9+27+27 = 63 scenarios
+  intensities: [1, 2, 3]
+  primary_endpoints:
+    - rq1_per_attack_auc_diff
+    - rq2_t_rec
+    - rq2_retention_post
+    - rq3_composite_r
+  equivalence_margin: 0.05
+
+backtest:
+  anchors:
+    - name: Genesis_Market_seizure
+      name_literal: "Genesis Market"
+      date: "2023-04-04"
+      migration_targets: [Russian Market, 2easy, Exodus]
+    - name: RagnarLocker_takedown
+      name_literal: "RagnarLocker"
+      date: "2023-10-20"
+  min_nodes_in_month: 8
+  min_edges_in_month: 8

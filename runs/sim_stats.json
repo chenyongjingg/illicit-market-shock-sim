@@ -1,0 +1,228 @@
+{
+ "runs": 3780,
+ "scenarios": 63,
+ "seeds": 30,
+ "arms": [
+  "llm",
+  "rule"
+ ],
+ "agents": 500,
+ "turns": 60,
+ "agent_turn_events": 113400000,
+ "target_grid_events": 56700000,
+ "policy_lookups": 10368432,
+ "policy_lookup_levels": {
+  "coarse": 10013812,
+  "exact": 354620
+ },
+ "policy_exact_or_coarse_rate": 1.0,
+ "live_llm_calls": 0,
+ "live_llm_calls_note": "policy stage: policy_states x 3 samples + held-out live calls; simulation itself makes zero live LLM calls (amortised, D-01)",
+ "positive_control": {
+  "A1": 0.9216592,
+  "A3": 0.5438304199999999,
+  "passed": true,
+  "B1": 0.9506409999999998,
+  "C1": 0.962294,
+  "B1_shocked_below_baseline": true,
+  "C1_shocked_below_baseline": true
+ },
+ "A_intensity": {
+  "1": 0.01,
+  "2": 0.05,
+  "3": 0.1
+ },
+ "topk_order": "gnn",
+ "topk_sensitivity": {
+  "main_order": "gnn",
+  "scenarios": [
+   "A1",
+   "A2",
+   "A3"
+  ],
+  "arm": "llm",
+  "orders": [
+   "degree",
+   "betweenness",
+   "pagerank"
+  ],
+  "runs": 270,
+  "reporting_rule": "sensitivity only; never averaged into the composite R. Sign reversal or an interval crossing 0 under any order forbids a robustness claim.",
+  "topk_removal_k": {
+   "A1": 19,
+   "A2": 93,
+   "A3": 186
+  },
+  "topk_overlap_vs_main": {
+   "degree": {
+    "A1": {
+     "n_shared": 0,
+     "k": 19,
+     "frac": 0.0
+    },
+    "A2": {
+     "n_shared": 1,
+     "k": 93,
+     "frac": 0.0108
+    },
+    "A3": {
+     "n_shared": 24,
+     "k": 186,
+     "frac": 0.129
+    }
+   },
+   "betweenness": {
+    "A1": {
+     "n_shared": 0,
+     "k": 19,
+     "frac": 0.0
+    },
+    "A2": {
+     "n_shared": 2,
+     "k": 93,
+     "frac": 0.0215
+    },
+    "A3": {
+     "n_shared": 22,
+     "k": 186,
+     "frac": 0.1183
+    }
+   },
+   "pagerank": {
+    "A1": {
+     "n_shared": 0,
+     "k": 19,
+     "frac": 0.0
+    },
+    "A2": {
+     "n_shared": 2,
+     "k": 93,
+     "frac": 0.0215
+    },
+    "A3": {
+     "n_shared": 30,
+     "k": 186,
+     "frac": 0.1613
+    }
+   }
+  },
+  "topk_overlap_pairwise": [
+   {
+    "a": "gnn",
+    "b": "degree",
+    "A1": {
+     "n_shared": 0,
+     "k": 19,
+     "frac": 0.0
+    },
+    "A2": {
+     "n_shared": 1,
+     "k": 93,
+     "frac": 0.0108
+    },
+    "A3": {
+     "n_shared": 24,
+     "k": 186,
+     "frac": 0.129
+    }
+   },
+   {
+    "a": "gnn",
+    "b": "betweenness",
+    "A1": {
+     "n_shared": 0,
+     "k": 19,
+     "frac": 0.0
+    },
+    "A2": {
+     "n_shared": 2,
+     "k": 93,
+     "frac": 0.0215
+    },
+    "A3": {
+     "n_shared": 22,
+     "k": 186,
+     "frac": 0.1183
+    }
+   },
+   {
+    "a": "gnn",
+    "b": "pagerank",
+    "A1": {
+     "n_shared": 0,
+     "k": 19,
+     "frac": 0.0
+    },
+    "A2": {
+     "n_shared": 2,
+     "k": 93,
+     "frac": 0.0215
+    },
+    "A3": {
+     "n_shared": 30,
+     "k": 186,
+     "frac": 0.1613
+    }
+   },
+   {
+    "a": "degree",
+    "b": "betweenness",
+    "A1": {
+     "n_shared": 10,
+     "k": 19,
+     "frac": 0.5263
+    },
+    "A2": {
+     "n_shared": 69,
+     "k": 93,
+     "frac": 0.7419
+    },
+    "A3": {
+     "n_shared": 141,
+     "k": 186,
+     "frac": 0.7581
+    }
+   },
+   {
+    "a": "degree",
+    "b": "pagerank",
+    "A1": {
+     "n_shared": 14,
+     "k": 19,
+     "frac": 0.7368
+    },
+    "A2": {
+     "n_shared": 76,
+     "k": 93,
+     "frac": 0.8172
+    },
+    "A3": {
+     "n_shared": 121,
+     "k": 186,
+     "frac": 0.6505
+    }
+   },
+   {
+    "a": "betweenness",
+    "b": "pagerank",
+    "A1": {
+     "n_shared": 11,
+     "k": 19,
+     "frac": 0.5789
+    },
+    "A2": {
+     "n_shared": 60,
+     "k": 93,
+     "frac": 0.6452
+    },
+    "A3": {
+     "n_shared": 110,
+     "k": 186,
+     "frac": 0.5914
+    }
+   }
+  ],
+  "topk_overlap_note": "`topk_overlap_vs_main` is one-sided and must be read together with `topk_overlap_pairwise`; `topk_removal_k` gives the denominator of every fraction in both.",
+  "sha256": "df86356fa9acee241fee252a5f1c06fe3709e0e42b12fa381e7f3c1f36b2fd0a"
+ }
+}

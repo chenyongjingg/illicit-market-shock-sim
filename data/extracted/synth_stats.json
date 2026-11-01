@@ -1,0 +1,25 @@
+{
+ "generated": 1200,
+ "safety_dropped": 17,
+ "safety_hits": {
+  "python ": 12,
+  "ssh ": 2,
+  "wallet": 3
+ },
+ "ppl_dropped": 8,
+ "kept": 1175,
+ "median_ppl": 19.845064163208008,
+ "backtranslation_consistency": 0.06978723404255319,
+ "consistency_note": "internal consistency (same model family), NOT external validity",
+ "distribution_note": "no price/lifecycle conditioning is implemented: prompts are conditioned on a randomly drawn triple only. Filtering = keyword safety blocklist + perplexity + back-translation consistency (internal consistency, NOT external validity)",
+ "llm": {
+  "calls": 2375,
+  "cached": 0,
+  "new_tokens": 324637,
+  "prompt_tokens": 534124,
+  "gen_seconds": 1607.473800420761,
+  "wall_seconds": 1622.3,
+  "calls_per_sec": 1.477,
+  "new_tokens_per_sec": 202.0
+ }
+}

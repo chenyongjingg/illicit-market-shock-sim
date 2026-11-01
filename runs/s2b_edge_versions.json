@@ -1,0 +1,90 @@
+{
+ "generated_utc": "2026-11-01T06:11:58Z",
+ "source": "data/graph/graph.graphml (run 1's graph; this stage does not rebuild it)",
+ "fallback_relation": "related-to",
+ "edges_total": 2331,
+ "edges_with_related_to": 263,
+ "edges_without_related_to": 2068,
+ "edge_relations": {
+  "attributed-to": 34,
+  "uses": 1438,
+  "targets": 251,
+  "part-of": 32,
+  "hosts": 133,
+  "operates": 25,
+  "distributes": 126,
+  "related-to": 263,
+  "communicates-with": 18,
+  "provides": 7,
+  "depends-on": 2,
+  "trades": 1,
+  "buys": 1
+ },
+ "with_related_to": {
+  "nodes": 3461,
+  "edges_undirected": 2319,
+  "density": 0.0003873049487852253,
+  "degree_mean": 1.3400751227968795,
+  "degree_max": 62,
+  "n_components": 1701,
+  "lcc_nodes": 1116,
+  "lcc_frac": 0.3224501589136088,
+  "avg_shortest_path_lcc": 5.548621759326229,
+  "modularity": 0.7891484950707096,
+  "n_communities": 1734
+ },
+ "without_related_to": {
+  "nodes": 3461,
+  "edges_undirected": 2061,
+  "density": 0.0003442153943278781,
+  "degree_mean": 1.1909852643744583,
+  "degree_max": 62,
+  "n_components": 1952,
+  "lcc_nodes": 1058,
+  "lcc_frac": 0.305691996532794,
+  "avg_shortest_path_lcc": 5.165798985250906,
+  "modularity": 0.7550386430747222,
+  "n_communities": 1988
+ },
+ "edge_version_note": "Both versions describe the SAME node set; only edges of the fallback type differ. Reading them apart is the point: a large gap says the reported topology is carried by the extractor's unlabelled relations, and must be stated wherever a structural descriptor is quoted.",
+ "market_layer": {
+  "n_market_edges": 11,
+  "market_relation_types": [
+   "buys",
+   "depends-on",
+   "migrates-to",
+   "provides",
+   "sells",
+   "substitutes",
+   "trades"
+  ],
+  "by_type": {
+   "provides": 7,
+   "depends-on": 2,
+   "trades": 1,
+   "buys": 1
+  },
+  "n_market_nodes": 3461,
+  "descriptors": {
+   "nodes": 3461,
+   "edges_undirected": 11,
+   "density": 1.8371515466310816e-06,
+   "degree_mean": 0.006356544351343542,
+   "degree_max": 1,
+   "n_components": 3450,
+   "lcc_nodes": 2,
+   "lcc_frac": 0.0005778676683039584,
+   "avg_shortest_path_lcc": 1.0,
+   "modularity": 0.909090909090909,
+   "n_communities": 3450
+  },
+  "status": "EXPLORATORY",
+  "status_rule": "n_market_edges < 30 => no significance test may be run on this layer and none of its numbers may enter an abstract (plan v2 §5, threshold pre-registered at 30 before this stage was written)"
+ },
+ "synthesis_layer": {
+  "n_kept": 1175,
+  "n_distinct_conditions_kept": 700,
+  "source": "data/extracted/synthetic.jsonl, set() over the `condition` field",
+  "reading_rule": "n_distinct_conditions_kept is what the ARTIFACT contains; the sampling figure (1,200 draws over 710 distinct conditions, DP-5) describes the DRAW and cannot be recovered from this file. The kept count must be <= the sampled distinct count; quoting one as the other is a claim about a different object."
+ }
+}

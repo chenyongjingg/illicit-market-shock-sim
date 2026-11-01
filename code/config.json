@@ -1,0 +1,142 @@
+{
+ "project": "MDPI3",
+ "plan_doc": "D:/MDPI3/MDPI3_方案完善版.docx",
+ "plan_sha256": "6c6ec4bb0e3f999a85eab3d3256c50f5236c41e4d3a19b23b892aeaf81ab070c",
+ "root": "/root/mdpi3",
+ "model": {
+  "name": "Qwen/Qwen2.5-7B-Instruct",
+  "path": "/root/mdpi3/models/Qwen2.5-7B-Instruct",
+  "revision": "master",
+  "dtype": "bfloat16",
+  "max_new_tokens": 384,
+  "temperature": 0.3,
+  "top_p": 0.9,
+  "batch_size": 8
+ },
+ "ingest": {
+  "attack_stix_url": "https://raw.githubusercontent.com/mitre-attack/attack-stix-data/master/enterprise-attack/enterprise-attack.json",
+  "cisa_kev_url": "https://www.cisa.gov/sites/default/files/feeds/known_exploited_vulnerabilities.json",
+  "misp_manifest_url": "https://www.circl.lu/doc/misp/feed-osint/manifest.json",
+  "misp_event_url": "https://www.circl.lu/doc/misp/feed-osint/{uuid}.json",
+  "misp_max_events": 420,
+  "misp_workers": 12,
+  "misp_budget_s": 900,
+  "arxiv_queries": [
+   "abs:\"dark web\" AND (abs:LLM OR abs:\"language model\")",
+   "abs:\"cybercrime\" AND (abs:LLM OR abs:\"generative AI\")",
+   "abs:\"underground market\" AND abs:AI",
+   "abs:\"jailbreak\" AND abs:service",
+   "abs:\"threat intelligence\" AND abs:\"large language model\"",
+   "abs:\"AI-as-a-service\" OR abs:\"crime-as-a-service\"",
+   "abs:\"phishing\" AND abs:\"large language model\""
+  ],
+  "arxiv_max_per_query": 60,
+  "vendor_urls": [
+   "https://halcyon.ai/",
+   "https://www.trendmicro.com/vinfo/us/security/news/"
+  ],
+  "min_documents": 200
+ },
+ "extraction": {
+  "sc_samples": 3,
+  "max_docs": 720,
+  "gate_f1": 0.8,
+  "cache": "/root/mdpi3/data/cache/llm.sqlite"
+ },
+ "synthetic": {
+  "n_samples": 1200,
+  "ppl_max": 80.0,
+  "max_new_tokens": 220,
+  "safety_blocklist": [
+   "http://",
+   "https://",
+   "onion",
+   "wallet",
+   "0x",
+   "curl ",
+   "python ",
+   "import ",
+   "ssh ",
+   "password:",
+   "BEGIN ",
+   "-----BEGIN",
+   "eval(",
+   "exec("
+  ]
+ },
+ "graph": {
+  "snapshots": "monthly",
+  "min_ai_nodes_for_rq1": 50,
+  "bootstrap": 300,
+  "null_rewires": 20
+ },
+ "gnn": {
+  "hidden": 64,
+  "layers": 2,
+  "epochs": 60,
+  "lr": 0.01,
+  "neg_samples": 2000,
+  "seed": 20261101
+ },
+ "simulation": {
+  "n_agents": 500,
+  "n_turns": 60,
+  "seeds": 30,
+  "policy_states": 1200,
+  "policy_agreement_n": 200,
+  "policy_agreement_threshold": 0.7,
+  "r_dyn_window": 60,
+  "t_rec_frac": 0.9,
+  "t_max": 50,
+  "shock_cost_per_level": 0.08,
+  "shock_demand_per_level": 0.08,
+  "a_removal_mode": "degrade",
+  "weights": {
+   "alpha": 0.3333333333,
+   "beta": 0.3333333333,
+   "gamma": 0.3333333334
+  },
+  "strategies": [
+   "A",
+   "B",
+   "C",
+   "AB",
+   "AC",
+   "BC",
+   "ABC"
+  ],
+  "intensities": [
+   1,
+   2,
+   3
+  ],
+  "primary_endpoints": [
+   "rq1_per_attack_auc_diff",
+   "rq2_t_rec",
+   "rq2_retention_post",
+   "rq3_composite_r"
+  ],
+  "equivalence_margin": 0.05
+ },
+ "backtest": {
+  "anchors": [
+   {
+    "name": "Genesis_Market_seizure",
+    "name_literal": "Genesis Market",
+    "date": "2023-04-04",
+    "migration_targets": [
+     "Russian Market",
+     "2easy",
+     "Exodus"
+    ]
+   },
+   {
+    "name": "RagnarLocker_takedown",
+    "name_literal": "RagnarLocker",
+    "date": "2023-10-20"
+   }
+  ],
+  "min_nodes_in_month": 8,
+  "min_edges_in_month": 8
+ }
+}

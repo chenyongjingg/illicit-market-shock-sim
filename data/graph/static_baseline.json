@@ -1,0 +1,102 @@
+{
+ "generated_utc": "2026-11-01T06:11:52Z",
+ "baseline": "B1 pure static structure (plan §7.1): no GNN representation, no simulation",
+ "b1_definition": "mean AUC over ['degree', 'betweenness', 'pagerank'] removal orders (GNN order excluded by definition)",
+ "descriptors": {
+  "whole": {
+   "n": 2029,
+   "m": 2319,
+   "density": 0.001127147485717452,
+   "degree_mean": 2.2858551010349926,
+   "degree_sd": 4.0935465951498875,
+   "degree_max": 62.0,
+   "degree_cv": 1.7908163090899358,
+   "modularity": 0.7891484950707096,
+   "n_communities": 302,
+   "apl_largest_cc": 5.548621759326229,
+   "lcc_fraction": 0.5500246426811237
+  },
+  "AI": {
+   "n": 56,
+   "m": 38,
+   "density": 0.024675324675324677,
+   "degree_mean": 1.3571428571428572,
+   "degree_sd": 0.7889543583705185,
+   "degree_max": 5.0,
+   "degree_cv": 0.5813347903782767,
+   "modularity": 0.9307479224376732,
+   "n_communities": 19,
+   "apl_largest_cc": 1.6666666666666667,
+   "lcc_fraction": 0.10714285714285714
+  },
+  "traditional": {
+   "n": 1973,
+   "m": 2265,
+   "density": 0.0011642981466840892,
+   "degree_mean": 2.2959959452610237,
+   "degree_sd": 4.142491076672096,
+   "degree_max": 62.0,
+   "degree_cv": 1.8042240384710917,
+   "modularity": 0.7816354058545205,
+   "n_communities": 299,
+   "apl_largest_cc": 5.548621759326229,
+   "lcc_fraction": 0.565636087176888
+  }
+ },
+ "b1": {
+  "AI": {
+   "status": "OK",
+   "per_attack_auc": {
+    "degree": 0.35333333333333333,
+    "betweenness": 0.3837499999999999,
+    "pagerank": 0.2990833333333333
+   },
+   "b1_static_R": 0.3453888888888889,
+   "full_r_struct": 0.3845208333333333,
+   "gnn_attack_auc": 0.5019166666666666,
+   "n": 56,
+   "m": 38
+  },
+  "traditional": {
+   "status": "OK",
+   "per_attack_auc": {
+    "degree": 0.025136200716845875,
+    "betweenness": 0.03666532258064517,
+    "pagerank": 0.029247311827956996
+   },
+   "b1_static_R": 0.030349611708482677,
+   "full_r_struct": 0.09641756272401436,
+   "gnn_attack_auc": 0.2946214157706094,
+   "n": 1973,
+   "m": 2265
+  }
+ },
+ "contrast": {
+  "delta_B1_static": 0.31503927718040625,
+  "delta_full_r_struct": 0.28810327060931895,
+  "delta_gnn_attack_only": 0.20729525089605716,
+  "same_sign_B1_vs_full": true,
+  "interpretation_rule": "RQ1 may claim the GNN layer adds information only if the AI-vs-traditional contrast differs beyond the size-matching interval that s3 reports (degree attack only). A non-zero delta_full alone is NOT evidence of GNN value: B1 and the full R_struct average over different attack sets (3 vs 4), so state both.",
+  "size_note": "AI and traditional subnets differ in size; the only interval that accounts for this is resilience.json bootstrap_auc_diff (degree attack only). No interval is computed here."
+ },
+ "graph_identity": {
+  "AI": {
+   "n_descriptors": 56,
+   "m_descriptors": 38,
+   "n_resilience": 56,
+   "m_resilience": 38,
+   "n_matches": true,
+   "m_matches": true,
+   "rule": "descriptors and B1_R must describe one induced subgraph; a mismatch means the two numbers must not be quoted in one sentence"
+  },
+  "traditional": {
+   "n_descriptors": 1973,
+   "m_descriptors": 2265,
+   "n_resilience": 1973,
+   "m_resilience": 2265,
+   "n_matches": true,
+   "m_matches": true,
+   "rule": "descriptors and B1_R must describe one induced subgraph; a mismatch means the two numbers must not be quoted in one sentence"
+  }
+ }
+}

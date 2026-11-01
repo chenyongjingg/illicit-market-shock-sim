@@ -1,0 +1,17 @@
+{
+ "t": "2026-11-01T04:16:32Z",
+ "cache": "/root/mdpi3/data/cache/llm.sqlite",
+ "rows_total": 2708,
+ "s1_log": "/root/mdpi3/logs/s1x.log",
+ "domain": "block after the last 'text_chars_cap=' line (32 of 87)",
+ "samples_done_this_run": 3,
+ "docs_per_sample": 649,
+ "last_batch_line": null,
+ "rows_this_run_lower": 1947,
+ "rows_this_run_upper": 1947,
+ "rows_foreign_upper": 761,
+ "rows_foreign_lower": 761,
+ "why_foreign_is_unreachable": "llm.py key = sha256(json.dumps([prompt, params], sort_keys=True)). config.yaml changed at 02:24:37Z (text_chars 1800->4000, max_new_tokens 384->2048), so every row written under the old params is a distinct key this run can never hit again. The table is an append-only history of the CACHE, not a record of this execution. A count over `gen` must never be quoted as progress.",
+ "caveat": "rows_this_run is derived from the stage log at one-batch granularity; the upper bound allows one extra batch for read skew.",
+ "s1_ok_mtime_utc": "2026-11-01T04:16:26Z"
+}

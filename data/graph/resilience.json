@@ -1,0 +1,430 @@
+{
+ "generated_utc": "2026-11-01T06:02:49Z",
+ "metric": "R_struct = AUC of LCC fraction under targeted node removal, f in [0,1]",
+ "per_attack_required": true,
+ "subnets": {
+  "AI": {
+   "label": "AI",
+   "n": 56,
+   "m": 38,
+   "declared_n": 70,
+   "isolated_excluded": 14,
+   "density": 0.024675324675324677,
+   "ncomp": 19,
+   "base": 6,
+   "base_over_n": 0.10714285714285714,
+   "component_sizes": [
+    6,
+    5,
+    4,
+    4,
+    3,
+    3,
+    3,
+    3,
+    3,
+    3,
+    3,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2
+   ],
+   "connected": false,
+   "degree": 0.35333333333333333,
+   "degree_abs": 0.03785714285714286,
+   "degree_anchor": 0.31000000000000005,
+   "degree_abs_anchor": 0.03321428571428572,
+   "degree_band": [
+    0.3133333333333334,
+    0.37833333333333324
+   ],
+   "degree_family_sd": 0.016964014199999253,
+   "betweenness": 0.3837499999999999,
+   "betweenness_abs": 0.041116071428571425,
+   "betweenness_anchor": 0.355,
+   "betweenness_abs_anchor": 0.03803571428571429,
+   "betweenness_band": [
+    0.3166666666666667,
+    0.49500000000000005
+   ],
+   "betweenness_family_sd": 0.04301445170585759,
+   "pagerank": 0.2990833333333333,
+   "pagerank_abs": 0.032044642857142855,
+   "pagerank_anchor": 0.3066666666666667,
+   "pagerank_abs_anchor": 0.032857142857142856,
+   "pagerank_band": [
+    0.27999999999999997,
+    0.3366666666666667
+   ],
+   "pagerank_family_sd": 0.014234884771028005,
+   "gnn": 0.5019166666666666,
+   "gnn_abs": 0.053776785714285714,
+   "gnn_anchor": 0.4966666666666666,
+   "gnn_abs_anchor": 0.05321428571428571,
+   "gnn_band": [
+    0.4966666666666666,
+    0.5083333333333334
+   ],
+   "gnn_family_sd": 0.003085584763595652,
+   "random": 0.5535000000000001,
+   "random_abs": 0.059303571428571435,
+   "tie_breaking_sensitivity": {
+    "replicates": 20,
+    "modes": {
+     "degree": {
+      "n": 20,
+      "mean": 0.35333333333333333,
+      "min": 0.3133333333333334,
+      "max": 0.37833333333333324,
+      "ci95": [
+       0.31570833333333337,
+       0.3751666666666666
+      ],
+      "anchor": 0.31000000000000005,
+      "anchor_in_band": false,
+      "anchor_minus_family_mean": -0.04333333333333328
+     },
+     "betweenness": {
+      "n": 20,
+      "mean": 0.3837499999999999,
+      "min": 0.3166666666666667,
+      "max": 0.49500000000000005,
+      "ci95": [
+       0.31745833333333334,
+       0.47916666666666663
+      ],
+      "anchor": 0.355,
+      "anchor_in_band": true,
+      "anchor_minus_family_mean": -0.028749999999999942
+     },
+     "pagerank": {
+      "n": 20,
+      "mean": 0.2990833333333333,
+      "min": 0.27999999999999997,
+      "max": 0.3366666666666667,
+      "ci95": [
+       0.27999999999999997,
+       0.331125
+      ],
+      "anchor": 0.3066666666666667,
+      "anchor_in_band": true,
+      "anchor_minus_family_mean": 0.007583333333333386
+     },
+     "gnn": {
+      "n": 20,
+      "mean": 0.5019166666666666,
+      "min": 0.4966666666666666,
+      "max": 0.5083333333333334,
+      "ci95": [
+       0.4974583333333332,
+       0.5083333333333334
+      ],
+      "anchor": 0.4966666666666666,
+      "anchor_in_band": true,
+      "anchor_minus_family_mean": -0.005249999999999977
+     }
+    },
+    "headline": "every attack AUC above is the MEAN over this family; `*_anchor` is the single construction-order draw, printed so a rerun can be shown to reproduce the tree rather than the family",
+    "reading": "each replicate permutes the order among nodes with EQUAL centrality; a spread comparable to a between-subnet difference means the difference is not identified by this measure"
+   },
+   "null": {
+    "degree": {
+     "mean": 0.23503824059926998,
+     "sd": 0.05235596826862747,
+     "n": 20
+    },
+    "betweenness": {
+     "mean": 0.24240656990068757,
+     "sd": 0.05285447322806574,
+     "n": 20
+    },
+    "pagerank": {
+     "mean": 0.20835817205670146,
+     "sd": 0.049724505536024435,
+     "n": 20
+    },
+    "gnn": {
+     "mean": 0.33424488689415155,
+     "sd": 0.0691930613544255,
+     "n": 20
+    }
+   },
+   "null_rewire_success": 20,
+   "null_rewire_failures": 0,
+   "r_struct_excess": {
+    "degree": {
+     "auc_attack": 0.35333333333333333,
+     "auc_null": 0.23503824059926998,
+     "ratio": 1.503301473123905,
+     "excess": -0.5033014731239049
+    },
+    "betweenness": {
+     "auc_attack": 0.3837499999999999,
+     "auc_null": 0.24240656990068757,
+     "ratio": 1.5830841555046131,
+     "excess": -0.5830841555046131
+    },
+    "pagerank": {
+     "auc_attack": 0.2990833333333333,
+     "auc_null": 0.20835817205670146,
+     "ratio": 1.4354288597422635,
+     "excess": -0.43542885974226353
+    },
+    "gnn": {
+     "auc_attack": 0.5019166666666666,
+     "auc_null": 0.33424488689415155,
+     "ratio": 1.501643514521774,
+     "excess": -0.5016435145217739
+    }
+   },
+   "r_struct_excess_mean": -0.5058645007231388,
+   "r_struct_excess_reading": "excess > 0: targeted attack collapses the subnet faster than degree-preserving rewiring of the same subnet; excess <= 0: the attack is no better than a null draw. Denominator-free by construction (ratio of two AUCs on graphs of the same class).",
+   "r_struct_mean": 0.3845208333333333,
+   "r_struct_mean_anchor": 0.3670833333333333,
+   "r_struct_mean_abs": 0.04119866071428571,
+   "r_struct_denomination": "r_struct_mean divides by `base` (largest component of the UNATTACKED subnet); r_struct_mean_abs divides by n. Compare subnets with r_struct_mean_abs, and print base_over_n beside every r_struct_mean.",
+   "fiedler": null,
+   "fiedler_reason": "graph is disconnected (ncomp=19); algebraic connectivity is 0 and eigvalsh returns numerical noise",
+   "efficiency": 0.033766233766233764,
+   "status": "OK"
+  },
+  "traditional": {
+   "label": "traditional",
+   "n": 1973,
+   "m": 2265,
+   "declared_n": 3391,
+   "isolated_excluded": 1418,
+   "density": 0.0011642981466840892,
+   "ncomp": 264,
+   "base": 1116,
+   "base_over_n": 0.565636087176888,
+   "component_sizes": [
+    1116,
+    26,
+    18,
+    12,
+    10,
+    10,
+    10,
+    10,
+    10,
+    9,
+    9,
+    9,
+    9,
+    9,
+    8,
+    8,
+    8,
+    7,
+    7,
+    7
+   ],
+   "connected": false,
+   "degree": 0.025136200716845875,
+   "degree_abs": 0.014217942219969585,
+   "degree_anchor": 0.025071684587813614,
+   "degree_abs_anchor": 0.01418144956918398,
+   "degree_band": [
+    0.024318996415770604,
+    0.025546594982078848
+   ],
+   "degree_family_sd": 0.0002976421432548636,
+   "betweenness": 0.03666532258064517,
+   "betweenness_abs": 0.020739229599594528,
+   "betweenness_anchor": 0.03702508960573478,
+   "betweenness_abs_anchor": 0.02094272681196148,
+   "betweenness_band": [
+    0.03616487455197133,
+    0.037508960573476705
+   ],
+   "betweenness_family_sd": 0.0003293821371468482,
+   "pagerank": 0.029247311827956996,
+   "pagerank_abs": 0.016543335022807908,
+   "pagerank_anchor": 0.02924731182795699,
+   "pagerank_abs_anchor": 0.016543335022807904,
+   "pagerank_band": [
+    0.02924731182795699,
+    0.02924731182795699
+   ],
+   "pagerank_family_sd": 6.938893903907228e-18,
+   "gnn": 0.2946214157706094,
+   "gnn_abs": 0.1666485048150025,
+   "gnn_anchor": 0.2945878136200717,
+   "gnn_abs_anchor": 0.16662949822605166,
+   "gnn_band": [
+    0.2946057347670251,
+    0.294641577060932
+   ],
+   "gnn_family_sd": 1.0928594012240249e-05,
+   "random": 0.32187096774193547,
+   "random_abs": 0.1820618347693867,
+   "tie_breaking_sensitivity": {
+    "replicates": 20,
+    "modes": {
+     "degree": {
+      "n": 20,
+      "mean": 0.025136200716845875,
+      "min": 0.024318996415770604,
+      "max": 0.025546594982078848,
+      "ci95": [
+       0.02444242831541218,
+       0.025542338709677415
+      ],
+      "anchor": 0.025071684587813614,
+      "anchor_in_band": true,
+      "anchor_minus_family_mean": -6.451612903226114e-05
+     },
+     "betweenness": {
+      "n": 20,
+      "mean": 0.03666532258064517,
+      "min": 0.03616487455197133,
+      "max": 0.037508960573476705,
+      "ci95": [
+       0.03616487455197133,
+       0.037325940860215054
+      ],
+      "anchor": 0.03702508960573478,
+      "anchor_in_band": true,
+      "anchor_minus_family_mean": 0.0003597670250896079
+     },
+     "pagerank": {
+      "n": 20,
+      "mean": 0.029247311827956996,
+      "min": 0.02924731182795699,
+      "max": 0.02924731182795699,
+      "ci95": [
+       0.02924731182795699,
+       0.02924731182795699
+      ],
+      "anchor": 0.02924731182795699,
+      "anchor_in_band": true,
+      "anchor_minus_family_mean": -6.938893903907228e-18
+     },
+     "gnn": {
+      "n": 20,
+      "mean": 0.2946214157706094,
+      "min": 0.2946057347670251,
+      "max": 0.294641577060932,
+      "ci95": [
+       0.2946057347670251,
+       0.294641577060932
+      ],
+      "anchor": 0.2945878136200717,
+      "anchor_in_band": false,
+      "anchor_minus_family_mean": -3.360215053771487e-05
+     }
+    },
+    "headline": "every attack AUC above is the MEAN over this family; `*_anchor` is the single construction-order draw, printed so a rerun can be shown to reproduce the tree rather than the family",
+    "reading": "each replicate permutes the order among nodes with EQUAL centrality; a spread comparable to a between-subnet difference means the difference is not identified by this measure"
+   },
+   "null": {
+    "degree": {
+     "mean": 0.028373611879223114,
+     "sd": 0.0007954843940321631,
+     "n": 20
+    },
+    "betweenness": {
+     "mean": 0.03556861400913221,
+     "sd": 0.0016734317259941168,
+     "n": 20
+    },
+    "pagerank": {
+     "mean": 0.02888202057368313,
+     "sd": 0.0009192800497622387,
+     "n": 20
+    },
+    "gnn": {
+     "mean": 0.3162357207641124,
+     "sd": 0.002772498436167387,
+     "n": 20
+    }
+   },
+   "null_rewire_success": 20,
+   "null_rewire_failures": 0,
+   "r_struct_excess": {
+    "degree": {
+     "auc_attack": 0.025136200716845875,
+     "auc_null": 0.028373611879223114,
+     "ratio": 0.885900632737284,
+     "excess": 0.11409936726271597
+    },
+    "betweenness": {
+     "auc_attack": 0.03666532258064517,
+     "auc_null": 0.03556861400913221,
+     "ratio": 1.0308336043465562,
+     "excess": -0.030833604346556243
+    },
+    "pagerank": {
+     "auc_attack": 0.029247311827956996,
+     "auc_null": 0.02888202057368313,
+     "ratio": 1.0126477042470745,
+     "excess": -0.01264770424707451
+    },
+    "gnn": {
+     "auc_attack": 0.2946214157706094,
+     "auc_null": 0.3162357207641124,
+     "ratio": 0.9316512854990674,
+     "excess": 0.0683487145009326
+    }
+   },
+   "r_struct_excess_mean": 0.034741693292504455,
+   "r_struct_excess_reading": "excess > 0: targeted attack collapses the subnet faster than degree-preserving rewiring of the same subnet; excess <= 0: the attack is no better than a null draw. Denominator-free by construction (ratio of two AUCs on graphs of the same class).",
+   "r_struct_mean": 0.09641756272401436,
+   "r_struct_mean_anchor": 0.09648297491039427,
+   "r_struct_mean_abs": 0.05453725291434364,
+   "r_struct_denomination": "r_struct_mean divides by `base` (largest component of the UNATTACKED subnet); r_struct_mean_abs divides by n. Compare subnets with r_struct_mean_abs, and print base_over_n beside every r_struct_mean.",
+   "fiedler": null,
+   "fiedler_reason": "graph is disconnected (ncomp=264); algebraic connectivity is 0 and eigvalsh returns numerical noise",
+   "efficiency": null,
+   "status": "OK"
+  }
+ },
+ "bootstrap_auc_diff": {
+  "mean": -0.3928388888888888,
+  "sd": 0.25558058185750065,
+  "se": 0.25558058185750065,
+  "se_definition": "sd across bootstrap replicate MEANS = bootstrap SE of the estimate; NOT width/3.92",
+  "ci95": [
+   -0.6749999999999999,
+   -0.028333333333333266
+  ],
+  "ci95_kind": "percentile interval over a bootstrap distribution of the estimator -- an interval for the mean difference, not for a single resample",
+  "n": 300,
+  "resampling_unit": "subnet nodes (size-matched resample); degree-attack AUC only",
+  "caveat": "NOT a graph-level bootstrap, and NOT a subnet-resilience contrast even at the node level: equal n does not give equal m. Read the induced edge counts in `size_matching` before interpreting this difference.",
+  "induced_edges_ai": {
+   "mean": 38.0,
+   "min": 38,
+   "max": 38
+  },
+  "induced_edges_traditional": {
+   "mean": 0.9233333333333333,
+   "min": 0,
+   "max": 6
+  },
+  "induced_nodes_ai": {
+   "mean": 56.0
+  },
+  "induced_nodes_traditional": {
+   "mean": 40.38
+  }
+ },
+ "size_matching": {
+  "ai_population_n": 70,
+  "traditional_population_n": 3391,
+  "sampled_per_side": 70,
+  "ai_surviving_n_mean": 56.0,
+  "traditional_surviving_n_mean": 40.38,
+  "note": "'population' is the pool each side is drawn FROM; 'sampled_per_side' is how many are drawn per resample; 'surviving' is how many remain once isolated nodes are dropped after the draw. Reading traditional_population_n as the number of nodes used in a resample is the misreading this field names away from (D-98). Both sides are sampled to equal NODE count; induced EDGE counts are not matched and are reported above."
+ },
+ "collateral_rate": {
+  "status": "UNDEFINED",
+  "reason": "graph has no nodes labelled legitimate; plan §5.5 denominator does not exist (P1-3)"
+ }
+}

@@ -1,0 +1,109 @@
+{
+ "text_chars_cap": 4000,
+ "documents_checked": 649,
+ "documents_scored": 649,
+ "documents_missing_text": 0,
+ "window_sha_match": 649,
+ "window_sha_mismatch": 0,
+ "entity_tiers": {
+  "window": 2450,
+  "absent": 204,
+  "too_short": 55,
+  "prefix60": 7
+ },
+ "relation_tiers": {
+  "window": 860,
+  "too_short": 11,
+  "absent": 121,
+  "prefix60": 10
+ },
+ "relation_tiers_market_only": {
+  "window": 8,
+  "too_short": 1,
+  "absent": 2
+ },
+ "entity_window_rate": 0.920706501315295,
+ "relation_window_rate": 0.8678102926337034,
+ "market_relation_window_rate": 0.8,
+ "entity_window_rate_incl_too_short": 0.9020618556701031,
+ "relation_window_rate_incl_too_short": 0.8582834331337326,
+ "market_relation_window_rate_incl_too_short": 0.7272727272727273,
+ "rate_definition": "window / (all tiers except too_short). `*_incl_too_short` is the OLD definition, given so the change is auditable; too_short means this instrument cannot judge the string, which is not the same as failure.",
+ "entity_tiers_by_type": {
+  "Account": {
+   "window": 5
+  },
+  "Campaign": {
+   "window": 56,
+   "absent": 4,
+   "too_short": 2,
+   "prefix60": 1
+  },
+  "Criminal-LLM-Service": {
+   "window": 36,
+   "absent": 2,
+   "prefix60": 1,
+   "too_short": 2
+  },
+  "Indicator": {
+   "window": 311,
+   "absent": 2,
+   "too_short": 1
+  },
+  "Infrastructure": {
+   "window": 555,
+   "prefix60": 1,
+   "absent": 26,
+   "too_short": 1
+  },
+  "Jailbreak-Service": {
+   "window": 2
+  },
+  "Malware": {
+   "window": 305,
+   "too_short": 13,
+   "absent": 59,
+   "prefix60": 3
+  },
+  "Other": {
+   "window": 211,
+   "absent": 9,
+   "too_short": 1
+  },
+  "Platform": {
+   "window": 467,
+   "absent": 15,
+   "too_short": 13
+  },
+  "Stolen-Account-Pool": {
+   "window": 1
+  },
+  "Threat-Actor": {
+   "window": 156,
+   "absent": 48,
+   "too_short": 9,
+   "prefix60": 1
+  },
+  "Tool": {
+   "window": 245,
+   "absent": 34,
+   "too_short": 6
+  },
+  "Victim-Sector": {
+   "window": 100,
+   "absent": 5,
+   "too_short": 7
+  }
+ },
+ "controls": {
+  "positive_window_spans_found": 50,
+  "positive_n": 50,
+  "negative_junk_found": 0,
+  "negative_n": 20,
+  "status": "OK",
+  "status_note": null
+ },
+ "grounding_floor": 0.85,
+ "instrument": "verbatim substring after NFKC+lowercase+whitespace collapse; tier 'beyond' = found only past the prompt cap, i.e. the model never saw it; 'prefix60' = stored-evidence truncation artefact",
+ "note": "measurement only: no item is dropped or rewritten here. An item quoting a real sentence can still be misread -- this bounds copying, not comprehension (D-34)."
+}

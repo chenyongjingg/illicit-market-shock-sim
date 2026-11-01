@@ -1,0 +1,72 @@
+{
+ "pre_declared_tolerance": {
+  "F_rmse": 0.02,
+  "t_rec_turns": 1,
+  "R": 0.02
+ },
+ "observed_mean_rmse": 2.8116339033381333e-07,
+ "runs": [
+  {
+   "scenario": "A1",
+   "seed": 0,
+   "rmse_F": 2.238298551497684e-07,
+   "max_abs_diff": 4.3983945896552967e-07
+  },
+  {
+   "scenario": "A1",
+   "seed": 1,
+   "rmse_F": 2.7024789276841824e-07,
+   "max_abs_diff": 4.565299048797655e-07
+  },
+  {
+   "scenario": "B2",
+   "seed": 0,
+   "rmse_F": 2.8158200107403334e-07,
+   "max_abs_diff": 3.0845762755138395e-07
+  },
+  {
+   "scenario": "B2",
+   "seed": 1,
+   "rmse_F": 4.0243274595053507e-07,
+   "max_abs_diff": 4.4084298567170777e-07
+  },
+  {
+   "scenario": "C3",
+   "seed": 0,
+   "rmse_F": 2.7364865776390235e-07,
+   "max_abs_diff": 2.99767085376601e-07
+  },
+  {
+   "scenario": "C3",
+   "seed": 1,
+   "rmse_F": 3.553828779603985e-07,
+   "max_abs_diff": 3.893024376200316e-07
+  },
+  {
+   "scenario": "A3+C1",
+   "seed": 0,
+   "rmse_F": 2.3284212522910472e-07,
+   "max_abs_diff": 4.85130864480432e-07
+  },
+  {
+   "scenario": "A3+C1",
+   "seed": 1,
+   "rmse_F": 2.970320201724608e-07,
+   "max_abs_diff": 4.7381422996206624e-07
+  },
+  {
+   "scenario": "A2+B3+C2",
+   "seed": 0,
+   "rmse_F": 2.331005456097026e-07,
+   "max_abs_diff": 4.984383701334139e-07
+  },
+  {
+   "scenario": "A2+B3+C2",
+   "seed": 1,
+   "rmse_F": 2.41535181659809e-07,
+   "max_abs_diff": 4.816692994458194e-07
+  }
+ ],
+ "status": "EQUIVALENT",
+ "error": null
+}

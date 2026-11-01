@@ -1,0 +1,3 @@
+# Never convert line endings: every file is hashed byte-for-byte in MANIFEST.artifacts.jsonl
+# and re-checked by verify_release.py. A CRLF checkout would change those hashes.
+* -text

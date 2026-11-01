@@ -1,0 +1,5330 @@
+{
+ "2012-04": {
+  "nodes": [
+   "Infrastructure:[ip-defanged]",
+   "Infrastructure:congtytancang.uicp.net",
+   "Infrastructure:front11.gicp.net",
+   "Infrastructure:kullywolf.gicp.net",
+   "Infrastructure:l1x.lflinkup.net",
+   "Infrastructure:shadow server",
+   "Infrastructure:www.ollay011.zyns.com",
+   "Malware:ceiec document dump"
+  ],
+  "edges": [
+   [
+    "Infrastructure:[ip-defanged]",
+    "Malware:ceiec document dump",
+    "hosts"
+   ],
+   [
+    "Malware:ceiec document dump",
+    "Infrastructure:shadow server",
+    "related-to"
+   ],
+   [
+    "Infrastructure:kullywolf.gicp.net",
+    "Malware:ceiec document dump",
+    "hosts"
+   ],
+   [
+    "Infrastructure:congtytancang.uicp.net",
+    "Malware:ceiec document dump",
+    "hosts"
+   ],
+   [
+    "Infrastructure:www.ollay011.zyns.com",
+    "Malware:ceiec document dump",
+    "hosts"
+   ],
+   [
+    "Infrastructure:l1x.lflinkup.net",
+    "Malware:ceiec document dump",
+    "hosts"
+   ],
+   [
+    "Infrastructure:front11.gicp.net",
+    "Malware:ceiec document dump",
+    "hosts"
+   ]
+  ]
+ },
+ "2014-03": {
+  "nodes": [
+   "Malware:osint apt bestia",
+   "Victim-Sector:polish government"
+  ],
+  "edges": [
+   [
+    "Malware:osint apt bestia",
+    "Victim-Sector:polish government",
+    "targets"
+   ]
+  ]
+ },
+ "2014-11": {
+  "nodes": [
+   "Indicator:citizenlab public db of malware indicators",
+   "Infrastructure:[ip-defanged]"
+  ],
+  "edges": [
+   [
+    "Indicator:citizenlab public db of malware indicators",
+    "Infrastructure:[ip-defanged]",
+    "provides"
+   ]
+  ]
+ },
+ "2015-01": {
+  "nodes": [
+   "Campaign:project cobra",
+   "Infrastructure:61paris.fr",
+   "Infrastructure:jucheafrica.com",
+   "Infrastructure:soheylistore.ir",
+   "Infrastructure:tazohor.com",
+   "Other:\\\\.\\pipe\\comnap",
+   "Other:\\\\.\\pipe\\sdlrpc"
+  ],
+  "edges": [
+   [
+    "Campaign:project cobra",
+    "Infrastructure:soheylistore.ir",
+    "targets"
+   ],
+   [
+    "Campaign:project cobra",
+    "Infrastructure:tazohor.com",
+    "targets"
+   ],
+   [
+    "Campaign:project cobra",
+    "Infrastructure:jucheafrica.com",
+    "targets"
+   ],
+   [
+    "Campaign:project cobra",
+    "Infrastructure:61paris.fr",
+    "targets"
+   ],
+   [
+    "Campaign:project cobra",
+    "Other:\\\\.\\pipe\\sdlrpc",
+    "communicates-with"
+   ],
+   [
+    "Campaign:project cobra",
+    "Other:\\\\.\\pipe\\comnap",
+    "communicates-with"
+   ]
+  ]
+ },
+ "2015-06": {
+  "nodes": [
+   "Infrastructure:[ip-defanged]",
+   "Infrastructure:hostasa.org",
+   "Malware:linux/xorddos"
+  ],
+  "edges": [
+   [
+    "Infrastructure:[ip-defanged]",
+    "Infrastructure:hostasa.org",
+    "hosts"
+   ],
+   [
+    "Malware:linux/xorddos",
+    "Infrastructure:[ip-defanged]",
+    "related-to"
+   ]
+  ]
+ },
+ "2015-10": {
+  "nodes": [
+   "Infrastructure:ad.bb800.com",
+   "Infrastructure:bb800.com",
+   "Infrastructure:down.bb800.com",
+   "Infrastructure:dp.bb800.com",
+   "Infrastructure:iosads.cdn.bb800.com",
+   "Infrastructure:iosnoico.bb800.com",
+   "Infrastructure:qvios.od.bb800.com",
+   "Infrastructure:qvod.bb800.com",
+   "Infrastructure:ty1.bb800.com",
+   "Malware:osint yispecter",
+   "Malware:worm.win32.lingdun",
+   "Other:ios devices"
+  ],
+  "edges": [
+   [
+    "Malware:osint yispecter",
+    "Other:ios devices",
+    "targets"
+   ],
+   [
+    "Infrastructure:bb800.com",
+    "Infrastructure:ad.bb800.com",
+    "hosts"
+   ],
+   [
+    "Infrastructure:bb800.com",
+    "Infrastructure:down.bb800.com",
+    "hosts"
+   ],
+   [
+    "Infrastructure:bb800.com",
+    "Infrastructure:ty1.bb800.com",
+    "hosts"
+   ],
+   [
+    "Infrastructure:bb800.com",
+    "Infrastructure:iosnoico.bb800.com",
+    "hosts"
+   ],
+   [
+    "Infrastructure:bb800.com",
+    "Infrastructure:qvod.bb800.com",
+    "hosts"
+   ],
+   [
+    "Infrastructure:bb800.com",
+    "Infrastructure:qvios.od.bb800.com",
+    "hosts"
+   ],
+   [
+    "Infrastructure:bb800.com",
+    "Infrastructure:dp.bb800.com",
+    "hosts"
+   ],
+   [
+    "Infrastructure:bb800.com",
+    "Infrastructure:iosads.cdn.bb800.com",
+    "hosts"
+   ],
+   [
+    "Malware:worm.win32.lingdun",
+    "Infrastructure:bb800.com",
+    "distributes"
+   ]
+  ]
+ },
+ "2015-11": {
+  "nodes": [
+   "Malware:glassrat",
+   "Platform:rsa research"
+  ],
+  "edges": [
+   [
+    "Platform:rsa research",
+    "Malware:glassrat",
+    "related-to"
+   ]
+  ]
+ },
+ "2016-03": {
+  "nodes": [
+   "Indicator:malicious javascript code snippet",
+   "Infrastructure:brookmensoklinherz.org",
+   "Infrastructure:letterinklandoix.net",
+   "Infrastructure:oklinjgreirestacks.biz",
+   "Infrastructure:starwoodhotels.pw",
+   "Infrastructure:supratimewest.biz",
+   "Infrastructure:supratimewest.com",
+   "Infrastructure:www.starwoodhotels.pw",
+   "Malware:android.trojan.hesperbot",
+   "Malware:ibanking malware",
+   "Malware:locky",
+   "Malware:powersniff",
+   "Other:malicious macro documents",
+   "Threat-Actor:fireeye labs",
+   "Victim-Sector:polish users of electronic banking"
+  ],
+  "edges": [
+   [
+    "Malware:powersniff",
+    "Other:malicious macro documents",
+    "distributes"
+   ],
+   [
+    "Malware:powersniff",
+    "Infrastructure:supratimewest.com",
+    "hosts"
+   ],
+   [
+    "Malware:powersniff",
+    "Infrastructure:letterinklandoix.net",
+    "hosts"
+   ],
+   [
+    "Malware:powersniff",
+    "Infrastructure:supratimewest.biz",
+    "hosts"
+   ],
+   [
+    "Malware:powersniff",
+    "Infrastructure:starwoodhotels.pw",
+    "hosts"
+   ],
+   [
+    "Malware:powersniff",
+    "Infrastructure:oklinjgreirestacks.biz",
+    "hosts"
+   ],
+   [
+    "Malware:powersniff",
+    "Infrastructure:www.starwoodhotels.pw",
+    "hosts"
+   ],
+   [
+    "Malware:powersniff",
+    "Infrastructure:brookmensoklinherz.org",
+    "hosts"
+   ],
+   [
+    "Other:malicious macro documents",
+    "Malware:powersniff",
+    "related-to"
+   ],
+   [
+    "Malware:ibanking malware",
+    "Victim-Sector:polish users of electronic banking",
+    "targets"
+   ],
+   [
+    "Malware:ibanking malware",
+    "Malware:android.trojan.hesperbot",
+    "part-of"
+   ],
+   [
+    "Malware:ibanking malware",
+    "Indicator:malicious javascript code snippet",
+    "distributes"
+   ],
+   [
+    "Threat-Actor:fireeye labs",
+    "Malware:locky",
+    "related-to"
+   ]
+  ]
+ },
+ "2016-04": {
+  "nodes": [
+   "Indicator:[hash-defanged]",
+   "Infrastructure:1fichier.com",
+   "Infrastructure:[ip-defanged]",
+   "Infrastructure:bangladesh bank",
+   "Infrastructure:hxxp://waldorftrust.com",
+   "Infrastructure:point-of-sale (pos) systems",
+   "Malware:jigsaw",
+   "Malware:modpos",
+   "Other:kernel of these systems",
+   "Other:unknown attacker",
+   "Other:victim-sector"
+  ],
+  "edges": [
+   [
+    "Malware:modpos",
+    "Infrastructure:point-of-sale (pos) systems",
+    "targets"
+   ],
+   [
+    "Malware:modpos",
+    "Other:kernel of these systems",
+    "hosts"
+   ],
+   [
+    "Malware:modpos",
+    "Indicator:[hash-defanged]",
+    "distributes"
+   ],
+   [
+    "Malware:modpos",
+    "Infrastructure:[ip-defanged]",
+    "communicates-with"
+   ],
+   [
+    "Malware:jigsaw",
+    "Other:victim-sector",
+    "targets"
+   ],
+   [
+    "Malware:jigsaw",
+    "Infrastructure:hxxp://waldorftrust.com",
+    "hosts"
+   ],
+   [
+    "Malware:jigsaw",
+    "Infrastructure:1fichier.com",
+    "distributes"
+   ],
+   [
+    "Other:unknown attacker",
+    "Infrastructure:bangladesh bank",
+    "targets"
+   ]
+  ]
+ },
+ "2016-06": {
+  "nodes": [
+   "Infrastructure:mensabuxus.net",
+   "Infrastructure:ogrthuvfewfdcfri5euwg.com",
+   "Infrastructure:ogrthuvwfdcfri5euwg.com",
+   "Malware:bolek",
+   "Malware:locky",
+   "Other:3141592.ru",
+   "Other:4k18.com",
+   "Other:adbm.co.uk",
+   "Other:addonworks.com"
+  ],
+  "edges": [
+   [
+    "Malware:locky",
+    "Other:3141592.ru",
+    "distributes"
+   ],
+   [
+    "Malware:locky",
+    "Other:4k18.com",
+    "distributes"
+   ],
+   [
+    "Malware:locky",
+    "Other:adbm.co.uk",
+    "distributes"
+   ],
+   [
+    "Malware:locky",
+    "Other:addonworks.com",
+    "distributes"
+   ],
+   [
+    "Malware:bolek",
+    "Infrastructure:mensabuxus.net",
+    "targets"
+   ],
+   [
+    "Malware:bolek",
+    "Infrastructure:ogrthuvwfdcfri5euwg.com",
+    "targets"
+   ],
+   [
+    "Malware:bolek",
+    "Infrastructure:ogrthuvfewfdcfri5euwg.com",
+    "targets"
+   ]
+  ]
+ },
+ "2016-07": {
+  "nodes": [
+   "Indicator:[hash-defanged]",
+   "Malware:mad max",
+   "Other:victim-sector",
+   "Platform:www.arbornetworks.com",
+   "Tool:dll"
+  ],
+  "edges": [
+   [
+    "Malware:mad max",
+    "Indicator:[hash-defanged]",
+    "distributes"
+   ],
+   [
+    "Malware:mad max",
+    "Tool:dll",
+    "uses"
+   ],
+   [
+    "Malware:mad max",
+    "Other:victim-sector",
+    "targets"
+   ],
+   [
+    "Malware:mad max",
+    "Platform:www.arbornetworks.com",
+    "hosts"
+   ]
+  ]
+ },
+ "2016-09": {
+  "nodes": [
+   "Malware:dridex",
+   "Malware:nymaim",
+   "Malware:ursnif",
+   "Threat-Actor:ta530",
+   "Victim-Sector:australia",
+   "Victim-Sector:north america",
+   "Victim-Sector:swiss banking sites"
+  ],
+  "edges": [
+   [
+    "Threat-Actor:ta530",
+    "Malware:dridex",
+    "distributes"
+   ],
+   [
+    "Threat-Actor:ta530",
+    "Malware:nymaim",
+    "distributes"
+   ],
+   [
+    "Threat-Actor:ta530",
+    "Malware:ursnif",
+    "distributes"
+   ],
+   [
+    "Threat-Actor:ta530",
+    "Victim-Sector:swiss banking sites",
+    "targets"
+   ],
+   [
+    "Threat-Actor:ta530",
+    "Victim-Sector:north america",
+    "targets"
+   ],
+   [
+    "Threat-Actor:ta530",
+    "Victim-Sector:australia",
+    "targets"
+   ]
+  ]
+ },
+ "2016-10": {
+  "nodes": [
+   "Malware:rex",
+   "Platform:go"
+  ],
+  "edges": [
+   [
+    "Malware:rex",
+    "Platform:go",
+    "related-to"
+   ]
+  ]
+ },
+ "2016-12": {
+  "nodes": [
+   "Infrastructure:[ip-defanged]",
+   "Infrastructure:cjf.0340.mobi",
+   "Infrastructure:xbs.q30.biz",
+   "Malware:crylocker",
+   "Other:organizations in the energy sector",
+   "Other:organizations in the middle east",
+   "Other:sundown",
+   "Threat-Actor:terbium"
+  ],
+  "edges": [
+   [
+    "Threat-Actor:terbium",
+    "Other:organizations in the middle east",
+    "targets"
+   ],
+   [
+    "Threat-Actor:terbium",
+    "Other:organizations in the energy sector",
+    "targets"
+   ],
+   [
+    "Other:sundown",
+    "Infrastructure:xbs.q30.biz",
+    "hosts"
+   ],
+   [
+    "Other:sundown",
+    "Infrastructure:[ip-defanged]",
+    "hosts"
+   ],
+   [
+    "Other:sundown",
+    "Infrastructure:cjf.0340.mobi",
+    "hosts"
+   ],
+   [
+    "Other:sundown",
+    "Malware:crylocker",
+    "distributes"
+   ]
+  ]
+ },
+ "2017-01": {
+  "nodes": [
+   "Indicator:~/.client",
+   "Indicator:~/library/launchagents/com.client.client.plist",
+   "Infrastructure:eidk.hopto.org",
+   "Infrastructure:ip-dst [ip-defanged]",
+   "Malware:osx.backdoor.quimitchin"
+  ],
+  "edges": [
+   [
+    "Malware:osx.backdoor.quimitchin",
+    "Indicator:~/.client",
+    "distributes"
+   ],
+   [
+    "Malware:osx.backdoor.quimitchin",
+    "Indicator:~/library/launchagents/com.client.client.plist",
+    "distributes"
+   ],
+   [
+    "Malware:osx.backdoor.quimitchin",
+    "Infrastructure:eidk.hopto.org",
+    "communicates-with"
+   ],
+   [
+    "Malware:osx.backdoor.quimitchin",
+    "Infrastructure:ip-dst [ip-defanged]",
+    "communicates-with"
+   ]
+  ]
+ },
+ "2017-02": {
+  "nodes": [
+   "Infrastructure:eye-watch.in",
+   "Infrastructure:sap.misapor.ch",
+   "Malware:backdoor.destover",
+   "Malware:downloader.ratankba",
+   "Other:command and control infrastructure",
+   "Other:compromised websites or â€œwatering holesâ€",
+   "Other:dozens of global banks",
+   "Other:exploit kit",
+   "Threat-Actor:lazarus group"
+  ],
+  "edges": [
+   [
+    "Threat-Actor:lazarus group",
+    "Other:dozens of global banks",
+    "targets"
+   ],
+   [
+    "Threat-Actor:lazarus group",
+    "Other:compromised websites or â€œwatering holesâ€",
+    "uses"
+   ],
+   [
+    "Threat-Actor:lazarus group",
+    "Malware:backdoor.destover",
+    "distributes"
+   ],
+   [
+    "Threat-Actor:lazarus group",
+    "Malware:downloader.ratankba",
+    "distributes"
+   ],
+   [
+    "Infrastructure:eye-watch.in",
+    "Other:exploit kit",
+    "hosts"
+   ],
+   [
+    "Infrastructure:sap.misapor.ch",
+    "Other:command and control infrastructure",
+    "hosts"
+   ]
+  ]
+ },
+ "2017-03": {
+  "nodes": [
+   "Other:com.aaronbalderapps.awesome3dstreetart",
+   "Other:com.aaronbalderapps.awesomecheesecakeideas",
+   "Other:com.aaronbalderapps.babyroomdesignideas",
+   "Other:com.aaronbalderapps.backyardwoodprojects",
+   "Other:com.aaronbalderapps.bathroominteriordesigns",
+   "Other:com.aaronbalderapps.beautifulbotanicalgardens",
+   "Other:com.aaronbalderapps.bedroomdesign5d",
+   "Other:threat actors",
+   "Other:tiny-hidden-iframe",
+   "Tool:psexec"
+  ],
+  "edges": [
+   [
+    "Other:com.aaronbalderapps.awesome3dstreetart",
+    "Other:tiny-hidden-iframe",
+    "related-to"
+   ],
+   [
+    "Other:com.aaronbalderapps.awesomecheesecakeideas",
+    "Other:tiny-hidden-iframe",
+    "related-to"
+   ],
+   [
+    "Other:com.aaronbalderapps.babyroomdesignideas",
+    "Other:tiny-hidden-iframe",
+    "related-to"
+   ],
+   [
+    "Other:com.aaronbalderapps.backyardwoodprojects",
+    "Other:tiny-hidden-iframe",
+    "related-to"
+   ],
+   [
+    "Other:com.aaronbalderapps.bathroominteriordesigns",
+    "Other:tiny-hidden-iframe",
+    "related-to"
+   ],
+   [
+    "Other:com.aaronbalderapps.beautifulbotanicalgardens",
+    "Other:tiny-hidden-iframe",
+    "related-to"
+   ],
+   [
+    "Other:com.aaronbalderapps.bedroomdesign5d",
+    "Other:tiny-hidden-iframe",
+    "related-to"
+   ],
+   [
+    "Other:threat actors",
+    "Tool:psexec",
+    "uses"
+   ]
+  ]
+ },
+ "2017-04": {
+  "nodes": [
+   "Infrastructure:ip-dst|port [ip-defanged]|443",
+   "Infrastructure:necurs",
+   "Infrastructure:url hxxp://jusevengwassresbet.ws/q/index.php",
+   "Infrastructure:url hxxp://justjohnwilhertthet.ws/m/",
+   "Malware:dridex",
+   "Malware:dridex botnet 7200 loader",
+   "Malware:dridex botnet 7500 loader",
+   "Malware:locky",
+   "Malware:quant loader",
+   "Malware:smoke loader",
+   "Other:macro document",
+   "Other:vbs payload",
+   "Other:victim-sector",
+   "Platform:talos",
+   "Threat-Actor:dridex"
+  ],
+  "edges": [
+   [
+    "Malware:smoke loader",
+    "Infrastructure:url hxxp://justjohnwilhertthet.ws/m/",
+    "hosts"
+   ],
+   [
+    "Malware:dridex",
+    "Other:macro document",
+    "distributes"
+   ],
+   [
+    "Malware:dridex",
+    "Other:victim-sector",
+    "targets"
+   ],
+   [
+    "Malware:locky",
+    "Infrastructure:necurs",
+    "distributes"
+   ],
+   [
+    "Malware:quant loader",
+    "Other:vbs payload",
+    "distributes"
+   ],
+   [
+    "Malware:quant loader",
+    "Infrastructure:url hxxp://jusevengwassresbet.ws/q/index.php",
+    "hosts"
+   ],
+   [
+    "Malware:dridex botnet 7500 loader",
+    "Infrastructure:ip-dst|port [ip-defanged]|443",
+    "hosts"
+   ],
+   [
+    "Malware:dridex botnet 7200 loader",
+    "Infrastructure:ip-dst|port [ip-defanged]|443",
+    "hosts"
+   ],
+   [
+    "Infrastructure:necurs",
+    "Threat-Actor:dridex",
+    "hosts"
+   ],
+   [
+    "Platform:talos",
+    "Malware:locky",
+    "related-to"
+   ]
+  ]
+ },
+ "2017-05": {
+  "nodes": [
+   "Indicator:115p7ummngoj1pmvkphijcrdfjnxj6lrln",
+   "Indicator:12t9ydpgwuez9nymgw519p7aa8isjr6smw",
+   "Indicator:13am4vw2dhxygxeqepohkhsquy6ngaeb94",
+   "Indicator:hxxp://graficagbin.com.br/loja/q.hta",
+   "Indicator:phishing e-mails",
+   "Malware:wannacry",
+   "Other:bitcoin addresses",
+   "Other:computers",
+   "Other:payload"
+  ],
+  "edges": [
+   [
+    "Malware:wannacry",
+    "Other:computers",
+    "targets"
+   ],
+   [
+    "Indicator:phishing e-mails",
+    "Other:computers",
+    "targets"
+   ],
+   [
+    "Indicator:hxxp://graficagbin.com.br/loja/q.hta",
+    "Other:payload",
+    "distributes"
+   ],
+   [
+    "Indicator:115p7ummngoj1pmvkphijcrdfjnxj6lrln",
+    "Other:bitcoin addresses",
+    "related-to"
+   ],
+   [
+    "Indicator:12t9ydpgwuez9nymgw519p7aa8isjr6smw",
+    "Other:bitcoin addresses",
+    "related-to"
+   ],
+   [
+    "Indicator:13am4vw2dhxygxeqepohkhsquy6ngaeb94",
+    "Other:bitcoin addresses",
+    "related-to"
+   ]
+  ]
+ },
+ "2017-07": {
+  "nodes": [
+   "Infrastructure:armor-conduite.com",
+   "Infrastructure:kgshrestha.com.np",
+   "Malware:twoface payload",
+   "Malware:twoface++ loader",
+   "Other:threat actor",
+   "Other:twoface webshell",
+   "Tool:intrudingdivisor shell",
+   "Tool:mimikatz",
+   "Tool:trick bot",
+   "Victim-Sector:lloyds bank",
+   "Victim-Sector:middle eastern organization"
+  ],
+  "edges": [
+   [
+    "Tool:trick bot",
+    "Infrastructure:armor-conduite.com",
+    "distributes"
+   ],
+   [
+    "Tool:trick bot",
+    "Infrastructure:kgshrestha.com.np",
+    "distributes"
+   ],
+   [
+    "Tool:trick bot",
+    "Victim-Sector:lloyds bank",
+    "targets"
+   ],
+   [
+    "Other:twoface webshell",
+    "Tool:mimikatz",
+    "uses"
+   ],
+   [
+    "Other:twoface webshell",
+    "Tool:intrudingdivisor shell",
+    "distributes"
+   ],
+   [
+    "Other:twoface webshell",
+    "Malware:twoface++ loader",
+    "distributes"
+   ],
+   [
+    "Other:twoface webshell",
+    "Malware:twoface payload",
+    "distributes"
+   ],
+   [
+    "Other:threat actor",
+    "Victim-Sector:middle eastern organization",
+    "targets"
+   ]
+  ]
+ },
+ "2017-08": {
+  "nodes": [
+   "Infrastructure:hxxp://www.huluwa.uk/wp-content/plugins/woocommerce/includes/class-wc-log.php",
+   "Malware:js/kopiluwak",
+   "Malware:kopiluwak javascript backdoor",
+   "Other:kopiluwak msil dropper",
+   "Threat-Actor:turla apt actor",
+   "Tool:runer.exe"
+  ],
+  "edges": [
+   [
+    "Threat-Actor:turla apt actor",
+    "Malware:kopiluwak javascript backdoor",
+    "uses"
+   ],
+   [
+    "Threat-Actor:turla apt actor",
+    "Malware:js/kopiluwak",
+    "distributes"
+   ],
+   [
+    "Malware:kopiluwak javascript backdoor",
+    "Infrastructure:hxxp://www.huluwa.uk/wp-content/plugins/woocommerce/includes/class-wc-log.php",
+    "hosts"
+   ],
+   [
+    "Other:kopiluwak msil dropper",
+    "Tool:runer.exe",
+    "distributes"
+   ]
+  ]
+ },
+ "2017-09": {
+  "nodes": [
+   "Infrastructure:c2",
+   "Infrastructure:us government site",
+   "Malware:backdoors",
+   "Malware:javascript malware",
+   "Malware:malicious documents",
+   "Malware:rtf file",
+   "Other:adobeincorp.com",
+   "Other:bmwriting.com",
+   "Other:cvvshop.lv",
+   "Other:edit-mail-yahoo.com",
+   "Other:exploit to the previously known and patched vulnerability cve-2015-1641",
+   "Other:googlegoogie.com",
+   "Other:iscellane.org",
+   "Other:mail-account-yahoo.com",
+   "Other:mailpho.com",
+   "Other:misdepatrment.com",
+   "Other:netcloselysecure.org",
+   "Other:netcorpscanprotect.com",
+   "Other:networkschecker.com",
+   "Other:networkschecker.net",
+   "Other:qov.al",
+   "Other:securelink1.org",
+   "Other:trbusinesslink.com",
+   "Other:tukangcendol-naikinbuhaji.com",
+   "Other:uniquecorpind.com",
+   "Other:us-mg6-mail-yahoo.com",
+   "Other:vvorthyhands.org",
+   "Other:zimbra-service.org",
+   "Other:zimbra-servicing.com",
+   "Other:zpfgr.com",
+   "Threat-Actor:apt28",
+   "Threat-Actor:microcin",
+   "Threat-Actor:sofacy",
+   "Tool:powershell"
+  ],
+  "edges": [
+   [
+    "Threat-Actor:apt28",
+    "Threat-Actor:sofacy",
+    "attributed-to"
+   ],
+   [
+    "Tool:powershell",
+    "Infrastructure:c2",
+    "related-to"
+   ],
+   [
+    "Malware:javascript malware",
+    "Infrastructure:us government site",
+    "hosts"
+   ],
+   [
+    "Threat-Actor:sofacy",
+    "Other:vvorthyhands.org",
+    "hosts"
+   ],
+   [
+    "Threat-Actor:sofacy",
+    "Other:adobeincorp.com",
+    "hosts"
+   ],
+   [
+    "Threat-Actor:sofacy",
+    "Other:tukangcendol-naikinbuhaji.com",
+    "hosts"
+   ],
+   [
+    "Threat-Actor:sofacy",
+    "Other:bmwriting.com",
+    "hosts"
+   ],
+   [
+    "Threat-Actor:sofacy",
+    "Other:trbusinesslink.com",
+    "hosts"
+   ],
+   [
+    "Threat-Actor:sofacy",
+    "Other:mailpho.com",
+    "hosts"
+   ],
+   [
+    "Threat-Actor:sofacy",
+    "Other:qov.al",
+    "hosts"
+   ],
+   [
+    "Threat-Actor:sofacy",
+    "Other:misdepatrment.com",
+    "hosts"
+   ],
+   [
+    "Threat-Actor:sofacy",
+    "Other:uniquecorpind.com",
+    "hosts"
+   ],
+   [
+    "Threat-Actor:sofacy",
+    "Other:securelink1.org",
+    "hosts"
+   ],
+   [
+    "Threat-Actor:sofacy",
+    "Other:cvvshop.lv",
+    "hosts"
+   ],
+   [
+    "Threat-Actor:sofacy",
+    "Other:googlegoogie.com",
+    "hosts"
+   ],
+   [
+    "Threat-Actor:sofacy",
+    "Other:zimbra-service.org",
+    "hosts"
+   ],
+   [
+    "Threat-Actor:sofacy",
+    "Other:zimbra-servicing.com",
+    "hosts"
+   ],
+   [
+    "Threat-Actor:sofacy",
+    "Other:networkschecker.com",
+    "hosts"
+   ],
+   [
+    "Threat-Actor:sofacy",
+    "Other:networkschecker.net",
+    "hosts"
+   ],
+   [
+    "Threat-Actor:sofacy",
+    "Other:netcorpscanprotect.com",
+    "hosts"
+   ],
+   [
+    "Threat-Actor:sofacy",
+    "Other:zpfgr.com",
+    "hosts"
+   ],
+   [
+    "Threat-Actor:sofacy",
+    "Other:netcloselysecure.org",
+    "hosts"
+   ],
+   [
+    "Threat-Actor:sofacy",
+    "Other:iscellane.org",
+    "hosts"
+   ],
+   [
+    "Threat-Actor:sofacy",
+    "Other:mail-account-yahoo.com",
+    "hosts"
+   ],
+   [
+    "Threat-Actor:sofacy",
+    "Other:us-mg6-mail-yahoo.com",
+    "hosts"
+   ],
+   [
+    "Threat-Actor:sofacy",
+    "Other:edit-mail-yahoo.com",
+    "hosts"
+   ],
+   [
+    "Threat-Actor:microcin",
+    "Malware:malicious documents",
+    "distributes"
+   ],
+   [
+    "Threat-Actor:microcin",
+    "Malware:backdoors",
+    "distributes"
+   ],
+   [
+    "Malware:rtf file",
+    "Other:exploit to the previously known and patched vulnerability cve-2015-1641",
+    "uses"
+   ]
+  ]
+ },
+ "2017-10": {
+  "nodes": [
+   "Infrastructure:brinematriscript.com",
+   "Infrastructure:jaimagroup.com",
+   "Infrastructure:lifekeeper.com.au",
+   "Infrastructure:maxsutton.co.uk",
+   "Infrastructure:solderie.dream3w.com",
+   "Malware:formbook",
+   "Platform:archive",
+   "Platform:doc",
+   "Platform:pdf",
+   "Platform:xls"
+  ],
+  "edges": [
+   [
+    "Malware:formbook",
+    "Platform:pdf",
+    "distributes"
+   ],
+   [
+    "Malware:formbook",
+    "Platform:doc",
+    "distributes"
+   ],
+   [
+    "Malware:formbook",
+    "Platform:xls",
+    "distributes"
+   ],
+   [
+    "Malware:formbook",
+    "Platform:archive",
+    "distributes"
+   ],
+   [
+    "Malware:formbook",
+    "Infrastructure:maxsutton.co.uk",
+    "communicates-with"
+   ],
+   [
+    "Malware:formbook",
+    "Infrastructure:solderie.dream3w.com",
+    "communicates-with"
+   ],
+   [
+    "Malware:formbook",
+    "Infrastructure:lifekeeper.com.au",
+    "communicates-with"
+   ],
+   [
+    "Malware:formbook",
+    "Infrastructure:brinematriscript.com",
+    "communicates-with"
+   ],
+   [
+    "Malware:formbook",
+    "Infrastructure:jaimagroup.com",
+    "communicates-with"
+   ]
+  ]
+ },
+ "2018-03": {
+  "nodes": [
+   "Infrastructure:[ip-defanged]",
+   "Malware:cryptomix ransomware",
+   "Malware:mole66 cryptomix ransomware variant",
+   "Malware:turla nautilus implant",
+   "Other:hxxp://www.reverse.it/sample/[hash-defanged]?environmentid=120",
+   "Other:turla"
+  ],
+  "edges": [
+   [
+    "Malware:turla nautilus implant",
+    "Other:turla",
+    "part-of"
+   ],
+   [
+    "Malware:turla nautilus implant",
+    "Other:hxxp://www.reverse.it/sample/[hash-defanged]?environmentid=120",
+    "distributes"
+   ],
+   [
+    "Malware:turla nautilus implant",
+    "Infrastructure:[ip-defanged]",
+    "communicates-with"
+   ],
+   [
+    "Malware:mole66 cryptomix ransomware variant",
+    "Malware:cryptomix ransomware",
+    "part-of"
+   ]
+  ]
+ },
+ "2018-04": {
+  "nodes": [
+   "Malware:csgo ransomware",
+   "Malware:mc ransomware",
+   "Other:counter-strike: global offensive",
+   "Other:minecraft"
+  ],
+  "edges": [
+   [
+    "Malware:mc ransomware",
+    "Other:minecraft",
+    "targets"
+   ],
+   [
+    "Malware:csgo ransomware",
+    "Other:counter-strike: global offensive",
+    "targets"
+   ]
+  ]
+ },
+ "2018-05": {
+  "nodes": [
+   "Infrastructure:[ip-defanged]",
+   "Infrastructure:ec2-35-158-168-189.eu-central-1.compute.amazonaws.com",
+   "Infrastructure:reason0monster-meadow.tk",
+   "Malware:win.dropper.icloader-6553203-0",
+   "Malware:win.dropper.snojan-6553195-0"
+  ],
+  "edges": [
+   [
+    "Malware:win.dropper.snojan-6553195-0",
+    "Infrastructure:[ip-defanged]",
+    "hosts"
+   ],
+   [
+    "Malware:win.dropper.snojan-6553195-0",
+    "Infrastructure:reason0monster-meadow.tk",
+    "hosts"
+   ],
+   [
+    "Malware:win.dropper.icloader-6553203-0",
+    "Infrastructure:ec2-35-158-168-189.eu-central-1.compute.amazonaws.com",
+    "hosts"
+   ]
+  ]
+ },
+ "2018-06": {
+  "nodes": [
+   "Malware:plead",
+   "Malware:tscookie",
+   "Other:c&c servers",
+   "Other:modules",
+   "Threat-Actor:blacktech",
+   "Tool:plead downloader"
+  ],
+  "edges": [
+   [
+    "Threat-Actor:blacktech",
+    "Malware:plead",
+    "uses"
+   ],
+   [
+    "Threat-Actor:blacktech",
+    "Malware:tscookie",
+    "uses"
+   ],
+   [
+    "Malware:plead",
+    "Other:modules",
+    "distributes"
+   ],
+   [
+    "Tool:plead downloader",
+    "Other:c&c servers",
+    "hosts"
+   ]
+  ]
+ },
+ "2018-07": {
+  "nodes": [
+   "Indicator:hxxp://bongdacongdong.vn/authorization.exe",
+   "Indicator:report-597633.pdf",
+   "Infrastructure:[ip-defanged]",
+   "Malware:nanocore",
+   "Malware:razy",
+   "Malware:remoteaccess"
+  ],
+  "edges": [
+   [
+    "Malware:nanocore",
+    "Malware:remoteaccess",
+    "distributes"
+   ],
+   [
+    "Malware:nanocore",
+    "Malware:razy",
+    "distributes"
+   ],
+   [
+    "Malware:nanocore",
+    "Infrastructure:[ip-defanged]",
+    "targets"
+   ],
+   [
+    "Malware:nanocore",
+    "Indicator:hxxp://bongdacongdong.vn/authorization.exe",
+    "hosts"
+   ],
+   [
+    "Malware:nanocore",
+    "Indicator:report-597633.pdf",
+    "distributes"
+   ]
+  ]
+ },
+ "2018-11": {
+  "nodes": [
+   "Indicator:[hash-defanged]",
+   "Malware:cozycar"
+  ],
+  "edges": [
+   [
+    "Malware:cozycar",
+    "Indicator:[hash-defanged]",
+    "distributes"
+   ]
+  ]
+ },
+ "2018-12": {
+  "nodes": [
+   "Malware:flash cve-2018-15982",
+   "Malware:shellcode"
+  ],
+  "edges": [
+   [
+    "Malware:flash cve-2018-15982",
+    "Malware:shellcode",
+    "distributes"
+   ]
+  ]
+ },
+ "2019-01": {
+  "nodes": [
+   "Infrastructure:[ip-defanged]",
+   "Malware:flawedgrace",
+   "Malware:kazuar",
+   "Malware:servhelper",
+   "Other:banks",
+   "Other:dedsolutions.bit",
+   "Other:restaurants",
+   "Other:retail businesses",
+   "Threat-Actor:ta505",
+   "Threat-Actor:turla group"
+  ],
+  "edges": [
+   [
+    "Threat-Actor:ta505",
+    "Malware:servhelper",
+    "operates"
+   ],
+   [
+    "Malware:servhelper",
+    "Malware:flawedgrace",
+    "distributes"
+   ],
+   [
+    "Malware:servhelper",
+    "Other:banks",
+    "targets"
+   ],
+   [
+    "Malware:servhelper",
+    "Other:retail businesses",
+    "targets"
+   ],
+   [
+    "Malware:servhelper",
+    "Other:restaurants",
+    "targets"
+   ],
+   [
+    "Malware:servhelper",
+    "Infrastructure:[ip-defanged]",
+    "communicates-with"
+   ],
+   [
+    "Malware:servhelper",
+    "Other:dedsolutions.bit",
+    "communicates-with"
+   ],
+   [
+    "Threat-Actor:turla group",
+    "Malware:kazuar",
+    "operates"
+   ]
+  ]
+ },
+ "2019-03": {
+  "nodes": [
+   "Campaign:operation shadowhammer",
+   "Infrastructure:asushotfix.com",
+   "Malware:liveupdate_test_ver365.zip",
+   "Other:mac addresses",
+   "Other:unknown pool of users"
+  ],
+  "edges": [
+   [
+    "Campaign:operation shadowhammer",
+    "Other:unknown pool of users",
+    "targets"
+   ],
+   [
+    "Campaign:operation shadowhammer",
+    "Malware:liveupdate_test_ver365.zip",
+    "distributes"
+   ],
+   [
+    "Campaign:operation shadowhammer",
+    "Infrastructure:asushotfix.com",
+    "hosts"
+   ],
+   [
+    "Malware:liveupdate_test_ver365.zip",
+    "Other:mac addresses",
+    "depends-on"
+   ]
+  ]
+ },
+ "2019-04": {
+  "nodes": [
+   "Indicator:011042019.xls",
+   "Infrastructure:domain aasdkkkdsa3442.icu",
+   "Infrastructure:domain joisf333.icu",
+   "Infrastructure:domain zxskjkkjsk3232.pw",
+   "Infrastructure:ip-dst [ip-defanged]",
+   "Malware:msie988.tmp",
+   "Malware:pegas.dll",
+   "Malware:servhelper",
+   "Threat-Actor:ta505",
+   "Tool:lolbins",
+   "Victim-Sector:financial enterprises"
+  ],
+  "edges": [
+   [
+    "Threat-Actor:ta505",
+    "Malware:servhelper",
+    "distributes"
+   ],
+   [
+    "Threat-Actor:ta505",
+    "Victim-Sector:financial enterprises",
+    "targets"
+   ],
+   [
+    "Threat-Actor:ta505",
+    "Tool:lolbins",
+    "uses"
+   ],
+   [
+    "Threat-Actor:ta505",
+    "Infrastructure:ip-dst [ip-defanged]",
+    "hosts"
+   ],
+   [
+    "Threat-Actor:ta505",
+    "Infrastructure:domain aasdkkkdsa3442.icu",
+    "hosts"
+   ],
+   [
+    "Threat-Actor:ta505",
+    "Infrastructure:domain joisf333.icu",
+    "hosts"
+   ],
+   [
+    "Threat-Actor:ta505",
+    "Infrastructure:domain zxskjkkjsk3232.pw",
+    "hosts"
+   ],
+   [
+    "Threat-Actor:ta505",
+    "Malware:msie988.tmp",
+    "distributes"
+   ],
+   [
+    "Threat-Actor:ta505",
+    "Indicator:011042019.xls",
+    "distributes"
+   ],
+   [
+    "Threat-Actor:ta505",
+    "Malware:pegas.dll",
+    "distributes"
+   ]
+  ]
+ },
+ "2019-05": {
+  "nodes": [
+   "Malware:pdf document",
+   "Victim-Sector:airbus.com",
+   "Victim-Sector:tenova.com"
+  ],
+  "edges": [
+   [
+    "Malware:pdf document",
+    "Victim-Sector:airbus.com",
+    "targets"
+   ],
+   [
+    "Malware:pdf document",
+    "Victim-Sector:tenova.com",
+    "targets"
+   ]
+  ]
+ },
+ "2019-06": {
+  "nodes": [
+   "Other:hide â€ ̃n seek botnet",
+   "Platform:sonatype nexus repository manager (nxrm) 3",
+   "Platform:thinkphp",
+   "Threat-Actor:mirai"
+  ],
+  "edges": [
+   [
+    "Other:hide â€ ̃n seek botnet",
+    "Platform:thinkphp",
+    "targets"
+   ],
+   [
+    "Other:hide â€ ̃n seek botnet",
+    "Platform:sonatype nexus repository manager (nxrm) 3",
+    "targets"
+   ],
+   [
+    "Threat-Actor:mirai",
+    "Platform:thinkphp",
+    "related-to"
+   ]
+  ]
+ },
+ "2019-10": {
+  "nodes": [
+   "Indicator:[hash-defanged]",
+   "Indicator:[ip-defanged]/ban/",
+   "Indicator:hxxp://drewnianazagroda.pl/c0nm/ptlooiwozs/",
+   "Indicator:hxxp://dulich.goasiatravel.com/calendar/u8hsm_46c4yi-6024747470/",
+   "Indicator:hxxp://edealsadvisor.com/wp-includes/zqlaroekk/",
+   "Indicator:hxxp://kurumsalinternetsitesi.com/wp-content/wgsckdcly/",
+   "Indicator:hxxp://latestgovernment.com/pramodchoudhary.examqualify.com/ckboihwtjs/",
+   "Malware:emotet"
+  ],
+  "edges": [
+   [
+    "Malware:emotet",
+    "Indicator:hxxp://dulich.goasiatravel.com/calendar/u8hsm_46c4yi-6024747470/",
+    "distributes"
+   ],
+   [
+    "Malware:emotet",
+    "Indicator:hxxp://drewnianazagroda.pl/c0nm/ptlooiwozs/",
+    "distributes"
+   ],
+   [
+    "Malware:emotet",
+    "Indicator:hxxp://latestgovernment.com/pramodchoudhary.examqualify.com/ckboihwtjs/",
+    "distributes"
+   ],
+   [
+    "Malware:emotet",
+    "Indicator:hxxp://kurumsalinternetsitesi.com/wp-content/wgsckdcly/",
+    "distributes"
+   ],
+   [
+    "Malware:emotet",
+    "Indicator:hxxp://edealsadvisor.com/wp-includes/zqlaroekk/",
+    "distributes"
+   ],
+   [
+    "Malware:emotet",
+    "Indicator:[ip-defanged]/ban/",
+    "distributes"
+   ],
+   [
+    "Malware:emotet",
+    "Indicator:[hash-defanged]",
+    "distributes"
+   ]
+  ]
+ },
+ "2020-02": {
+  "nodes": [
+   "Infrastructure:azershop.org",
+   "Infrastructure:bankingadvice.net",
+   "Infrastructure:cdnupdate2.ddns.net",
+   "Infrastructure:officestorage.org",
+   "Infrastructure:securityinsiderblogs.com",
+   "Infrastructure:updateinfoapps.com",
+   "Infrastructure:virtualofficeroom.com",
+   "Infrastructure:www.microsoft-lync.cf",
+   "Platform:urlscan.io",
+   "Threat-Actor:powershell empire"
+  ],
+  "edges": [
+   [
+    "Threat-Actor:powershell empire",
+    "Infrastructure:azershop.org",
+    "targets"
+   ],
+   [
+    "Threat-Actor:powershell empire",
+    "Infrastructure:virtualofficeroom.com",
+    "targets"
+   ],
+   [
+    "Threat-Actor:powershell empire",
+    "Infrastructure:officestorage.org",
+    "targets"
+   ],
+   [
+    "Threat-Actor:powershell empire",
+    "Infrastructure:updateinfoapps.com",
+    "targets"
+   ],
+   [
+    "Threat-Actor:powershell empire",
+    "Infrastructure:www.microsoft-lync.cf",
+    "targets"
+   ],
+   [
+    "Threat-Actor:powershell empire",
+    "Infrastructure:cdnupdate2.ddns.net",
+    "targets"
+   ],
+   [
+    "Threat-Actor:powershell empire",
+    "Infrastructure:securityinsiderblogs.com",
+    "targets"
+   ],
+   [
+    "Threat-Actor:powershell empire",
+    "Infrastructure:bankingadvice.net",
+    "targets"
+   ],
+   [
+    "Platform:urlscan.io",
+    "Threat-Actor:powershell empire",
+    "hosts"
+   ]
+  ]
+ },
+ "2020-03": {
+  "nodes": [
+   "Malware:jofert.exe",
+   "Malware:trickbot",
+   "Other:customscripts.us",
+   "Other:serviceuphelper.com"
+  ],
+  "edges": [
+   [
+    "Malware:trickbot",
+    "Malware:jofert.exe",
+    "distributes"
+   ],
+   [
+    "Malware:trickbot",
+    "Other:customscripts.us",
+    "targets"
+   ],
+   [
+    "Malware:trickbot",
+    "Other:serviceuphelper.com",
+    "targets"
+   ]
+  ]
+ },
+ "2020-07": {
+  "nodes": [
+   "Infrastructure:hxxp://[ip-defanged]:443",
+   "Malware:dridex",
+   "Tool:empire"
+  ],
+  "edges": [
+   [
+    "Malware:dridex",
+    "Tool:empire",
+    "uses"
+   ],
+   [
+    "Malware:dridex",
+    "Infrastructure:hxxp://[ip-defanged]:443",
+    "distributes"
+   ]
+  ]
+ },
+ "2021-01": {
+  "nodes": [
+   "Malware:jarm",
+   "Other:c2",
+   "Tool:c2-jarm",
+   "Tool:cobalt strike",
+   "Tool:deimosc2",
+   "Tool:evilginx2",
+   "Tool:macc2",
+   "Tool:macshell",
+   "Tool:macshellswift",
+   "Tool:merlin",
+   "Tool:metasploit",
+   "Tool:mythic",
+   "Tool:shad0w",
+   "Tool:sliver"
+  ],
+  "edges": [
+   [
+    "Tool:sliver",
+    "Other:c2",
+    "targets"
+   ],
+   [
+    "Tool:evilginx2",
+    "Other:c2",
+    "targets"
+   ],
+   [
+    "Tool:mythic",
+    "Other:c2",
+    "targets"
+   ],
+   [
+    "Tool:cobalt strike",
+    "Other:c2",
+    "targets"
+   ],
+   [
+    "Tool:c2-jarm",
+    "Malware:jarm",
+    "uses"
+   ],
+   [
+    "Tool:metasploit",
+    "Other:c2",
+    "targets"
+   ],
+   [
+    "Tool:merlin",
+    "Other:c2",
+    "targets"
+   ],
+   [
+    "Tool:deimosc2",
+    "Other:c2",
+    "targets"
+   ],
+   [
+    "Tool:macc2",
+    "Other:c2",
+    "targets"
+   ],
+   [
+    "Tool:macshellswift",
+    "Other:c2",
+    "targets"
+   ],
+   [
+    "Tool:macshell",
+    "Other:c2",
+    "targets"
+   ],
+   [
+    "Tool:shad0w",
+    "Other:c2",
+    "targets"
+   ]
+  ]
+ },
+ "2021-09": {
+  "nodes": [
+   "Tool:crawler architecture",
+   "Tool:machine learning-based crawler",
+   "Tool:open-source tools",
+   "Tool:state-of-the-art statistical language modelling techniques"
+  ],
+  "edges": [
+   [
+    "Tool:crawler architecture",
+    "Tool:machine learning-based crawler",
+    "uses"
+   ],
+   [
+    "Tool:crawler architecture",
+    "Tool:state-of-the-art statistical language modelling techniques",
+    "uses"
+   ],
+   [
+    "Tool:crawler architecture",
+    "Tool:open-source tools",
+    "related-to"
+   ]
+  ]
+ },
+ "2021-11": {
+  "nodes": [
+   "Indicator:microsoft exchange server validation key",
+   "Indicator:sql injection vulnerability",
+   "Infrastructure:accellion fta",
+   "Infrastructure:oracle coherence in fusion middleware",
+   "Infrastructure:oracle commerce",
+   "Infrastructure:oracle communications diameter signaling router (dsr)",
+   "Infrastructure:oracle retail assortment planning",
+   "Infrastructure:oracle utilities framework",
+   "Malware:microsoft win32k privilege escalation vulnerability",
+   "Malware:path traversal vulnerability",
+   "Malware:ransomware",
+   "Malware:remote code execution vulnerability",
+   "Other:apache shiro code execution vulnerability",
+   "Other:attacker",
+   "Other:heap-based buffer overflow vulnerability",
+   "Other:malicious image",
+   "Other:openslp service",
+   "Other:out-of-bounds write vulnerability",
+   "Other:readablestream",
+   "Other:remote code execution vulnerability",
+   "Other:salt-master process clearfuncs",
+   "Other:unspecified vulnerability",
+   "Other:use-after-free vulnerability",
+   "Platform:apache shiro",
+   "Platform:exiftool versions 7.44 and up",
+   "Platform:mail",
+   "Platform:micro focus operation bridge reporter (obr)",
+   "Platform:microsoft win32k",
+   "Platform:microsoft windows update medic service",
+   "Platform:mozilla firefox",
+   "Platform:saltstack salt",
+   "Platform:sap customer relationship management (crm)",
+   "Platform:sonicwall sonicwall email security",
+   "Platform:thunderbird",
+   "Platform:webkit",
+   "Threat-Actor:ransomware",
+   "Tool:apache struts rest plugin",
+   "Tool:openslp",
+   "Tool:xstream"
+  ],
+  "edges": [
+   [
+    "Threat-Actor:ransomware",
+    "Platform:sonicwall sonicwall email security",
+    "targets"
+   ],
+   [
+    "Malware:remote code execution vulnerability",
+    "Infrastructure:oracle coherence in fusion middleware",
+    "targets"
+   ],
+   [
+    "Malware:remote code execution vulnerability",
+    "Infrastructure:oracle utilities framework",
+    "targets"
+   ],
+   [
+    "Malware:remote code execution vulnerability",
+    "Infrastructure:oracle retail assortment planning",
+    "targets"
+   ],
+   [
+    "Malware:remote code execution vulnerability",
+    "Infrastructure:oracle commerce",
+    "targets"
+   ],
+   [
+    "Malware:remote code execution vulnerability",
+    "Infrastructure:oracle communications diameter signaling router (dsr)",
+    "targets"
+   ],
+   [
+    "Malware:ransomware",
+    "Tool:openslp",
+    "uses"
+   ],
+   [
+    "Platform:webkit",
+    "Other:use-after-free vulnerability",
+    "related-to"
+   ],
+   [
+    "Platform:apache shiro",
+    "Other:apache shiro code execution vulnerability",
+    "related-to"
+   ],
+   [
+    "Tool:apache struts rest plugin",
+    "Tool:xstream",
+    "uses"
+   ],
+   [
+    "Platform:sap customer relationship management (crm)",
+    "Malware:path traversal vulnerability",
+    "related-to"
+   ],
+   [
+    "Malware:microsoft win32k privilege escalation vulnerability",
+    "Platform:microsoft win32k",
+    "targets"
+   ],
+   [
+    "Tool:openslp",
+    "Other:heap-based buffer overflow vulnerability",
+    "related-to"
+   ],
+   [
+    "Other:attacker",
+    "Other:openslp service",
+    "targets"
+   ],
+   [
+    "Indicator:microsoft exchange server validation key",
+    "Other:remote code execution vulnerability",
+    "distributes"
+   ],
+   [
+    "Platform:saltstack salt",
+    "Other:salt-master process clearfuncs",
+    "related-to"
+   ],
+   [
+    "Platform:mozilla firefox",
+    "Other:readablestream",
+    "uses"
+   ],
+   [
+    "Platform:thunderbird",
+    "Other:readablestream",
+    "uses"
+   ],
+   [
+    "Platform:mail",
+    "Other:out-of-bounds write vulnerability",
+    "related-to"
+   ],
+   [
+    "Platform:micro focus operation bridge reporter (obr)",
+    "Other:unspecified vulnerability",
+    "related-to"
+   ],
+   [
+    "Infrastructure:accellion fta",
+    "Indicator:sql injection vulnerability",
+    "related-to"
+   ],
+   [
+    "Platform:microsoft windows update medic service",
+    "Other:unspecified vulnerability",
+    "related-to"
+   ],
+   [
+    "Platform:exiftool versions 7.44 and up",
+    "Other:malicious image",
+    "targets"
+   ]
+  ]
+ },
+ "2021-12": {
+  "nodes": [
+   "Indicator:remote code execution vulnerability",
+   "Tool:mongo-express"
+  ],
+  "edges": [
+   [
+    "Tool:mongo-express",
+    "Indicator:remote code execution vulnerability",
+    "distributes"
+   ]
+  ]
+ },
+ "2022-01": {
+  "nodes": [
+   "Malware:microsoft win32k privilege escalation vulnerability",
+   "Platform:microsoft windows win32k"
+  ],
+  "edges": [
+   [
+    "Malware:microsoft win32k privilege escalation vulnerability",
+    "Platform:microsoft windows win32k",
+    "targets"
+   ]
+  ]
+ },
+ "2022-02": {
+  "nodes": [
+   "Indicator:cross-site scripting vulnerability",
+   "Indicator:memory corruption vulnerability",
+   "Malware:synacor zimbra collaborate suite (zcs)",
+   "Threat-Actor:ransomware"
+  ],
+  "edges": [
+   [
+    "Indicator:memory corruption vulnerability",
+    "Threat-Actor:ransomware",
+    "distributes"
+   ],
+   [
+    "Malware:synacor zimbra collaborate suite (zcs)",
+    "Indicator:cross-site scripting vulnerability",
+    "related-to"
+   ]
+  ]
+ },
+ "2022-03": {
+  "nodes": [
+   "Indicator:ipv6 out-of-bounds read vulnerability",
+   "Indicator:microsoft windows kernel stack-based buffer overflow vulnerability",
+   "Malware:treck tcp/ip stack",
+   "Malware:use-after-free vulnerability",
+   "Other:concurrency component",
+   "Other:local users",
+   "Other:profinet discovery and configuration protocol (pn-dcp)",
+   "Other:ransomware",
+   "Platform:apache kylin",
+   "Platform:cisco ios software for cisco industrial ethernet switches profinet",
+   "Platform:mozilla firefox",
+   "Platform:textfield class",
+   "Threat-Actor:ransomware",
+   "Tool:acrobat",
+   "Tool:adobe flash player",
+   "Tool:adobe reader"
+  ],
+  "edges": [
+   [
+    "Malware:use-after-free vulnerability",
+    "Platform:mozilla firefox",
+    "related-to"
+   ],
+   [
+    "Other:concurrency component",
+    "Other:ransomware",
+    "distributes"
+   ],
+   [
+    "Tool:adobe reader",
+    "Malware:use-after-free vulnerability",
+    "related-to"
+   ],
+   [
+    "Tool:acrobat",
+    "Malware:use-after-free vulnerability",
+    "related-to"
+   ],
+   [
+    "Platform:cisco ios software for cisco industrial ethernet switches profinet",
+    "Other:profinet discovery and configuration protocol (pn-dcp)",
+    "uses"
+   ],
+   [
+    "Malware:treck tcp/ip stack",
+    "Indicator:ipv6 out-of-bounds read vulnerability",
+    "related-to"
+   ],
+   [
+    "Tool:adobe flash player",
+    "Platform:textfield class",
+    "related-to"
+   ],
+   [
+    "Platform:apache kylin",
+    "Threat-Actor:ransomware",
+    "distributes"
+   ],
+   [
+    "Indicator:microsoft windows kernel stack-based buffer overflow vulnerability",
+    "Other:local users",
+    "targets"
+   ]
+  ]
+ },
+ "2022-04": {
+  "nodes": [
+   "Indicator:buffer overflow vulnerability",
+   "Other:remote code execution",
+   "Other:use-after-free vulnerability",
+   "Platform:adobe flash player"
+  ],
+  "edges": [
+   [
+    "Platform:adobe flash player",
+    "Other:use-after-free vulnerability",
+    "distributes"
+   ],
+   [
+    "Indicator:buffer overflow vulnerability",
+    "Other:remote code execution",
+    "distributes"
+   ]
+  ]
+ },
+ "2022-05": {
+  "nodes": [
+   "Indicator:memory corruption vulnerability",
+   "Indicator:red hat jboss authentication bypass vulnerability",
+   "Indicator:simple network management protocol (snmp) buffer overflow vulnerability",
+   "Malware:microsoft win32k privilege escalation vulnerability",
+   "Platform:cisco adaptive security appliance (asa)",
+   "Platform:microsoft input method editor (ime) japanese",
+   "Platform:webkitgtk",
+   "Platform:windows",
+   "Threat-Actor:remote attackers",
+   "Tool:imjpdct.exe"
+  ],
+  "edges": [
+   [
+    "Malware:microsoft win32k privilege escalation vulnerability",
+    "Platform:windows",
+    "related-to"
+   ],
+   [
+    "Platform:webkitgtk",
+    "Indicator:memory corruption vulnerability",
+    "related-to"
+   ],
+   [
+    "Platform:cisco adaptive security appliance (asa)",
+    "Indicator:simple network management protocol (snmp) buffer overflow vulnerability",
+    "hosts"
+   ],
+   [
+    "Indicator:red hat jboss authentication bypass vulnerability",
+    "Threat-Actor:remote attackers",
+    "targets"
+   ],
+   [
+    "Tool:imjpdct.exe",
+    "Platform:microsoft input method editor (ime) japanese",
+    "uses"
+   ]
+  ]
+ },
+ "2022-06": {
+  "nodes": [
+   "Threat-Actor:remote attackers",
+   "Tool:adobe acrobat",
+   "Tool:flash player"
+  ],
+  "edges": [
+   [
+    "Tool:adobe acrobat",
+    "Threat-Actor:remote attackers",
+    "related-to"
+   ],
+   [
+    "Tool:flash player",
+    "Threat-Actor:remote attackers",
+    "related-to"
+   ]
+  ]
+ },
+ "2022-07": {
+  "nodes": [
+   "Criminal-LLM-Service:commission de surveillance du secteur financier (cssf)",
+   "Other:unknown persons"
+  ],
+  "edges": [
+   [
+    "Criminal-LLM-Service:commission de surveillance du secteur financier (cssf)",
+    "Other:unknown persons",
+    "related-to"
+   ]
+  ]
+ },
+ "2022-09": {
+  "nodes": [
+   "Indicator:cleartext storage of a password vulnerability",
+   "Infrastructure:d-link dir-300 router"
+  ],
+  "edges": [
+   [
+    "Infrastructure:d-link dir-300 router",
+    "Indicator:cleartext storage of a password vulnerability",
+    "hosts"
+   ]
+  ]
+ },
+ "2022-10": {
+  "nodes": [
+   "Malware:gdrv",
+   "Threat-Actor:ransomware"
+  ],
+  "edges": [
+   [
+    "Malware:gdrv",
+    "Threat-Actor:ransomware",
+    "targets"
+   ]
+  ]
+ },
+ "2022-11": {
+  "nodes": [
+   "Platform:oracle fusion middleware access manager",
+   "Threat-Actor:unauthenticated attacker"
+  ],
+  "edges": [
+   [
+    "Threat-Actor:unauthenticated attacker",
+    "Platform:oracle fusion middleware access manager",
+    "targets"
+   ]
+  ]
+ },
+ "2023-01": {
+  "nodes": [
+   "Other:insecure direct object reference vulnerability",
+   "Platform:telerik ui for asp.net ajax"
+  ],
+  "edges": [
+   [
+    "Platform:telerik ui for asp.net ajax",
+    "Other:insecure direct object reference vulnerability",
+    "related-to"
+   ]
+  ]
+ },
+ "2023-03": {
+  "nodes": [
+   "Indicator:cross-site scripting (xss) vulnerability",
+   "Indicator:memory corruption vulnerability",
+   "Indicator:remote code execution vulnerability",
+   "Indicator:use-after-free vulnerability",
+   "Infrastructure:teamserver",
+   "Malware:linux kernel linux kernel use-after-free vulnerability",
+   "Malware:out-of-bounds write vulnerability",
+   "Malware:remote code execution vulnerability",
+   "Malware:samba samba samba remote code execution vulnerability",
+   "Malware:ursnif",
+   "Malware:vidar",
+   "Other:code with kernel privileges",
+   "Other:google search ads",
+   "Other:imposter download pages",
+   "Other:ransomware",
+   "Other:remote attackers",
+   "Platform:google chromium network service",
+   "Platform:linux kernel",
+   "Platform:microsoft windows smartscreen",
+   "Platform:plex media server",
+   "Platform:samba",
+   "Platform:teclib glpi",
+   "Threat-Actor:batloader",
+   "Threat-Actor:malicious application",
+   "Tool:apple gpu drivers",
+   "Tool:cobalt strike",
+   "Tool:htmlawed",
+   "Tool:xstream"
+  ],
+  "edges": [
+   [
+    "Platform:teclib glpi",
+    "Tool:htmlawed",
+    "related-to"
+   ],
+   [
+    "Platform:plex media server",
+    "Indicator:remote code execution vulnerability",
+    "related-to"
+   ],
+   [
+    "Tool:xstream",
+    "Malware:remote code execution vulnerability",
+    "related-to"
+   ],
+   [
+    "Other:ransomware",
+    "Platform:microsoft windows smartscreen",
+    "targets"
+   ],
+   [
+    "Threat-Actor:batloader",
+    "Other:google search ads",
+    "uses"
+   ],
+   [
+    "Threat-Actor:batloader",
+    "Malware:vidar",
+    "distributes"
+   ],
+   [
+    "Threat-Actor:batloader",
+    "Malware:ursnif",
+    "distributes"
+   ],
+   [
+    "Threat-Actor:batloader",
+    "Other:imposter download pages",
+    "hosts"
+   ],
+   [
+    "Indicator:memory corruption vulnerability",
+    "Other:remote attackers",
+    "targets"
+   ],
+   [
+    "Malware:samba samba samba remote code execution vulnerability",
+    "Platform:samba",
+    "targets"
+   ],
+   [
+    "Tool:apple gpu drivers",
+    "Malware:out-of-bounds write vulnerability",
+    "related-to"
+   ],
+   [
+    "Threat-Actor:malicious application",
+    "Other:code with kernel privileges",
+    "related-to"
+   ],
+   [
+    "Platform:google chromium network service",
+    "Indicator:use-after-free vulnerability",
+    "related-to"
+   ],
+   [
+    "Tool:cobalt strike",
+    "Infrastructure:teamserver",
+    "related-to"
+   ],
+   [
+    "Indicator:cross-site scripting (xss) vulnerability",
+    "Infrastructure:teamserver",
+    "related-to"
+   ],
+   [
+    "Malware:linux kernel linux kernel use-after-free vulnerability",
+    "Platform:linux kernel",
+    "targets"
+   ]
+  ]
+ },
+ "2023-04": {
+  "nodes": [
+   "Account:[email-defanged]",
+   "Account:okkz",
+   "Campaign:3cx software supply chain compromise",
+   "Indicator:improper authentication vulnerability",
+   "Infrastructure:communitypowersports.com",
+   "Infrastructure:envyscout",
+   "Infrastructure:gatewan.com",
+   "Infrastructure:pateke.com",
+   "Infrastructure:sanjosemotosport.com",
+   "Infrastructure:sawabfoundation.net",
+   "Infrastructure:sharpledge.com",
+   "Infrastructure:sylvio.com.br",
+   "Malware:envyscout",
+   "Malware:halfrig",
+   "Malware:iconicstealer",
+   "Malware:insecure deserialization vulnerability",
+   "Malware:poolrat",
+   "Malware:quarterrig",
+   "Malware:ransomware",
+   "Malware:snowyamber",
+   "Malware:sordeal-stealer",
+   "Other:3cxdesktopapp",
+   "Other:apple ios, ipados, and macos",
+   "Other:cobaltstrike beacon",
+   "Other:espionage campaign",
+   "Other:file access vulnerability",
+   "Other:out-of-bounds write vulnerability",
+   "Other:pateke.com/auth/login.php",
+   "Other:pateke.com/index.php",
+   "Other:simple network management protocol (snmp) subsystem",
+   "Other:snowyamber iso",
+   "Other:snowyamber zip",
+   "Other:sylvio.com.br",
+   "Other:sylvio.com.br/form.php",
+   "Other:unspecified vulnerability",
+   "Other:veiledsignal",
+   "Platform:android framework",
+   "Platform:cisco ios and ios xe software",
+   "Platform:discord-token-checker",
+   "Platform:microsoft windows certificate dialog",
+   "Platform:microsoft windows common log file system (clfs) driver",
+   "Platform:novi survey",
+   "Platform:papercut mf/ng",
+   "Platform:steam-id-checker",
+   "Platform:tiktok-username-checker",
+   "Platform:veritas backup exec agent",
+   "Threat-Actor:apt29",
+   "Threat-Actor:nobelium",
+   "Threat-Actor:north korean actor",
+   "Threat-Actor:ransomware",
+   "Tool:cobaltstrike",
+   "Tool:coldcat",
+   "Tool:daveshell",
+   "Tool:halfrig",
+   "Tool:iosurfaceaccelerator",
+   "Tool:powershell",
+   "Tool:quarterrig",
+   "Tool:sigflip",
+   "Tool:snowyamber",
+   "Tool:taxhaul",
+   "Tool:veritas backup exec (be) agent",
+   "Tool:veritas backup exec agent"
+  ],
+  "edges": [
+   [
+    "Threat-Actor:apt29",
+    "Threat-Actor:nobelium",
+    "related-to"
+   ],
+   [
+    "Platform:microsoft windows certificate dialog",
+    "Threat-Actor:ransomware",
+    "targets"
+   ],
+   [
+    "Tool:veritas backup exec agent",
+    "Other:file access vulnerability",
+    "related-to"
+   ],
+   [
+    "Tool:veritas backup exec agent",
+    "Tool:veritas backup exec (be) agent",
+    "related-to"
+   ],
+   [
+    "Malware:ransomware",
+    "Tool:veritas backup exec agent",
+    "targets"
+   ],
+   [
+    "Malware:ransomware",
+    "Other:apple ios, ipados, and macos",
+    "targets"
+   ],
+   [
+    "Platform:veritas backup exec agent",
+    "Indicator:improper authentication vulnerability",
+    "related-to"
+   ],
+   [
+    "Tool:iosurfaceaccelerator",
+    "Other:out-of-bounds write vulnerability",
+    "related-to"
+   ],
+   [
+    "Platform:microsoft windows common log file system (clfs) driver",
+    "Threat-Actor:ransomware",
+    "targets"
+   ],
+   [
+    "Account:okkz",
+    "Malware:sordeal-stealer",
+    "distributes"
+   ],
+   [
+    "Account:okkz",
+    "Platform:tiktok-username-checker",
+    "hosts"
+   ],
+   [
+    "Account:okkz",
+    "Platform:steam-id-checker",
+    "hosts"
+   ],
+   [
+    "Account:okkz",
+    "Platform:discord-token-checker",
+    "hosts"
+   ],
+   [
+    "Account:okkz",
+    "Tool:powershell",
+    "uses"
+   ],
+   [
+    "Platform:android framework",
+    "Other:unspecified vulnerability",
+    "related-to"
+   ],
+   [
+    "Platform:novi survey",
+    "Malware:insecure deserialization vulnerability",
+    "related-to"
+   ],
+   [
+    "Malware:quarterrig",
+    "Malware:envyscout",
+    "distributes"
+   ],
+   [
+    "Malware:quarterrig",
+    "Threat-Actor:apt29",
+    "targets"
+   ],
+   [
+    "Malware:quarterrig",
+    "Threat-Actor:nobelium",
+    "targets"
+   ],
+   [
+    "Malware:quarterrig",
+    "Other:pateke.com/auth/login.php",
+    "hosts"
+   ],
+   [
+    "Malware:quarterrig",
+    "Other:pateke.com/index.php",
+    "hosts"
+   ],
+   [
+    "Malware:quarterrig",
+    "Other:sylvio.com.br/form.php",
+    "hosts"
+   ],
+   [
+    "Malware:quarterrig",
+    "Infrastructure:sylvio.com.br",
+    "hosts"
+   ],
+   [
+    "Malware:halfrig",
+    "Other:cobaltstrike beacon",
+    "related-to"
+   ],
+   [
+    "Malware:halfrig",
+    "Other:espionage campaign",
+    "related-to"
+   ],
+   [
+    "Malware:snowyamber",
+    "Threat-Actor:apt29",
+    "targets"
+   ],
+   [
+    "Malware:snowyamber",
+    "Threat-Actor:nobelium",
+    "targets"
+   ],
+   [
+    "Malware:snowyamber",
+    "Infrastructure:envyscout",
+    "hosts"
+   ],
+   [
+    "Tool:cobaltstrike",
+    "Infrastructure:communitypowersports.com",
+    "related-to"
+   ],
+   [
+    "Tool:cobaltstrike",
+    "Infrastructure:sanjosemotosport.com",
+    "related-to"
+   ],
+   [
+    "Account:[email-defanged]",
+    "Malware:snowyamber",
+    "distributes"
+   ],
+   [
+    "Tool:snowyamber",
+    "Other:snowyamber zip",
+    "related-to"
+   ],
+   [
+    "Tool:snowyamber",
+    "Other:snowyamber iso",
+    "related-to"
+   ],
+   [
+    "Tool:halfrig",
+    "Infrastructure:sawabfoundation.net",
+    "hosts"
+   ],
+   [
+    "Tool:halfrig",
+    "Infrastructure:communitypowersports.com",
+    "hosts"
+   ],
+   [
+    "Tool:quarterrig",
+    "Infrastructure:pateke.com",
+    "hosts"
+   ],
+   [
+    "Tool:quarterrig",
+    "Infrastructure:gatewan.com",
+    "hosts"
+   ],
+   [
+    "Tool:quarterrig",
+    "Infrastructure:sharpledge.com",
+    "hosts"
+   ],
+   [
+    "Tool:quarterrig",
+    "Other:sylvio.com.br",
+    "hosts"
+   ],
+   [
+    "Platform:cisco ios and ios xe software",
+    "Other:simple network management protocol (snmp) subsystem",
+    "related-to"
+   ],
+   [
+    "Campaign:3cx software supply chain compromise",
+    "Other:3cxdesktopapp",
+    "targets"
+   ],
+   [
+    "Campaign:3cx software supply chain compromise",
+    "Malware:poolrat",
+    "uses"
+   ],
+   [
+    "Campaign:3cx software supply chain compromise",
+    "Malware:iconicstealer",
+    "uses"
+   ],
+   [
+    "Campaign:3cx software supply chain compromise",
+    "Tool:daveshell",
+    "uses"
+   ],
+   [
+    "Campaign:3cx software supply chain compromise",
+    "Tool:sigflip",
+    "uses"
+   ],
+   [
+    "Campaign:3cx software supply chain compromise",
+    "Other:veiledsignal",
+    "uses"
+   ],
+   [
+    "Campaign:3cx software supply chain compromise",
+    "Tool:coldcat",
+    "uses"
+   ],
+   [
+    "Campaign:3cx software supply chain compromise",
+    "Tool:taxhaul",
+    "uses"
+   ],
+   [
+    "Threat-Actor:north korean actor",
+    "Campaign:3cx software supply chain compromise",
+    "operates"
+   ],
+   [
+    "Platform:papercut mf/ng",
+    "Threat-Actor:ransomware",
+    "distributes"
+   ]
+  ]
+ },
+ "2023-05": {
+  "nodes": [
+   "Criminal-LLM-Service:chatgpt",
+   "Criminal-LLM-Service:darkbert",
+   "Criminal-LLM-Service:openai's gpt-3.5",
+   "Criminal-LLM-Service:openai's gpt-4",
+   "Indicator:cve-2021-44228",
+   "Indicator:improper input validation vulnerability",
+   "Indicator:sensitive information into log file vulnerability",
+   "Infrastructure:barracuda networks email security gateway (esg) appliance",
+   "Infrastructure:dark web",
+   "Infrastructure:us critical infrastructure",
+   "Malware:custom frp executable",
+   "Malware:ikev1 information disclosure vulnerability",
+   "Malware:ransomware",
+   "Malware:webkit sandbox escape vulnerability",
+   "Malware:wiper and ransomware attacks",
+   "Other:amateur attackers",
+   "Other:living-off-the-land techniques",
+   "Other:spear phishing",
+   "Other:unspecified vulnerability",
+   "Other:use-after-free vulnerability",
+   "Platform:apache tomcat",
+   "Platform:cisco ios",
+   "Platform:linux kernel",
+   "Platform:microsoft",
+   "Platform:microsoft win32k",
+   "Platform:oracle java se",
+   "Platform:samsung mobile devices",
+   "Platform:webkit",
+   "Threat-Actor:ransomware",
+   "Threat-Actor:ransomware gangs",
+   "Threat-Actor:volt typhoon",
+   "Tool:apache log4j2",
+   "Tool:jmxremotelifecyclelistener",
+   "Tool:n_tty_write",
+   "Victim-Sector:telecoms"
+  ],
+  "edges": [
+   [
+    "Threat-Actor:volt typhoon",
+    "Infrastructure:us critical infrastructure",
+    "targets"
+   ],
+   [
+    "Threat-Actor:volt typhoon",
+    "Other:living-off-the-land techniques",
+    "uses"
+   ],
+   [
+    "Threat-Actor:volt typhoon",
+    "Malware:custom frp executable",
+    "distributes"
+   ],
+   [
+    "Threat-Actor:volt typhoon",
+    "Victim-Sector:telecoms",
+    "operates"
+   ],
+   [
+    "Threat-Actor:ransomware",
+    "Tool:apache log4j2",
+    "targets"
+   ],
+   [
+    "Threat-Actor:ransomware",
+    "Platform:microsoft win32k",
+    "targets"
+   ],
+   [
+    "Platform:linux kernel",
+    "Tool:n_tty_write",
+    "related-to"
+   ],
+   [
+    "Tool:apache log4j2",
+    "Indicator:cve-2021-44228",
+    "related-to"
+   ],
+   [
+    "Criminal-LLM-Service:openai's gpt-3.5",
+    "Other:spear phishing",
+    "uses"
+   ],
+   [
+    "Criminal-LLM-Service:openai's gpt-4",
+    "Other:spear phishing",
+    "uses"
+   ],
+   [
+    "Platform:oracle java se",
+    "Other:unspecified vulnerability",
+    "related-to"
+   ],
+   [
+    "Platform:apache tomcat",
+    "Tool:jmxremotelifecyclelistener",
+    "related-to"
+   ],
+   [
+    "Criminal-LLM-Service:darkbert",
+    "Infrastructure:dark web",
+    "related-to"
+   ],
+   [
+    "Platform:cisco ios",
+    "Malware:ransomware",
+    "targets"
+   ],
+   [
+    "Platform:cisco ios",
+    "Malware:ikev1 information disclosure vulnerability",
+    "related-to"
+   ],
+   [
+    "Platform:samsung mobile devices",
+    "Indicator:sensitive information into log file vulnerability",
+    "related-to"
+   ],
+   [
+    "Platform:webkit",
+    "Other:use-after-free vulnerability",
+    "related-to"
+   ],
+   [
+    "Malware:webkit sandbox escape vulnerability",
+    "Malware:ransomware",
+    "targets"
+   ],
+   [
+    "Criminal-LLM-Service:chatgpt",
+    "Other:amateur attackers",
+    "provides"
+   ],
+   [
+    "Threat-Actor:ransomware gangs",
+    "Malware:wiper and ransomware attacks",
+    "uses"
+   ],
+   [
+    "Platform:microsoft",
+    "Malware:custom frp executable",
+    "related-to"
+   ],
+   [
+    "Infrastructure:barracuda networks email security gateway (esg) appliance",
+    "Indicator:improper input validation vulnerability",
+    "related-to"
+   ]
+  ]
+ },
+ "2023-06": {
+  "nodes": [
+   "Indicator:integer overflow vulnerability",
+   "Indicator:sql injection vulnerability",
+   "Infrastructure:moveit transfer",
+   "Malware:ransomware",
+   "Other:database engine being used"
+  ],
+  "edges": [
+   [
+    "Indicator:sql injection vulnerability",
+    "Infrastructure:moveit transfer",
+    "targets"
+   ],
+   [
+    "Indicator:sql injection vulnerability",
+    "Other:database engine being used",
+    "depends-on"
+   ],
+   [
+    "Indicator:integer overflow vulnerability",
+    "Malware:ransomware",
+    "targets"
+   ]
+  ]
+ },
+ "2023-08": {
+  "nodes": [
+   "Malware:whirlpool",
+   "Other:attacker to bypass authentication controls",
+   "Other:authentication bypass vulnerability",
+   "Other:c2",
+   "Other:other_components",
+   "Platform:ivanti sentry",
+   "Threat-Actor:cisa"
+  ],
+  "edges": [
+   [
+    "Malware:whirlpool",
+    "Other:c2",
+    "communicates-with"
+   ],
+   [
+    "Malware:whirlpool",
+    "Other:other_components",
+    "related-to"
+   ],
+   [
+    "Threat-Actor:cisa",
+    "Malware:whirlpool",
+    "operates"
+   ],
+   [
+    "Platform:ivanti sentry",
+    "Other:authentication bypass vulnerability",
+    "related-to"
+   ],
+   [
+    "Other:authentication bypass vulnerability",
+    "Other:attacker to bypass authentication controls",
+    "related-to"
+   ]
+  ]
+ },
+ "2023-09": {
+  "nodes": [
+   "Indicator:out-of-bounds write vulnerability",
+   "Indicator:remote code execution vulnerability",
+   "Indicator:unauthorized access vulnerability",
+   "Indicator:wallet code execution vulnerability",
+   "Indicator:webkit code execution vulnerability",
+   "Infrastructure:miniigd soap service",
+   "Infrastructure:zyxel emg2926 routers",
+   "Malware:evil telegram",
+   "Malware:ransomware",
+   "Malware:use-after-free vulnerability",
+   "Other:code execution",
+   "Other:google play",
+   "Other:malicious commands",
+   "Other:malicious user",
+   "Other:signature validation",
+   "Other:unauthenticated, remote attacker",
+   "Other:unauthorized user",
+   "Platform:apache rocketmq",
+   "Platform:apple ios",
+   "Platform:cisco adaptive security appliance",
+   "Platform:google chromium webp",
+   "Platform:ipados",
+   "Platform:macos",
+   "Platform:microsoft streaming service proxy",
+   "Platform:realtek sdk",
+   "Platform:samsung mobile devices",
+   "Platform:trend micro apex one",
+   "Threat-Actor:malicious app",
+   "Threat-Actor:ransomware",
+   "Tool:adobe acrobat",
+   "Tool:update configuration function",
+   "Victim-Sector:chinese users"
+  ],
+  "edges": [
+   [
+    "Platform:apple ios",
+    "Indicator:wallet code execution vulnerability",
+    "related-to"
+   ],
+   [
+    "Malware:ransomware",
+    "Indicator:unauthorized access vulnerability",
+    "related-to"
+   ],
+   [
+    "Platform:samsung mobile devices",
+    "Malware:use-after-free vulnerability",
+    "related-to"
+   ],
+   [
+    "Platform:apache rocketmq",
+    "Tool:update configuration function",
+    "uses"
+   ],
+   [
+    "Malware:evil telegram",
+    "Other:google play",
+    "distributes"
+   ],
+   [
+    "Malware:evil telegram",
+    "Victim-Sector:chinese users",
+    "targets"
+   ],
+   [
+    "Platform:microsoft streaming service proxy",
+    "Threat-Actor:ransomware",
+    "targets"
+   ],
+   [
+    "Platform:cisco adaptive security appliance",
+    "Indicator:unauthorized access vulnerability",
+    "related-to"
+   ],
+   [
+    "Indicator:unauthorized access vulnerability",
+    "Other:unauthenticated, remote attacker",
+    "related-to"
+   ],
+   [
+    "Indicator:unauthorized access vulnerability",
+    "Other:unauthorized user",
+    "related-to"
+   ],
+   [
+    "Platform:google chromium webp",
+    "Malware:ransomware",
+    "targets"
+   ],
+   [
+    "Tool:adobe acrobat",
+    "Indicator:out-of-bounds write vulnerability",
+    "related-to"
+   ],
+   [
+    "Indicator:out-of-bounds write vulnerability",
+    "Other:code execution",
+    "related-to"
+   ],
+   [
+    "Platform:realtek sdk",
+    "Infrastructure:miniigd soap service",
+    "related-to"
+   ],
+   [
+    "Other:malicious user",
+    "Infrastructure:zyxel emg2926 routers",
+    "related-to"
+   ],
+   [
+    "Other:malicious user",
+    "Other:malicious commands",
+    "related-to"
+   ],
+   [
+    "Platform:trend micro apex one",
+    "Indicator:remote code execution vulnerability",
+    "related-to"
+   ],
+   [
+    "Threat-Actor:malicious app",
+    "Other:signature validation",
+    "related-to"
+   ],
+   [
+    "Indicator:webkit code execution vulnerability",
+    "Platform:apple ios",
+    "targets"
+   ],
+   [
+    "Indicator:webkit code execution vulnerability",
+    "Platform:ipados",
+    "targets"
+   ],
+   [
+    "Indicator:webkit code execution vulnerability",
+    "Platform:macos",
+    "targets"
+   ],
+   [
+    "Indicator:webkit code execution vulnerability",
+    "Malware:ransomware",
+    "related-to"
+   ]
+  ]
+ },
+ "2023-10": {
+  "nodes": [
+   "Indicator:broken access control vulnerability",
+   "Indicator:cve-2022-42475",
+   "Indicator:cve-2022-47966",
+   "Indicator:cve-2023-46748",
+   "Indicator:privilege escalation vulnerability",
+   "Indicator:sql injection vulnerability",
+   "Indicator:use-after-free vulnerability",
+   "Infrastructure:atlassian confluence data center and server",
+   "Malware:cisco ios xe web ui command injection vulnerability",
+   "Malware:privilege escalation vulnerability",
+   "Malware:ransomware",
+   "Malware:use-after-free vulnerability",
+   "Malware:vp8 encoding",
+   "Other:implant",
+   "Platform:adobe acrobat and reader",
+   "Platform:arm mali gpu kernel driver",
+   "Platform:cisco ios xe web ui",
+   "Platform:f5 big-ip configuration utility",
+   "Platform:google chromium libvpx",
+   "Platform:jetbrains teamcity",
+   "Platform:microsoft skype for business",
+   "Platform:microsoft windows cng key isolation service",
+   "Platform:progress ws_ftp server",
+   "Threat-Actor:nation-state threat actors",
+   "Threat-Actor:ransomware"
+  ],
+  "edges": [
+   [
+    "Threat-Actor:ransomware",
+    "Platform:microsoft windows cng key isolation service",
+    "targets"
+   ],
+   [
+    "Threat-Actor:ransomware",
+    "Platform:jetbrains teamcity",
+    "targets"
+   ],
+   [
+    "Threat-Actor:ransomware",
+    "Platform:microsoft skype for business",
+    "targets"
+   ],
+   [
+    "Platform:arm mali gpu kernel driver",
+    "Malware:use-after-free vulnerability",
+    "related-to"
+   ],
+   [
+    "Platform:google chromium libvpx",
+    "Malware:vp8 encoding",
+    "related-to"
+   ],
+   [
+    "Platform:microsoft windows cng key isolation service",
+    "Indicator:privilege escalation vulnerability",
+    "related-to"
+   ],
+   [
+    "Infrastructure:atlassian confluence data center and server",
+    "Indicator:broken access control vulnerability",
+    "related-to"
+   ],
+   [
+    "Platform:progress ws_ftp server",
+    "Malware:ransomware",
+    "distributes"
+   ],
+   [
+    "Platform:adobe acrobat and reader",
+    "Indicator:use-after-free vulnerability",
+    "related-to"
+   ],
+   [
+    "Threat-Actor:nation-state threat actors",
+    "Indicator:cve-2022-47966",
+    "related-to"
+   ],
+   [
+    "Threat-Actor:nation-state threat actors",
+    "Indicator:cve-2022-42475",
+    "related-to"
+   ],
+   [
+    "Platform:cisco ios xe web ui",
+    "Malware:privilege escalation vulnerability",
+    "related-to"
+   ],
+   [
+    "Malware:cisco ios xe web ui command injection vulnerability",
+    "Other:implant",
+    "distributes"
+   ],
+   [
+    "Platform:f5 big-ip configuration utility",
+    "Indicator:cve-2023-46748",
+    "uses"
+   ],
+   [
+    "Platform:f5 big-ip configuration utility",
+    "Indicator:sql injection vulnerability",
+    "related-to"
+   ]
+  ]
+ },
+ "2023-11": {
+  "nodes": [
+   "Indicator:denial-of-service (dos) vulnerability",
+   "Indicator:improper authorization vulnerability",
+   "Indicator:information disclosure vulnerability",
+   "Indicator:malicious file",
+   "Indicator:path traversal vulnerability",
+   "Indicator:webauth_operation.php",
+   "Infrastructure:[ip-defanged]",
+   "Malware:bibi-linux",
+   "Malware:command injection vulnerability",
+   "Malware:deserialization of untrusted data vulnerability",
+   "Malware:h2miner",
+   "Malware:php external variable modification vulnerability",
+   "Malware:privilege escalation vulnerability",
+   "Other:local attacker",
+   "Other:mark of the web (motw)",
+   "Other:missing authentication for critical function vulnerability",
+   "Other:ransomware",
+   "Platform:apache activemq",
+   "Platform:atlassian confluence data center and server",
+   "Platform:gnu c library",
+   "Platform:google chromium skia",
+   "Platform:juniper junos os",
+   "Platform:juniper junos os srx series",
+   "Platform:microsoft windows",
+   "Platform:microsoft windows cloud files mini filter driver",
+   "Platform:microsoft windows smartscreen",
+   "Platform:owncloud graphapi",
+   "Platform:service location protocol (slp)",
+   "Platform:sophos web appliance",
+   "Platform:sysaid server",
+   "Platform:weblogic server",
+   "Threat-Actor:kinsing",
+   "Threat-Actor:pro-hamas hacktivist group",
+   "Threat-Actor:ransomware",
+   "Threat-Actor:remote attacker",
+   "Threat-Actor:unauthenticated attacker with network access via iiop",
+   "Threat-Actor:unauthenticated, network-based attacker",
+   "Tool:ld.so"
+  ],
+  "edges": [
+   [
+    "Threat-Actor:ransomware",
+    "Platform:microsoft windows",
+    "targets"
+   ],
+   [
+    "Other:mark of the web (motw)",
+    "Platform:microsoft windows",
+    "related-to"
+   ],
+   [
+    "Other:ransomware",
+    "Platform:microsoft windows smartscreen",
+    "related-to"
+   ],
+   [
+    "Platform:apache activemq",
+    "Malware:deserialization of untrusted data vulnerability",
+    "related-to"
+   ],
+   [
+    "Platform:apache activemq",
+    "Infrastructure:[ip-defanged]",
+    "hosts"
+   ],
+   [
+    "Platform:atlassian confluence data center and server",
+    "Indicator:improper authorization vulnerability",
+    "related-to"
+   ],
+   [
+    "Indicator:improper authorization vulnerability",
+    "Other:ransomware",
+    "distributes"
+   ],
+   [
+    "Platform:service location protocol (slp)",
+    "Indicator:denial-of-service (dos) vulnerability",
+    "related-to"
+   ],
+   [
+    "Platform:juniper junos os",
+    "Malware:php external variable modification vulnerability",
+    "related-to"
+   ],
+   [
+    "Threat-Actor:unauthenticated, network-based attacker",
+    "Malware:php external variable modification vulnerability",
+    "related-to"
+   ],
+   [
+    "Platform:juniper junos os srx series",
+    "Other:missing authentication for critical function vulnerability",
+    "related-to"
+   ],
+   [
+    "Platform:juniper junos os srx series",
+    "Indicator:webauth_operation.php",
+    "related-to"
+   ],
+   [
+    "Platform:sysaid server",
+    "Indicator:path traversal vulnerability",
+    "related-to"
+   ],
+   [
+    "Platform:microsoft windows cloud files mini filter driver",
+    "Malware:privilege escalation vulnerability",
+    "related-to"
+   ],
+   [
+    "Threat-Actor:unauthenticated attacker with network access via iiop",
+    "Platform:weblogic server",
+    "targets"
+   ],
+   [
+    "Platform:sophos web appliance",
+    "Malware:command injection vulnerability",
+    "related-to"
+   ],
+   [
+    "Platform:gnu c library",
+    "Tool:ld.so",
+    "related-to"
+   ],
+   [
+    "Other:local attacker",
+    "Platform:gnu c library",
+    "targets"
+   ],
+   [
+    "Threat-Actor:pro-hamas hacktivist group",
+    "Malware:bibi-linux",
+    "related-to"
+   ],
+   [
+    "Threat-Actor:kinsing",
+    "Malware:h2miner",
+    "distributes"
+   ],
+   [
+    "Threat-Actor:kinsing",
+    "Platform:apache activemq",
+    "targets"
+   ],
+   [
+    "Platform:owncloud graphapi",
+    "Indicator:information disclosure vulnerability",
+    "related-to"
+   ],
+   [
+    "Threat-Actor:remote attacker",
+    "Platform:google chromium skia",
+    "targets"
+   ],
+   [
+    "Threat-Actor:remote attacker",
+    "Indicator:malicious file",
+    "uses"
+   ]
+  ]
+ },
+ "2023-12": {
+  "nodes": [
+   "Infrastructure:aws",
+   "Other:ccss-public.com",
+   "Other:ccss-sante-lu.com",
+   "Other:cns-lu.com",
+   "Other:luxtrust-cancel.com",
+   "Other:luxtrust-unlock.com",
+   "Other:luxtrust.help",
+   "Other:luxtrust.support",
+   "Other:public-ccss.com",
+   "Other:www-cns-lu.com",
+   "Other:www-cns.com",
+   "Victim-Sector:luxembourg services"
+  ],
+  "edges": [
+   [
+    "Victim-Sector:luxembourg services",
+    "Infrastructure:aws",
+    "targets"
+   ],
+   [
+    "Victim-Sector:luxembourg services",
+    "Other:ccss-public.com",
+    "targets"
+   ],
+   [
+    "Victim-Sector:luxembourg services",
+    "Other:cns-lu.com",
+    "targets"
+   ],
+   [
+    "Victim-Sector:luxembourg services",
+    "Other:luxtrust.support",
+    "targets"
+   ],
+   [
+    "Victim-Sector:luxembourg services",
+    "Other:luxtrust.help",
+    "targets"
+   ],
+   [
+    "Victim-Sector:luxembourg services",
+    "Other:www-cns-lu.com",
+    "targets"
+   ],
+   [
+    "Victim-Sector:luxembourg services",
+    "Other:www-cns.com",
+    "targets"
+   ],
+   [
+    "Victim-Sector:luxembourg services",
+    "Other:luxtrust-cancel.com",
+    "targets"
+   ],
+   [
+    "Victim-Sector:luxembourg services",
+    "Other:luxtrust-unlock.com",
+    "targets"
+   ],
+   [
+    "Victim-Sector:luxembourg services",
+    "Other:ccss-sante-lu.com",
+    "targets"
+   ],
+   [
+    "Victim-Sector:luxembourg services",
+    "Other:public-ccss.com",
+    "targets"
+   ]
+  ]
+ },
+ "2024-01": {
+  "nodes": [
+   "Criminal-LLM-Service:malla",
+   "Indicator:authentication bypass vulnerability",
+   "Indicator:remote code execution vulnerability",
+   "Other:unauthorized users to access restricted functionality or resources of the application",
+   "Platform:ivanti endpoint manager mobile (epmm)",
+   "Platform:public llm apis",
+   "Tool:jailbreak prompts",
+   "Tool:spreadsheet::parseexcel"
+  ],
+  "edges": [
+   [
+    "Criminal-LLM-Service:malla",
+    "Tool:jailbreak prompts",
+    "uses"
+   ],
+   [
+    "Criminal-LLM-Service:malla",
+    "Platform:public llm apis",
+    "targets"
+   ],
+   [
+    "Tool:spreadsheet::parseexcel",
+    "Indicator:remote code execution vulnerability",
+    "related-to"
+   ],
+   [
+    "Platform:ivanti endpoint manager mobile (epmm)",
+    "Indicator:authentication bypass vulnerability",
+    "related-to"
+   ],
+   [
+    "Indicator:authentication bypass vulnerability",
+    "Other:unauthorized users to access restricted functionality or resources of the application",
+    "related-to"
+   ]
+  ]
+ },
+ "2024-02": {
+  "nodes": [
+   "Criminal-LLM-Service:fine-tuning based jailbreak attack",
+   "Indicator:untrusted pointer dereference vulnerability",
+   "Platform:language-model-as-a-service",
+   "Platform:microsoft streaming service",
+   "Tool:backdoor enhanced safety alignment"
+  ],
+  "edges": [
+   [
+    "Platform:language-model-as-a-service",
+    "Criminal-LLM-Service:fine-tuning based jailbreak attack",
+    "hosts"
+   ],
+   [
+    "Tool:backdoor enhanced safety alignment",
+    "Platform:language-model-as-a-service",
+    "part-of"
+   ],
+   [
+    "Tool:backdoor enhanced safety alignment",
+    "Criminal-LLM-Service:fine-tuning based jailbreak attack",
+    "targets"
+   ],
+   [
+    "Platform:microsoft streaming service",
+    "Indicator:untrusted pointer dereference vulnerability",
+    "related-to"
+   ]
+  ]
+ },
+ "2024-03": {
+  "nodes": [
+   "Criminal-LLM-Service:jailbreak prompts",
+   "Infrastructure:online forums",
+   "Platform:large language models (llms)"
+  ],
+  "edges": [
+   [
+    "Criminal-LLM-Service:jailbreak prompts",
+    "Platform:large language models (llms)",
+    "targets"
+   ],
+   [
+    "Criminal-LLM-Service:jailbreak prompts",
+    "Infrastructure:online forums",
+    "communicates-with"
+   ]
+  ]
+ },
+ "2024-04": {
+  "nodes": [
+   "Criminal-LLM-Service:jailbreaking prompt attack",
+   "Infrastructure:nhdata.s3-us-west-2.amazonaws.com",
+   "Malware:uta0218",
+   "Other:benign queries",
+   "Other:ferdinand jarisch's tools",
+   "Other:gost",
+   "Other:harmful queries",
+   "Other:image safety checker",
+   "Other:linguistic discrimination",
+   "Other:text embedding space",
+   "Other:text safety checker",
+   "Tool:chatgpt",
+   "Tool:ldfighter",
+   "Tool:yara rule apt_malware_py_upstyle",
+   "Tool:yara rule susp_any_gost_arguments",
+   "Tool:yara rule susp_any_jarischf_user_path"
+  ],
+  "edges": [
+   [
+    "Criminal-LLM-Service:jailbreaking prompt attack",
+    "Tool:chatgpt",
+    "uses"
+   ],
+   [
+    "Criminal-LLM-Service:jailbreaking prompt attack",
+    "Other:text embedding space",
+    "targets"
+   ],
+   [
+    "Criminal-LLM-Service:jailbreaking prompt attack",
+    "Other:text safety checker",
+    "related-to"
+   ],
+   [
+    "Criminal-LLM-Service:jailbreaking prompt attack",
+    "Other:image safety checker",
+    "related-to"
+   ],
+   [
+    "Tool:ldfighter",
+    "Other:linguistic discrimination",
+    "related-to"
+   ],
+   [
+    "Tool:ldfighter",
+    "Other:benign queries",
+    "related-to"
+   ],
+   [
+    "Tool:ldfighter",
+    "Other:harmful queries",
+    "related-to"
+   ],
+   [
+    "Malware:uta0218",
+    "Infrastructure:nhdata.s3-us-west-2.amazonaws.com",
+    "hosts"
+   ],
+   [
+    "Tool:yara rule apt_malware_py_upstyle",
+    "Malware:uta0218",
+    "related-to"
+   ],
+   [
+    "Tool:yara rule susp_any_gost_arguments",
+    "Other:gost",
+    "related-to"
+   ],
+   [
+    "Tool:yara rule susp_any_jarischf_user_path",
+    "Other:ferdinand jarisch's tools",
+    "related-to"
+   ]
+  ]
+ },
+ "2024-05": {
+  "nodes": [
+   "Indicator:information disclosure vulnerability",
+   "Infrastructure:d-link dir-605 router"
+  ],
+  "edges": [
+   [
+    "Infrastructure:d-link dir-605 router",
+    "Indicator:information disclosure vulnerability",
+    "related-to"
+   ]
+  ]
+ },
+ "2024-07": {
+  "nodes": [
+   "Malware:information disclosure vulnerability",
+   "Platform:twilio authy"
+  ],
+  "edges": [
+   [
+    "Platform:twilio authy",
+    "Malware:information disclosure vulnerability",
+    "related-to"
+   ]
+  ]
+ },
+ "2024-08": {
+  "nodes": [
+   "Indicator:malicious file",
+   "Jailbreak-Service:state-of-the-art jailbreaking",
+   "Platform:legilimens",
+   "Platform:microsoft windows smartscreen"
+  ],
+  "edges": [
+   [
+    "Indicator:malicious file",
+    "Platform:microsoft windows smartscreen",
+    "related-to"
+   ],
+   [
+    "Platform:legilimens",
+    "Jailbreak-Service:state-of-the-art jailbreaking",
+    "related-to"
+   ]
+  ]
+ },
+ "2024-09": {
+  "nodes": [
+   "Other:attacker",
+   "Platform:kingsoft wps office",
+   "Tool:promecefpluginhost.exe"
+  ],
+  "edges": [
+   [
+    "Tool:promecefpluginhost.exe",
+    "Other:attacker",
+    "related-to"
+   ],
+   [
+    "Platform:kingsoft wps office",
+    "Tool:promecefpluginhost.exe",
+    "related-to"
+   ]
+  ]
+ },
+ "2024-10": {
+  "nodes": [
+   "Criminal-LLM-Service:chain-of-jailbreak (coj) attack",
+   "Infrastructure:web-scraped pre-training datasets",
+   "Other:coj attack",
+   "Other:image generation models",
+   "Other:think twice prompting",
+   "Platform:language models",
+   "Threat-Actor:adversaries",
+   "Threat-Actor:malicious actors"
+  ],
+  "edges": [
+   [
+    "Criminal-LLM-Service:chain-of-jailbreak (coj) attack",
+    "Other:image generation models",
+    "targets"
+   ],
+   [
+    "Other:think twice prompting",
+    "Other:coj attack",
+    "related-to"
+   ],
+   [
+    "Threat-Actor:malicious actors",
+    "Infrastructure:web-scraped pre-training datasets",
+    "related-to"
+   ],
+   [
+    "Threat-Actor:adversaries",
+    "Platform:language models",
+    "related-to"
+   ]
+  ]
+ },
+ "2024-11": {
+  "nodes": [
+   "Malware:os command injection vulnerability",
+   "Platform:progress kemp loadmaster"
+  ],
+  "edges": [
+   [
+    "Platform:progress kemp loadmaster",
+    "Malware:os command injection vulnerability",
+    "related-to"
+   ]
+  ]
+ },
+ "2024-12": {
+  "nodes": [
+   "Criminal-LLM-Service:large language models (llms)",
+   "Indicator:disinformation news articles",
+   "Indicator:remote code execution",
+   "Indicator:unrestricted file upload vulnerability",
+   "Other:criminal-llm-service",
+   "Platform:cleo harmony",
+   "Platform:lexicom",
+   "Platform:vltrader",
+   "Tool:safety-filters"
+  ],
+  "edges": [
+   [
+    "Criminal-LLM-Service:large language models (llms)",
+    "Indicator:disinformation news articles",
+    "related-to"
+   ],
+   [
+    "Criminal-LLM-Service:large language models (llms)",
+    "Tool:safety-filters",
+    "trades"
+   ],
+   [
+    "Criminal-LLM-Service:large language models (llms)",
+    "Other:criminal-llm-service",
+    "part-of"
+   ],
+   [
+    "Platform:cleo harmony",
+    "Indicator:unrestricted file upload vulnerability",
+    "related-to"
+   ],
+   [
+    "Platform:vltrader",
+    "Indicator:unrestricted file upload vulnerability",
+    "related-to"
+   ],
+   [
+    "Platform:lexicom",
+    "Indicator:unrestricted file upload vulnerability",
+    "related-to"
+   ],
+   [
+    "Indicator:unrestricted file upload vulnerability",
+    "Indicator:remote code execution",
+    "related-to"
+   ]
+  ]
+ },
+ "2025-01": {
+  "nodes": [
+   "Indicator:cve-2024-41713",
+   "Platform:mitel micollab"
+  ],
+  "edges": [
+   [
+    "Platform:mitel micollab",
+    "Indicator:cve-2024-41713",
+    "distributes"
+   ]
+  ]
+ },
+ "2025-02": {
+  "nodes": [
+   "Indicator:forced browsing vulnerability",
+   "Infrastructure:china's tertiary hospitals",
+   "Platform:apache ofbiz",
+   "Platform:deepseek"
+  ],
+  "edges": [
+   [
+    "Platform:deepseek",
+    "Infrastructure:china's tertiary hospitals",
+    "operates"
+   ],
+   [
+    "Platform:apache ofbiz",
+    "Indicator:forced browsing vulnerability",
+    "related-to"
+   ]
+  ]
+ },
+ "2025-03": {
+  "nodes": [
+   "Campaign:safearena",
+   "Indicator:illegal activity",
+   "Indicator:misinformation",
+   "Malware:out-of-bounds read vulnerability",
+   "Other:authorized attacker",
+   "Platform:google chromium mojo",
+   "Threat-Actor:ransomware",
+   "Tool:claude-3.5 sonnet",
+   "Tool:gpt-4o",
+   "Tool:llama-3.2 90b",
+   "Tool:qwen-2-vl 72b"
+  ],
+  "edges": [
+   [
+    "Campaign:safearena",
+    "Tool:gpt-4o",
+    "related-to"
+   ],
+   [
+    "Campaign:safearena",
+    "Tool:claude-3.5 sonnet",
+    "related-to"
+   ],
+   [
+    "Campaign:safearena",
+    "Tool:qwen-2-vl 72b",
+    "related-to"
+   ],
+   [
+    "Campaign:safearena",
+    "Tool:llama-3.2 90b",
+    "related-to"
+   ],
+   [
+    "Tool:gpt-4o",
+    "Indicator:misinformation",
+    "related-to"
+   ],
+   [
+    "Tool:gpt-4o",
+    "Indicator:illegal activity",
+    "related-to"
+   ],
+   [
+    "Tool:qwen-2-vl 72b",
+    "Indicator:misinformation",
+    "related-to"
+   ],
+   [
+    "Tool:qwen-2-vl 72b",
+    "Indicator:illegal activity",
+    "related-to"
+   ],
+   [
+    "Malware:out-of-bounds read vulnerability",
+    "Other:authorized attacker",
+    "targets"
+   ],
+   [
+    "Platform:google chromium mojo",
+    "Threat-Actor:ransomware",
+    "targets"
+   ]
+  ]
+ },
+ "2025-04": {
+  "nodes": [
+   "Other:asr-1 of 22.0%",
+   "Other:asr-4 of 52.5%",
+   "Other:full-chain t2i models",
+   "Other:state-of-the-art jailbreak attacks",
+   "Other:token-level constraint boundary search (tcbs)-attack"
+  ],
+  "edges": [
+   [
+    "Other:token-level constraint boundary search (tcbs)-attack",
+    "Other:full-chain t2i models",
+    "targets"
+   ],
+   [
+    "Other:token-level constraint boundary search (tcbs)-attack",
+    "Other:state-of-the-art jailbreak attacks",
+    "related-to"
+   ],
+   [
+    "Other:token-level constraint boundary search (tcbs)-attack",
+    "Other:asr-4 of 52.5%",
+    "related-to"
+   ],
+   [
+    "Other:token-level constraint boundary search (tcbs)-attack",
+    "Other:asr-1 of 22.0%",
+    "related-to"
+   ]
+  ]
+ },
+ "2025-05": {
+  "nodes": [
+   "Malware:use-after-free vulnerability",
+   "Platform:microsoft windows dwm core library"
+  ],
+  "edges": [
+   [
+    "Platform:microsoft windows dwm core library",
+    "Malware:use-after-free vulnerability",
+    "related-to"
+   ]
+  ]
+ },
+ "2025-06": {
+  "nodes": [
+   "Campaign:red teaming exercise",
+   "Indicator:improper authentication vulnerability",
+   "Indicator:iocs",
+   "Indicator:ttps",
+   "Malware:malware details",
+   "Malware:ransomware",
+   "Other:large language models (llms)",
+   "Platform:attack graph construction",
+   "Platform:aura",
+   "Platform:large language models",
+   "Platform:linux kernel",
+   "Platform:openai models",
+   "Platform:overlayfs",
+   "Platform:qguard",
+   "Tool:adversarial tools",
+   "Tool:gpt4dfci",
+   "Tool:mm-attackg",
+   "Tool:multimodal large language models",
+   "Tool:white-box analysis"
+  ],
+  "edges": [
+   [
+    "Platform:linux kernel",
+    "Platform:overlayfs",
+    "related-to"
+   ],
+   [
+    "Indicator:improper authentication vulnerability",
+    "Malware:ransomware",
+    "targets"
+   ],
+   [
+    "Platform:aura",
+    "Other:large language models (llms)",
+    "uses"
+   ],
+   [
+    "Platform:aura",
+    "Indicator:ttps",
+    "uses"
+   ],
+   [
+    "Platform:aura",
+    "Indicator:iocs",
+    "uses"
+   ],
+   [
+    "Platform:aura",
+    "Malware:malware details",
+    "uses"
+   ],
+   [
+    "Platform:aura",
+    "Tool:adversarial tools",
+    "uses"
+   ],
+   [
+    "Platform:qguard",
+    "Tool:white-box analysis",
+    "provides"
+   ],
+   [
+    "Platform:qguard",
+    "Platform:large language models",
+    "related-to"
+   ],
+   [
+    "Tool:mm-attackg",
+    "Tool:multimodal large language models",
+    "uses"
+   ],
+   [
+    "Tool:mm-attackg",
+    "Platform:attack graph construction",
+    "part-of"
+   ],
+   [
+    "Tool:gpt4dfci",
+    "Platform:openai models",
+    "uses"
+   ],
+   [
+    "Campaign:red teaming exercise",
+    "Tool:gpt4dfci",
+    "targets"
+   ]
+  ]
+ },
+ "2025-07": {
+  "nodes": [
+   "Indicator:246 relevant files",
+   "Indicator:337 actionable urls",
+   "Indicator:exploited software themes",
+   "Indicator:installer files",
+   "Indicator:larger dataset of ~9k samples",
+   "Indicator:malicious urls",
+   "Indicator:phishing intention ground truth dataset",
+   "Malware:aurora",
+   "Other:ai data centers",
+   "Other:cluster power usage",
+   "Other:cyber threat intelligence (cti)-related knowledge",
+   "Other:domain-specific data from deep and dark web pages, telegram channels, subreddits, and pastebin pastes",
+   "Other:entities and their relationships",
+   "Other:large language models",
+   "Other:transformer model for long documents",
+   "Platform:emerald conductor",
+   "Platform:ex-nids",
+   "Platform:llms",
+   "Platform:phishintentionllm",
+   "Tool:azerg",
+   "Tool:basic-prompt explainer",
+   "Tool:gpt-4o",
+   "Tool:gpt-4o-mini",
+   "Tool:large language models (llms)",
+   "Tool:modernbert",
+   "Tool:prompt augmenter",
+   "Tool:zero-shot and few-shot prompting strategies"
+  ],
+  "edges": [
+   [
+    "Platform:emerald conductor",
+    "Other:ai data centers",
+    "related-to"
+   ],
+   [
+    "Platform:emerald conductor",
+    "Other:cluster power usage",
+    "related-to"
+   ],
+   [
+    "Platform:llms",
+    "Tool:zero-shot and few-shot prompting strategies",
+    "uses"
+   ],
+   [
+    "Tool:modernbert",
+    "Other:transformer model for long documents",
+    "uses"
+   ],
+   [
+    "Tool:modernbert",
+    "Other:domain-specific data from deep and dark web pages, telegram channels, subreddits, and pastebin pastes",
+    "related-to"
+   ],
+   [
+    "Platform:phishintentionllm",
+    "Tool:large language models (llms)",
+    "uses"
+   ],
+   [
+    "Platform:phishintentionllm",
+    "Indicator:phishing intention ground truth dataset",
+    "distributes"
+   ],
+   [
+    "Platform:phishintentionllm",
+    "Indicator:larger dataset of ~9k samples",
+    "distributes"
+   ],
+   [
+    "Platform:phishintentionllm",
+    "Tool:gpt-4o",
+    "operates"
+   ],
+   [
+    "Platform:ex-nids",
+    "Tool:prompt augmenter",
+    "uses"
+   ],
+   [
+    "Platform:ex-nids",
+    "Tool:basic-prompt explainer",
+    "related-to"
+   ],
+   [
+    "Tool:prompt augmenter",
+    "Other:cyber threat intelligence (cti)-related knowledge",
+    "related-to"
+   ],
+   [
+    "Tool:azerg",
+    "Other:large language models",
+    "uses"
+   ],
+   [
+    "Tool:azerg",
+    "Other:entities and their relationships",
+    "related-to"
+   ],
+   [
+    "Malware:aurora",
+    "Indicator:malicious urls",
+    "distributes"
+   ],
+   [
+    "Malware:aurora",
+    "Indicator:installer files",
+    "distributes"
+   ],
+   [
+    "Malware:aurora",
+    "Indicator:exploited software themes",
+    "distributes"
+   ],
+   [
+    "Tool:gpt-4o-mini",
+    "Indicator:337 actionable urls",
+    "related-to"
+   ],
+   [
+    "Tool:gpt-4o-mini",
+    "Indicator:246 relevant files",
+    "related-to"
+   ],
+   [
+    "Tool:gpt-4o-mini",
+    "Tool:large language models (llms)",
+    "uses"
+   ]
+  ]
+ },
+ "2025-08": {
+  "nodes": [
+   "Criminal-LLM-Service:foundation-sec-8b",
+   "Criminal-LLM-Service:foundation-sec-8b-instruct",
+   "Criminal-LLM-Service:gpt-4o-mini",
+   "Criminal-LLM-Service:llama 3.1-8b-instruct",
+   "Infrastructure:[ip-defanged]",
+   "Infrastructure:kav-certificates.info",
+   "Malware:apolloshadow",
+   "Other:embassies located in moscow",
+   "Threat-Actor:secret blizzard"
+  ],
+  "edges": [
+   [
+    "Criminal-LLM-Service:foundation-sec-8b-instruct",
+    "Criminal-LLM-Service:foundation-sec-8b",
+    "part-of"
+   ],
+   [
+    "Criminal-LLM-Service:foundation-sec-8b-instruct",
+    "Criminal-LLM-Service:llama 3.1-8b-instruct",
+    "related-to"
+   ],
+   [
+    "Criminal-LLM-Service:foundation-sec-8b-instruct",
+    "Criminal-LLM-Service:gpt-4o-mini",
+    "related-to"
+   ],
+   [
+    "Threat-Actor:secret blizzard",
+    "Other:embassies located in moscow",
+    "targets"
+   ],
+   [
+    "Threat-Actor:secret blizzard",
+    "Malware:apolloshadow",
+    "uses"
+   ],
+   [
+    "Infrastructure:kav-certificates.info",
+    "Infrastructure:[ip-defanged]",
+    "hosts"
+   ]
+  ]
+ },
+ "2025-09": {
+  "nodes": [
+   "Campaign:phishlumos",
+   "Indicator:command injection vulnerability",
+   "Infrastructure:libraesva email security gateway",
+   "Infrastructure:tp-link tl-wr841n",
+   "Other:data platform",
+   "Other:malicious url generation",
+   "Other:release platform",
+   "Other:stored credentials",
+   "Platform:framework for rapidly developing and deploying protection against large language model attacks",
+   "Platform:httpd service",
+   "Platform:large language model (llm)",
+   "Platform:large language models (llms)",
+   "Platform:production-grade defense system",
+   "Threat-Actor:state-sponsored actors",
+   "Tool:llmhoney",
+   "Tool:scam2prompt",
+   "Tool:threat intelligence system",
+   "Victim-Sector:critical sectors",
+   "Victim-Sector:cybersecurity experts"
+  ],
+  "edges": [
+   [
+    "Tool:llmhoney",
+    "Platform:large language models (llms)",
+    "uses"
+   ],
+   [
+    "Tool:scam2prompt",
+    "Other:malicious url generation",
+    "targets"
+   ],
+   [
+    "Threat-Actor:state-sponsored actors",
+    "Victim-Sector:critical sectors",
+    "targets"
+   ],
+   [
+    "Platform:framework for rapidly developing and deploying protection against large language model attacks",
+    "Platform:production-grade defense system",
+    "part-of"
+   ],
+   [
+    "Tool:threat intelligence system",
+    "Platform:production-grade defense system",
+    "part-of"
+   ],
+   [
+    "Other:data platform",
+    "Platform:production-grade defense system",
+    "part-of"
+   ],
+   [
+    "Other:release platform",
+    "Platform:production-grade defense system",
+    "part-of"
+   ],
+   [
+    "Campaign:phishlumos",
+    "Platform:large language model (llm)",
+    "uses"
+   ],
+   [
+    "Campaign:phishlumos",
+    "Victim-Sector:cybersecurity experts",
+    "targets"
+   ],
+   [
+    "Infrastructure:tp-link tl-wr841n",
+    "Platform:httpd service",
+    "hosts"
+   ],
+   [
+    "Infrastructure:tp-link tl-wr841n",
+    "Other:stored credentials",
+    "distributes"
+   ],
+   [
+    "Infrastructure:libraesva email security gateway",
+    "Indicator:command injection vulnerability",
+    "related-to"
+   ]
+  ]
+ },
+ "2025-10": {
+  "nodes": [
+   "Criminal-LLM-Service:cyberpal 2.0",
+   "Criminal-LLM-Service:gptfuzzer",
+   "Criminal-LLM-Service:large language models (llms)",
+   "Criminal-LLM-Service:pap",
+   "Indicator:cross-site scripting vulnerability",
+   "Infrastructure:microsoft windows server update service (wsus)",
+   "Jailbreak-Service:metabreak",
+   "Other:content-safety violations",
+   "Other:data leakage",
+   "Other:deserialization of untrusted data vulnerability",
+   "Other:jailbreaking",
+   "Other:malicious files",
+   "Other:model-manipulation attacks",
+   "Other:sensitive information",
+   "Other:users",
+   "Platform:deeptx",
+   "Platform:openguardrails",
+   "Platform:polar",
+   "Platform:sbash",
+   "Platform:secknowledge 2.0",
+   "Platform:synacor zimbra collaboration suite (zcs)",
+   "Threat-Actor:phishing attacks",
+   "Tool:gpt-4o",
+   "Tool:multiple large language models (llms)",
+   "Tool:retrieval augmented generation (rag)",
+   "Tool:sec-gemini v1"
+  ],
+  "edges": [
+   [
+    "Platform:synacor zimbra collaboration suite (zcs)",
+    "Indicator:cross-site scripting vulnerability",
+    "related-to"
+   ],
+   [
+    "Platform:polar",
+    "Criminal-LLM-Service:large language models (llms)",
+    "uses"
+   ],
+   [
+    "Jailbreak-Service:metabreak",
+    "Criminal-LLM-Service:pap",
+    "related-to"
+   ],
+   [
+    "Jailbreak-Service:metabreak",
+    "Criminal-LLM-Service:gptfuzzer",
+    "related-to"
+   ],
+   [
+    "Criminal-LLM-Service:cyberpal 2.0",
+    "Platform:secknowledge 2.0",
+    "uses"
+   ],
+   [
+    "Criminal-LLM-Service:cyberpal 2.0",
+    "Tool:gpt-4o",
+    "related-to"
+   ],
+   [
+    "Criminal-LLM-Service:cyberpal 2.0",
+    "Tool:sec-gemini v1",
+    "related-to"
+   ],
+   [
+    "Platform:deeptx",
+    "Threat-Actor:phishing attacks",
+    "related-to"
+   ],
+   [
+    "Platform:deeptx",
+    "Tool:multiple large language models (llms)",
+    "uses"
+   ],
+   [
+    "Platform:openguardrails",
+    "Other:content-safety violations",
+    "related-to"
+   ],
+   [
+    "Platform:openguardrails",
+    "Other:model-manipulation attacks",
+    "related-to"
+   ],
+   [
+    "Platform:openguardrails",
+    "Other:data leakage",
+    "related-to"
+   ],
+   [
+    "Platform:sbash",
+    "Tool:retrieval augmented generation (rag)",
+    "uses"
+   ],
+   [
+    "Other:users",
+    "Other:malicious files",
+    "related-to"
+   ],
+   [
+    "Other:users",
+    "Other:sensitive information",
+    "related-to"
+   ],
+   [
+    "Other:users",
+    "Other:jailbreaking",
+    "related-to"
+   ],
+   [
+    "Infrastructure:microsoft windows server update service (wsus)",
+    "Other:deserialization of untrusted data vulnerability",
+    "related-to"
+   ]
+  ]
+ },
+ "2025-11": {
+  "nodes": [
+   "Campaign:sha1-hulud",
+   "Indicator:file",
+   "Infrastructure:ip-dst [ip-defanged]",
+   "Platform:google chromium v8",
+   "Platform:large language models (llms)",
+   "Threat-Actor:ransomware",
+   "Tool:deepseek-vl2",
+   "Tool:gemini 2.0 flash",
+   "Tool:gpt 4.1",
+   "Tool:janus",
+   "Tool:llama",
+   "Tool:phishintention",
+   "Tool:phishpedia",
+   "Tool:qwen",
+   "Tool:r1"
+  ],
+  "edges": [
+   [
+    "Threat-Actor:ransomware",
+    "Platform:google chromium v8",
+    "targets"
+   ],
+   [
+    "Platform:large language models (llms)",
+    "Tool:gpt 4.1",
+    "uses"
+   ],
+   [
+    "Platform:large language models (llms)",
+    "Tool:gemini 2.0 flash",
+    "uses"
+   ],
+   [
+    "Platform:large language models (llms)",
+    "Tool:qwen",
+    "uses"
+   ],
+   [
+    "Platform:large language models (llms)",
+    "Tool:llama",
+    "uses"
+   ],
+   [
+    "Platform:large language models (llms)",
+    "Tool:janus",
+    "uses"
+   ],
+   [
+    "Platform:large language models (llms)",
+    "Tool:deepseek-vl2",
+    "uses"
+   ],
+   [
+    "Platform:large language models (llms)",
+    "Tool:r1",
+    "uses"
+   ],
+   [
+    "Platform:large language models (llms)",
+    "Tool:phishintention",
+    "uses"
+   ],
+   [
+    "Platform:large language models (llms)",
+    "Tool:phishpedia",
+    "uses"
+   ],
+   [
+    "Campaign:sha1-hulud",
+    "Infrastructure:ip-dst [ip-defanged]",
+    "targets"
+   ],
+   [
+    "Campaign:sha1-hulud",
+    "Indicator:file",
+    "distributes"
+   ]
+  ]
+ },
+ "2025-12": {
+  "nodes": [
+   "Infrastructure:telegram",
+   "Malware:ransomware",
+   "Other:large language models",
+   "Platform:ctiguardian",
+   "Platform:google chromium",
+   "Platform:lure",
+   "Threat-Actor:chat-based cybercrimes",
+   "Tool:presidio"
+  ],
+  "edges": [
+   [
+    "Malware:ransomware",
+    "Platform:google chromium",
+    "targets"
+   ],
+   [
+    "Platform:ctiguardian",
+    "Tool:presidio",
+    "related-to"
+   ],
+   [
+    "Platform:lure",
+    "Other:large language models",
+    "uses"
+   ],
+   [
+    "Platform:lure",
+    "Threat-Actor:chat-based cybercrimes",
+    "targets"
+   ],
+   [
+    "Platform:lure",
+    "Infrastructure:telegram",
+    "hosts"
+   ]
+  ]
+ },
+ "2026-01": {
+  "nodes": [
+   "Other:domain-specific cybersecurity llm",
+   "Other:graph-augmented llms",
+   "Other:graph-based reasoning framework",
+   "Other:hybrid strategy",
+   "Other:model alignment with ttp coverage",
+   "Other:retrieval-augmented generation (rag) pipeline",
+   "Platform:gemma-2b"
+  ],
+  "edges": [
+   [
+    "Platform:gemma-2b",
+    "Other:domain-specific cybersecurity llm",
+    "related-to"
+   ],
+   [
+    "Other:retrieval-augmented generation (rag) pipeline",
+    "Other:hybrid strategy",
+    "part-of"
+   ],
+   [
+    "Other:graph-based reasoning framework",
+    "Other:hybrid strategy",
+    "part-of"
+   ],
+   [
+    "Other:graph-augmented llms",
+    "Other:model alignment with ttp coverage",
+    "related-to"
+   ]
+  ]
+ },
+ "2026-02": {
+  "nodes": [
+   "Criminal-LLM-Service:llm agents",
+   "Indicator:60k targeted high-risk urls",
+   "Indicator:aisi",
+   "Indicator:aist",
+   "Indicator:commit",
+   "Indicator:cve-2023-27997",
+   "Indicator:dataset of 200 website code bases",
+   "Infrastructure:fortigate vpn",
+   "Malware:cisco sd-wan path traversal vulnerability",
+   "Malware:spear-phishing websites",
+   "Other:download of code without integrity check vulnerability",
+   "Other:prompt injection",
+   "Other:state-of-the-art (sota) baselines",
+   "Platform:ai-paging",
+   "Platform:cisco sd-wan cli",
+   "Platform:injectdefuser",
+   "Platform:memophishagent",
+   "Platform:multimodal llm-based phishing detection",
+   "Platform:notepad++",
+   "Threat-Actor:6g service providers"
+  ],
+  "edges": [
+   [
+    "Other:prompt injection",
+    "Platform:multimodal llm-based phishing detection",
+    "targets"
+   ],
+   [
+    "Platform:injectdefuser",
+    "Other:prompt injection",
+    "related-to"
+   ],
+   [
+    "Criminal-LLM-Service:llm agents",
+    "Indicator:dataset of 200 website code bases",
+    "related-to"
+   ],
+   [
+    "Criminal-LLM-Service:llm agents",
+    "Malware:spear-phishing websites",
+    "related-to"
+   ],
+   [
+    "Platform:ai-paging",
+    "Indicator:aisi",
+    "distributes"
+   ],
+   [
+    "Platform:ai-paging",
+    "Indicator:aist",
+    "distributes"
+   ],
+   [
+    "Platform:ai-paging",
+    "Indicator:commit",
+    "distributes"
+   ],
+   [
+    "Threat-Actor:6g service providers",
+    "Platform:ai-paging",
+    "operates"
+   ],
+   [
+    "Platform:memophishagent",
+    "Other:state-of-the-art (sota) baselines",
+    "related-to"
+   ],
+   [
+    "Platform:memophishagent",
+    "Indicator:60k targeted high-risk urls",
+    "related-to"
+   ],
+   [
+    "Infrastructure:fortigate vpn",
+    "Indicator:cve-2023-27997",
+    "related-to"
+   ],
+   [
+    "Platform:notepad++",
+    "Other:download of code without integrity check vulnerability",
+    "related-to"
+   ],
+   [
+    "Malware:cisco sd-wan path traversal vulnerability",
+    "Platform:cisco sd-wan cli",
+    "targets"
+   ]
+  ]
+ },
+ "2026-03": {
+  "nodes": [
+   "Campaign:mythic",
+   "Infrastructure:[ip-defanged]",
+   "Infrastructure:bambooairways.com.vn",
+   "Infrastructure:discountfoodxyr.com",
+   "Malware:android_joker",
+   "Malware:fakeapp",
+   "Malware:osx_nova",
+   "Malware:plugx",
+   "Malware:ransomware",
+   "Other:[ip-defanged]",
+   "Other:app.highmatch.pro",
+   "Other:googgle.click",
+   "Other:guardrail",
+   "Other:highmatch.pro",
+   "Other:hxxp://api.github.com/repos/stamparm/maltrail/commits/[hash-defanged]",
+   "Other:moohshot.top",
+   "Other:platform",
+   "Other:pumpf.top",
+   "Platform:gemini-2.0-flash-lite-001",
+   "Platform:google chromium v8",
+   "Platform:sovereign ai-based public services",
+   "Threat-Actor:apt_lazarus",
+   "Threat-Actor:apt_transparenttribe",
+   "Threat-Actor:malicious developers",
+   "Tool:llm-as-a-judge"
+  ],
+  "edges": [
+   [
+    "Infrastructure:[ip-defanged]",
+    "Campaign:mythic",
+    "hosts"
+   ],
+   [
+    "Malware:ransomware",
+    "Platform:google chromium v8",
+    "targets"
+   ],
+   [
+    "Platform:sovereign ai-based public services",
+    "Other:platform",
+    "part-of"
+   ],
+   [
+    "Threat-Actor:malicious developers",
+    "Other:guardrail",
+    "related-to"
+   ],
+   [
+    "Platform:gemini-2.0-flash-lite-001",
+    "Tool:llm-as-a-judge",
+    "uses"
+   ],
+   [
+    "Other:[ip-defanged]",
+    "Threat-Actor:apt_transparenttribe",
+    "targets"
+   ],
+   [
+    "Infrastructure:bambooairways.com.vn",
+    "Campaign:mythic",
+    "hosts"
+   ],
+   [
+    "Infrastructure:discountfoodxyr.com",
+    "Campaign:mythic",
+    "hosts"
+   ],
+   [
+    "Other:hxxp://api.github.com/repos/stamparm/maltrail/commits/[hash-defanged]",
+    "Threat-Actor:apt_lazarus",
+    "distributes"
+   ],
+   [
+    "Other:hxxp://api.github.com/repos/stamparm/maltrail/commits/[hash-defanged]",
+    "Malware:android_joker",
+    "distributes"
+   ],
+   [
+    "Other:hxxp://api.github.com/repos/stamparm/maltrail/commits/[hash-defanged]",
+    "Malware:plugx",
+    "distributes"
+   ],
+   [
+    "Other:hxxp://api.github.com/repos/stamparm/maltrail/commits/[hash-defanged]",
+    "Threat-Actor:apt_transparenttribe",
+    "distributes"
+   ],
+   [
+    "Other:hxxp://api.github.com/repos/stamparm/maltrail/commits/[hash-defanged]",
+    "Malware:osx_nova",
+    "distributes"
+   ],
+   [
+    "Other:hxxp://api.github.com/repos/stamparm/maltrail/commits/[hash-defanged]",
+    "Malware:fakeapp",
+    "distributes"
+   ],
+   [
+    "Other:app.highmatch.pro",
+    "Threat-Actor:apt_lazarus",
+    "hosts"
+   ],
+   [
+    "Other:highmatch.pro",
+    "Threat-Actor:apt_lazarus",
+    "hosts"
+   ],
+   [
+    "Other:moohshot.top",
+    "Malware:osx_nova",
+    "hosts"
+   ],
+   [
+    "Other:pumpf.top",
+    "Malware:osx_nova",
+    "hosts"
+   ],
+   [
+    "Other:googgle.click",
+    "Malware:fakeapp",
+    "hosts"
+   ]
+  ]
+ },
+ "2026-04": {
+  "nodes": [
+   "Campaign:guardphish",
+   "Indicator:hxxp://api.github.com/repos/stamparm/maltrail/commits/[hash-defanged]",
+   "Indicator:path traversal vulnerability",
+   "Infrastructure:dground.org",
+   "Infrastructure:luthel.com",
+   "Infrastructure:samsung magicinfo 9 server",
+   "Infrastructure:securedrnicrosoftconnect.com",
+   "Infrastructure:web, email, sms, and voice attack scenarios",
+   "Infrastructure:zgsjyxzx.com",
+   "Other:campaign",
+   "Other:ek_landupdate808",
+   "Other:evilginx",
+   "Other:platform",
+   "Platform:apache activemq",
+   "Platform:google dawn",
+   "Platform:physe",
+   "Threat-Actor:ransomware",
+   "Threat-Actor:remote attacker",
+   "Tool:adaptive psychological agent",
+   "Tool:vlm-based socialcontext training"
+  ],
+  "edges": [
+   [
+    "Platform:apache activemq",
+    "Threat-Actor:ransomware",
+    "distributes"
+   ],
+   [
+    "Campaign:guardphish",
+    "Other:campaign",
+    "part-of"
+   ],
+   [
+    "Campaign:guardphish",
+    "Infrastructure:web, email, sms, and voice attack scenarios",
+    "hosts"
+   ],
+   [
+    "Platform:physe",
+    "Other:platform",
+    "part-of"
+   ],
+   [
+    "Platform:physe",
+    "Tool:vlm-based socialcontext training",
+    "uses"
+   ],
+   [
+    "Platform:physe",
+    "Tool:adaptive psychological agent",
+    "uses"
+   ],
+   [
+    "Indicator:hxxp://api.github.com/repos/stamparm/maltrail/commits/[hash-defanged]",
+    "Other:evilginx",
+    "distributes"
+   ],
+   [
+    "Infrastructure:securedrnicrosoftconnect.com",
+    "Other:evilginx",
+    "hosts"
+   ],
+   [
+    "Infrastructure:dground.org",
+    "Other:ek_landupdate808",
+    "hosts"
+   ],
+   [
+    "Infrastructure:luthel.com",
+    "Other:ek_landupdate808",
+    "hosts"
+   ],
+   [
+    "Infrastructure:zgsjyxzx.com",
+    "Other:ek_landupdate808",
+    "hosts"
+   ],
+   [
+    "Platform:google dawn",
+    "Threat-Actor:remote attacker",
+    "targets"
+   ],
+   [
+    "Infrastructure:samsung magicinfo 9 server",
+    "Indicator:path traversal vulnerability",
+    "related-to"
+   ]
+  ]
+ },
+ "2026-05": {
+  "nodes": [
+   "Malware:elf_mirai",
+   "Other:141 tasks",
+   "Other:4ka.app",
+   "Other:8v.google-sweep.top",
+   "Other:[ip-defanged]",
+   "Other:attacks",
+   "Other:b0.google-sweep.life",
+   "Other:complete trajectories",
+   "Other:departure-protocol-pursuit-instructors.trycloudflare.com",
+   "Other:google-sweep.digital",
+   "Other:google-sweep.life",
+   "Other:google-sweep.run",
+   "Other:group-slv.help",
+   "Other:group-world.com",
+   "Other:hxxp://api.github.com/repos/stamparm/maltrail/commits/[hash-defanged]",
+   "Other:hxxp://www.virustotal.com/gui/file/[hash-defanged]/detection",
+   "Other:hxxp://x.com/skocherhan/status/2050283519348261205",
+   "Other:hxxp://x.com/yungbinary/status/2050321086806708679",
+   "Other:id0028382.live",
+   "Other:id118382.live",
+   "Other:id902929.com",
+   "Other:id90419.sbs",
+   "Other:id94683.info",
+   "Other:id98592.live",
+   "Other:llm agents",
+   "Other:misinformation",
+   "Other:neuralnetworkdatalab.com",
+   "Other:order049353.live",
+   "Other:order18387.cfd",
+   "Other:si-49875.com",
+   "Platform:agenttrap",
+   "Platform:gemma 2",
+   "Platform:gemma 3",
+   "Platform:gemma 4",
+   "Threat-Actor:apt_kimsuky",
+   "Threat-Actor:apt_lazarus",
+   "Tool:powershell_injector",
+   "Tool:python_injector",
+   "Tool:shadowhvncrat"
+  ],
+  "edges": [
+   [
+    "Platform:agenttrap",
+    "Other:llm agents",
+    "related-to"
+   ],
+   [
+    "Platform:agenttrap",
+    "Other:complete trajectories",
+    "related-to"
+   ],
+   [
+    "Platform:agenttrap",
+    "Other:141 tasks",
+    "related-to"
+   ],
+   [
+    "Platform:gemma 2",
+    "Other:attacks",
+    "distributes"
+   ],
+   [
+    "Platform:gemma 3",
+    "Other:misinformation",
+    "targets"
+   ],
+   [
+    "Platform:gemma 4",
+    "Other:misinformation",
+    "targets"
+   ],
+   [
+    "Other:[ip-defanged]",
+    "Tool:python_injector",
+    "targets"
+   ],
+   [
+    "Other:hxxp://api.github.com/repos/stamparm/maltrail/commits/[hash-defanged]",
+    "Malware:elf_mirai",
+    "distributes"
+   ],
+   [
+    "Other:hxxp://api.github.com/repos/stamparm/maltrail/commits/[hash-defanged]",
+    "Tool:python_injector",
+    "distributes"
+   ],
+   [
+    "Other:hxxp://x.com/skocherhan/status/2050283519348261205",
+    "Threat-Actor:apt_kimsuky",
+    "communicates-with"
+   ],
+   [
+    "Other:hxxp://www.virustotal.com/gui/file/[hash-defanged]/detection",
+    "Malware:elf_mirai",
+    "distributes"
+   ],
+   [
+    "Other:departure-protocol-pursuit-instructors.trycloudflare.com",
+    "Tool:powershell_injector",
+    "hosts"
+   ],
+   [
+    "Other:hxxp://x.com/yungbinary/status/2050321086806708679",
+    "Tool:python_injector",
+    "communicates-with"
+   ],
+   [
+    "Other:neuralnetworkdatalab.com",
+    "Threat-Actor:apt_lazarus",
+    "hosts"
+   ],
+   [
+    "Other:4ka.app",
+    "Tool:shadowhvncrat",
+    "hosts"
+   ],
+   [
+    "Other:8v.google-sweep.top",
+    "Tool:shadowhvncrat",
+    "hosts"
+   ],
+   [
+    "Other:b0.google-sweep.life",
+    "Tool:shadowhvncrat",
+    "hosts"
+   ],
+   [
+    "Other:google-sweep.digital",
+    "Tool:shadowhvncrat",
+    "hosts"
+   ],
+   [
+    "Other:google-sweep.life",
+    "Tool:shadowhvncrat",
+    "hosts"
+   ],
+   [
+    "Other:google-sweep.run",
+    "Tool:shadowhvncrat",
+    "hosts"
+   ],
+   [
+    "Other:group-slv.help",
+    "Tool:shadowhvncrat",
+    "hosts"
+   ],
+   [
+    "Other:group-world.com",
+    "Tool:shadowhvncrat",
+    "hosts"
+   ],
+   [
+    "Other:id0028382.live",
+    "Tool:shadowhvncrat",
+    "hosts"
+   ],
+   [
+    "Other:id118382.live",
+    "Tool:shadowhvncrat",
+    "hosts"
+   ],
+   [
+    "Other:id902929.com",
+    "Tool:shadowhvncrat",
+    "hosts"
+   ],
+   [
+    "Other:id90419.sbs",
+    "Tool:shadowhvncrat",
+    "hosts"
+   ],
+   [
+    "Other:id94683.info",
+    "Tool:shadowhvncrat",
+    "hosts"
+   ],
+   [
+    "Other:id98592.live",
+    "Tool:shadowhvncrat",
+    "hosts"
+   ],
+   [
+    "Other:order049353.live",
+    "Tool:shadowhvncrat",
+    "hosts"
+   ],
+   [
+    "Other:order18387.cfd",
+    "Tool:shadowhvncrat",
+    "hosts"
+   ],
+   [
+    "Other:si-49875.com",
+    "Tool:shadowhvncrat",
+    "hosts"
+   ]
+  ]
+ },
+ "2026-06": {
+  "nodes": [
+   "Criminal-LLM-Service:ocelot",
+   "Indicator:deceptive websites",
+   "Indicator:phishing emails",
+   "Infrastructure:tamper-evident ledger",
+   "Malware:malware",
+   "Other:malicious actors",
+   "Tool:witness-verified declassification"
+  ],
+  "edges": [
+   [
+    "Criminal-LLM-Service:ocelot",
+    "Tool:witness-verified declassification",
+    "operates"
+   ],
+   [
+    "Criminal-LLM-Service:ocelot",
+    "Infrastructure:tamper-evident ledger",
+    "hosts"
+   ],
+   [
+    "Other:malicious actors",
+    "Indicator:phishing emails",
+    "related-to"
+   ],
+   [
+    "Other:malicious actors",
+    "Indicator:deceptive websites",
+    "related-to"
+   ],
+   [
+    "Other:malicious actors",
+    "Malware:malware",
+    "related-to"
+   ]
+  ]
+ },
+ "2026-07": {
+  "nodes": [
+   "Criminal-LLM-Service:large language models (llms)",
+   "Other:authorization bypass through user-controlled key vulnerability",
+   "Other:forensic schema",
+   "Other:function-level ground truth",
+   "Other:human annotators",
+   "Platform:langflow",
+   "Platform:llm-driven annotation",
+   "Platform:reforge"
+  ],
+  "edges": [
+   [
+    "Platform:reforge",
+    "Criminal-LLM-Service:large language models (llms)",
+    "operates"
+   ],
+   [
+    "Platform:reforge",
+    "Other:function-level ground truth",
+    "related-to"
+   ],
+   [
+    "Platform:llm-driven annotation",
+    "Other:forensic schema",
+    "uses"
+   ],
+   [
+    "Other:human annotators",
+    "Other:forensic schema",
+    "related-to"
+   ],
+   [
+    "Platform:langflow",
+    "Other:authorization bypass through user-controlled key vulnerability",
+    "related-to"
+   ]
+  ]
+ },
+ "2026-08": {
+  "nodes": [
+   "Indicator:deserialization of untrusted data vulnerability",
+   "Indicator:os command injection vulnerability",
+   "Other:filter-generator discrepancy",
+   "Other:general-purpose baselines",
+   "Other:transfer-based attacks",
+   "Other:unsafe reflection vulnerability",
+   "Platform:echo",
+   "Platform:jetbrains teamcity",
+   "Platform:papercut ng/mf",
+   "Platform:synacor zimbra collaboration suite (zcs)",
+   "Platform:text-to-image (t2i) systems",
+   "Tool:appnp-style propagation",
+   "Tool:bert",
+   "Tool:darkbert",
+   "Tool:gpt-5 mini",
+   "Tool:langgraph",
+   "Tool:llama 3.3 70b",
+   "Tool:prompt-level safety filters",
+   "Tool:whisper"
+  ],
+  "edges": [
+   [
+    "Platform:synacor zimbra collaboration suite (zcs)",
+    "Indicator:os command injection vulnerability",
+    "related-to"
+   ],
+   [
+    "Platform:jetbrains teamcity",
+    "Indicator:deserialization of untrusted data vulnerability",
+    "related-to"
+   ],
+   [
+    "Other:filter-generator discrepancy",
+    "Platform:text-to-image (t2i) systems",
+    "attributed-to"
+   ],
+   [
+    "Other:transfer-based attacks",
+    "Platform:text-to-image (t2i) systems",
+    "targets"
+   ],
+   [
+    "Tool:prompt-level safety filters",
+    "Platform:text-to-image (t2i) systems",
+    "targets"
+   ],
+   [
+    "Platform:echo",
+    "Tool:langgraph",
+    "uses"
+   ],
+   [
+    "Platform:echo",
+    "Tool:gpt-5 mini",
+    "uses"
+   ],
+   [
+    "Platform:echo",
+    "Tool:appnp-style propagation",
+    "uses"
+   ],
+   [
+    "Platform:echo",
+    "Tool:whisper",
+    "uses"
+   ],
+   [
+    "Platform:echo",
+    "Tool:bert",
+    "uses"
+   ],
+   [
+    "Platform:echo",
+    "Tool:llama 3.3 70b",
+    "uses"
+   ],
+   [
+    "Tool:darkbert",
+    "Other:general-purpose baselines",
+    "related-to"
+   ],
+   [
+    "Platform:papercut ng/mf",
+    "Other:unsafe reflection vulnerability",
+    "related-to"
+   ]
+  ]
+ },
+ "2026-09": {
+  "nodes": [
+   "Campaign:adaptive uncertainty-routed analysis (aura)",
+   "Indicator:endorsement terms",
+   "Indicator:risk-denial terms",
+   "Indicator:self-claims",
+   "Malware:jailbreak",
+   "Malware:ransomware",
+   "Other:alerts",
+   "Other:immediate structural sanitization",
+   "Other:judgments",
+   "Other:strict semantic boundaries",
+   "Platform:citrix netscaler adc",
+   "Platform:linux kernel",
+   "Platform:netscaler gateway",
+   "Threat-Actor:email spam and phishing attacks",
+   "Threat-Actor:unauthenticated remote threat actor",
+   "Tool:fine-tuned transformer encoder",
+   "Tool:gordonguard",
+   "Tool:jailbreak-detection panel",
+   "Tool:large language models",
+   "Tool:nemo guardrails",
+   "Tool:siem decoders",
+   "Tool:url classifier"
+  ],
+  "edges": [
+   [
+    "Platform:linux kernel",
+    "Malware:ransomware",
+    "targets"
+   ],
+   [
+    "Tool:large language models",
+    "Campaign:adaptive uncertainty-routed analysis (aura)",
+    "targets"
+   ],
+   [
+    "Tool:nemo guardrails",
+    "Other:strict semantic boundaries",
+    "related-to"
+   ],
+   [
+    "Tool:siem decoders",
+    "Other:immediate structural sanitization",
+    "related-to"
+   ],
+   [
+    "Campaign:adaptive uncertainty-routed analysis (aura)",
+    "Tool:url classifier",
+    "uses"
+   ],
+   [
+    "Campaign:adaptive uncertainty-routed analysis (aura)",
+    "Tool:fine-tuned transformer encoder",
+    "uses"
+   ],
+   [
+    "Threat-Actor:email spam and phishing attacks",
+    "Campaign:adaptive uncertainty-routed analysis (aura)",
+    "targets"
+   ],
+   [
+    "Indicator:self-claims",
+    "Other:judgments",
+    "related-to"
+   ],
+   [
+    "Indicator:risk-denial terms",
+    "Other:alerts",
+    "related-to"
+   ],
+   [
+    "Indicator:endorsement terms",
+    "Other:alerts",
+    "related-to"
+   ],
+   [
+    "Tool:gordonguard",
+    "Tool:jailbreak-detection panel",
+    "uses"
+   ],
+   [
+    "Tool:jailbreak-detection panel",
+    "Malware:jailbreak",
+    "distributes"
+   ],
+   [
+    "Threat-Actor:unauthenticated remote threat actor",
+    "Platform:citrix netscaler adc",
+    "related-to"
+   ],
+   [
+    "Threat-Actor:unauthenticated remote threat actor",
+    "Platform:netscaler gateway",
+    "related-to"
+   ]
+  ]
+ },
+ "2026-10": {
+  "nodes": [
+   "Campaign:cybersecurity tweet classification",
+   "Campaign:memory injection",
+   "Malware:authentication bypass by spoofing vulnerability",
+   "Malware:server-side request forgery (ssrf) vulnerability",
+   "Other:65.7%",
+   "Other:97% accuracy",
+   "Other:best quality-cost trade-off",
+   "Other:eight methods",
+   "Other:framework",
+   "Other:generation of predictable numbers or identifiers vulnerability",
+   "Other:malicious packages",
+   "Other:natural language cve (common vulnerability exposure) descriptions",
+   "Other:parameter scaling",
+   "Other:pddl-encoded attack paths",
+   "Other:remote authenticated attacker",
+   "Other:simple tf-idf classifier",
+   "Other:sonatype",
+   "Platform:chatgpt instant 5.3",
+   "Platform:claude sonnet 4.6",
+   "Platform:gemini 3 flash",
+   "Platform:gpt-4",
+   "Platform:gpt-5.5",
+   "Platform:ivanti connect secure",
+   "Platform:large language models (llms)",
+   "Platform:plex media server",
+   "Platform:teacher-student framework",
+   "Tool:claude opus~5",
+   "Tool:cve2ap",
+   "Tool:darknight",
+   "Tool:large language models (llms)",
+   "Tool:llama 3.1 8b",
+   "Tool:mistral 7b",
+   "Tool:secroberta"
+  ],
+  "edges": [
+   [
+    "Platform:plex media server",
+    "Malware:server-side request forgery (ssrf) vulnerability",
+    "related-to"
+   ],
+   [
+    "Tool:large language models (llms)",
+    "Campaign:cybersecurity tweet classification",
+    "provides"
+   ],
+   [
+    "Other:sonatype",
+    "Other:malicious packages",
+    "related-to"
+   ],
+   [
+    "Tool:llama 3.1 8b",
+    "Other:simple tf-idf classifier",
+    "related-to"
+   ],
+   [
+    "Tool:secroberta",
+    "Other:simple tf-idf classifier",
+    "related-to"
+   ],
+   [
+    "Tool:mistral 7b",
+    "Other:65.7%",
+    "related-to"
+   ],
+   [
+    "Other:framework",
+    "Other:97% accuracy",
+    "related-to"
+   ],
+   [
+    "Other:framework",
+    "Platform:gpt-4",
+    "uses"
+   ],
+   [
+    "Other:framework",
+    "Other:eight methods",
+    "related-to"
+   ],
+   [
+    "Tool:cve2ap",
+    "Platform:large language models (llms)",
+    "uses"
+   ],
+   [
+    "Tool:cve2ap",
+    "Other:natural language cve (common vulnerability exposure) descriptions",
+    "targets"
+   ],
+   [
+    "Tool:cve2ap",
+    "Other:pddl-encoded attack paths",
+    "related-to"
+   ],
+   [
+    "Platform:gpt-5.5",
+    "Other:best quality-cost trade-off",
+    "related-to"
+   ],
+   [
+    "Tool:darknight",
+    "Other:parameter scaling",
+    "related-to"
+   ],
+   [
+    "Tool:darknight",
+    "Tool:claude opus~5",
+    "related-to"
+   ],
+   [
+    "Platform:teacher-student framework",
+    "Tool:large language models (llms)",
+    "uses"
+   ],
+   [
+    "Campaign:memory injection",
+    "Platform:chatgpt instant 5.3",
+    "targets"
+   ],
+   [
+    "Campaign:memory injection",
+    "Platform:claude sonnet 4.6",
+    "targets"
+   ],
+   [
+    "Campaign:memory injection",
+    "Platform:gemini 3 flash",
+    "targets"
+   ],
+   [
+    "Platform:ivanti connect secure",
+    "Malware:authentication bypass by spoofing vulnerability",
+    "related-to"
+   ],
+   [
+    "Platform:ivanti connect secure",
+    "Other:generation of predictable numbers or identifiers vulnerability",
+    "related-to"
+   ],
+   [
+    "Other:generation of predictable numbers or identifiers vulnerability",
+    "Other:remote authenticated attacker",
+    "related-to"
+   ]
+  ]
+ }
+}

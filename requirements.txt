@@ -1,0 +1,12 @@
+# Versions as actually run on the recording machine (single RTX 4090, CUDA 12.4).
+# Pinned because every number in runs/ was produced with these.
+numpy==1.26.4
+scipy==1.13.1
+networkx==3.3
+PyYAML==6.0.2
+matplotlib
+torch==2.5.1
+transformers
+
+# The LLM arm uses Qwen2.5-7B-Instruct through transformers.generate
+# (no vLLM). Model weights are NOT redistributed here; see README §Reproducing.

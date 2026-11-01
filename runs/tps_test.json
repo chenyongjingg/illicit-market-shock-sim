@@ -1,0 +1,10 @@
+{
+ "load_s": 4.409732341766357,
+ "gen_s": 8.85892939567566,
+ "n_prompts": 16,
+ "batch_size": 8,
+ "max_new_tokens": 384,
+ "chars": 7422,
+ "s_per_prompt": 0.5536830872297287,
+ "prompts_per_min": 108.36523885929243
+}

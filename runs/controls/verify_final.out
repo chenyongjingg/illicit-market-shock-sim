@@ -1,0 +1,27 @@
+# script sha256
+6ff011fe36d77133fc2264ed7d86d0ec2613f5b032da4cf39f9688aee92be9c8  _verify_final.py
+# tree read on the pod
+55505a71431cff70
+# utc
+2026-11-01T06:20:57Z
+# produced by: operator workstation, driving the pod over ssh (pod.py); all values read from
+#   /root/mdpi3/runs/analysis.json and /root/mdpi3/runs/q_checklist.json on the pod
+# rc
+0
+--- stdout ---
+PASS  bh_primary states its own member count  n_tests=2
+PASS  bh_exploratory states its own member count  n_tests=4
+PASS  rq2_bh states its own size, or refuses with a reason  {"status": "NOT_ESTIMABLE", "reason": "rq2 status=FIDELITY_UNRESOLVED"}
+PASS  the rq2_bh refusal names the families it was NOT applied to  gate=['rq2_bh'] not_applied_to=['bh_primary', 'bh_exploratory']
+PASS  logrank is a real test or explicitly NOT_RUN  {"chi2": 28.66586064162519, "p": 8.600666678848512e-08, "n_events": 518}
+PASS  sensitivity status is explicit  ORDER_DEPENDENT
+PASS  fidelity_status is one of three states  UNRESOLVED
+PASS  zero-width sweep ran and labelled everything  n=8
+PASS  Q-table statuses are three-valued  {"Q1": "PASS", "Q2": "PASS", "Q3": "FAIL/NA", "Q4": "PASS", "Q5": "PASS", "Q6": "PASS", "Q7": "PASS", "Q8": "PASS", "Q9": "DEFERRED", "Q10": "PASS", "Q11": "FAIL/NA", "Q12": "PASS", "Q13": "FAIL/NA"}
+PASS  Q9 DEFERRED and Q10 PASS  Q9=DEFERRED Q10=PASS
+PASS  tost se stored, not re-derived  se=0.25558058185750065 se_source='sd across bootstrap replicate means (stored by s3_resilience)'
+PASS  tost says where its se came from and what the bootstrap unit was  sd across bootstrap replicate means (stored by s3_resilience) | subnet nodes (size-matched resample); degree-attack AUC only
+PASS  paired retention CI is the interval for the mean (not the observations)  [0.280692, 0.305987]
+PASS  the old spread-based ci95 is no longer emitted  ci95=None pred_int95=True
+
+14 passed, 0 failed

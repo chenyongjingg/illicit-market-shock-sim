@@ -1,0 +1,11 @@
+{
+ "nodes": 3461,
+ "edges": 2319,
+ "hidden": 64,
+ "isolated_nodes_in_embedding": 1432,
+ "n_note": "nodes = ALL graph nodes, including those with no non-self edge; s3_resilience and s3b_static project from edge endpoints only, so their n can be smaller by isolated_nodes_in_embedding",
+ "epochs": 60,
+ "objective": "link prediction (unsupervised)",
+ "label_leakage": "none; AI/traditional labels not used in training",
+ "final_loss": 0.5040820837020874
+}

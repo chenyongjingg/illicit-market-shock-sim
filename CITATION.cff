@@ -1,0 +1,21 @@
+cff-version: 1.2.0
+message: "If you use this code or the analysis outputs, please cite the paper and this repository."
+title: "illicit-market-shock-sim"
+type: software
+authors:
+  - family-names: "Chen"
+    given-names: "Yongjin"
+repository-code: "https://github.com/chenyongjingg/illicit-market-shock-sim"
+license: MIT
+version: "1.0.0"
+date-released: "2026-11-01"
+abstract: >-
+  Pre-registered agent-based pipeline measuring structural and dynamic
+  resilience of illicit online markets under enforcement shocks, built from
+  public threat-intelligence sources only.
+keywords:
+  - illicit markets
+  - resilience
+  - agent-based simulation
+  - enforcement shocks
+  - pre-registration

@@ -1,0 +1,10 @@
+{
+ "calls": 1947,
+ "cached": 0,
+ "new_tokens": 633230,
+ "prompt_tokens": 1100700,
+ "gen_seconds": 6525.280464172363,
+ "wall_seconds": 6530.5,
+ "calls_per_sec": 0.298,
+ "new_tokens_per_sec": 97.0
+}

@@ -1,0 +1,127 @@
+{
+ "generated_utc": "2026-11-01T05:41:39Z",
+ "gold_source": "MITRE ATT&CK enterprise STIX 2.1 (curated relationships)",
+ "documents_evaluated": 120,
+ "gold_relation_instances": 42,
+ "text_source": "documents.jsonl, truncated at text_chars_cap=4000 (the text the model saw)",
+ "text_reconstruction_mismatches": 0,
+ "text_reconstruction_checked": 120,
+ "entity_surface_form_agreement": {
+  "precision": 0.5767045454545454,
+  "recall": 0.6023738872403561,
+  "f1": 0.5892597968069666,
+  "tp": 203,
+  "fp": 149,
+  "fn": 134
+ },
+ "entity_metric_note": "string-based surface-form agreement, NOT semantic entity F1",
+ "entity_precision_caveat": "gold contains only ATT&CK-typed objects, so any other entity the text genuinely mentions is scored as a false positive; the entity precision/F1 here is a lower bound and must not be quoted as extraction precision",
+ "relation_micro": {
+  "precision": 0.03184713375796178,
+  "recall": 0.11904761904761904,
+  "f1": 0.05025125628140704,
+  "tp": 5,
+  "fp": 152,
+  "fn": 37
+ },
+ "relation_per_type": {
+  "attributed-to": {
+   "precision": 0.0,
+   "recall": 0.0,
+   "f1": 0.0,
+   "tp": 0,
+   "fp": 6,
+   "fn": 2
+  },
+  "part-of": {
+   "precision": 0.0,
+   "recall": 0.0,
+   "f1": 0.0,
+   "tp": 0,
+   "fp": 12,
+   "fn": 0
+  },
+  "targets": {
+   "precision": 0.0,
+   "recall": 0.0,
+   "f1": 0.0,
+   "tp": 0,
+   "fp": 94,
+   "fn": 0
+  },
+  "uses": {
+   "precision": 0.1111111111111111,
+   "recall": 0.125,
+   "f1": 0.11764705882352941,
+   "tp": 5,
+   "fp": 40,
+   "fn": 35
+  }
+ },
+ "coverage": {
+  "schema_relation_types": 17,
+  "scored_relation_types": 4,
+  "relation_types_with_gold": 2,
+  "gold_instances": 42,
+  "documents_scored": 120,
+  "documents_extracted": 649
+ },
+ "relation_scored_only": {
+  "precision": 0.09803921568627451,
+  "recall": 0.11904761904761904,
+  "f1": 0.1075268817204301,
+  "tp": 5,
+  "fp": 46,
+  "fn": 37,
+  "interval95": {
+   "method": "document-level percentile bootstrap, 2000 resamples, seed 20261101",
+   "based_on": "relation_scored_only (types with at least one gold instance)",
+   "unit": "document",
+   "n_documents": 120,
+   "f1": [
+    0.024096,
+    0.195652
+   ],
+   "precision": [
+    0.021277,
+    0.1875
+   ],
+   "recall": [
+    0.028571,
+    0.222222
+   ]
+  }
+ },
+ "relation_unscored": {
+  "part-of": 12,
+  "targets": 94,
+  "reason": "gold has zero instances of this type -- every prediction of it was counted as a false positive in relation_micro. It is neither credited nor debited here, and it is NOT evidence that the model is wrong about it"
+ },
+ "relation_precision_caveat": "gold is built by requiring the relation TARGET's name to appear verbatim inside the capped document text (the same window the model saw), so a prediction linking two real entities whose target is not spelled out in that window is scored as a false positive. Precision is therefore a LOWER BOUND; recall is unaffected by this and remains the measure that can be defended.",
+ "entity_gold_construction": "verbatim substring match of ATT&CK object names/aliases",
+ "market_relations": {
+  "status": "NOT_ESTIMABLE",
+  "reason": "no independent gold for provides/trades/migrates-to/depends-on/substitutes/sells/buys"
+ },
+ "gate": {
+  "threshold": 0.8,
+  "applied_to": "relation_micro, i.e. the 4 of 17 schema relation types that map to a curated ATT&CK relationship (attributed-to, part-of, targets, uses), over 120 of 649 extracted documents, with 42 gold instances. It is NOT a statement about extraction quality in general.",
+  "status": "FAIL",
+  "status_if_zero_gold_types_excluded": "FAIL",
+  "evaluability": {
+   "gold_instances": 42,
+   "f1_interval95": [
+    0.024096,
+    0.195652
+   ],
+   "threshold_attainable": false,
+   "note": "v2 §2.3: with 42 gold instances one hit is worth 2.4 points of recall; the threshold 0.8 is carried from pre-registration and is NOT lowered here. Whether it is attainable at this gold size is reported as an interval rather than asserted either way."
+  },
+  "name": "relation_gate",
+  "market_edges_status": "UNVALIDATED_RELATION (excluded from gate; flagged in graph)",
+  "entity_gate": {
+   "status": "NOT_ESTIMABLE",
+   "reason": "plan §5.1 asks for entity F1 as well; there is no semantic entity gold set, and surface-form agreement is not F1. The gate covers relations only and must not be read as an overall PASS."
+  }
+ }
+}

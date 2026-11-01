@@ -1,0 +1,17 @@
+__pycache__/
+*.pyc
+.DS_Store
+.venv/
+venv/
+
+# Model weights (15 GB) are not part of this repository.
+models/
+*.safetensors
+*.bin
+*.gguf
+
+# Re-fetched corpora land here; only the provenance record is committed.
+data/raw/*.json
+data/raw/*.jsonl
+data/raw/misp_events/
+!data/raw/ingest_report.json

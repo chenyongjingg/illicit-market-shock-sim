@@ -1,0 +1,16 @@
+# script sha256
+075c32e12f0d3eac3ceaccf97835db91fc7041816d54d620dacbd368ceefcbfd  ctrl_ci_d99.py
+# tree
+bc0a7d78fed0256e
+# utc
+2026-11-01T06:12:58Z
+--- stdout ---
+code root: /root/mdpi3/code
+s5_analyze: /root/mdpi3/code/s5_analyze.py
+NEG-OLD          GUARD_FIRED  observations instead of estimator: 95% interval half-width 0.551329 is 43.90x the 1.96*SE bound 0.0125596 (allowed (0.5, 2.5)). An interval built from the OBSERVATIONS instead of from the ESTIMATOR fails this check (D-95
+POS              PASSED
+                  ratio (bad halfwidth / 1.96*SE) = 43.90
+NEG-DEGEN        GUARD_FIRED  zero spread, non-degenerate interval: the replicate spread is ~0 but the printed interval is not degenerate (half-width 0.1) -- a zero-variance sample cannot produce a non-zero CI for its own mean (D-99)
+POS-DEGEN        PASSED  [labelled]
+                  label: width 0.0e+00: the resampling units are identical (up to floating-point noise), so this width carries NO information about precision -- read the point estimate,
+CONTROL_PASS

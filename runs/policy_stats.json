@@ -1,0 +1,49 @@
+{
+ "generated_utc": "2026-11-01T05:42:21Z",
+ "states": 1200,
+ "state_space": 10125,
+ "exact_coverage_of_state_space": 0.11851851851851852,
+ "coarse_states": 135,
+ "role_entries": 3,
+ "heldout_n": 200,
+ "heldout_exact_covered": 0,
+ "heldout_exact_covered_frac": 0.0,
+ "heldout_exact_covered_note": "held-out states are disjoint from the 1200 table states by construction, so exact-level coverage is 0 unless the split leaks; a 0 here is not evidence about table quality",
+ "heldout_lookup_levels": {
+  "coarse": 200
+ },
+ "agreement_lookup": 0.74,
+ "agreement_lookup_ci95_wilson": [
+  0.6750925439746589,
+  0.7958616993642531
+ ],
+ "agreement_exact": null,
+ "agreement_exact_reason": "no held-out state reached the exact lookup level (coverage 0), so this ratio has no denominator; `agreement_lookup` is the only rate here that is defined",
+ "lookup_note": "agreement_lookup compares a live LLM call on 200 DISJOINT held-out states against the two-level lookup (exact -> coarse -> role) that the simulator uses",
+ "policy_action_distribution": {
+  "migrate": 405,
+  "substitute": 292,
+  "stay": 396,
+  "exit": 103,
+  "expand": 4
+ },
+ "unparseable_states": 0,
+ "unparseable_note": "states where all 3 samples failed to parse an action; the row is held at 'stay' so the simulator has an entry, and each such row is marked source=filler. The stay share in policy_action_distribution mixes real and filler stays unless this count is subtracted.",
+ "pre_registered_threshold": 0.7,
+ "tie_break": "votes, then order stay<migrate<substitute<expand<exit",
+ "llm": {
+  "calls": 0,
+  "cached": 3800,
+  "new_tokens": 0,
+  "prompt_tokens": 0,
+  "gen_seconds": 6.198883056640625e-06,
+  "wall_seconds": 4.8,
+  "calls_per_sec": 0.0,
+  "new_tokens_per_sec": 0.0
+ },
+ "faithful_point_only": true,
+ "faithful": false,
+ "faithful_metric": "agreement_lookup",
+ "faithful_rule": "point estimate >= threshold AND Wilson 95% lower bound >= threshold; `faithful_point_only` is the point-estimate reading and is NOT the gate",
+ "faithful_reason": "point estimate 0.740 >= 0.7 but the 95% interval [0.675, 0.796] crosses the threshold: not established at n=200. H2 fidelity is reported as UNRESOLVED, not as NON_FAITHFUL -- the data cannot separate the two."
+}
