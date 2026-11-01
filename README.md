@@ -70,6 +70,24 @@ The full ledger, including the exact value each check saw, is `runs/q_checklist.
 - **The numbers describe a simulator, not the world.** `r_composite` measures the model's response to
   a modelled shock; it is not an estimate of real-world market resilience.
 
+## Data provenance
+
+Every document comes from a public feed. The record below is what `data/raw/ingest_report.json`
+captured at ingest time — URL, byte count, sha256 and document count per source:
+
+| Source | Status | Documents | Bytes |
+|---|---|---|---|
+| MITRE ATT&CK STIX 2.1 | OK | 1,077 | 55,271,014 |
+| CISA KEV | OK | 1,766 | 1,826,755 |
+| CIRCL MISP OSINT | OK | 419 | 1,428,771 |
+| arXiv metadata | OK | 274 | — |
+| Public vendor pages | OK | 53 | — |
+| abuse.ch (URLhaus/ThreatFox) | `NEEDS_AUTH_OR_REMOVED` (HTTP 410) | 0 | — |
+| AlienVault OTX | `NEEDS_API_KEY` | 0 | — |
+
+3,589 documents before deduplication, **3,454 after** (135 dropped), of which 249 are AI-relevant.
+The two unavailable sources are recorded as unavailable rather than silently skipped.
+
 ## Reproducing
 
 **Verify the release (any machine, ~2 s, no GPU):**
