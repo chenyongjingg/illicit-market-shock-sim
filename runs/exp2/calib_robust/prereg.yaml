@@ -1,0 +1,284 @@
+schema: mdpi3-prereg/1
+exp_id: calib_robust
+package: 3
+tag: exp_window_2
+title: "Strategy-ranking robustness to +-50% perturbation of two calibration constants -- EXPLORATORY"
+status: EXPLORATORY
+written_utc: "2026-11-01T07:52:45Z"
+written_utc_source: "assigned on the pod by the registering script from `date -u`; never typed"
+
+# ============================================================================
+# PREMISE FINDING -- recorded BEFORE execution, and it changes the design
+# ============================================================================
+premise_finding: |
+  The mandate names two parameters: 迁移成本系数 (migration cost coefficient) and 风险厌恶系数
+  (risk aversion coefficient). NEITHER NAME EXISTS ON THIS TREE, and the second names an object
+  the model does not contain.
+
+  Where this was checked (`MDPI3_现状基线计划书_v6.md`, 142,644 B, plan of record):
+    grep -nE "迁移成本|风险厌恶|migration cost|risk aversion|risk-aversion"  ->  0 matches
+    grep -cE "迁移"                                                          ->  0
+  Positive control that the search instrument fires on the same file:
+    grep -cE "策略|场景|仿真"  ->  34 matches, e.g. line 17 and line 28.
+  A zero from a detector that has been shown to fire is evidence; this one was shown to fire
+  before the zero was read (D-116 discipline).
+
+  The plan states in §28 that the deliverable includes "63 个治理场景的策略排序" -- a strategy
+  ranking -- but it never parameterises the two knobs the mandate asks me to perturb. The mandate
+  is therefore asking a well-posed question (is the ranking robust to calibration?) about two
+  parameters that were supplied by the mandate rather than derived from the plan or the code.
+
+parameter_identification: |
+  Perturbing a name that does not exist would produce a file describing an experiment nobody ran.
+  What I did instead, and it is part of the frozen design rather than a choice made later:
+
+  (P1) "migration cost coefficient" -> maps to ONE literal, `code/s4_sim.py:127`, in
+       `_apply_action`, migrate branch, sellers only:  `agents["cap"][i] *= 0.9`
+       (the Mesa mirror at line 318 is `self.cap *= 0.9`, same literal).
+       The literal 0.9 is a RETENTION factor, not a cost. The cost is c0 = 1 - 0.9 = 0.10.
+       **The multiplier is applied to c, not to 0.9.** This is not a stylistic choice: 1.5 x 0.9
+       = 1.35 is a migration that INCREASES a seller's capacity, i.e. no longer a cost at any
+       reading. Perturbing the retention factor would have silently turned a cost into a subsidy
+       at exactly the point the prereg calls "high cost". So: c in {0.05, 0.10, 0.15} and the
+       multiplier written into the code is (1 - c) in {0.95, 0.90, 0.85}.
+
+  (P2) "risk aversion coefficient" -> DOES NOT EXIST. This model has no utility function, no
+       payoff curvature and no preference parameter, so there is nothing for a risk-aversion
+       coefficient to be. The only risk-related scalar in the simulator is the
+       ENFORCEMENT-RISK-PERCEPTION STEP: `code/s4_sim.py:216` (vectorised engine),
+         `agents["risk"][i] = min(4, agents["risk"][i] + 2)`
+       executed once, at t == T0, for every agent on a platform whose service was removed by the
+       A shock; it is mirrored at line 337 in the Mesa engine. `risk` is a state dimension that
+       the policy table keys on (line 152: `int(min(4, agents["risk"][i]))`), so changing the
+       step changes WHICH POLICY ROW agents look up -- which is exactly the mechanism by which a
+       calibration constant can move the strategy ranking.
+       This object is named `enforcement_risk_step` everywhere in this package. **It is not
+       called "risk aversion" and must never be written as risk aversion in the paper**: risk
+       aversion is a preference, this is a perception response to an enforcement shock. The
+       mandate's name is retained only in this paragraph, where it is being rejected.
+
+  Both identifications are registered as deviation D-118 in DEVIATIONS_window2.md.
+
+# ============================================================================
+# Frozen inputs
+# ============================================================================
+inputs:
+  - {path: code/s4_sim.py,      sha256: 4560094b957a2ba08618b4a060b42d637064b3e658f00f876b402462fa165976, bytes: 29303, role: "the simulator; the ONLY file whose two literals are substituted, and the substitution happens in a copy OUTSIDE code/"}
+  - {path: runs/policy.json,    sha256: cf0e045ef326c478b74d1f5381840af6ea50e94c473cf03b0680e88d07067005, bytes: 259118, role: "the frozen 1200-state policy table; reused as-is, no LLM is queried by this package"}
+  - {path: runs/sim_runs.jsonl, sha256: ba0129913f202fcbb8fb3290ddf22e1c2e66a6096eb75a4c52f7432d37542c82, bytes: 3962707, role: "the delivered simulation grid; the bit-for-bit reproduction target of control C1"}
+  - {path: runs/analysis.json,  sha256: 7f7f8928f45e28e8c340617ea467f9fd5331ab28b7a80ed96ba1280d24dff3c3, role: "delivered analysis; source of the weights and the t_rec censoring convention"}
+  - {path: code/config.yaml,    sha256: 5749ad4ee40194b1f45c9447674058867ca9caff6a3b33088c878e033ab514f7, role: "scenarios, seeds, weights, t_max, n_turns"}
+  - {path: data/graph/resilience.json, sha256: a922245558d1490b0dea5418c168edf231442a90afb99a775a4d630fbe9dea62, role: "frozen structural term; NOT perturbed by this package"}
+  - {path: runs/exp2/attack_orders_ext/orders_ext.json, sha256: c057c312b7ececcceacc7896b2779a7a845fbc451c4342ae3644d41733f70aac, role: "package 1's 63-scenario composite-R ranking under order group G1; control C3 compares against it"}
+
+code_hash_expected: f4328c4a7b0c1b5a
+
+# ============================================================================
+# Parameterisation route -- forced by the invariant, declared before running
+# ============================================================================
+parameterisation:
+  why_a_copy: |
+    The two constants are inline literals inside `code/`. Editing them in place would change
+    `code_hash()` away from `f4328c4a7b0c1b5a`, which is the hash every delivered artefact in
+    window 1 was produced under. The correct move is not to touch `code/` at all.
+  route: |
+    `runs/exp2/calib_robust/sim/s4_sim_param.py` is a byte copy of `code/s4_sim.py` with exactly
+    THREE deltas, all declared here:
+      (1) a prepended header comment block (comments only, no executable line),
+      (2) line 127  `agents["cap"][i] *= 0.9`              -> `*= (1.0 - MIG_COST)`
+      (3) line 216  `agents["risk"][i] = min(4, agents["risk"][i] + 2)`
+                                                          -> `+ RISK_STEP)`
+    plus a constant block reading `EXP2_MIG_COST` and `EXP2_RISK_STEP` from the environment and
+    REFUSING to run if either is unset. No default is provided on purpose: a default would let a
+    mistyped invocation silently run the baseline point under another name. The header is PREPENDED
+    so that the body of the copy can be diffed against the original directly.
+  mesa_mirrors_left_untouched: |
+    The Mesa engine carries the same two literals at lines 318 (`self.cap *= 0.9`) and 337
+    (`a.risk = min(4, a.risk + 2)`). They are deliberately NOT parameterised. The reason is
+    measured, not assumed: every row of the delivered `sim_runs.jsonl` records `"engine": "vec"`
+    (`s4_sim.py:249`), so the vectorised engine is the one that produced every number this package
+    compares against, and parameterising a code path that no compared row ever executes would be
+    decoration. This package runs the vectorised engine only. If a future window wants the Mesa
+    engine, it needs its own prereg.
+  observer_is_inert: |
+    The migrate-action counter (`n_migrate_seller`) is implemented by wrapping the module-global
+    `_apply_action` with a function that increments a counter and then calls the original. It
+    changes no argument and no return value. Control C1 is what proves it: the baseline point is
+    regenerated with the observer installed and must match the delivered grid byte for byte.
+  structural_proof: |
+    Control C2. The copy's body (everything after the prepended header) is diffed against
+    `code/s4_sim.py` and the diff is written to `runs/exp2/calib_robust/s4_sim_param.diff`. It must
+    contain exactly TWO removed lines and TWO added lines, and the two removed lines must be
+    exactly the two original literals quoted above. **Zero** other changed lines are permitted. If
+    anything else differs, the package is VOID: a sweep run on a simulator that differs in an
+    undeclared way measures the undeclared difference.
+  code_hash_stays: |
+    `code_hash()` is recomputed before and after the whole package and must read
+    `f4328c4a7b0c1b5a` both times. The copy lives under `runs/`, not `code/`, so it cannot enter
+    the hash.
+
+# ============================================================================
+# Design, fixed before execution
+# ============================================================================
+design:
+  grid:
+    migration_cost_c:        [0.05, 0.10, 0.15]     # 0.5x, 1.0x, 1.5x of c0 = 0.10
+    enforcement_risk_step:   [1, 2, 3]              # 0.5x, 1.0x, 1.5x of delta0 = 2 (integer states)
+    points: 9
+    baseline_point: {migration_cost_c: 0.10, enforcement_risk_step: 2}
+    note: "9 = 3 x 3 full factorial; no trimming was needed, see budget_gate."
+  runs_per_point: 1890
+  runs_per_point_detail: |
+    63 scenarios x 30 seeds x 1 arm (llm). The composite-R ranking is DEFINED on the llm arm
+    (`composite_by_group` skips `arm != "llm"`), so running the rule arm would double the cost
+    and change no endpoint. The ONE exception is the baseline point, which additionally runs the
+    rule arm (63 x 30 x 2 = 3,780 runs) because control C1 is a bit-for-bit reproduction of the
+    whole delivered `sim_runs.jsonl`, which contains both arms.
+  total_runs: 18900
+  total_runs_arithmetic: "9 x 1890 + 1890 (baseline's second arm) = 17,010 + 1,890 = 18,900"
+  policy_reuse: |
+    `runs/policy.json` is read once and reused at every point. No LLM call is made by this
+    package, so no re-query is triggered and no policy-table cell is regenerated. Changing an
+    environment constant changes WHICH cell is read, not what the cell says -- that is the entire
+    mechanism this package tests.
+  composite_R: |
+    Recomputed per run with the frozen formula (`s5_analyze.py:1177-1196`, re-derived by package
+    1's `composite_by_group`):
+      comp = wa*clip(r_struct[A],0,1) + wb*clip(r_dyn,0,1) + wg*(1 - t_rec_censored/t_max)
+    with weights normalised by their sum and t_max from config. The structural term depends on
+    the A level ONLY and is read from the frozen `resilience.json`; calibration constants cannot
+    touch it, and this package does not recompute it.
+
+endpoint:
+  primary: |
+    Per point, the 63-scenario composite-R vector, each scenario averaged over its 30 llm seeds.
+    Compared against the baseline point by (i) Spearman rho over the 63 scenarios and (ii) the
+    size of the intersection of the two top-10 sets.
+  secondary: |
+    Within-stratum comparison (scenarios sharing an (A,B,C) pattern), reported but not decisive,
+    because most strata contain fewer than 10 members and a rank correlation over 3-4 items is
+    not a stability claim.
+
+decision_rule: |
+  Written before execution and not changed afterwards.
+  The ranking is declared ROBUST to +-50% calibration perturbation if and only if, for ALL EIGHT
+  non-baseline points:
+      Spearman rho >= 0.9   AND   |top10(point) INTERSECT top10(baseline)| >= 8
+  Anything else is reported as NOT ROBUST for the points that fail, with the honest rho printed
+  for every point (never only the worst one). If NOT ROBUST, the five most unstable scenarios are
+  listed, ranked by |rank(point) - rank(baseline)| over all eight points summed, ties broken by
+  scenario string ascending.
+  The verdict is reported per point AND as a single all-eight conjunction. A per-point pass must
+  not be reported as "the ranking is robust" -- what was established is that the ranking survived
+  that point.
+
+# ============================================================================
+# Discriminability, fixed before results (D-117b discipline)
+# ============================================================================
+discriminability:
+  measured_scenario_levels: {A0: 15, A1: 16, A2: 16, A3: 16}
+  enforcement_risk_step_is_blind_on_A0: |
+    The risk step is applied ONLY inside `if t == T0 and levels.get("A", 0):` (`s4_sim.py:207`).
+    For the 15 scenarios with A = 0 the step is never executed, so all three delta values produce
+    IDENTICAL trajectories. Those 15 rows are invariant BY CONSTRUCTION, and a rho computed over
+    all 63 will be pulled toward 1 by them.
+    Reporting rule: every point reports rho over all 63 AND rho over the 48 A>0 scenarios
+    separately, and the file prints, beside the all-63 number, the sentence "15 of 63 scenarios
+    cannot move under this parameter; the all-63 rho is not a stability measurement on its own".
+    The decision rule is applied to BOTH numbers; a point passes only if both pass.
+  migration_cost_is_blind_where_nobody_migrates: |
+    If a point's action trace records zero seller migrations, the migration knob had no input and
+    its rho is not evidence about migration cost. Each point therefore records
+    `n_migrate_seller` (count of migrate actions applied to seller agents). A point with
+    n_migrate_seller == 0 is flagged UNEXERCISED and its rho is reported with that flag; it is
+    not counted as a pass.
+  sweep_must_move_something: |
+    Control C4: the (0.5x cost, 1.5x risk) corner must produce a ranking that differs from the
+    baseline (rho < 1 exactly, or a non-empty symmetric difference in the top-10). If all eight
+    non-baseline points return rho == 1 exactly, the sweep is declared UNDISCRIMINATIVE and the
+    package reports NOT_ESTIMABLE-because-inert rather than "robust": a knob that moves nothing
+    has not been shown to be safe to move.
+
+# ============================================================================
+# Budget gate -- measured, not assumed
+# ============================================================================
+budget_gate:
+  measured_utc: "2026-11-01T07:49:44Z"
+  measured_by: "ops/_exp2_sim_timing.py, 6 runs over the smallest, a mid and the largest scenario, seeds 0 and 1"
+  per_run_seconds: {mean: 0.0403, min: 0.0395, max: 0.0411}
+  projected_total_seconds: 761.7
+  projected_total_hours: 0.2116
+  planning_horizon_hours: 6.0
+  planning_horizon_is_declared_not_measured: |
+    The remaining service budget is NOT measurable from inside this window (window 1 recorded
+    `budget_measurable: false`, and that has not changed). A 60% gate needs a denominator, so the
+    denominator is DECLARED: 6.0 hours of wall clock available to this package. This is a stated
+    planning assumption, not a measurement, and it is written here so that a reader can redo the
+    arithmetic with their own horizon.
+  gate: "trim to 5 points if projected_total_seconds > 0.60 * planning_horizon_hours * 3600"
+  outcome: "PASS without trimming -- 761.7 s is 3.53% of 21,600 s (the 60% threshold is 12,960 s). The full 3x3 grid runs."
+  fallback_if_over: |
+    Not used, recorded so the rule is not retro-fitted: trim to the four corners plus the centre
+    {(0.05,1), (0.05,3), (0.15,1), (0.15,3), (0.10,2)}, state the trimming reason in this file,
+    and if that still exceeded the gate, SKIPPED + registered as a row.
+
+# ============================================================================
+# Controls -- the package is VOID if any fails
+# ============================================================================
+controls:
+  C1_baseline_reproduces_delivered_grid: |
+    At (c=0.10, delta=2) the simulator must reproduce `runs/sim_runs.jsonl` EXACTLY: 3,780 rows,
+    every row's every field equal, row order equal, after the same json.dumps settings. This is
+    the only control that proves the parameterised copy is the pipeline's own simulator and not a
+    near-copy whose rounding or engine path silently differs. A single differing float voids the
+    package -- there is no tolerance, because there is no arithmetic reason for one.
+  C2_declared_deltas_only: "see parameterisation.structural_proof."
+  C3_agrees_with_package_1: |
+    At the baseline point the 63-scenario composite-R ranking must equal the ranking package 1
+    computed from the frozen `sim_runs.jsonl` under order group G1 (`orders_ext.json`). Both are
+    ranked over the same 63 scenarios by the same formula; a mismatch means my composite
+    recomputation has drifted between the two packages.
+  C4_sweep_moves_something: "see discriminability.sweep_must_move_something."
+  C5_code_hash_unchanged: |
+    `code_hash()` == `f4328c4a7b0c1b5a` before and after, and `sha256(code/s4_sim.py)` is
+    unchanged from the value pinned in `inputs`. The parameterised copy must not be able to
+    change what the delivered tree computes.
+
+# ============================================================================
+# Isolation and reporting
+# ============================================================================
+isolation:
+  write_root: "runs/exp2/calib_robust/"
+  sim_output: "runs/exp2/calib_robust/sim/"
+  forbidden: |
+    Nothing is written to runs/ outside runs/exp2/. The main grid, the delivered artefacts, the
+    frozen policy table and the graph are opened read-only. The main-grid byte check is taken
+    before this package and again after it.
+  frozen_before_rerun: |
+    Any re-execution of this package freezes the previous `calib_robust.json`, its log and its
+    point table into `runs/exp2/calib_robust/superseded/` with a `frozen_utc.txt`, and the
+    re-execution is diffed leaf by leaf against the frozen copy before anything is registered.
+
+reporting:
+  heading: "EXPLORATORY"
+  scope: "Does not enter the main evidence chain and does not enter bh_primary. The paper may cite it only as an exploratory robustness check of the 63-scenario ranking."
+  parameter_naming: |
+    Every output label says `migration_cost_c` and `enforcement_risk_step`. The string "risk
+    aversion" appears only in the premise_finding paragraph above, where it is the name being
+    rejected. A caption that revives it would be re-importing the mandate's mis-description into
+    the artefact.
+  p_wording: |
+    No p-value is computed or quoted by this package. If one becomes relevant it obeys D-115.
+
+freeze_rule: |
+  Registered in MANIFEST.artifacts.jsonl before execution. Any later change to the grid, the
+  parameter identification, the endpoint, the decision rule, the discriminability reporting or
+  the control set voids the package and reopens it under a new exp_id.
+
+outputs:
+  - runs/exp2/calib_robust/prereg.yaml
+  - runs/exp2/calib_robust/s4_sim_param.diff
+  - runs/exp2/calib_robust/points.json
+  - runs/exp2/calib_robust/calib_robust.json
+  - runs/exp2/calib_robust/calib_robust.txt
+  - runs/exp2/calib_robust/run.log

@@ -1,0 +1,336 @@
+{
+ "schema": "mdpi3-exp2-calib/1",
+ "exp_id": "calib_robust",
+ "status": "EXPLORATORY",
+ "generated_utc": "2026-11-01T08:08:12Z",
+ "prereg_sha256": "205b881f72be7b39f98554d8a260305de00f4b08898904d3f32df10700e63514",
+ "code_hash": "f4328c4a7b0c1b5a",
+ "inputs": {
+  "code/s4_sim.py": "4560094b957a2ba08618b4a060b42d637064b3e658f00f876b402462fa165976",
+  "runs/policy.json": "cf0e045ef326c478b74d1f5381840af6ea50e94c473cf03b0680e88d07067005",
+  "runs/sim_runs.jsonl": "ba0129913f202fcbb8fb3290ddf22e1c2e66a6096eb75a4c52f7432d37542c82",
+  "runs/exp2/attack_orders_ext/orders_ext.json": "c057c312b7ececcceacc7896b2779a7a845fbc451c4342ae3644d41733f70aac",
+  "sim/s4_sim_param.py": "e8ad0d51e6f9489db8f2322d4e0790c85f1ee5883676d63e57bcd7a11ca29bb5"
+ },
+ "parameterisation": {
+  "mig_cost_source": "code/s4_sim.py:127 agents[\"cap\"][i] *= 0.9",
+  "risk_step_source": "code/s4_sim.py:216 agents[\"risk\"][i] = min(4, ... + 2)",
+  "diff_sha256": "f154e88d26b098e70e45fd0f0ac475968a411f12c21050aa3709f516872078b7",
+  "code_hash_unchanged": true
+ },
+ "r_struct_by_level_G1": {
+  "0": 0.09543313172043012,
+  "1": 0.09394020270270273,
+  "2": 0.09213248574144488,
+  "3": 0.0903720682302772
+ },
+ "weights_normalised": {
+  "alpha": 0.3333333333,
+  "beta": 0.3333333333,
+  "gamma": 0.3333333334
+ },
+ "controls": {
+  "C1_bit_for_bit": {
+   "frozen_sha256": "ba0129913f202fcbb8fb3290ddf22e1c2e66a6096eb75a4c52f7432d37542c82",
+   "regenerated_sha256": "ba0129913f202fcbb8fb3290ddf22e1c2e66a6096eb75a4c52f7432d37542c82",
+   "frozen_bytes": 3962707,
+   "regenerated_bytes": 3962707,
+   "passes": true
+  },
+  "C3_package1_agreement": {
+   "max_abs_delta": 0.0,
+   "n_scenarios": 63,
+   "passes": true
+  },
+  "C4_sweep_moves": {
+   "points_changed": [
+    "0",
+    "2",
+    "3",
+    "5",
+    "6",
+    "8"
+   ],
+   "n_changed": 6,
+   "passes": true
+  }
+ },
+ "baseline_point": {
+  "index": 4,
+  "migration_cost_c": 0.1,
+  "enforcement_risk_step": 2,
+  "composite_means": {
+   "A1": 0.6617333554012597,
+   "A2": 0.27082542234081386,
+   "A3": 0.1974975829417744,
+   "B1": 0.6778275406797092,
+   "B2": 0.6076875712327792,
+   "B3": 0.3178438978010021,
+   "C1": 0.6774083285499966,
+   "C2": 0.6068271878240104,
+   "C3": 0.31683387930697665,
+   "A1+B1": 0.46606253973161244,
+   "A1+B2": 0.3242585262268568,
+   "A1+B3": 0.29705228560827823,
+   "A2+B1": 0.26072856364734587,
+   "A2+B2": 0.24948706086409272,
+   "A2+B3": 0.23676210564422892,
+   "A3+B1": 0.19016637961404045,
+   "A3+B2": 0.18195339041203035,
+   "A3+B3": 0.1727691326995255,
+   "A1+C1": 0.44954354597701246,
+   "A1+C2": 0.3120197541872261,
+   "A1+C3": 0.2954635132994533,
+   "A2+C1": 0.26045293600137354,
+   "A2+C2": 0.2488339775562776,
+   "A2+C3": 0.236120165754041,
+   "A3+C1": 0.19061280013899115,
+   "A3+C2": 0.18300407702056135,
+   "A3+C3": 0.1745838756261819,
+   "B1+C1": 0.6651443772716292,
+   "B1+C2": 0.32399609352426734,
+   "B1+C3": 0.30764462378245905,
+   "B2+C1": 0.32441713450303833,
+   "B2+C2": 0.31181104387562897,
+   "B2+C3": 0.29723878063446924,
+   "B3+C1": 0.308475260593541,
+   "B3+C2": 0.2976560892353772,
+   "B3+C3": 0.28514437721162894,
+   "A1+B1+C1": 0.3247664256503406,
+   "A1+B1+C2": 0.302285327851796,
+   "A1+B1+C3": 0.2870129828256722,
+   "A1+B2+C1": 0.3030244533882186,
+   "A1+B2+C2": 0.2911328292934213,
+   "A1+B2+C3": 0.2774611534344849,
+   "A1+B3+C1": 0.2883128719907411,
+   "A1+B3+C2": 0.27818936902067243,
+   "A1+B3+C3": 0.26638812182716876,
+   "A2+B1+C1": 0.25161625483974154,
+   "A2+B1+C2": 0.24118552430760906,
+   "A2+B1+C3": 0.22942146233256042,
+   "A2+B2+C1": 0.24147491671555052,
+   "A2+B2+C2": 0.2324070873386693,
+   "A2+B2+C3": 0.221912103341441,
+   "A2+B3+C1": 0.2300451998883325,
+   "A2+B3+C2": 0.22221010251452597,
+   "A2+B3+C3": 0.213197919837597,
+   "A3+B1+C1": 0.18410769812566555,
+   "A3+B1+C2": 0.17719143725520947,
+   "A3+B1+C3": 0.16947577140228753,
+   "A3+B2+C1": 0.1767420398620439,
+   "A3+B2+C2": 0.17071781330955663,
+   "A3+B2+C3": 0.16376587729931172,
+   "A3+B3+C1": 0.16840083022842048,
+   "A3+B3+C2": 0.16330827707749082,
+   "A3+B3+C3": 0.15732792849344776
+  },
+  "top10": [
+   "B1",
+   "C1",
+   "B1+C1",
+   "A1",
+   "B2",
+   "C2",
+   "A1+B1",
+   "A1+C1",
+   "A1+B1+C1",
+   "B2+C1"
+  ]
+ },
+ "points": {
+  "0": {
+   "migration_cost_c": 0.05,
+   "enforcement_risk_step": 1,
+   "spearman_rho_all63": 0.9563172043010754,
+   "spearman_rho_A_gt_0_only_48": 0.9691706469821971,
+   "top10_intersection": 9,
+   "top10_entered": [
+    "A1+B2"
+   ],
+   "top10_left": [
+    "B2+C1"
+   ],
+   "max_rank_shift": 20,
+   "mean_abs_rank_shift": 3.365079365079365,
+   "n_migrate_seller": 120224,
+   "exercised": true,
+   "passes_rule": true
+  },
+  "1": {
+   "migration_cost_c": 0.05,
+   "enforcement_risk_step": 2,
+   "spearman_rho_all63": 1.0,
+   "spearman_rho_A_gt_0_only_48": 1.0,
+   "top10_intersection": 10,
+   "top10_entered": [],
+   "top10_left": [],
+   "max_rank_shift": 0,
+   "mean_abs_rank_shift": 0.0,
+   "n_migrate_seller": 0,
+   "exercised": false,
+   "passes_rule": false
+  },
+  "2": {
+   "migration_cost_c": 0.05,
+   "enforcement_risk_step": 3,
+   "spearman_rho_all63": 0.04190668202764977,
+   "spearman_rho_A_gt_0_only_48": 0.07946157186278767,
+   "top10_intersection": 6,
+   "top10_entered": [
+    "A2",
+    "A2+B1",
+    "A2+C1",
+    "A3"
+   ],
+   "top10_left": [
+    "A1+B1+C1",
+    "B2",
+    "B2+C1",
+    "C2"
+   ],
+   "max_rank_shift": 39,
+   "mean_abs_rank_shift": 21.96825396825397,
+   "n_migrate_seller": 162624,
+   "exercised": true,
+   "passes_rule": false
+  },
+  "3": {
+   "migration_cost_c": 0.1,
+   "enforcement_risk_step": 1,
+   "spearman_rho_all63": 0.9673099078341014,
+   "spearman_rho_A_gt_0_only_48": 0.9770950933564915,
+   "top10_intersection": 9,
+   "top10_entered": [
+    "A1+B2"
+   ],
+   "top10_left": [
+    "B2+C1"
+   ],
+   "max_rank_shift": 20,
+   "mean_abs_rank_shift": 2.9523809523809526,
+   "n_migrate_seller": 120224,
+   "exercised": true,
+   "passes_rule": true
+  },
+  "5": {
+   "migration_cost_c": 0.1,
+   "enforcement_risk_step": 3,
+   "spearman_rho_all63": 0.09835829493087558,
+   "spearman_rho_A_gt_0_only_48": 0.11235345201910552,
+   "top10_intersection": 6,
+   "top10_entered": [
+    "A2",
+    "A2+B1",
+    "A2+C1",
+    "A3"
+   ],
+   "top10_left": [
+    "A1+B1+C1",
+    "B2",
+    "B2+C1",
+    "C2"
+   ],
+   "max_rank_shift": 39,
+   "mean_abs_rank_shift": 21.07936507936508,
+   "n_migrate_seller": 162624,
+   "exercised": true,
+   "passes_rule": false
+  },
+  "6": {
+   "migration_cost_c": 0.15,
+   "enforcement_risk_step": 1,
+   "spearman_rho_all63": 0.9707181259600614,
+   "spearman_rho_A_gt_0_only_48": 0.9804602692140686,
+   "top10_intersection": 9,
+   "top10_entered": [
+    "A1+B2"
+   ],
+   "top10_left": [
+    "B2+C1"
+   ],
+   "max_rank_shift": 19,
+   "mean_abs_rank_shift": 2.8253968253968256,
+   "n_migrate_seller": 120224,
+   "exercised": true,
+   "passes_rule": true
+  },
+  "7": {
+   "migration_cost_c": 0.15,
+   "enforcement_risk_step": 2,
+   "spearman_rho_all63": 1.0,
+   "spearman_rho_A_gt_0_only_48": 1.0,
+   "top10_intersection": 10,
+   "top10_entered": [],
+   "top10_left": [],
+   "max_rank_shift": 0,
+   "mean_abs_rank_shift": 0.0,
+   "n_migrate_seller": 0,
+   "exercised": false,
+   "passes_rule": false
+  },
+  "8": {
+   "migration_cost_c": 0.15,
+   "enforcement_risk_step": 3,
+   "spearman_rho_all63": 0.15173771121351767,
+   "spearman_rho_A_gt_0_only_48": 0.18247937472861483,
+   "top10_intersection": 6,
+   "top10_entered": [
+    "A2",
+    "A2+B1",
+    "A2+C1",
+    "A3"
+   ],
+   "top10_left": [
+    "A1+B1+C1",
+    "B2",
+    "B2+C1",
+    "C2"
+   ],
+   "max_rank_shift": 39,
+   "mean_abs_rank_shift": 20.476190476190474,
+   "n_migrate_seller": 162624,
+   "exercised": true,
+   "passes_rule": false
+  }
+ },
+ "decision": {
+  "rule": "all eight non-baseline points: rho(all63) >= 0.9 AND rho(A>0) >= 0.9 AND top-10 intersection >= 8 AND the migration knob was exercised",
+  "verdict": "NOT_ROBUST",
+  "n_points_passing": 3,
+  "n_points": 8,
+  "scope": "EXPLORATORY; does not enter the main evidence chain or bh_primary"
+ },
+ "most_unstable_scenarios": [
+  {
+   "scenario": "A2",
+   "total_abs_rank_shift_over_8_points": 146
+  },
+  {
+   "scenario": "B2+C3",
+   "total_abs_rank_shift_over_8_points": 138
+  },
+  {
+   "scenario": "B3+C2",
+   "total_abs_rank_shift_over_8_points": 135
+  },
+  {
+   "scenario": "B1+C3",
+   "total_abs_rank_shift_over_8_points": 129
+  },
+  {
+   "scenario": "B3+C1",
+   "total_abs_rank_shift_over_8_points": 128
+  }
+ ],
+ "discriminability": {
+  "n_scenarios_A0": 15,
+  "n_scenarios_A_gt_0": 48,
+  "note": "15 of 63 scenarios cannot move under the enforcement-risk step: the step is applied only inside `if t == T0 and levels.get(\"A\", 0)`. The all-63 rho is therefore not a stability measurement on its own and the A>0 rho is reported beside every point."
+ },
+ "caveats": [
+  "post-hoc robustness check on an already-delivered ranking; it does not re-open any delivered number",
+  "the planning horizon used for the budget gate is declared, not measured",
+  "only the vectorised engine is exercised; the Mesa mirrors are untouched",
+  "the enforcement-risk step is a perception parameter, not risk aversion"
+ ]
+}

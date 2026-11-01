@@ -1,0 +1,159 @@
+{
+ "schema": "mdpi3-exp2-calib-points/1",
+ "points": {
+  "0": {
+   "index": 0,
+   "migration_cost_c": 0.05,
+   "enforcement_risk_step": 1,
+   "arms": [
+    "llm"
+   ],
+   "n_runs": 1890,
+   "path": "runs/exp2/calib_robust/sim/point_0_c005_s1.jsonl",
+   "sha256": "524eb1296b735157fb9ea9ebc663569e31c4797600055df38214afdaafe99355",
+   "bytes": 1954839,
+   "n_migrate_seller": 120224,
+   "n_apply_action_calls": 10943360,
+   "started_utc": "2026-11-01T07:53:12Z",
+   "finished_utc": "2026-11-01T07:54:30Z",
+   "complete": true
+  },
+  "1": {
+   "index": 1,
+   "migration_cost_c": 0.05,
+   "enforcement_risk_step": 2,
+   "arms": [
+    "llm"
+   ],
+   "n_runs": 1890,
+   "path": "runs/exp2/calib_robust/sim/point_1_c005_s2.jsonl",
+   "sha256": "2857cd6e5d1ca808c18a8d2b7b5aeb8b7a040668cdfa591f195aa18a4db9bac1",
+   "bytes": 1955187,
+   "n_migrate_seller": 0,
+   "n_apply_action_calls": 10368432,
+   "started_utc": "2026-11-01T07:54:36Z",
+   "finished_utc": "2026-11-01T07:55:53Z",
+   "complete": true
+  },
+  "2": {
+   "index": 2,
+   "migration_cost_c": 0.05,
+   "enforcement_risk_step": 3,
+   "arms": [
+    "llm"
+   ],
+   "n_runs": 1890,
+   "path": "runs/exp2/calib_robust/sim/point_2_c005_s3.jsonl",
+   "sha256": "8c8b6ed21e21ea31cf893d4381fc77246e371d1b9540c6a9109a570c5b118780",
+   "bytes": 1952505,
+   "n_migrate_seller": 162624,
+   "n_apply_action_calls": 10943360,
+   "started_utc": "2026-11-01T07:55:53Z",
+   "finished_utc": "2026-11-01T07:57:11Z",
+   "complete": true
+  },
+  "3": {
+   "index": 3,
+   "migration_cost_c": 0.1,
+   "enforcement_risk_step": 1,
+   "arms": [
+    "llm"
+   ],
+   "n_runs": 1890,
+   "path": "runs/exp2/calib_robust/sim/point_3_c010_s1.jsonl",
+   "sha256": "8d4622ebd52bb875dfd81b4b9983bab6897d84fa18439cce68a0b352439fe8e8",
+   "bytes": 1955015,
+   "n_migrate_seller": 120224,
+   "n_apply_action_calls": 10943360,
+   "started_utc": "2026-11-01T07:57:11Z",
+   "finished_utc": "2026-11-01T07:58:27Z",
+   "complete": true
+  },
+  "4": {
+   "index": 4,
+   "migration_cost_c": 0.1,
+   "enforcement_risk_step": 2,
+   "arms": [
+    "llm",
+    "rule"
+   ],
+   "n_runs": 3780,
+   "path": "runs/exp2/calib_robust/sim/point_4_c010_s2.jsonl",
+   "sha256": "ba0129913f202fcbb8fb3290ddf22e1c2e66a6096eb75a4c52f7432d37542c82",
+   "bytes": 3962707,
+   "n_migrate_seller": 698200,
+   "n_apply_action_calls": 17195840,
+   "started_utc": "2026-11-01T07:58:27Z",
+   "finished_utc": "2026-11-01T08:01:57Z",
+   "complete": true
+  },
+  "5": {
+   "index": 5,
+   "migration_cost_c": 0.1,
+   "enforcement_risk_step": 3,
+   "arms": [
+    "llm"
+   ],
+   "n_runs": 1890,
+   "path": "runs/exp2/calib_robust/sim/point_5_c010_s3.jsonl",
+   "sha256": "ba82ffabaccff8a425e487678ad978321988d2517c4637d8b01ad31ec4775e33",
+   "bytes": 1953149,
+   "n_migrate_seller": 162624,
+   "n_apply_action_calls": 10943360,
+   "started_utc": "2026-11-01T08:02:39Z",
+   "finished_utc": "2026-11-01T08:03:57Z",
+   "complete": true
+  },
+  "6": {
+   "index": 6,
+   "migration_cost_c": 0.15,
+   "enforcement_risk_step": 1,
+   "arms": [
+    "llm"
+   ],
+   "n_runs": 1890,
+   "path": "runs/exp2/calib_robust/sim/point_6_c015_s1.jsonl",
+   "sha256": "8981063028c1800d25d6e08a8d3b976ea18ba4195dba549bc2ad0854a209c79e",
+   "bytes": 1955697,
+   "n_migrate_seller": 120224,
+   "n_apply_action_calls": 10943360,
+   "started_utc": "2026-11-01T08:03:57Z",
+   "finished_utc": "2026-11-01T08:05:12Z",
+   "complete": true
+  },
+  "7": {
+   "index": 7,
+   "migration_cost_c": 0.15,
+   "enforcement_risk_step": 2,
+   "arms": [
+    "llm"
+   ],
+   "n_runs": 1890,
+   "path": "runs/exp2/calib_robust/sim/point_7_c015_s2.jsonl",
+   "sha256": "2857cd6e5d1ca808c18a8d2b7b5aeb8b7a040668cdfa591f195aa18a4db9bac1",
+   "bytes": 1955187,
+   "n_migrate_seller": 0,
+   "n_apply_action_calls": 10368432,
+   "started_utc": "2026-11-01T08:05:12Z",
+   "finished_utc": "2026-11-01T08:06:31Z",
+   "complete": true
+  },
+  "8": {
+   "index": 8,
+   "migration_cost_c": 0.15,
+   "enforcement_risk_step": 3,
+   "arms": [
+    "llm"
+   ],
+   "n_runs": 1890,
+   "path": "runs/exp2/calib_robust/sim/point_8_c015_s3.jsonl",
+   "sha256": "122d4f3944d4a8dcdbeeacb325736775ef9658b73d0336d210c1065918852e1d",
+   "bytes": 1953395,
+   "n_migrate_seller": 162624,
+   "n_apply_action_calls": 10943360,
+   "started_utc": "2026-11-01T08:06:31Z",
+   "finished_utc": "2026-11-01T08:07:50Z",
+   "complete": true
+  }
+ }
+}

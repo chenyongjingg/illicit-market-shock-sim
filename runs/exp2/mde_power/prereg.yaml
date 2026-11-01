@@ -1,0 +1,105 @@
+schema: mdpi3-prereg/1
+exp_id: mde_power
+package: 2
+tag: exp_window_2
+title: "Minimum detectable effect for the four paired RQ2 metrics -- EXPLORATORY"
+status: EXPLORATORY
+written_utc: "2026-11-01T07:48:04Z"
+written_utc_source: "assigned on the pod by the registering script from `date -u`; never typed"
+
+# ============================================================================
+# Question
+# ============================================================================
+question: |
+  The RQ2 paired comparison reports "significant" or "not significant" for four metrics at
+  n = 1,890 pairs. That is a statement about evidence, not about size. This package converts it
+  into the other half: at this design, this alpha and this power, what is the SMALLEST true
+  difference the comparison could have detected? The answer is what a limitation paragraph can
+  quote, because it is a property of the design rather than of the luck of this sample.
+
+what_it_is_not: |
+  This is a POST-HOC DESCRIPTION of a design that has already been run. It is not an a-priori
+  sample-size calculation, and it must never be written as one. A post-hoc MDE says how fine the
+  instrument was; it does not license the sentence "the study was adequately powered", which
+  requires the effect size to have been specified before the data.
+
+# ============================================================================
+# Frozen inputs
+# ============================================================================
+inputs:
+  - {path: runs/analysis.json,  sha256: 7f7f8928f45e28e8c340617ea467f9fd5331ab28b7a80ed96ba1280d24dff3c3, role: "stored mean, mean_se, n and p for the four paired metrics (positive-control target)"}
+  - {path: runs/sim_runs.jsonl, sha256: ba0129913f202fcbb8fb3290ddf22e1c2e66a6096eb75a4c52f7432d37542c82, role: "per-run values of the four metrics for both arms; the independent recomputation"}
+  - {path: code/config.yaml,     sha256: 5749ad4ee40194b1f45c9447674058867ca9caff6a3b33088c878e033ab514f7, role: "gnn.seed (bootstrap seed)"}
+
+code_hash_expected: f4328c4a7b0c1b5a
+
+# ============================================================================
+# Design, fixed before execution
+# ============================================================================
+design:
+  metrics: [retention_post, edge_jaccard, substitution_ratio, r_dyn]
+  pairing: "(scenario, seed); a pair exists only when BOTH arms ran it"
+  n_pairs: "read from the data, expected 1,890 = 63 scenarios x 30 seeds; the value actually used "
+  alpha: 0.05
+  sides: two
+  power: 0.80
+  formula: |
+    MDE = (z_{1-alpha/2} + z_{1-beta}) * sigma_d / sqrt(n)
+    with sigma_d = the sample standard deviation (ddof=1) of the n paired differences and
+    z_{0.975} = 1.959963984540054, z_{0.80} = 0.8416212335729143.
+  sigma_source: |
+    sigma_d is ESTIMATED FROM THIS SAMPLE. The MDE is therefore the minimum detectable effect at
+    the variability this run actually had, not at some population value. Its own uncertainty is
+    reported (see interval below) rather than assumed away.
+  test_the_mde_is_for: |
+    The paired t / z test on the MEAN difference. It is NOT the MDE of the Wilcoxon signed-rank
+    test that rq2 reports, and the two must not be quoted interchangeably: the rank test's power
+    depends on the whole distribution of differences, not on sigma_d alone.
+  interval: |
+    95% percentile bootstrap over PAIRS (2,000 replicates, seed 20261101 from config gnn.seed):
+    resample the n pairs with replacement, recompute sigma_d and the MDE from it. The resampling
+    unit is the pair, which is the unit the design's n counts.
+  achieved_power: |
+    At the OBSERVED mean difference, power = Phi( |mean| / SE - z_{1-alpha/2} ). Reported beside
+    the MDE because "the effect was below the MDE" and "the effect was above it but the test was
+    not significant" are different sentences and the reader needs to know which one applies.
+
+# ============================================================================
+# Positive control -- the package is void if it fails
+# ============================================================================
+positive_controls:
+  recompute_from_raw: |
+    The mean paired difference and its standard error are recomputed from runs/sim_runs.jsonl
+    without reading analysis.json's numbers. Both must reproduce
+    `rq2.paired_within_scenario.<metric>.llm_minus_rule_mean` and `.mean_se` to within 1e-9
+    absolute. If they do not, the two files are describing different pair sets and the MDE would
+    be computed over a sample that is not the one the paper reports.
+  n_pairs: |
+    The pair count actually formed must equal `rq2.paired_within_scenario.n_pairs`. A silently
+    smaller n inflates the MDE and would be read as a coarser instrument than the study had.
+
+# ============================================================================
+# Reporting rules
+# ============================================================================
+reporting:
+  heading: "EXPLORATORY"
+  post_hoc_flag: |
+    Every row carries `post_hoc: true` and the sentence "post-hoc descriptive, not an a-priori
+    sample-size argument". A number this easily mistaken for a power justification is a number
+    that needs its disclaimers stored beside it, not in a caption somewhere else.
+  p_wording: |
+    No p-value is recomputed here. Where a stored p is referenced it obeys D-115: a bound is a
+    number tested against that row's stored value (blanket `p < 1e-200`, or per-metric
+    `p < 1e-220` / `p < 1e-306` / `p < 1e-309`), never a literal from the subnormal rows.
+  units: |
+    MDE is reported in the metric's own units. retention_post and edge_jaccard are bounded
+    proportions; substitution_ratio is a signed proportion; r_dyn is a normalised ratio. Comparing
+    MDEs across metrics is therefore comparing rulers, not effects, and the file says so.
+
+freeze_rule: |
+  Registered in MANIFEST.artifacts.jsonl before execution. Any later change to the formula, the
+  alpha, the power, the pair pairing or the interval method voids the package and reopens it under
+  a new exp_id.
+outputs:
+  - runs/exp2/mde_power/prereg.yaml
+  - runs/exp2/mde_power/mde.json

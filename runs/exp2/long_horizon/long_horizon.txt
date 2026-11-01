@@ -1,0 +1,59 @@
+EXPLORATORY -- extended observation window 60 -> 180 turns (shock at t = T0 = 10)
+generated_utc 2026-11-01T08:17:27Z   code_hash f4328c4a7b0c1b5a
+
+CONTROLS
+  C1 prefix reproduction of the delivered 60-turn grid: 1890 runs compared, 0 mismatch  PASS
+  C2 code and config untouched: code_hash f4328c4a7b0c1b5a  PASS
+  C3 tau reportable only where the exponential beats a flat line: 6 of 6 fitted
+
+HEADLINE
+  no. Every primary scenario is at a fixed point or in a stationary period-5 cycle by t = 60; the segment t in [60,180) contains no recovery, only that cycle. The 63-scenario ranking is identical between the two windows (Spearman 1.000000, every rank unchanged).
+  states: 4 STATIC, 6 STATIONARY_CYCLE, 0 TRENDING
+  the preregistered 'fit beats plateau' criterion said TREND for: A1, A3+B1+C3, A3+B2+C3, A3+B3+C1, A3+B3+C2, A3+B3+C3
+  the stationarity diagnostic overturns all of them -- see the STATE column
+
+PRIMARY -- top-5 and bottom-5 by the baseline composite-R ranking
+scenario     group       F@60   F@179 tailMean   tailSD    f_inf      tau  trend state            
+B1           top5      0.9580  0.9580   0.9580   0.0000        -        -      - STATIC           
+C1           top5      0.9568  0.9568   0.9568   0.0000        -        -      - STATIC           
+B1+C1        top5      0.9200  0.9200   0.9200   0.0000        -        -      - STATIC           
+A1           top5      0.9257  0.9279   0.9277   0.0016   0.9120  4991.03    yes STATIONARY_CYCLE per=5s
+B2           top5      0.9110  0.9110   0.9110   0.0000        -        -      - STATIC           
+A3+B1+C3     bottom5   0.4069  0.4270   0.4177   0.0077   0.4181     0.94    yes STATIONARY_CYCLE per=5s
+A3+B3+C1     bottom5   0.4046  0.4216   0.4142   0.0066   0.4147     0.99    yes STATIONARY_CYCLE per=5s
+A3+B2+C3     bottom5   0.3905  0.4089   0.4005   0.0071   0.4009     0.95    yes STATIONARY_CYCLE per=5s
+A3+B3+C2     bottom5   0.3895  0.4065   0.3990   0.0066   0.3995     0.97    yes STATIONARY_CYCLE per=5s
+A3+B3+C3     bottom5   0.3718  0.3888   0.3811   0.0065   0.3816     0.96    yes STATIONARY_CYCLE per=5s
+
+  'trend = no' means the exponential fit does not beat a constant over t in [60,180).
+  'trend = yes' is NOT evidence of recovery: a deterministic cycle defeats a
+  constant model by construction, and tau then describes the cycle's rising edge.
+  STATE is the decisive column. STATIC = F constant over the whole segment.
+  STATIONARY_CYCLE = drift <= 25% of the segment's own peak-to-peak amplitude.
+  Segment amplitudes (below) are 96.8-98.2% of their values in the delivered window,
+  i.e. the same cycle was already running before the window was extended.
+    A1           ptp=0.00664 drift=-0.00067  (drift/amp=0.101)
+    A3+B1+C3     ptp=0.02766 drift=-0.00030  (drift/amp=0.011)
+    A3+B3+C1     ptp=0.02378 drift=-0.00045  (drift/amp=0.019)
+    A3+B2+C3     ptp=0.02560 drift=-0.00035  (drift/amp=0.014)
+    A3+B3+C2     ptp=0.02368 drift=-0.00041  (drift/amp=0.017)
+    A3+B3+C3     ptp=0.02346 drift=-0.00037  (drift/amp=0.016)
+
+SUPPLEMENTARY -- all 63 scenarios, same window (descriptive)
+  rank_A = mean F over t in [10,60) ; rank_B = mean F over t in [60,180)
+  Spearman(rank_A, rank_B) = 1.000000   mean |shift| = 0.00   max |shift| = 0
+  margin: min adjacent gap in the delivered window 0.000318, median 0.006431;
+          largest window-induced change in a scenario's mean F 0.000900;
+          4 adjacent pairs were closer than that change and could have swapped.
+          They did not: the identity is a property of the data, not of arithmetic.
+  strategy C: n_with_C=48 mean rank shift +0.00 (sd 0.00) ; n_without_C=15 +0.00
+  positive shift = ranks HIGHER under the extended window. No test is run; the two
+  groups are of unequal size and this is descriptive only.
+  top-5 by the extended window  : B1, C1, A1, B1+C1, B2
+  bottom-5 by the extended window: A3+B1+C3, A3+B3+C1, A3+B2+C3, A3+B3+C2, A3+B3+C3
+
+CAVEATS
+  - EXPLORATORY; may be cited only as exploratory evidence from an extended window
+  - the shock is at t = T0 = 10 on this tree, not 30 as the mandate stated
+  - the strategy-C statement is descriptive over 63 scenarios, not a test
+  - only the llm arm is simulated; the composite-R ranking is defined on that arm

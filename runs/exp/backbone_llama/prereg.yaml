@@ -1,0 +1,184 @@
+schema: mdpi3-prereg/1
+exp_id: backbone_llama
+package_id: A
+title: "Backbone robustness (ablation D / D-26) — EXPLORATORY, NON-PREREGISTERED"
+written_utc: "2026-11-01T07:18:54Z"
+written_utc_source: "`date -u +%Y-%m-%dT%H:%M:%SZ` on the pod, captured immediately before this file was written. Not typed."
+
+time_source: |
+  Time source for every timestamp in this package. All times are the pod's UTC clock, read with
+  `date -u +%Y-%m-%dT%H:%M:%SZ` or taken from `stat -c '%y'` on the pod — never from the
+  authoring machine, whose clock runs ahead of the pod's. Where a time was typed rather than
+  measured, this package says so.
+  (Wording carried verbatim from the header of `DEVIATIONS_addendum_2.md`. The measured file
+  mtime, taken with `stat -c '%y'` after upload, is recorded separately in seal.yaml.)
+
+# ---------------------------------------------------------------------------------------------
+# Step 0: the assignment's premise disagrees with the pod, recorded before anything runs.
+# ---------------------------------------------------------------------------------------------
+step_zero_discrepancy:
+  assignment_states_active_tree: "55505a71431cff70"
+  measured_code_hash: "f4328c4a7b0c1b5a"
+  how_measured: "cat code/*.py code/config.yaml | sha256sum | cut -c1-16   (the pipeline's own code_hash recipe, D-85 scope)"
+  measured_utc: "2026-11-01T07:18:54Z"
+  what_differs: "code/s5_analyze.py only — the D-107 one-word repair at line 598 ('asymptotic' -> 'approx')"
+  what_does_not_differ: "code/s4_policy.py and code/s4_sim.py are byte-identical to the delivered tree"
+  consequence: |
+    Package A executes no s4_policy/s4_sim code in this window (see feasibility_gate.decision),
+    so the discrepancy changes no number this package would have produced. It is recorded because
+    a prereg is written against a tree, and this one names the tree it actually measured.
+
+# ---------------------------------------------------------------------------------------------
+# Arms
+# ---------------------------------------------------------------------------------------------
+arm_definition:
+  main_arm:
+    model_id: "Qwen/Qwen2.5-7B-Instruct"
+    weights_path: "/root/mdpi3/models/Qwen2.5-7B-Instruct"
+    dtype: bfloat16
+    quantisation: none
+    where_the_arm_is_defined: "code/llm.py:45  AutoModelForCausalLM.from_pretrained(path, torch_dtype=torch.bfloat16, device_map='cuda', attn_implementation='sdpa', trust_remote_code=True)"
+    config_record: "code/config.yaml -> model.dtype: bfloat16"
+  treatment_arm:
+    model_id: "meta-llama/Llama-3.1-8B-Instruct"
+    dtype: bfloat16
+    quantisation: none
+    rationale: "held to the main arm's dtype so the swap changes the backbone and nothing else"
+
+correction_to_assignment:
+  claim: "the assignment specifies 'Llama-3.1-8B 4-bit, same quantisation as s4_policy'"
+  measured: |
+    s4_policy applies NO 4-bit quantisation. code/llm.py loads the model in bf16 and config.yaml
+    records model.dtype: bfloat16. There is no bitsandbytes import, no load_in_4bit, and no
+    BitsAndBytesConfig anywhere in code/ (grep for 4bit|4_bit|BitsAndBytes|quantization|load_in
+    over code/s4_policy.py returns zero matches).
+  resolution: |
+    The binding clause is 'same quantisation as s4_policy', and that is bf16. The '4-bit' wording
+    is recorded here as an error in the assignment rather than adopted silently. A prereg that
+    named a quantisation the pipeline does not perform would make every later reproduction fail on
+    its first line — and would fail in the direction nobody checks, because '4-bit' reads as the
+    more careful, cheaper, more reproducible choice.
+  does_this_void_the_package: "no — this prereg is the artefact that freezes the correct arm; it was written before any execution"
+
+# ---------------------------------------------------------------------------------------------
+# Endpoints — the three acceptance numbers
+# ---------------------------------------------------------------------------------------------
+endpoints:
+  metric_family: "the four rq2.paired_within_scenario metrics, same keys as the main grid"
+  metrics: [retention_post, edge_jaccard, substitution_ratio, r_dyn]
+  acceptance_numbers:
+    - id: i
+      name: llama_vs_rule
+      definition: "paired mean difference (Llama arm minus rule arm) over (scenario, seed) pairs, per metric"
+      report: "point estimate, 95% percentile bootstrap CI, Wilcoxon signed-rank p"
+      status_this_window: NOT_ESTIMABLE
+    - id: ii
+      name: llama_vs_qwen
+      definition: "paired mean difference (Llama arm minus Qwen main arm) over the SAME (scenario, seed) pairs, per metric"
+      report: "same as (i)"
+      status_this_window: NOT_ESTIMABLE
+    - id: iii
+      name: llama_policy_agreement
+      definition: |
+        held-out lookup agreement of the independent Llama policy table, measured exactly as
+        runs/policy_stats.json measures the main arm: a live call on 200 DISJOINT held-out states
+        compared against the exact -> coarse -> role lookup the simulator uses.
+      rule: "same pre-registered 0.70 threshold. faithful = point >= 0.70 AND Wilson 95% lower bound >= 0.70."
+      verdict_wording: |
+        'not established' (未确立) per P1(a). The word NON_FAITHFUL is reserved for the case where
+        the Wilson UPPER bound is also below 0.70; at n=200 the main arm's interval [0.675, 0.796]
+        straddles the threshold and the data cannot separate the two, which is why the main arm
+        reports UNRESOLVED rather than NON_FAITHFUL.
+      reference_main_arm: "runs/policy_stats.json: agreement_lookup 0.74, Wilson [0.675, 0.796], faithful=false, faithful_point_only=true"
+      status_this_window: NOT_ESTIMABLE
+
+estimator:
+  pairing: "(scenario, seed)"
+  point_estimate: "mean of per-pair differences"
+  interval: "95% percentile bootstrap over pairs"
+  test: |
+    scipy.stats.wilcoxon with the method argument chosen by D-107's rule ('exact' when the sample
+    permits, else 'approx'), and the wilcoxon_method label written from the SAME variable that is
+    passed to scipy — never a hand-typed string. SciPy 1.13.1 accepts only
+    {'approx','exact','auto'}; the string 'asymptotic' raises ValueError.
+  variance_rule: |
+    If an SE is reported it is sd(ddof=1) across bootstrap replicate MEANS. It is never recovered
+    as interval_width/3.92 (D-95: that formula assumes a symmetric interval and this one is skewed).
+
+comparison:
+  design: "paired; identical scenarios and identical seeds on both arms; the seed set is COPIED, never resampled"
+  seeds: |
+    range(cfg['simulation']['seeds']) = range(30) = 0..29, read verbatim from code/config.yaml
+    (simulation.seeds: 30). s4_sim.py iterates `for seed in range(seeds)` at lines 389 and 464.
+    No seed is drawn, dropped, or re-weighted by this package.
+  scenarios: "63, unchanged from the main grid"
+  pairs: "63 x 30 = 1,890 pairs per arm pair"
+  untouched: "no change to criteria, thresholds, scenario grid, or subnet definitions"
+
+reporting_rules:
+  heading: "EXPLORATORY, NON-PREREGISTERED"
+  placement: "presented side by side with the main arm — never alone, never as a replacement for it"
+  multiplicity: "BH within the exploratory family only; must NOT enter bh_primary"
+  language:
+    - "results are 'exploratory' and are not evidence about backbones in general"
+    - "a NOT_ESTIMABLE endpoint is written 'not estimable', never 'no difference'"
+    - "p-values obey D-115: the bound is a number tested against that row's stored value and carries
+       the metric's float class (normal/subnormal). Admissible: blanket p < 1e-200, or per-metric
+       p < 1e-220 / p < 1e-306 / p < 1e-309."
+
+# ---------------------------------------------------------------------------------------------
+# The gate this package is judged by
+# ---------------------------------------------------------------------------------------------
+feasibility_gate:
+  rule: |
+    Before executing, estimate the remaining service time. If Llama inference plus the parallel
+    grid would exceed 70% of the remaining budget, abandon and register 'pre-registered, awaiting
+    run-2'.
+  budget_measurable: false
+  budget_note: |
+    No deadline file exists on the pod and no expiry was stated for this window. A budget that
+    cannot be measured cannot be shown to be sufficient, so this leg of the gate cannot be passed.
+
+  measured_blocker:
+    probed_utc: "2026-11-01T07:17:01Z"
+    url: "https://hf-mirror.com/meta-llama/Llama-3.1-8B-Instruct/resolve/main/config.json"
+    http_status: 403
+    body: "Please enable access to public gated repositories in your fine-grained token settings to view this repository."
+    reading: |
+      This is a gating response, not a transport failure: the mirror reached the upstream and the
+      upstream refused on authorisation. The body names the exact setting that would fix it.
+  credential_search:
+    - "/root/.huggingface: ABSENT"
+    - "~/.cache/huggingface/token: ABSENT"
+    - "env HF_* / HUGGING*: 0 matches"
+    - "~/.cache/huggingface/hub: present but empty (the Qwen download did not leave a token)"
+  disk_and_gpu_are_not_the_blocker:
+    free_disk: "77 GB of 100 GB"
+    gpu: "RTX 4090, 24,564 MiB, idle"
+    note: "8B in bf16 fits; the blocker is authorisation, not capacity"
+
+  decision: NOT_ESTIMABLE
+  reason: |
+    backbone_unobtainable: the named weights sit behind a gated repository (HTTP 403) and no
+    HuggingFace credential exists on the pod. Substituting a different repository would change the
+    object this prereg names, which rule 1 forbids, so the substitution route is closed as well —
+    the block cannot be worked around from inside the window.
+
+  rejected_alternative:
+    repo: "NousResearch/Meta-Llama-3.1-8B-Instruct"
+    observed: "HTTP 307 redirect — the response body was NOT tested for bytes"
+    why_rejected: |
+      It is a third-party re-upload of the same gated weights. Fetching it would (a) name a
+      different object than this prereg names and (b) route around a licence gate. Recorded as
+      available and deliberately unused, so a later run can see this was a decision and not an
+      oversight.
+
+  unblock_action: |
+    Supply a HuggingFace token with 'access to public gated repositories' enabled — the 403 body
+    names that exact setting — then re-run package A unchanged under this prereg. No number in
+    this file needs to be revisited to do that.
+
+# ---------------------------------------------------------------------------------------------
+safety_checks:
+  main_grid_written_by_this_package: 0
+  note: "no stage is executed; this package writes only under runs/exp/backbone_llama/"

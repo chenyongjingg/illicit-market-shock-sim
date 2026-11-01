@@ -1,0 +1,31 @@
+graph.graphml nodes=3461 edges=2367
+graph_stats.json ai_nodes=70 ai_subnet_definition=type_plus_1hop traditional_nodes=3391
+
+caliber A (s2_graph.py:155-169): definition=type_plus_1hop  declared ai_types=39  calls-edges=0
+caliber B (s3_resilience.py:290-306): undirected projection nodes=2029, of which subnet=AI -> 56
+
+|A| = 70   |B| = 56   |A&B| = 56   |A-B| = 14   |B-A| = 0
+
+difference A-B (14 nodes):
+id (full)                          type                     deg   non_self in_A    subnet
+-----------------------------------------------------------------------------------------
+Criminal-LLM-Service:claude sonnet 4.5 Criminal-LLM-Service     0     0       yes     AI    
+Criminal-LLM-Service:claude sonnet 4.6 Criminal-LLM-Service     0     0       yes     AI    
+Criminal-LLM-Service:cybersecurity-expert small language models Criminal-LLM-Service     0     0       yes     AI    
+Criminal-LLM-Service:gemini 2.5 flash Criminal-LLM-Service     0     0       yes     AI    
+Criminal-LLM-Service:gemini 3.5 flash Criminal-LLM-Service     0     0       yes     AI    
+Criminal-LLM-Service:google's bard Criminal-LLM-Service     0     0       yes     AI    
+Criminal-LLM-Service:jailbreaks    Criminal-LLM-Service     0     0       yes     AI    
+Criminal-LLM-Service:large language model (llm) multi-agent systems (mas) Criminal-LLM-Service     0     0       yes     AI    
+Criminal-LLM-Service:large language models Criminal-LLM-Service     0     0       yes     AI    
+Criminal-LLM-Service:state-of-the-art llms Criminal-LLM-Service     0     0       yes     AI    
+Criminal-LLM-Service:suno          Criminal-LLM-Service     0     0       yes     AI    
+Criminal-LLM-Service:udio          Criminal-LLM-Service     0     0       yes     AI    
+Criminal-LLM-Service:zero-query jailbreak framework Criminal-LLM-Service     0     0       yes     AI    
+Stolen-Account-Pool:worst_asns     Stolen-Account-Pool      0     0       yes     AI    
+
+of the 14, how many have zero non-self edges (i.e. the projection drops them): 14
+
+resilience.json subnets.AI.declared_n=70  n=56  isolated_excluded=14
+
+EXPLANATION_VERIFIABLE=True  (all 14 dropped nodes have zero non-self edges, and |B| == ai_nodes - 14)

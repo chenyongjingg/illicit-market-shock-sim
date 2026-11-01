@@ -1,5 +1,5 @@
 {
- "generated_utc": "2026-11-01T06:16:55Z",
+ "generated_utc": "2026-11-01T06:56:12Z",
  "n_runs": 3780,
  "primary_endpoints": [
   "rq1_per_attack_auc_diff",
@@ -591,12 +591,11 @@
     "frac_zero": 0.0,
     "n_nonzero_pairs": 1890,
     "n_ties_abs_diff": false,
-    "wilcoxon_method": "asymptotic",
-    "wilcoxon_p": null,
+    "wilcoxon_method": "approx",
+    "wilcoxon_p": 6.189265913856175e-221,
     "min_attainable_p_two_sided": null,
     "exact_floor_applies": false,
-    "floor_not_applicable_reason": "no exact null distribution was used (n_nonzero=1890 > 25), so this test has no 2/2^n floor",
-    "wilcoxon_error": "`method` must be one of {'approx', 'exact', 'auto'} or an instance of `stats.PermutationMethod`."
+    "floor_not_applicable_reason": "no exact null distribution was used (n_nonzero=1890 > 25), so this test has no 2/2^n floor"
    },
    "edge_jaccard": {
     "llm_minus_rule_mean": 0.6829824161499158,
@@ -619,12 +618,11 @@
     "frac_zero": 0.0,
     "n_nonzero_pairs": 1890,
     "n_ties_abs_diff": true,
-    "wilcoxon_method": "asymptotic",
-    "wilcoxon_p": null,
+    "wilcoxon_method": "approx",
+    "wilcoxon_p": 2.66176119716124e-310,
     "min_attainable_p_two_sided": null,
     "exact_floor_applies": false,
-    "floor_not_applicable_reason": "no exact null distribution was used (n_nonzero=1890 > 25), so this test has no 2/2^n floor",
-    "wilcoxon_error": "`method` must be one of {'approx', 'exact', 'auto'} or an instance of `stats.PermutationMethod`."
+    "floor_not_applicable_reason": "no exact null distribution was used (n_nonzero=1890 > 25), so this test has no 2/2^n floor"
    },
    "substitution_ratio": {
     "llm_minus_rule_mean": -0.7598708016335182,
@@ -647,12 +645,11 @@
     "frac_zero": 0.0,
     "n_nonzero_pairs": 1890,
     "n_ties_abs_diff": true,
-    "wilcoxon_method": "asymptotic",
-    "wilcoxon_p": null,
+    "wilcoxon_method": "approx",
+    "wilcoxon_p": 2.66118142717735e-310,
     "min_attainable_p_two_sided": null,
     "exact_floor_applies": false,
-    "floor_not_applicable_reason": "no exact null distribution was used (n_nonzero=1890 > 25), so this test has no 2/2^n floor",
-    "wilcoxon_error": "`method` must be one of {'approx', 'exact', 'auto'} or an instance of `stats.PermutationMethod`."
+    "floor_not_applicable_reason": "no exact null distribution was used (n_nonzero=1890 > 25), so this test has no 2/2^n floor"
    },
    "r_dyn": {
     "llm_minus_rule_mean": 0.3301229015078055,
@@ -675,12 +672,11 @@
     "frac_zero": 0.0,
     "n_nonzero_pairs": 1890,
     "n_ties_abs_diff": false,
-    "wilcoxon_method": "asymptotic",
-    "wilcoxon_p": null,
+    "wilcoxon_method": "approx",
+    "wilcoxon_p": 1.9446274995358252e-307,
     "min_attainable_p_two_sided": null,
     "exact_floor_applies": false,
-    "floor_not_applicable_reason": "no exact null distribution was used (n_nonzero=1890 > 25), so this test has no 2/2^n floor",
-    "wilcoxon_error": "`method` must be one of {'approx', 'exact', 'auto'} or an instance of `stats.PermutationMethod`."
+    "floor_not_applicable_reason": "no exact null distribution was used (n_nonzero=1890 > 25), so this test has no 2/2^n floor"
    },
    "n_pairs_note": "n_pairs is a property of the DESIGN (63 scenarios x 30 seeds, both arms share the same grid). The quantity the signed-rank test consumes is n_nonzero_pairs, reported per metric; a metric whose arms agree on most pairs is tested on very few of them.",
    "t_rec_note": "t_rec is not paired-estimable per pair: a pair where either run is censored contributes no recovery-time difference, and restricting to pairs observed in both arms selects on the outcome. The censoring-aware comparison of t_rec is the log-rank test."

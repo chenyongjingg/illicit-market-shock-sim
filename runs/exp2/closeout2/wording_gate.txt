@@ -1,0 +1,35 @@
+# D-115 wording gate -- every window-2 artefact
+# time_source: pod `date -u`
+
+captured_utc : 2026-11-01T08:21:36Z
+files_scanned: 43
+scan_root    : runs/exp2/ (this window's write root; nothing outside it was written)
+
+positive controls -- a zero is only evidence once the detector is shown to fire:
+  banned subnormal form probe fires : True
+  exact stored literal probe fires  : True
+  legal bound form probe fires      : True
+
+test 1 -- subnormal literal (mantissa with a decimal point, exponent <= -300):
+  hits: 0
+
+test 2 -- exact stored p literal for any of the four rq2 metrics, quoted anywhere in the window's own files:
+  hits: 0
+
+test 3 -- legal bound forms present (each must be TRUE of the stored value):
+  hits: 8
+    runs/exp2/mde_power/prereg.yaml:92  p < 1e-200
+    runs/exp2/mde_power/prereg.yaml:93  p < 1e-220
+    runs/exp2/mde_power/prereg.yaml:93  p < 1e-306
+    runs/exp2/mde_power/prereg.yaml:93  p < 1e-309
+    runs/exp2/mde_power/mde.json:99  p < 1e-220
+    runs/exp2/mde_power/mde.json:129  p < 1e-309
+    runs/exp2/mde_power/mde.json:159  p < 1e-309
+    runs/exp2/mde_power/mde.json:189  p < 1e-306
+
+  retention_post       stored p 6.189265913856175e-221   p < 1e-220   ->  True
+  r_dyn                stored p 1.9446274995358252e-307   p < 1e-306   ->  True
+  edge_jaccard         stored p 2.66176119716124e-310   p < 1e-309   ->  True
+  substitution_ratio   stored p 2.66118142717735e-310   p < 1e-309   ->  True
+
+verdict: PASS -- no banned form; every quoted bound tested true

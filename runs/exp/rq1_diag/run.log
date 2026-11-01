@@ -1,0 +1,43 @@
+run_utc: 2026-11-01T07:21:25Z
+pod code_hash (f4328c4a-style): f4328c4a7b0c1b5a
+
+subnet pools from graph.graphml: AI=70 traditional=3391 nodes; undirected projection |E|=2319
+
+=== PART 1: stored verdict, then recomputed ===
+verdict        : NOT_COMPARABLE
+failed_checks  : HAS_GIANT, DENSITY_WITHIN_5X, SIZE_WITHIN_10X
+stored reason  : AI: 19 components, largest 6 of 56 nodes (10.7%), density 0.02468; traditional: 264 components, largest 1116 of 1973 nodes (56.6%), density 0.00116
+consequence    : R_struct per attack is reported as a WITHIN-SUBNET descriptive only; the AI-vs-traditional contrast is NOT_ESTIMABLE under either denominator and must not be quoted as a resilience difference.
+
+subnet        n_rec    n_stored m_rec   dens_rec dens_str largest   agreement
+AI            56       56       38      0.024675 0.024675 6         OK
+traditional   1973     1973     2265    0.001164 0.001164 1116      OK
+
+size ratio recomputed : 35.232142857142854   stored checks.SIZE_WITHIN_10X.ratio : 35.232142857142854  (MATCH)
+density ratio recomputed: 21.193304091052436   stored : 21.193304091052436  (MATCH)
+
+Recomputation agrees with the stored artefact: YES
+
+=== PART 2: size-matched resampling sweep ===
+estimator source : code/s3_resilience.py:327-352 (imported, not reimplemented)
+sampled_per_side : 70   (size_matching.ai_population_n=70, traditional_population_n=3391)
+stored reference : mean=-0.39283888888888879 sd=0.25558058185750065 n=300
+rng              : random.Random(11) -- the existing estimator's own seed
+
+POSITIVE CONTROL (k=70, Random(11), first 300 replicates)
+  got    mean=-0.39283888888888879  sd=0.25558058185750065  n=300
+  stored mean=-0.39283888888888879  sd=0.25558058185750065  n=300
+  delta  mean=0.000e+00  sd=0.000e+00
+  VERDICT: REPRODUCED EXACTLY -- the sweep is the same ruler
+
+mult   k     n_valid  n_tot  mean                   sd                     ci95                     induced_edges ai/trad (mean)
+0.5    35    2000     2000   -0.485038              0.205076153479429      [-0.722000, -0.004021]  9.28 / 0.21
+0.75   52    2000     2000   -0.436214988095238     0.257767416465647      [-0.731667, 0.038333]  20.85 / 0.55
+1      70    2000     2000   -0.381314083333333     0.260040584656286      [-0.675000, 0.027562]  38.00 / 0.96
+
+READING (copied, not paraphrased): equal NODE counts do not give equal DENSITY. The induced
+edge counts above are two orders of magnitude apart, so this difference is set by the sampling
+as much as by subnet structure. This is NOT a graph-level bootstrap and NOT a subnet-resilience
+contrast. Stored caveat: NOT a graph-level bootstrap, and NOT a subnet-resilience contrast even at the node level: equal n does not give equal m. Read the induced edge counts in `size_matching` before interpreting this difference.
+
+STATUS: EXPLORATORY. Never body text, never abstract. RQ1's standing verdict is unchanged: NOT_COMPARABLE

@@ -1,0 +1,176 @@
+schema: mdpi3-prereg/1
+exp_id: long_horizon
+package: 4
+tag: exp_window_2
+title: "Extended observation window 60 -> 180 turns: asymptotic behaviour of F(t) -- EXPLORATORY"
+status: EXPLORATORY
+written_utc: "2026-11-01T08:12:26Z"
+written_utc_source: "assigned on the pod by the registering script from `date -u`; never typed"
+
+# ============================================================================
+# PREMISE FINDING -- the mandate's shock time is not this tree's shock time
+# ============================================================================
+premise_finding: |
+  The mandate says "策略冲击仍注入在 t0=30" (the strategy shock is still injected at t0 = 30) and
+  asks for the window to run from 60 to 180 turns.
+
+  On THIS tree the shock is injected at **t = T0 = 10**, not 30:
+    code/s4_sim.py:17            T0 = 10
+    code/s4_sim.py:206-207       for t in range(T): if t == T0 and levels.get("A", 0): ...
+  and the delivered window is `simulation.n_turns = 60` in code/config.yaml, so the delivered run
+  covers t = 0..59 and every post-shock quantity is measured over t - T0 = 0..49.
+
+  Arithmetic that follows, and it is what makes the delivered grid self-consistent:
+    t_max = 50 in config, i.e. the censoring horizon is 50 POST-SHOCK turns = exactly the
+    delivered post-shock window. That coincidence is only visible once T0 = 10 is known; with
+    T0 = 30 the delivered run would have had 30 post-shock turns and a 50-turn censoring horizon
+    could never have bound, which would have made `t_rec_censored` a constant and its composite
+    term vacuous. The delivered data show it does bind, so T0 = 10 is the operative value.
+
+  Consequence for this package, frozen here: the extension keeps the shock at t = T0 = 10, and
+  "the 60-180 segment" means t in [60, 180), i.e. post-shock turns 50..169. Nothing about the
+  shock time is changed by this package; only `simulation.n_turns` is overridden, IN MEMORY.
+
+premise_finding_2: |
+  The mandate asks only about the top-5 and bottom-5 scenarios. That is the PRIMARY endpoint
+  here and it is frozen as such. But the second question -- "does demand-suppression strategy C's
+  relative rank rise with window length?" -- is a statement about a RANKING, and a ranking over
+  10 of 63 scenarios is not the ranking the paper reports. The supplementary endpoint therefore
+  covers all 63 scenarios at the same extended window. It is labelled supplementary, it is not
+  decisive, and it is registered before execution rather than added afterwards. No extra kind of
+  computation is introduced: the 10 are a subset of the 63.
+
+# ============================================================================
+# Frozen inputs
+# ============================================================================
+inputs:
+  - {path: code/s4_sim.py,      sha256: 4560094b957a2ba08618b4a060b42d637064b3e658f00f876b402462fa165976, role: "the simulator; T0 = 10 is read from it, and n_turns is overridden in memory only"}
+  - {path: runs/policy.json,    sha256: cf0e045ef326c478b74d1f5381840af6ea50e94c473cf03b0680e88d07067005, role: "the frozen 1200-state policy table; reused as-is, no LLM call"}
+  - {path: runs/sim_runs.jsonl, sha256: ba0129913f202fcbb8fb3290ddf22e1c2e66a6096eb75a4c52f7432d37542c82, role: "the delivered 60-turn grid; the prefix-reproduction target of control C1"}
+  - {path: code/config.yaml,    sha256: 5749ad4ee40194b1f45c9447674058867ca9caff6a3b33088c878e033ab514f7, role: "everything except n_turns is taken from it unchanged"}
+  - {path: runs/exp2/calib_robust/calib_robust.json, sha256: 2d944cabc7b0a4f78be57eb4ea9354b016a8e3baaa85d67b00aaa6fbbc9f7db4, role: "the baseline composite-R ranking that selects the top-5 and bottom-5 scenarios"}
+  - {path: runs/exp2/calib_robust/sim/s4_sim_param.py, sha256: e8ad0d51e6f9489db8f2322d4e0790c85f1ee5883676d63e57bcd7a11ca29bb5, role: "the already-registered parameterised copy, used at its baseline constants (c=0.10, delta=2); reusing a registered artefact rather than writing a second copy"}
+
+code_hash_expected: f4328c4a7b0c1b5a
+
+# ============================================================================
+# Design, fixed before execution
+# ============================================================================
+design:
+  window: {n_turns_delivered: 60, n_turns_extended: 180, T0: 10, note: "shock time unchanged; only the loop bound moves"}
+  override_route: |
+    A deep copy of the config is taken in memory and `simulation.n_turns` is set to 180. The file
+    `code/config.yaml` is NOT written, and `code_hash()` is recomputed before and after. This is the
+    same route as package 3's parameterised copy, for the same reason: the delivered tree must keep
+    computing what it computed.
+  primary_scenarios: |
+    top-5 and bottom-5 of the baseline composite-R ranking (frozen in calib_robust.json):
+      top:    B1, C1, B1+C1, A1, B2
+      bottom: A3+B1+C3, A3+B3+C1, A3+B2+C3, A3+B3+C2, A3+B3+C3
+    Selection rule: sort all 63 by composite R descending, ties broken by scenario string
+    ascending; take the first five and the last five. This rule is stated so that the ten are
+    reproducible from the frozen ranking and not from this file's list alone.
+  supplementary_scenarios: "all 63, same window, same seeds -- used ONLY for the strategy-C rank question"
+  seeds: 30
+  arm: llm
+  arm_reason: |
+    The composite-R ranking this package relates to is defined on the llm arm. Running the rule arm
+    would answer a different question at three times the cost.
+  n_runs: {primary: 300, supplementary: 1890, total: 1890,
+           note: "the primary 300 are a subset of the 1890; the grid is run full and sliced"}
+
+endpoint:
+  F_normalisation: |
+    `run_engine` normalises F by the pre-shock mean, which depends only on t < T0 = 10 and is
+    therefore identical at 60 and 180 turns. The extended trajectory is on the same scale as the
+    delivered one by construction, not by a rescaling done here.
+  per_scenario_primary:
+    - "F_plateau: mean of F over the last 30 turns of the extended window, t in [150,180)"
+    - "F_plateau_sd: standard deviation over those turns"
+    - "exponential fit on the 60-180 segment: F(t) = F_inf - A * exp(-(t-60)/tau), 3 parameters,"
+    - "  fitted by least squares on the seed-mean trajectory; reports F_inf, A, tau, 1/tau (the"
+    - "  recovery rate) and the fit RMSE"
+    - "plateau comparator: RMSE of the best constant over the same segment"
+    - "segment_trend: RMSE_fit vs RMSE_plateau. If the exponential does not beat the constant,"
+    - "  the segment has no measurable trend and tau is NOT reported as a recovery rate"
+  per_scenario_supplementary:
+    - "score_A: mean F over the delivered post-shock segment t in [10,60)"
+    - "score_B: mean F over t in [60,180)"
+    - "rank of the scenario by score_A and by score_B over the 63; rank shift = rank_A - rank_B"
+    - "strategy-C question: mean rank shift of the scenarios whose name contains C versus those"
+    - "  whose name does not, reported with its own spread and explicitly as descriptive (n = 63,"
+    - "  two groups of very unequal size, no test)"
+
+  estimability_rule: |
+    A scenario whose F is constant over the whole extended window has no recovery to fit. It is
+    recorded NOT_ESTIMABLE with the machine reason ("F constant to 1e-12 over t in [60,180)") and
+    no tau, rather than being given the tau of a flat line. A scenario whose post-shock F never
+    returns within the window is reported as CENSORED, not as having a slow recovery.
+
+decision_and_reporting_rule: |
+  This package makes no accept/reject decision about the paper. It answers a descriptive question:
+  does the picture change when the window is tripled? The reporting obligation is therefore:
+    - every one of the ten primary scenarios gets a row, with tau and F_inf OR a NOT_ESTIMABLE /
+      CENSORED verdict carrying a machine reason; no scenario is dropped and none is filled in;
+    - the segment_trend comparison is printed beside every tau, so a scenario whose exponential
+      does not beat a flat line cannot be read as "recovering slowly";
+    - the strategy-C statement is printed with its n and its spread, and is worded as
+      "descriptive over 63 scenarios", never as a test;
+    - the whole package is EXPLORATORY and does not enter the main evidence chain or bh_primary.
+
+# ============================================================================
+# Controls -- the package is VOID if any fails
+# ============================================================================
+controls:
+  C1_prefix_reproduction: |
+    The first 60 values of every extended run's F must equal, element for element and exactly, the
+    corresponding `F` list in the delivered `runs/sim_runs.jsonl` for the same (scenario, seed, llm).
+    Nothing in `run_engine` before turn 60 depends on n_turns: F is appended incrementally, the
+    normalising baseline is mean(F[:T0]), and the only use of F in the loop is the bandit reward,
+    which the llm arm does not read. So the prefix is not merely expected to be close -- it is
+    required to be identical, and a single differing element voids the package. This is the only
+    control that proves the 180-turn run is the same model and not a relabelled one.
+  C2_code_untouched: |
+    `sha256(code/s4_sim.py)` and `code/config.yaml` unchanged from the pinned values, and
+    `code_hash()` == f4328c4a7b0c1b5a before and after.
+  C3_fit_is_not_a_prophet: |
+    For every fitted scenario both RMSE_fit and RMSE_plateau are reported. A tau is only printed
+    as a recovery rate when RMSE_fit < RMSE_plateau. The rule exists because an exponential will
+    always return a tau, including on a flat line, and a number that always exists is not evidence
+    that its model applies.
+
+# ============================================================================
+# Budget
+# ============================================================================
+budget:
+  measured_per_run_seconds_60_turns: 0.0403
+  extrapolated_per_run_seconds_180_turns: 0.121
+  projected_total_seconds: 228.7
+  planning_horizon_hours: 6.0
+  gate: "abandon to NOT_RUN-INHERITED if projected_total_seconds > 0.60 * 21600 = 12960 s"
+  outcome: "PASS -- 228.7 s is 1.8% of the declared 3.6 h threshold. The full 63 x 30 grid runs at 180 turns."
+  note: "the extrapolation is 3x because the turn loop is the whole cost; it is checked against the actual wall clock at execution and the measured value is recorded."
+
+isolation:
+  write_root: "runs/exp2/long_horizon/"
+  forbidden: "nothing outside runs/exp2/; the main grid, the delivered artefacts and code/ are read-only"
+  frozen_before_rerun: |
+    Any re-execution freezes the previous long_horizon.json and its log into
+    runs/exp2/long_horizon/superseded/ with a frozen_utc.txt, and the re-execution is diffed leaf
+    by leaf before registration.
+
+reporting:
+  heading: "EXPLORATORY"
+  scope: "may be cited only as exploratory evidence from an extended window"
+  p_wording: "no p-value is computed or quoted; if one becomes relevant it obeys D-115"
+
+freeze_rule: |
+  Registered in MANIFEST.artifacts.jsonl before execution. Any later change to the window, the
+  scenario selection, the fit, the estimability rule or the control set voids the package and
+  reopens it under a new exp_id.
+
+outputs:
+  - runs/exp2/long_horizon/prereg.yaml
+  - runs/exp2/long_horizon/sim/long_horizon_runs.jsonl
+  - runs/exp2/long_horizon/long_horizon.json
+  - runs/exp2/long_horizon/long_horizon.txt

@@ -1,0 +1,46 @@
+EXPLORATORY -- calibration robustness of the 63-scenario composite-R ranking
+generated_utc 2026-11-01T08:08:12Z
+code_hash f4328c4a7b0c1b5a   prereg 205b881f72be7b39f98554d8a260305de00f4b08898904d3f32df10700e63514
+
+structural term per A level (frozen, package 1, order group G1): {'0': 0.095433, '1': 0.09394, '2': 0.092132, '3': 0.090372}
+
+CONTROLS
+  C1 bit-for-bit reproduction of runs/sim_runs.jsonl at (c=0.10, delta=2)
+     frozen      ba0129913f202fcbb8fb3290ddf22e1c2e66a6096eb75a4c52f7432d37542c82  3962707 B
+     regenerated ba0129913f202fcbb8fb3290ddf22e1c2e66a6096eb75a4c52f7432d37542c82  3962707 B   PASS
+  C2 declared deltas only: two lines removed, two lines added (see s4_sim_param.diff)
+  C3 agreement with package 1 at the baseline: max |delta| = 0.000e+00 over 63 scenarios  PASS
+  C4 the sweep moves something: 6 of 8 points changed  PASS
+
+point   cost   delta    rho_63  rho_A>0  top10  maxRank meanRank    migr verdict
+      0.10     2   1.000000 1.000000    10/10   0.00     0.00  (baseline)
+0       0.05   1      0.956317 0.969171     9/10     20.0     3.37  120224 PASS
+1       0.05   2      1.000000 1.000000    10/10      0.0     0.00       0 UNEXERCISED
+2       0.05   3      0.041907 0.079462     6/10     39.0    21.97  162624 FAIL
+3       0.10   1      0.967310 0.977095     9/10     20.0     2.95  120224 PASS
+5       0.10   3      0.098358 0.112353     6/10     39.0    21.08  162624 FAIL
+6       0.15   1      0.970718 0.980460     9/10     19.0     2.83  120224 PASS
+7       0.15   2      1.000000 1.000000    10/10      0.0     0.00       0 UNEXERCISED
+8       0.15   3      0.151738 0.182479     6/10     39.0    20.48  162624 FAIL
+
+DISCRIMINABILITY: 15 of 63 scenarios have A=0 and CANNOT move under the enforcement-risk step;
+  the all-63 rho is not a stability measurement on its own, so the A>0 rho is reported beside it
+  and the decision rule is applied to both.
+
+DECISION: NOT ROBUST   (3 of 8 non-baseline points pass)
+  rule (frozen before execution): rho(all63) >= 0.9 AND rho(A>0) >= 0.9 AND top-10 intersection >= 8 AND the migration knob exercised
+
+MOST UNSTABLE SCENARIOS (total |rank shift| summed over the 8 points)
+  A2             146
+  B2+C3          138
+  B3+C2          135
+  B1+C3          129
+  B3+C1          128
+
+BASELINE TOP-10: B1, C1, B1+C1, A1, B2, C2, A1+B1, A1+C1, A1+B1+C1, B2+C1
+
+CAVEATS
+  - post-hoc robustness check on an already-delivered ranking; no delivered number is re-opened
+  - 'enforcement_risk_step' is a perception parameter (s4_sim.py:216), not risk aversion; the two must not be written as the same thing
+  - only the vectorised engine is exercised; every delivered row records engine=vec
+  - EXPLORATORY: does not enter the main evidence chain or bh_primary

@@ -1,0 +1,38 @@
+Status of the previous experimental window (tag exp_window_20261101)
+measured_utc : 2026-11-01T07:34:57Z
+measured_on  : pod, `ls` / file reads / an HTTP HEAD probe. Not recalled.
+scope        : /root/mdpi3/runs/exp/ (3 package directories)
+
+A package is called DONE only when it produced an artefact beyond its prereg.
+A prereg whose own `decision:` field says NOT_ESTIMABLE is called NOT_ESTIMABLE
+and is never called done.
+
+package_dir            state                              prereg decision
+backbone_llama         NOT_ESTIMABLE                      NOT_ESTIMABLE
+closeout               DONE                               -
+rq1_diag               DONE                               -
+
+files per package:
+  backbone_llama     1 file(s): prereg.yaml
+  closeout           4 file(s): main_grid_after.txt, main_grid_before.txt, p_value_wording_gate.txt, prereg.yaml
+  rq1_diag           6 file(s): not_comparable_reason.txt, prereg.yaml, pycache_guard.txt, run.log, run_rq1_diag.py, sweep.json
+
+--- the question package 5 turns on: does any Llama grid data exist? ---
+models/ on the pod          : Qwen2.5-7B-Instruct
+models/ directories named llama : NONE
+paths under runs/ with 'llama' in the name : runs/exp/backbone_llama
+
+gated-repository probe (read-only HEAD, no bytes stored):
+  url                          https://hf-mirror.com/meta-llama/Llama-3.1-8B-Instruct/resolve/main/config.json
+  probed_utc                   2026-11-01T07:34:55Z
+  http_status                  403
+  body                         
+  env_HF_TOKEN                 ABSENT
+  env_HUGGING_FACE_HUB_TOKEN   ABSENT
+  env_HUGGINGFACE_TOKEN        ABSENT
+  home_huggingface_dir         ABSENT
+  cached_token_file            ABSENT
+
+READING: Llama artefacts exist -- package 5 must re-analyse them, not skip.
+
+This file reports state; it does not repair anything and it runs no grid.

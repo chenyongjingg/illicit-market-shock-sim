@@ -1,0 +1,363 @@
+{
+ "schema": "mdpi3-exp2-longhorizon/1",
+ "exp_id": "long_horizon",
+ "status": "EXPLORATORY",
+ "generated_utc": "2026-11-01T08:15:51Z",
+ "prereg_sha256": "9d850224f6f29084cf045d408ab53866e2dcaecd4c5b124508eb5046de4d93e8",
+ "code_hash": "f4328c4a7b0c1b5a",
+ "window": {
+  "delivered_turns": 60,
+  "extended_turns": 180,
+  "T0": 10,
+  "segment": [
+   60,
+   180
+  ],
+  "tail": [
+   150,
+   180
+  ]
+ },
+ "inputs": {
+  "code/s4_sim.py": "4560094b957a2ba08618b4a060b42d637064b3e658f00f876b402462fa165976",
+  "runs/policy.json": "cf0e045ef326c478b74d1f5381840af6ea50e94c473cf03b0680e88d07067005",
+  "runs/sim_runs.jsonl": "ba0129913f202fcbb8fb3290ddf22e1c2e66a6096eb75a4c52f7432d37542c82",
+  "code/config.yaml": "5749ad4ee40194b1f45c9447674058867ca9caff6a3b33088c878e033ab514f7",
+  "runs/exp2/calib_robust/calib_robust.json": "2d944cabc7b0a4f78be57eb4ea9354b016a8e3baaa85d67b00aaa6fbbc9f7db4",
+  "runs/exp2/calib_robust/sim/s4_sim_param.py": "e8ad0d51e6f9489db8f2322d4e0790c85f1ee5883676d63e57bcd7a11ca29bb5"
+ },
+ "controls": {
+  "C1_prefix_reproduction": {
+   "n_compared": 1890,
+   "n_mismatch": 0,
+   "first_mismatch": null,
+   "passes": true
+  },
+  "C2_code_untouched": {
+   "code_hash": "f4328c4a7b0c1b5a",
+   "code_s4_sim_sha256": "4560094b957a2ba08618b4a060b42d637064b3e658f00f876b402462fa165976",
+   "config_yaml_sha256": "5749ad4ee40194b1f45c9447674058867ca9caff6a3b33088c878e033ab514f7",
+   "passes": true
+  },
+  "C3_fit_not_a_prophet": {
+   "rule": "tau is reportable only when RMSE_fit < RMSE_plateau",
+   "per_scenario_trend_beats_plateau": {
+    "A1": true,
+    "A3+B1+C3": true,
+    "A3+B3+C1": true,
+    "A3+B2+C3": true,
+    "A3+B3+C2": true,
+    "A3+B3+C3": true
+   },
+   "n_reportable": 6,
+   "n_fitted": 6
+  }
+ },
+ "primary_scenarios": {
+  "B1": {
+   "scenario": "B1",
+   "group": "top5",
+   "F_at_60": 0.9580495333333332,
+   "F_at_179": 0.9580495333333332,
+   "F_plateau_tail_mean": 0.9580495333333334,
+   "F_plateau_tail_sd": 2.2584051416334807e-16,
+   "F_mean_over_turns_sd": 0.005425336866918055,
+   "recovered_90pct_by_end": true,
+   "recovery": {
+    "status": "NOT_ESTIMABLE",
+    "reason": "F constant to 1e-12 over t in [60,180)"
+   }
+  },
+  "C1": {
+   "scenario": "C1",
+   "group": "top5",
+   "F_at_60": 0.9567919000000001,
+   "F_at_179": 0.9567919000000001,
+   "F_plateau_tail_mean": 0.9567918999999999,
+   "F_plateau_tail_sd": 2.2584051416334807e-16,
+   "F_mean_over_turns_sd": 0.005162659447984345,
+   "recovered_90pct_by_end": true,
+   "recovery": {
+    "status": "NOT_ESTIMABLE",
+    "reason": "F constant to 1e-12 over t in [60,180)"
+   }
+  },
+  "B1+C1": {
+   "scenario": "B1+C1",
+   "group": "top5",
+   "F_at_60": 0.9200000000000007,
+   "F_at_179": 0.9200000000000007,
+   "F_plateau_tail_mean": 0.9200000000000009,
+   "F_plateau_tail_sd": 2.2584051416334807e-16,
+   "F_mean_over_turns_sd": 6.77521542490044e-16,
+   "recovered_90pct_by_end": true,
+   "recovery": {
+    "status": "NOT_ESTIMABLE",
+    "reason": "F constant to 1e-12 over t in [60,180)"
+   }
+  },
+  "A1": {
+   "scenario": "A1",
+   "group": "top5",
+   "F_at_60": 0.9256590666666666,
+   "F_at_179": 0.9279260333333333,
+   "F_plateau_tail_mean": 0.9276587566666665,
+   "F_plateau_tail_sd": 0.0015849022500805162,
+   "F_mean_over_turns_sd": 0.02264521289941286,
+   "recovered_90pct_by_end": true,
+   "recovery": {
+    "status": "OK",
+    "f_inf": 0.9120248573992339,
+    "a": -0.01613394527528449,
+    "tau": 4991.033783643503,
+    "recovery_rate_per_turn": 0.00020035929295393194,
+    "rmse_fit": 0.001528337573339251,
+    "rmse_plateau": 0.001532337913437883,
+    "trend_beats_plateau": true,
+    "tau_is_reportable": true,
+    "note": null,
+    "segment_mean": 0.927967989722222,
+    "segment_ptp": 0.006636299999999706
+   }
+  },
+  "B2": {
+   "scenario": "B2",
+   "group": "top5",
+   "F_at_60": 0.9109628666666666,
+   "F_at_179": 0.9109628666666666,
+   "F_plateau_tail_mean": 0.9109628666666664,
+   "F_plateau_tail_sd": 2.2584051416334807e-16,
+   "F_mean_over_turns_sd": 0.010620094378219952,
+   "recovered_90pct_by_end": true,
+   "recovery": {
+    "status": "NOT_ESTIMABLE",
+    "reason": "F constant to 1e-12 over t in [60,180)"
+   }
+  },
+  "A3+B1+C3": {
+   "scenario": "A3+B1+C3",
+   "group": "bottom5",
+   "F_at_60": 0.4069129333333333,
+   "F_at_179": 0.4269647,
+   "F_plateau_tail_mean": 0.41769400888888886,
+   "F_plateau_tail_sd": 0.007683651381284391,
+   "F_mean_over_turns_sd": 0.03876438044107899,
+   "recovered_90pct_by_end": false,
+   "recovery": {
+    "status": "OK",
+    "f_inf": 0.4180917636263652,
+    "a": 0.01160260005267445,
+    "tau": 0.9440248802655544,
+    "recovery_rate_per_turn": 1.0592941149164414,
+    "rmse_fit": 0.007211620206602825,
+    "rmse_plateau": 0.007297990635745287,
+    "trend_beats_plateau": true,
+    "tau_is_reportable": true,
+    "note": null,
+    "segment_mean": 0.41794376361111113,
+    "segment_ptp": 0.02766020000000008
+   }
+  },
+  "A3+B3+C1": {
+   "scenario": "A3+B3+C1",
+   "group": "bottom5",
+   "F_at_60": 0.40456673333333343,
+   "F_at_179": 0.4216074,
+   "F_plateau_tail_mean": 0.4141940388888889,
+   "F_plateau_tail_sd": 0.00660825813069692,
+   "F_mean_over_turns_sd": 0.039800297361709966,
+   "recovered_90pct_by_end": false,
+   "recovery": {
+    "status": "OK",
+    "f_inf": 0.4147171644542746,
+    "a": 0.010534583917784545,
+    "tau": 0.9860991500366443,
+    "recovery_rate_per_turn": 1.0140968075703536,
+    "rmse_fit": 0.006223011635935443,
+    "rmse_plateau": 0.006306490703169361,
+    "trend_beats_plateau": true,
+    "tau_is_reportable": true,
+    "note": null,
+    "segment_mean": 0.4145794077777778,
+    "segment_ptp": 0.023776599999999926
+   }
+  },
+  "A3+B2+C3": {
+   "scenario": "A3+B2+C3",
+   "group": "bottom5",
+   "F_at_60": 0.3904631,
+   "F_at_179": 0.40894766666666676,
+   "F_plateau_tail_mean": 0.40050889,
+   "F_plateau_tail_sd": 0.007101115851822701,
+   "F_mean_over_turns_sd": 0.03713029541276049,
+   "recovered_90pct_by_end": false,
+   "recovery": {
+    "status": "OK",
+    "f_inf": 0.40093478913288866,
+    "a": 0.010868718651374084,
+    "tau": 0.9473587220778504,
+    "recovery_rate_per_turn": 1.0555663622399454,
+    "rmse_fit": 0.006674631342977802,
+    "rmse_plateau": 0.006756585957803682,
+    "trend_beats_plateau": true,
+    "tau_is_reportable": true,
+    "note": null,
+    "segment_mean": 0.400795875,
+    "segment_ptp": 0.025602366666666765
+   }
+  },
+  "A3+B3+C2": {
+   "scenario": "A3+B3+C2",
+   "group": "bottom5",
+   "F_at_60": 0.38951803333333324,
+   "F_at_179": 0.4065134000000001,
+   "F_plateau_tail_mean": 0.39899358888888886,
+   "F_plateau_tail_sd": 0.006561875508139196,
+   "F_mean_over_turns_sd": 0.03773321926451533,
+   "recovered_90pct_by_end": false,
+   "recovery": {
+    "status": "OK",
+    "f_inf": 0.3994716636454306,
+    "a": 0.010332733308232828,
+    "tau": 0.9706722469700326,
+    "recovery_rate_per_turn": 1.0302138575832516,
+    "rmse_fit": 0.006177583530903901,
+    "rmse_plateau": 0.006258132204288204,
+    "trend_beats_plateau": true,
+    "tau_is_reportable": true,
+    "note": null,
+    "segment_mean": 0.39933776500000007,
+    "segment_ptp": 0.023677000000000115
+   }
+  },
+  "A3+B3+C3": {
+   "scenario": "A3+B3+C3",
+   "group": "bottom5",
+   "F_at_60": 0.3718398333333333,
+   "F_at_179": 0.38877393333333327,
+   "F_plateau_tail_mean": 0.38114531555555564,
+   "F_plateau_tail_sd": 0.006497032408816011,
+   "F_mean_over_turns_sd": 0.035561070321476346,
+   "recovered_90pct_by_end": false,
+   "recovery": {
+    "status": "OK",
+    "f_inf": 0.38157948554718485,
+    "a": 0.010111105466987038,
+    "tau": 0.9616536627244289,
+    "recovery_rate_per_turn": 1.0398754133238919,
+    "rmse_fit": 0.006114093981156398,
+    "rmse_plateau": 0.006191831522915127,
+    "trend_beats_plateau": true,
+    "tau_is_reportable": true,
+    "note": null,
+    "segment_mean": 0.3814491544444445,
+    "segment_ptp": 0.0234578333333334
+   }
+  }
+ },
+ "supplementary_all_63": {
+  "n_scenarios": 63,
+  "spearman_rankA_rankB": 1.0,
+  "mean_abs_rank_shift": 0.0,
+  "max_abs_rank_shift": 0,
+  "strategy_C": {
+   "n_with_C": 48,
+   "n_without_C": 15,
+   "mean_rank_shift_with_C": 0.0,
+   "mean_rank_shift_without_C": 0.0,
+   "sd_rank_shift_with_C": 0.0,
+   "interpretation_guard": "rank shift is rank_A - rank_B; POSITIVE means the scenario ranks HIGHER (better) under the 60-180 window than under 10-60. The two groups have very unequal size (n=48 vs 15), no test is run, and this is descriptive only."
+  },
+  "top5_by_extended_window": [
+   "B1",
+   "C1",
+   "A1",
+   "B1+C1",
+   "B2"
+  ],
+  "bottom5_by_extended_window": [
+   "A3+B1+C3",
+   "A3+B3+C1",
+   "A3+B2+C3",
+   "A3+B3+C2",
+   "A3+B3+C3"
+  ],
+  "rank_shift_by_scenario": {
+   "A1": 0,
+   "A1+B1": 0,
+   "A1+B1+C1": 0,
+   "A1+B1+C2": 0,
+   "A1+B1+C3": 0,
+   "A1+B2": 0,
+   "A1+B2+C1": 0,
+   "A1+B2+C2": 0,
+   "A1+B2+C3": 0,
+   "A1+B3": 0,
+   "A1+B3+C1": 0,
+   "A1+B3+C2": 0,
+   "A1+B3+C3": 0,
+   "A1+C1": 0,
+   "A1+C2": 0,
+   "A1+C3": 0,
+   "A2": 0,
+   "A2+B1": 0,
+   "A2+B1+C1": 0,
+   "A2+B1+C2": 0,
+   "A2+B1+C3": 0,
+   "A2+B2": 0,
+   "A2+B2+C1": 0,
+   "A2+B2+C2": 0,
+   "A2+B2+C3": 0,
+   "A2+B3": 0,
+   "A2+B3+C1": 0,
+   "A2+B3+C2": 0,
+   "A2+B3+C3": 0,
+   "A2+C1": 0,
+   "A2+C2": 0,
+   "A2+C3": 0,
+   "A3": 0,
+   "A3+B1": 0,
+   "A3+B1+C1": 0,
+   "A3+B1+C2": 0,
+   "A3+B1+C3": 0,
+   "A3+B2": 0,
+   "A3+B2+C1": 0,
+   "A3+B2+C2": 0,
+   "A3+B2+C3": 0,
+   "A3+B3": 0,
+   "A3+B3+C1": 0,
+   "A3+B3+C2": 0,
+   "A3+B3+C3": 0,
+   "A3+C1": 0,
+   "A3+C2": 0,
+   "A3+C3": 0,
+   "B1": 0,
+   "B1+C1": 0,
+   "B1+C2": 0,
+   "B1+C3": 0,
+   "B2": 0,
+   "B2+C1": 0,
+   "B2+C2": 0,
+   "B2+C3": 0,
+   "B3": 0,
+   "B3+C1": 0,
+   "B3+C2": 0,
+   "B3+C3": 0,
+   "C1": 0,
+   "C2": 0,
+   "C3": 0
+  }
+ },
+ "runs": {
+  "path": "runs/exp2/long_horizon/sim/long_horizon_runs.jsonl",
+  "sha256": "e2973632a6153309b534cd173f2acfe87698cfb82680c61ac206c6d2f61b2479",
+  "bytes": 4159642,
+  "n": 1890
+ },
+ "caveats": [
+  "EXPLORATORY; may be cited only as exploratory evidence from an extended window",
+  "the shock is at t = T0 = 10 on this tree, not 30 as the mandate stated",
+  "the strategy-C statement is descriptive over 63 scenarios, not a test",
+  "only the llm arm is simulated; the composite-R ranking is defined on that arm"
+ ]
+}

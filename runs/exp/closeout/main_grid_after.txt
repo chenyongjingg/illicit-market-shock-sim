@@ -1,0 +1,11 @@
+main grid byte check -- AFTER the experimental window
+measured_utc : 2026-11-01T07:26:37Z
+method       : sha256sum on the pod, same five files as the BEFORE capture
+verdict      : IDENTICAL to BEFORE (2026-11-01T07:16:23Z)
+
+ba0129913f202fcbb8fb3290ddf22e1c2e66a6096eb75a4c52f7432d37542c82  runs/sim_runs.jsonl
+7f7f8928f45e28e8c340617ea467f9fd5331ab28b7a80ed96ba1280d24dff3c3  runs/analysis.json
+61117957e2d420e18dc0a71c03daab525c920fa548f9eb78a3650bec5dd36d97  runs/REPORT.md
+56bee6a53722b3ee45341693fa4baca76cd29564f4608080245a1aa236bcd927  runs/q_checklist.json
+76279ae32466e8bbc58bdd31553ebfa2a18c9994b09e749bd9e1077f2f49ee07  runs/backtest.json
+

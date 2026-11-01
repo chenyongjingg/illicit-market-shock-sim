@@ -1,0 +1,48 @@
+[AI] n=56 m=38
+   degree                 A= 0.35333  n_rep=20  distinct_keys=5
+   betweenness            A= 0.38375  n_rep=20  distinct_keys=5
+   pagerank               A= 0.29908  n_rep=20  distinct_keys=9
+   gnn                    A= 0.50192  n_rep=20  distinct_keys=31
+   eigenvector            A= 0.46900  n_rep=20  distinct_keys=10
+   kcore                  A= 0.38283  n_rep=20  distinct_keys=6
+   collective_influence   A= 0.61392  n_rep=20  distinct_keys=2
+[traditional] n=1973 m=2265
+   degree                 A= 0.02514  n_rep=20  distinct_keys=33
+   betweenness            A= 0.03667  n_rep=20  distinct_keys=315
+   pagerank               A= 0.02925  n_rep=20  distinct_keys=648
+   gnn                    A= 0.29462  n_rep=20  distinct_keys=1157
+   eigenvector            A= 0.09044  n_rep=20  distinct_keys=647
+   kcore                  A= 0.03791  n_rep=20  distinct_keys=85
+   collective_influence   A= 0.04020  n_rep=20  distinct_keys=353
+[control B] per-A-level, group G1
+   level 0 -> r_struct 0.0954331317 (4 orders)
+   level 1 -> r_struct 0.0939402027 (4 orders)
+   level 2 -> r_struct 0.0921324857 (4 orders)
+   level 3 -> r_struct 0.0903720682 (4 orders)
+[control B2] per-A-level, group G2
+   level 0 -> r_struct 0.0549680406 (3 orders)
+   level 1 -> r_struct 0.0553840841 (3 orders)
+   level 2 -> r_struct 0.0575296261 (3 orders)
+   level 3 -> r_struct 0.0500682303 (3 orders)
+/root/mdpi3/ops/_exp2_attack_orders.py:159: ConstantInputWarning: An input array is constant; the correlation coefficient is not defined.
+  r = float(stats.spearmanr(a[idx], b[idx]).statistic)
+     G2: A2+B3+C3 > A3+B2+C3 > A3+B3+C2
+  stratum (3): A3, B3, C3
+     rho=+1.0000
+     G1: B3 > C3 > A3
+     G2: B3 > C3 > A3
+  stratum (3+3): A3+B3, A3+C3, B3+C3
+     rho=+1.0000
+     G1: B3+C3 > A3+C3 > A3+B3
+     G2: B3+C3 > A3+C3 > A3+B3
+
+READING
+  EXPLORATORY. Nothing here enters the composite R of the delivered run, bh_primary or
+  bh_exploratory. A high rho means the ranking is stable under THIS substitution; it is not
+  a claim that the conclusion is robust to attack definitions in general.
+
+WROTE /root/mdpi3/runs/exp2/attack_orders_ext/orders_ext.json 30099 bytes
+WROTE /root/mdpi3/runs/exp2/attack_orders_ext/rank_corr.txt 10750 bytes
+sha orders_ext.json 8f17035a982e3a61e4127ede0186f2f11a6c3bf5bb9f837c8fb3ed02cf3e635b
+sha rank_corr.txt   235a77cd98c8597a2e7af18884c5a044071d901fbac42dc570fea5f78fbd19d6
+started 2026-11-01T07:39:12Z finished 2026-11-01T07:41:33Z

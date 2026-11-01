@@ -1,0 +1,24 @@
+--- code/s4_sim.py
++++ runs/exp2/calib_robust/sim/s4_sim_param.py
+@@ -124,7 +124,7 @@
+         step = 1 + int(r * (P - 1))
+         agents["plat"][i] = (agents["plat"][i] + step) % P
+         if agents["role"][i] == ROLE_SELLER:
+-            agents["cap"][i] *= 0.9
++            agents["cap"][i] *= (1.0 - MIG_COST)
+     elif a == 2:  # substitute
+         agents["serv"][i] = int(u01(seed, t, i, 2) * S) % S
+     elif a == 3:  # expand
+@@ -213,7 +213,7 @@
+                     agents["active"][i] = False
+                     agents["removed"][i] = True
+                 if agents["plat"][i] in removed_platforms:
+-                    agents["risk"][i] = min(4, agents["risk"][i] + 2)
++                    agents["risk"][i] = min(4, agents["risk"][i] + RISK_STEP)
+                     agents["expo"][i] = min(2, agents["expo"][i] + 1)
+         # bandit reward on the NORMALISED pre-shock baseline (raw F is O(10^2) -> reward was
+         # constant 1 and the rule arm collapsed to "stay")
+
+# removed_lines=2 added_lines=2
+# removed==declared_old: True
+# added==declared_new:   True

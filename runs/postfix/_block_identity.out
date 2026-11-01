@@ -1,0 +1,22 @@
+BLOCK         old     new  changed  IDENTICAL
+----------------------------------------------------
+ablations       8       8        0  yes
+arm_baseline_validity      21      21        0  yes
+bh_exploratory      15      15        0  yes
+bh_family_note       1       1        0  yes
+bh_family_sizes       2       2        0  yes
+bh_primary       9       9        0  yes
+faithfulness_gate       5       5        0  yes
+generated_utc       1       1        1  NO
+n_runs          1       1        0  yes
+primary_endpoints       4       4        0  yes
+rq1           149     149        0  yes
+rq2           247     243        8  NO
+rq2_bh          2       2        0  yes
+rq3          1770    1770        0  yes
+sensitivity     605     605        0  yes
+zero_width_intervals      24      24        0  yes
+
+total leaves old=2864 new=2860  changed=9  removed=4  added=0
+changed keypaths outside rq2.paired_within_scenario:
+  ['generated_utc']

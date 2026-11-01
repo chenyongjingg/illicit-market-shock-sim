@@ -1,0 +1,154 @@
+schema: mdpi3-prereg/1
+exp_id: rq1_diag
+package_id: B
+title: "RQ1 exploratory diagnostic — the measured reason for NOT_COMPARABLE, plus a size-matched resampling sensitivity sweep"
+written_utc: "2026-11-01T07:18:54Z"
+written_utc_source: "`date -u +%Y-%m-%dT%H:%M:%SZ` on the pod, captured immediately before this file was written. Not typed."
+
+time_source: |
+  Time source for every timestamp in this package. All times are the pod's UTC clock, read with
+  `date -u +%Y-%m-%dT%H:%M:%SZ` or taken from `stat -c '%y'` on the pod — never from the
+  authoring machine, whose clock runs ahead of the pod's. Where a time was typed rather than
+  measured, this package says so.
+  (Wording carried verbatim from the header of `DEVIATIONS_addendum_2.md`. The measured file
+  mtime is recorded separately in seal.yaml.)
+
+status_ceiling:
+  label: EXPLORATORY
+  rule: |
+    Nothing produced by this package may appear in the body text or the abstract of any manuscript.
+    The strongest phrase permitted anywhere is 'exploratory signal'. In particular this package
+    may not be used to soften, qualify, or overturn RQ1's standing verdict, which is
+    NOT_COMPARABLE, nor to promote the AI-vs-traditional resilience contrast past NOT_ESTIMABLE.
+
+step_zero_discrepancy:
+  assignment_states_active_tree: "55505a71431cff70"
+  measured_code_hash: "f4328c4a7b0c1b5a"
+  how_measured: "cat code/*.py code/config.yaml | sha256sum | cut -c1-16"
+  impact_on_this_package: |
+    Part 1 is a read of runs/analysis.json, unaffected. Part 2 imports s3_resilience.py, which is
+    byte-identical between the two trees, and whose inputs (data/graph/*, written 05:41) predate
+    both. The one-word s5_analyze.py difference does not enter either part.
+
+# =============================================================================================
+# Part 1 — diagnosis (read-only, no GPU)
+# =============================================================================================
+part_1_diagnosis:
+  kind: "read-only; no GPU, no model, no stage re-run"
+  source_of_record: "runs/analysis.json -> rq1.cross_subnet_comparability"
+  quote_verbatim:
+    - verdict
+    - failed_checks
+    - "checks.HAS_GIANT.values / .threshold"
+    - "checks.DENSITY_WITHIN_5X.values / .ratio"
+    - "checks.SIZE_WITHIN_10X.values / .ratio"
+    - measured_reason
+    - consequence
+  independent_recomputation:
+    why: |
+      Quoting the stored reason proves the field exists; it does not prove the field is right. The
+      reason is a sentence rendered from numbers, so the numbers are recomputed from the graph.
+    from: "data/graph/graph.graphml (undirected projection, self-loops dropped — the same construction s3_resilience.main uses)"
+    subnet_rule: "node attribute subnet == 'AI' / 'traditional', collected SORTED (not as a set: set iteration order depends on PYTHONHASHSEED and was a real, unnamed randomness source in this project)"
+    recompute_per_subnet: [node_count, edge_count, density, component_count, largest_component]
+    agreement_rule: |
+      Each recomputed value must match the stored subnets.<tag>.<field>. A disagreement is
+      registered as a new deviation and NOT fixed silently — the stored artefact is frozen.
+  size_ratio:
+    definition: "max(n)/min(n) over the two subnets"
+    expected: 35.232142857142854
+  output: "runs/exp/rq1_diag/not_comparable_reason.txt"
+
+# =============================================================================================
+# Part 2 — size-matched resampling sensitivity sweep
+# =============================================================================================
+part_2_sweep:
+  estimand: |
+    The estimator ALREADY IN THE PIPELINE, not a new one: code/s3_resilience.py:327-352, the
+    size-matched bootstrap behind runs/analysis.json rq1.size_matched_bootstrap
+    (data/graph/resilience.json -> bootstrap_auc_diff). Degree-attack AUC difference between an
+    AI resample and a traditional resample, each drawn to the same NODE count.
+
+  do_not_invent_a_second_ruler: |
+    No second implementation is written. The sweep imports s3_resilience and calls its own
+    induced / lcc_curve / auc_curve / rank_attack. Reimplementing them would produce a number that
+    agrees with the stored one by coincidence or not at all, and there would be no way to tell
+    which.
+
+  import_is_an_execution:
+    hazard: |
+      Importing code/s3_resilience.py regenerates code/__pycache__/s3_resilience.cpython-310.pyc,
+      which lives OUTSIDE runs/exp/ and is therefore a write to the sealed tree (isolation rule 2).
+      The existing .pyc (mtime 06:00) is already stale against its source (06:11), so an ordinary
+      import WILL rewrite it.
+    mitigation: "run every invocation as `python3 -B` with PYTHONDONTWRITEBYTECODE=1, and assert afterwards that the .pyc mtimes are unchanged"
+    assertion_recorded_in: "runs/exp/rq1_diag/pycache_guard.txt"
+
+  population:
+    ai_pool: 70
+    traditional_pool: 3391
+    sampled_per_side: 70
+    source: "data/graph/resilience.json -> size_matching (ai_population_n 70, traditional_population_n 3391, sampled_per_side 70)"
+    note: |
+      'population' is the pool each side is drawn FROM. The stored estimator draws
+      min(len(ai), len(traditional)) = 70 per side, after which induced() drops isolated nodes —
+      AI survives ~56, traditional ~40.38 on average. So the sweep's size axis is 70, not 56:
+      56 is a post-draw survival count and scaling it would silently change the estimand.
+
+  design:
+    k_definition: "k = floor(mult x sampled_per_side) = floor(mult x 70)"
+    mult_values: [0.5, 0.75, 1.0]
+    k_values: [35, 52, 70]
+    rounding_stated_because: "0.75 x 70 = 52.5 is not an integer; floor is fixed here, before the run, so the choice is not made after seeing which value looked better"
+    replicates: 2000
+    rng: |
+      random.Random(11) — the SAME seed the existing estimator uses (s3_resilience.py:329). This is
+      not a new choice: 11 is the only seed in play, and reusing it is exactly what makes the
+      1.0x arm checkable against the stored value instead of merely plausible.
+    per_replicate: |
+      sa = rng.sample(sorted(ai_nodes), k); sb = rng.sample(sorted(trad_nodes), k)
+      Ha, Hb = induced(U, sa), induced(U, sb)
+      diff = auc_curve(lcc_curve(Ha, rank_attack(Ha,'degree'))) - auc_curve(lcc_curve(Hb, rank_attack(Hb,'degree')))
+    aggregation: "mean, sd(ddof=1), 2.5 / 97.5 percentiles — identical to the stored estimator's own formulas"
+
+  positive_control:
+    why_this_matters: |
+      A sweep that cannot reproduce the stored reference is a different ruler being reported as a
+      sensitivity analysis of the first one. This is the only check that can catch that.
+    test: |
+      At k = 70 with random.Random(11), the FIRST 300 replicates must reproduce
+      data/graph/resilience.json -> bootstrap_auc_diff:
+        mean  -0.3928388888888888
+        sd     0.25558058185750065
+        n      300
+      The same RNG stream is consumed for the first 300 draws whether the loop runs 300 or 2000
+      times, so this is an exact-equality check, not an approximate one.
+    on_mismatch: |
+      HALT. Nothing is reported, nothing is labelled exploratory. The mismatch is registered as a
+      new deviation stating that the sweep failed its own calibration and therefore has no status.
+
+  interpretation_ceiling:
+    must_state_in_every_output:
+      - "equal NODE counts do not give equal DENSITY; the induced edge counts are reported alongside every difference"
+      - "this is not a graph-level bootstrap and not a subnet-resilience contrast"
+      - "the caveat already stored on bootstrap_auc_diff applies unchanged and is copied, not paraphrased"
+
+  output: "runs/exp/rq1_diag/ (all files carry exploratory: true)"
+
+# =============================================================================================
+# Registration
+# =============================================================================================
+part_3_registration:
+  new_deviation_numbers: 2
+  assignment: "one for the diagnosis, one for the sweep"
+  note: "does not change §4 writing-prohibition item 11"
+  where: |
+    A new volume, DEVIATIONS_addendum_3.md. Volumes 1 (88 entries, sealed 2026-11-01T06:58:35Z)
+    and 2 (2 entries, sealed after 07:10) are NOT edited: unsealing them would turn the shas a
+    reader is holding into labels rather than records, which is the defect volume 2 exists to avoid.
+
+safety_checks:
+  main_grid_written_by_this_package: 0
+  writes_permitted: "runs/exp/rq1_diag/ only"
+  code_tree_writes: 0
+  note: "no stage is re-run; no artefact under results/, runs/supplement/, run1_results/ or runs/*.json is written"

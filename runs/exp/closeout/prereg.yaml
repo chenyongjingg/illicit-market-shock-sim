@@ -1,0 +1,114 @@
+schema: mdpi3-prereg/1
+exp_id: closeout
+package_id: C
+title: "D-115 p-value wording gate, D-111/D-115 registration completeness, and the experimental-window closeout block"
+written_utc: "2026-11-01T07:18:54Z"
+written_utc_source: "`date -u +%Y-%m-%dT%H:%M:%SZ` on the pod, captured immediately before this file was written. Not typed."
+
+time_source: |
+  Time source for every timestamp in this package. All times are the pod's UTC clock, read with
+  `date -u +%Y-%m-%dT%H:%M:%SZ` or taken from `stat -c '%y'` on the pod — never from the
+  authoring machine, whose clock runs ahead of the pod's. Where a time was typed rather than
+  measured, this package says so.
+  (Wording carried verbatim from the header of `DEVIATIONS_addendum_2.md`. The measured file
+  mtime is recorded separately in seal.yaml.)
+
+# =============================================================================================
+# Part 1 — the D-115 wording gate
+# =============================================================================================
+part_1_wording_gate:
+  rule: |
+    Every p statement carries the metric's float class (normal / subnormal) and uses ONE of two
+    admissible forms. The bound is a number that must be TESTED against the stored value for every
+    row it is applied to — never a phrase that gets copied (D-115).
+
+  stored_values_to_test_against:
+    retention_post:     {value: 6.189265913856175e-221,  class: normal}
+    r_dyn:              {value: 1.9446274995358252e-307, class: normal}
+    edge_jaccard:       {value: 2.66176119716124e-310,   class: subnormal}
+    substitution_ratio: {value: 2.66118142717735e-310,   class: subnormal}
+    boundary: "smallest normal double = 2.2250738585072014e-308"
+
+  admissible_forms:
+    blanket: "p < 1e-200   (verified true for all four rows)"
+    per_metric:
+      retention_post: "p < 1e-220"
+      r_dyn: "p < 1e-306"
+      edge_jaccard: "p < 1e-309"
+      substitution_ratio: "p < 1e-309"
+  why_not_the_older_bounds: |
+    D-111 permitted 'p < 2.2e-308 (subnormal underflow)' and 'p < 1e-300'. Both are FALSE for
+    retention_post (6.19e-221), and the first is FALSE for r_dyn (1.94e-307). The false one is the
+    phrasing that reads as the cautious one — it errs in the direction nobody audits.
+
+  forbidden_strings:
+    - "p < 2.2e-308"
+    - "次正规下溢"
+
+  verdict_rule: |
+    Any occurrence of a forbidden string in a NON-DUMP context => the whole passage is reworked and
+    the gate fails until a re-scan is clean. A forbidden-shaped value inside a fenced verbatim data
+    dump is not a quoting act (D-114's scope note) but must be reported separately as such.
+
+  scan_targets_pod:
+    - runs/REPORT.md
+    - runs/analysis.json
+    - DEVIATIONS.md
+    - DEVIATIONS_addendum.md
+    - DEVIATIONS_addendum_2.md
+    - MANIFEST.final.json
+    - MANIFEST.artifacts.jsonl
+  scan_targets_local:
+    - "D:/MDPI3/MDPI3_方案完善版.docx   (pre-registration source — SCAN ONLY, never edited)"
+    - "D:/MDPI3_review/MDPI3_方案_v2_设计修订版.md"
+  scope_note: |
+    The assignment lists 'the plan document' among the scan targets, but the plan document is not on
+    the pod — it lives on the authoring machine and is also the frozen pre-registration source,
+    which must not be modified. Both scans are therefore performed and landed together, and a hit
+    in the .docx is registered as a deviation rather than edited away.
+  output: "runs/exp/closeout/p_value_wording_gate.txt"
+
+# =============================================================================================
+# Part 2 — registration completeness for D-111 / D-115
+# =============================================================================================
+part_2_registration_completeness:
+  checks:
+    - id: registry_entry
+      what: "D-111 and D-115 each present as a numbered entry in the register"
+    - id: volume2_rationale
+      what: "the volume-2 unsealing rationale, in three sentences, stating that volume 2 is a continuation and not a revision"
+    - id: sealed_history_table
+      what: "the sealed-history table retaining the ORIGINAL sha fc7420bde9154c24d4046cc6e2e34536602a116ddbe576e43d802febb50c753e (3,934 B, 1 entry, sealed pod mtime 2026-11-01T07:08:04Z) alongside the superseding one"
+  on_missing: "register a NEW deviation number for each missing item; do not repair a sealed volume in place"
+  known_pre_existing_gap: |
+    The superseded volume-2 seal #1 recorded its timestamp as 07:24Z for an event the pod logged at
+    07:08:04Z (16 minutes into the future). Volume 2 already records this itself. This package
+    checks that the record is present and that the ORIGINAL sha is still retrievable — it does not
+    re-audit the prose.
+
+# =============================================================================================
+# Part 3 — the closeout block
+# =============================================================================================
+part_3_manifest_closeout:
+  target: "MANIFEST.final.json -> closeout.exp_window_20261101"
+  additive_only: "the existing closeout.* keys written by the peer session are preserved byte-for-byte; a nested key is added, nothing is overwritten"
+  must_contain:
+    - "prereg sha256 for packages A, B, C"
+    - "sha256 for every artefact each package produced"
+    - "the main-grid byte check, before and after, with both value sets"
+    - "end time from `date -u` on the pod"
+
+# =============================================================================================
+# Discipline this package is judged by
+# =============================================================================================
+main_grid_byte_check:
+  files: [runs/sim_runs.jsonl, runs/analysis.json, runs/REPORT.md, runs/q_checklist.json, runs/backtest.json]
+  before_record: "runs/exp/closeout/main_grid_before.txt"
+  rule: |
+    Both ends are taken with sha256sum on the pod. Any difference between the before and after
+    values means a package touched the sealed grid: abort, park, restore per D-53, register.
+
+safety_checks:
+  writes_permitted: "runs/exp/closeout/ only, plus one additive nested key in MANIFEST.final.json (explicitly mandated by the assignment) and one append-only ledger row per registered prereg"
+  stage_reruns: 0
+  sealed_volumes_edited: 0

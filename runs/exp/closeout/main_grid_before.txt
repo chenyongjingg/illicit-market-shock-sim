@@ -1,0 +1,30 @@
+# Main-grid byte check — BEFORE
+# Command behind every line below: `cd /root/mdpi3 && sha256sum <file>` on the pod.
+# Time source: `date -u +%Y-%m-%dT%H:%M:%SZ` on the pod. Not typed from the authoring machine.
+
+captured_utc : 2026-11-01T07:16:23Z
+captured_by  : package C, before any experimental-window write
+pod          : cpod-1x5ycmbip4uc.podtcp.compshare.cn:26002
+tree         : /root/mdpi3
+code_hash    : f4328c4a7b0c1b5a   (cat code/*.py code/config.yaml | sha256sum | cut -c1-16)
+ledger_rows  : 136
+ledger_sha   : 5f67d88573920e7abd4bf36419ba29bcbaf3faab40d2614393e4152649ef1eee
+
+sha256  bytes   mtime_utc              file
+ba0129913f202fcbb8fb3290ddf22e1c2e66a6096eb75a4c52f7432d37542c82  3962707  2026-11-01T05:45:43Z  runs/sim_runs.jsonl
+7f7f8928f45e28e8c340617ea467f9fd5331ab28b7a80ed96ba1280d24dff3c3   125084  2026-11-01T06:56:50Z  runs/analysis.json
+61117957e2d420e18dc0a71c03daab525c920fa548f9eb78a3650bec5dd36d97    67102  2026-11-01T06:56:51Z  runs/REPORT.md
+56bee6a53722b3ee45341693fa4baca76cd29564f4608080245a1aa236bcd927     2843  2026-11-01T06:56:51Z  runs/q_checklist.json
+76279ae32466e8bbc58bdd31553ebfa2a18c9994b09e749bd9e1077f2f49ee07     9951  2026-11-01T06:17:33Z  runs/backtest.json
+
+# Cross-check against the earlier independent capture (D:/MDPI3_snapshot_20261101, pulled 06:19):
+#   runs/analysis.json 7f7f8928...  matches
+#   runs/REPORT.md     61117957...  matches
+# and against _pod_final2 (pulled ~07:00): both match.
+# So the sealed grid has not moved since 06:56:51Z, i.e. through the peer's 07:08 and 07:10 ledger re-opens.
+# The peer's closing writes were to the LEDGER and to MANIFEST.final.json, not to the grid itself.
+#
+# Note the mtime spread: sim_runs.jsonl is 05:45, backtest.json is 06:17, the analysis triple is 06:56.
+# Only the analysis triple was re-rendered by the D-107 repair; the two inputs were not regenerated.
+# That is the correct behaviour (fixing a consumer does not rewrite its inputs) and it is recorded
+# here so a later reader does not read the spread as a partial re-run.

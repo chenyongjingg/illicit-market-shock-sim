@@ -1,0 +1,134 @@
+D-115 p-VALUE WORDING GATE — whole-tree scan
+================================================================================
+package   : C (exp_id = closeout)
+run_utc   : 2026-11-01T07:22Z   (pod `date -u`; this file was assembled on the authoring machine
+                                from pod scan output and uploaded, then sha-registered)
+prereg    : runs/exp/closeout/prereg.yaml, sha 24b2e388feb9d1b65d56c928661425a80a970b88c73c0fdbe53304540fe242ad
+pod tree  : /root/mdpi3, code_hash f4328c4a7b0c1b5a
+commands  : grep, run over the files named in each section; raw counts reproduced below.
+            No occurrence was paraphrased into a count I did not run.
+
+--------------------------------------------------------------------------------
+SECTION A — POD DOCUMENTS
+--------------------------------------------------------------------------------
+Targets: runs/REPORT.md, runs/analysis.json, DEVIATIONS.md, DEVIATIONS_addendum.md,
+         DEVIATIONS_addendum_2.md, MANIFEST.final.json, MANIFEST.artifacts.jsonl
+
+A1. forbidden string  "p < 2.2e-308"                       total hits = 5
+    DEVIATIONS_addendum.md:198          D-111's own statement of its quoting rule
+    DEVIATIONS_addendum_2.md:60         D-114 quoting D-111 to describe it
+    DEVIATIONS_addendum_2.md:62         D-115 quoting D-111 to TEST it
+    DEVIATIONS_addendum_2.md:64         D-115's table, as a column header marked False
+    DEVIATIONS_addendum_2.md:71         D-115 quoting the sentence it proves false
+    runs/REPORT.md                      0
+    runs/analysis.json                  0
+    DEVIATIONS.md                       0
+    MANIFEST.final.json                 0
+    MANIFEST.artifacts.jsonl            0
+
+A2. forbidden string  "次正规下溢"                          total hits = 0
+    Zero in every target, including the two addendum volumes.
+
+A3. raw subnormal literals  2.66176119716124e-310 / 2.66118142717735e-310
+    total hits = 5, all in the register:
+    DEVIATIONS_addendum.md:198, DEVIATIONS_addendum_2.md:60, :68, :69, :71
+    runs/REPORT.md                      0        <- re-confirms D-114's finding independently
+    DEVIATIONS.md                       0
+    MANIFEST.final.json                 0
+
+A4. admissible forms present (informational)
+    DEVIATIONS_addendum.md     p < 1e-300  x1
+    DEVIATIONS_addendum_2.md   p < 1e-200  x2,  p < 1e-220 x1,  p < 1e-300 x3,
+                               p < 1e-306  x1,  p < 1e-309 x1
+
+A5. runs/REPORT.md, checked on its own
+    "p < 2.2e-308"                              0
+    "次正规下溢"                                 0
+    raw subnormal literals                      0
+    fenced blocks, re-measured                  43 ```json / 296 ``` / 319 ```json / 637 ```
+                                                (matches D-114's claim exactly; re-verified,
+                                                 not copied)
+    every p-bearing line lies inside a fence or is the D-08 note:
+      169  "wilcoxon_method": "exact"           inside fence 1 (43-296)
+      174  caveat string, RQ1                   inside fence 1
+      617  "wilcoxon_method": "approx"          inside fence 2 (319-637)
+      618  "wilcoxon_p": 6.189265913856175e-221 inside fence 2
+      1028 D-08 size-matched bootstrap note     prose, quotes no p-value
+    => REPORT.md is a verbatim data dump carrying a stored float, which D-114 puts outside
+       the scope of the quoting rule. Zero operatively quoted p-values.
+
+--------------------------------------------------------------------------------
+SECTION B — AUTHORING-MACHINE DOCUMENTS
+--------------------------------------------------------------------------------
+B1. D:/MDPI3/MDPI3_方案完善版.docx   (pre-registration source; SCANNED, NEVER EDITED)
+    sha256 6c6ec4bb0e3f999a…, 49,776 bytes
+    method: every .xml part in the archive unzipped and tag-stripped — 13 parts, so body,
+            headers, footnotes and embedded parts are all covered, not just word/document.xml
+    "p < 2.2e-308" 0 | "次正规下溢" 0 | 2.66176119716124e-310 0 | 2.66118142717735e-310 0
+
+B2. D:/MDPI3_review/MDPI3_方案_v2_设计修订版.md
+    51,483 characters
+    "p < 2.2e-308" 0 | "次正规下溢" 0 | 2.66176119716124e-310 0 | 2.66118142717735e-310 0
+
+--------------------------------------------------------------------------------
+SECTION C — CLASSIFICATION OF EVERY HIT
+--------------------------------------------------------------------------------
+Not one of the 5 + 5 hits is an act of quoting a p-value. Each falls in one of two classes:
+
+  (i)  META-REFERENCE — the register naming the superseded rule in order to declare it false.
+       D-115 cannot demonstrate that "p < 2.2e-308" is false for retention_post without
+       printing it. A supersession record that may not quote what it supersedes cannot
+       communicate what changed. 4 of the 5 are this class.
+
+  (ii) SUPERSEDED OPERATIVE TEXT — DEVIATIONS_addendum.md:198, inside sealed volume 1.
+       This one IS the live rule as volume 1 states it. D-115 supersedes its replacement
+       clause and says so explicitly. It is left in place deliberately: volume 1 is sealed at
+       sha 353930c3…, and editing it would turn the sha a reader holds into a label rather
+       than a record — the exact defect volume 2 exists to avoid. Volume 2's cross-volume
+       retrieval rule already requires reading both volumes, so no reader sees (ii) without
+       also seeing (i).
+
+STRUCTURAL FINDING, registered as a new deviation (see DEVIATIONS_addendum_3.md):
+  The gate as the assignment words it — "any occurrence of p < 2.2e-308 ⇒ the whole passage
+  is reworked" — is unsatisfiable by the document that defines the rule. D-115 must contain
+  the string to refute it. This is the same shape as D-115's own discovery about D-111: a
+  rule its own subject cannot satisfy. The gate therefore has to be read as binding ACTS OF
+  QUOTING, with MENTIONS OF THE RULE recorded and classified — which is what this file does.
+
+  A second instance of the same shape: "p < 1e-300" appears 4 times (A4) and is itself the
+  superseded bound. It is also FALSE for retention_post (6.19e-221 > 1e-300), so on a literal
+  reading the register would fail its own gate twice.
+
+--------------------------------------------------------------------------------
+SECTION D — VERDICT
+--------------------------------------------------------------------------------
+  operative violations of D-115 ................. 0
+  forbidden-string hits .......................... 5, all classified C(i)/C(ii), none operative
+  subnormal-underflow wording .................... 0
+  raw subnormal literals in any delivered artefact  0 (register only, where naming them is the point)
+  plan documents ................................. clean (0/0/0/0, all parts)
+  RESULT: PASS, with the five register hits recorded above rather than edited away.
+
+  Re-run recipe (scan set as the assignment defines it — REPORT, plan, volumes 1/2, registry;
+  runs/exp/ is deliberately outside this set because this file is a report ABOUT the string):
+      cd /root/mdpi3
+      grep -rnF --binary-files=text "p < 2.2e-308" \
+           runs/REPORT.md runs/analysis.json DEVIATIONS.md \
+           DEVIATIONS_addendum.md DEVIATIONS_addendum_2.md \
+           MANIFEST.final.json MANIFEST.artifacts.jsonl
+
+--------------------------------------------------------------------------------
+SECTION E — A CORRECTION TO MY OWN EARLIER REPORT
+--------------------------------------------------------------------------------
+I previously told the peer session that runs/analysis.json still carried the label
+"wilcoxon_method": "asymptotic" while the call argument had become "approx". Measured now:
+
+    retention_post     method='approx'  p=6.189265913856175e-221
+    edge_jaccard       method='approx'  p=2.66176119716124e-310
+    substitution_ratio method='approx'  p=2.66118142717735e-310
+    r_dyn              method='approx'  p=1.9446274995358252e-307
+
+The label reads 'approx' — a string SciPy 1.13.1 accepts — so the defect as I described it
+does not hold against the delivered artefact. What I had measured was an intermediate state.
+Recorded here rather than quietly dropped: a defect report that outlives the defect is its own
+kind of error, and the person I reported it to needs to be told.

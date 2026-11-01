@@ -1,0 +1,3 @@
+[2026-11-01T06:56:50Z] [s5] sensitivity status=ORDER_DEPENDENT failed=['A2.t_rec_km:NOT_ESTIMABLE', 'A3.t_rec_km:NOT_ESTIMABLE']
+[2026-11-01T06:56:50Z] [s5] zero-width intervals: 8 (7 labelled at source)
+[2026-11-01T06:56:50Z] [s5] {"rq1": "OK", "rq2": "FIDELITY_UNRESOLVED", "rq3": null}

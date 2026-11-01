@@ -1,0 +1,191 @@
+Extended attack-order sensitivity -- EXPLORATORY
+generated_utc : 2026-11-01T07:43:46Z
+prereg        : 4c086efad4ae8a035328469aeca4316902cc3375b9c954225c13c58a3fb82fb1
+code_hash     : f4328c4a7b0c1b5a
+
+Endpoint: AUC of the LCC-fraction curve under targeted removal, f in [0,1].
+Each value is the MEAN over 20 tie permutations of the removal order (11 s3_resilience.py);
+the single construction-order draw is printed beside it as `anchor`.
+
+==============================================================================
+AI subnet: n=56 (declared 70) m=38 base=6 ncomp=19
+==============================================================================
+order                         AUC     anchor        min        max distinct_keys
+degree                    0.35333    0.31000    0.31333    0.37833 5
+betweenness               0.38375    0.35500    0.31667    0.49500 5
+pagerank                  0.29908    0.30667    0.28000    0.33667 9
+gnn                       0.50192    0.49667    0.49667    0.50833 31
+eigenvector               0.46900    0.45833    0.45833    0.47667 10
+kcore                     0.38283    0.34500    0.34500    0.41000 6
+collective_influence      0.61392    0.47167    0.52833    0.71000 2
+G1 mean                   0.38452   (mean of the four frozen orders)
+G2 mean                   0.48858   (mean of 3 estimable new order(s): eigenvector, kcore, collective_influence)
+
+==============================================================================
+TRADITIONAL subnet: n=1973 (declared 3391) m=2265 base=1116 ncomp=264
+==============================================================================
+order                         AUC     anchor        min        max distinct_keys
+degree                    0.02514    0.02507    0.02432    0.02555 33
+betweenness               0.03667    0.03703    0.03616    0.03751 315
+pagerank                  0.02925    0.02925    0.02925    0.02925 648
+gnn                       0.29462    0.29459    0.29461    0.29464 1157
+eigenvector               0.09044    0.09043    0.09043    0.09045 647
+kcore                     0.03791    0.03797    0.03762    0.03815 85
+collective_influence      0.04020    0.04269    0.03893    0.04127 353
+G1 mean                   0.09642   (mean of the four frozen orders)
+G2 mean                   0.05618   (mean of 3 estimable new order(s): eigenvector, kcore, collective_influence)
+
+==============================================================================
+CONTROLS
+==============================================================================
+A AI           recomputed 0.384520833333  stored 0.384520833333  |delta| 0.000e+00  PASS
+A traditional  recomputed 0.096417562724  stored 0.096417562724  |delta| 0.000e+00  PASS
+B level 0     recomputed 0.095433131720  stored 0.095433131720  |delta| 0.000e+00
+B level 1     recomputed 0.093940202703  stored 0.093940202703  |delta| 0.000e+00
+B level 2     recomputed 0.092132485741  stored 0.092132485741  |delta| 0.000e+00
+B level 3     recomputed 0.090372068230  stored 0.090372068230  |delta| 0.000e+00
+B verdict      PASS
+C detector     rho(degree, degree) = 1.0  ci95 [0.9999999999999998, 1.0]  PASS
+
+==============================================================================
+RANK CORRELATION BETWEEN ORDERS (Spearman over subnet nodes, 2000-rep bootstrap)
+==============================================================================
+-- AI subnet
+  betweenness|collective_influence           rho=-0.1104  ci95 [-0.1863, -0.0549]  n=56
+  betweenness|eigenvector                    rho=+0.2944  ci95 [+0.0678, +0.5021]  n=56
+  betweenness|gnn                            rho=+0.3645  ci95 [+0.1392, +0.5541]  n=56
+  betweenness|kcore                          rho=+0.7858  ci95 [+0.5654, +1.0000]  n=56
+  betweenness|pagerank                       rho=+0.6849  ci95 [+0.5104, +0.8107]  n=56
+  degree|betweenness                         rho=+0.8721  ci95 [+0.7084, +1.0000]  n=56
+  degree|collective_influence                rho=+0.3894  ci95 [+0.1992, +0.6205]  n=56
+  degree|eigenvector                         rho=+0.4207  ci95 [+0.2153, +0.6021]  n=56
+  degree|gnn                                 rho=+0.3596  ci95 [+0.1370, +0.5458]  n=56
+  degree|kcore                               rho=+0.9877  ci95 [+0.9626, +1.0000]  n=56
+  degree|pagerank                            rho=+0.6976  ci95 [+0.5442, +0.8112]  n=56
+  eigenvector|collective_influence           rho=+0.2924  ci95 [+0.1490, +0.4580]  n=56
+  eigenvector|kcore                          rho=+0.4345  ci95 [+0.2313, +0.6276]  n=56
+  gnn|collective_influence                   rho=+0.0369  ci95 [-0.0811, +0.1589]  n=56
+  gnn|eigenvector                            rho=+0.7871  ci95 [+0.6162, +0.8884]  n=56
+  gnn|kcore                                  rho=+0.3351  ci95 [+0.1192, +0.5135]  n=56
+  kcore|collective_influence                 rho=+0.5279  ci95 [+0.3023, +0.7387]  n=56
+  pagerank|collective_influence              rho=+0.1285  ci95 [+0.0387, +0.2433]  n=56
+  pagerank|eigenvector                       rho=-0.3359  ci95 [-0.6386, -0.0320]  n=56
+  pagerank|gnn                               rho=-0.2566  ci95 [-0.5520, +0.0443]  n=56
+  pagerank|kcore                             rho=+0.6652  ci95 [+0.5172, +0.7745]  n=56
+
+-- traditional subnet
+  betweenness|collective_influence           rho=+0.8890  ci95 [+0.8663, +0.9095]  n=1973
+  betweenness|eigenvector                    rho=+0.4493  ci95 [+0.4120, +0.4860]  n=1973
+  betweenness|gnn                            rho=+0.1205  ci95 [+0.0838, +0.1557]  n=1973
+  betweenness|kcore                          rho=+0.8614  ci95 [+0.8399, +0.8802]  n=1973
+  betweenness|pagerank                       rho=+0.5823  ci95 [+0.5529, +0.6094]  n=1973
+  degree|betweenness                         rho=+0.8616  ci95 [+0.8415, +0.8812]  n=1973
+  degree|collective_influence                rho=+0.8775  ci95 [+0.8567, +0.8974]  n=1973
+  degree|eigenvector                         rho=+0.3939  ci95 [+0.3511, +0.4339]  n=1973
+  degree|gnn                                 rho=+0.1419  ci95 [+0.1041, +0.1819]  n=1973
+  degree|kcore                               rho=+0.9922  ci95 [+0.9901, +0.9939]  n=1973
+  degree|pagerank                            rho=+0.6950  ci95 [+0.6704, +0.7185]  n=1973
+  eigenvector|collective_influence           rho=+0.5204  ci95 [+0.4858, +0.5529]  n=1973
+  eigenvector|kcore                          rho=+0.4267  ci95 [+0.3865, +0.4674]  n=1973
+  gnn|collective_influence                   rho=+0.1375  ci95 [+0.1014, +0.1727]  n=1973
+  gnn|eigenvector                            rho=+0.3105  ci95 [+0.2618, +0.3562]  n=1973
+  gnn|kcore                                  rho=+0.1458  ci95 [+0.1070, +0.1832]  n=1973
+  kcore|collective_influence                 rho=+0.9040  ci95 [+0.8870, +0.9199]  n=1973
+  pagerank|collective_influence              rho=+0.5432  ci95 [+0.5135, +0.5739]  n=1973
+  pagerank|eigenvector                       rho=-0.3042  ci95 [-0.3591, -0.2492]  n=1973
+  pagerank|gnn                               rho=-0.1554  ci95 [-0.1976, -0.1147]  n=1973
+  pagerank|kcore                             rho=+0.6657  ci95 [+0.6402, +0.6898]  n=1973
+
+==============================================================================
+STRATEGY RANKING UNDER THE TWO ORDER GROUPS
+==============================================================================
+G1 = degree, betweenness, pagerank, gnn
+G2 = eigenvector, kcore, collective_influence
+r_struct by A level  G1: {0: 0.095433, 1: 0.09394, 2: 0.092132, 3: 0.090372}
+r_struct by A level  G2: {0: 0.054968, 1: 0.055384, 2: 0.05753, 3: 0.050068}
+
+primary: Spearman rho over the 63-scenario composite-R ranking = 0.9998079877112136  ci95 [0.9981742125534483, 1.0]
+         0 of 2000 bootstrap replicates were undefined (degenerate resample)
+top-10 intersection = 9/10  -> A1, A1+B1, A1+B1+C1, A1+C1, B1, B1+C1, B2, C1, C2
+top-10 under G1: B1, C1, B1+C1, A1, B2, C2, A1+B1, A1+C1, A1+B1+C1, B2+C1
+top-10 under G2: B1, C1, B1+C1, A1, B2, C2, A1+B1, A1+C1, A1+B1+C1, A1+B2
+
+degeneracy guard: 63 of 63 scenarios shift by more than 1e-12; largest shift 0.013488
+  against the run-to-run spread: 22 of 63 scenarios shift by MORE than the half-width of
+  their own r_composite_spread95; for the rest the shift is smaller than the spread of 30
+  single runs, i.e. not resolved by this design.
+
+secondary: within-stratum strategy ranking (stratum = the multiset of intensity levels)
+  DISCRIMINATIVE is checked before the rho is read: the substitution changes only the
+  structural term, which is a function of the A level, so a stratum in which every member
+  carries the same A level cannot reorder -- its rho=1.0 is arithmetic (prereg-freeze rule;
+  recorded as D-117 because the first run printed these without the flag).
+  stratum (1)  DISCRIMINATIVE  [2 distinct A level(s)]: A1, B1, C1
+     rho=+1.0000
+     G1: B1 > C1 > A1
+     G2: B1 > C1 > A1
+  stratum (1+1)  DISCRIMINATIVE  [2 distinct A level(s)]: A1+B1, A1+C1, B1+C1
+     rho=+1.0000
+     G1: B1+C1 > A1+B1 > A1+C1
+     G2: B1+C1 > A1+B1 > A1+C1
+  stratum (1+1+2)  DISCRIMINATIVE  [2 distinct A level(s)]: A1+B1+C2, A1+B2+C1, A2+B1+C1
+     rho=+1.0000
+     G1: A1+B2+C1 > A1+B1+C2 > A2+B1+C1
+     G2: A1+B2+C1 > A1+B1+C2 > A2+B1+C1
+  stratum (1+1+3)  DISCRIMINATIVE  [2 distinct A level(s)]: A1+B1+C3, A1+B3+C1, A3+B1+C1
+     rho=+1.0000
+     G1: A1+B3+C1 > A1+B1+C3 > A3+B1+C1
+     G2: A1+B3+C1 > A1+B1+C3 > A3+B1+C1
+  stratum (1+2)  DISCRIMINATIVE  [3 distinct A level(s)]: A1+B2, A1+C2, A2+B1, A2+C1, B1+C2, B2+C1
+     rho=+0.9429
+     G1: B2+C1 > A1+B2 > B1+C2 > A1+C2 > A2+B1 > A2+C1
+     G2: A1+B2 > B2+C1 > B1+C2 > A1+C2 > A2+B1 > A2+C1
+  stratum (1+2+2)  DISCRIMINATIVE  [2 distinct A level(s)]: A1+B2+C2, A2+B1+C2, A2+B2+C1
+     rho=+1.0000
+     G1: A1+B2+C2 > A2+B2+C1 > A2+B1+C2
+     G2: A1+B2+C2 > A2+B2+C1 > A2+B1+C2
+  stratum (1+2+3)  DISCRIMINATIVE  [3 distinct A level(s)]: A1+B2+C3, A1+B3+C2, A2+B1+C3, A2+B3+C1, A3+B1+C2, A3+B2+C1
+     rho=+1.0000
+     G1: A1+B3+C2 > A1+B2+C3 > A2+B3+C1 > A2+B1+C3 > A3+B1+C2 > A3+B2+C1
+     G2: A1+B3+C2 > A1+B2+C3 > A2+B3+C1 > A2+B1+C3 > A3+B1+C2 > A3+B2+C1
+  stratum (1+3)  DISCRIMINATIVE  [3 distinct A level(s)]: A1+B3, A1+C3, A3+B1, A3+C1, B1+C3, B3+C1
+     rho=+1.0000
+     G1: B3+C1 > B1+C3 > A1+B3 > A1+C3 > A3+C1 > A3+B1
+     G2: B3+C1 > B1+C3 > A1+B3 > A1+C3 > A3+C1 > A3+B1
+  stratum (1+3+3)  DISCRIMINATIVE  [2 distinct A level(s)]: A1+B3+C3, A3+B1+C3, A3+B3+C1
+     rho=+1.0000
+     G1: A1+B3+C3 > A3+B1+C3 > A3+B3+C1
+     G2: A1+B3+C3 > A3+B1+C3 > A3+B3+C1
+  stratum (2)  DISCRIMINATIVE  [2 distinct A level(s)]: A2, B2, C2
+     rho=+1.0000
+     G1: B2 > C2 > A2
+     G2: B2 > C2 > A2
+  stratum (2+2)  DISCRIMINATIVE  [2 distinct A level(s)]: A2+B2, A2+C2, B2+C2
+     rho=+1.0000
+     G1: B2+C2 > A2+B2 > A2+C2
+     G2: B2+C2 > A2+B2 > A2+C2
+  stratum (2+2+3)  DISCRIMINATIVE  [2 distinct A level(s)]: A2+B2+C3, A2+B3+C2, A3+B2+C2
+     rho=+1.0000
+     G1: A2+B3+C2 > A2+B2+C3 > A3+B2+C2
+     G2: A2+B3+C2 > A2+B2+C3 > A3+B2+C2
+  stratum (2+3)  DISCRIMINATIVE  [3 distinct A level(s)]: A2+B3, A2+C3, A3+B2, A3+C2, B2+C3, B3+C2
+     rho=+1.0000
+     G1: B3+C2 > B2+C3 > A2+B3 > A2+C3 > A3+C2 > A3+B2
+     G2: B3+C2 > B2+C3 > A2+B3 > A2+C3 > A3+C2 > A3+B2
+  stratum (2+3+3)  DISCRIMINATIVE  [2 distinct A level(s)]: A2+B3+C3, A3+B2+C3, A3+B3+C2
+     rho=+1.0000
+     G1: A2+B3+C3 > A3+B2+C3 > A3+B3+C2
+     G2: A2+B3+C3 > A3+B2+C3 > A3+B3+C2
+  stratum (3)  DISCRIMINATIVE  [2 distinct A level(s)]: A3, B3, C3
+     rho=+1.0000
+     G1: B3 > C3 > A3
+     G2: B3 > C3 > A3
+  stratum (3+3)  DISCRIMINATIVE  [2 distinct A level(s)]: A3+B3, A3+C3, B3+C3
+     rho=+1.0000
+     G1: B3+C3 > A3+C3 > A3+B3
+     G2: B3+C3 > A3+C3 > A3+B3
+
+READING
+  EXPLORATORY. Nothing here enters the composite R of the delivered run, bh_primary or
+  bh_exploratory. A high rho means the ranking is stable under THIS substitution; it is not
+  a claim that the conclusion is robust to attack definitions in general.

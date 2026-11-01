@@ -1,0 +1,197 @@
+schema: mdpi3-prereg/1
+exp_id: attack_orders_ext
+package: 1
+tag: exp_window_2
+title: "Extended attack-order sensitivity (three orders beyond the frozen four) -- EXPLORATORY"
+status: EXPLORATORY
+written_utc: "2026-11-01T07:37:57Z"
+written_utc_source: "assigned on the pod by the registering script from `date -u`; never typed"
+
+# ============================================================================
+# What this package is for
+# ============================================================================
+question: |
+  Does the paper's conclusion depend on how the attack is DEFINED? The delivered run fixes four
+  removal orders (degree, betweenness, pagerank, gnn) and reports R_struct as their mean. If a
+  different but equally standard removal order moves the number, then "R_struct" is a statement
+  about the chosen rulers, not about the subnet. This package adds three standard orders and asks
+  how much moves.
+
+not_asking: |
+  Not "which attack is strongest". Not a new composite R. The delivered `runs/analysis.json`
+  `rq3` block is not edited, re-derived or superseded; the counterfactual recomputation in
+  section 6 below is a SEPARATE exploratory object that never enters the delivered artefact, the
+  primary evidence chain, or any Benjamini-Hochberg family.
+
+# ============================================================================
+# Frozen inputs -- read-only, verified by sha256 before execution
+# ============================================================================
+inputs:
+  - {path: data/graph/graph.graphml,        sha256: 004fee6a7e82f7d97f92a720fb5a9533bfe37d7d7d943e28e085de2090c67ad0, role: "frozen graph; never written by this package"}
+  - {path: data/graph/gnn_centrality.json,  sha256: b795f9ab64036991c3f5ce0227e92779d62b8f764832dc4b66c6f6bdb6dfa290, role: "gnn order (one of the four existing), unchanged"}
+  - {path: data/graph/resilience.json,      sha256: "measured at run time", role: "positive control A: its stored r_struct_mean must be reproduced"}
+  - {path: runs/analysis.json,              sha256: 7f7f8928f45e28e8c340617ea467f9fd5331ab28b7a80ed96ba1280d24dff3c3, role: "positive control B: its rq3.r_struct_by_A_level must be reproduced"}
+  - {path: runs/sim_runs.jsonl,             sha256: ba0129913f202fcbb8fb3290ddf22e1c2e66a6096eb75a4c52f7432d37542c82, role: "per-run r_dyn and t_rec_censored for the 63-scenario recomputation"}
+  - {path: code/config.yaml,                sha256: 5749ad4ee40194b1f45c9447674058867ca9caff6a3b33088c878e033ab514f7, role: "weights, t_max, seeds"}
+
+code_hash_expected: f4328c4a7b0c1b5a
+code_hash_note: |
+  This package imports `code/s3_resilience.py` and `code/common.py` as modules and reuses their
+  functions (induced, lcc_curves, auc_curve, rank_key, order_from_key). It writes nothing into
+  code/. If code_hash differs from the value above at run time the package refuses to run: a
+  prereg is written against a tree, and importing a different tree would make every reproduction
+  check below test the wrong object.
+
+# ============================================================================
+# Endpoint -- identical in definition to the frozen R_struct
+# ============================================================================
+endpoint:
+  definition: |
+    R_struct(attack, subnet) = mean over TIE_REPLICATES = 20 tie permutations of
+    AUC of the LCC-fraction curve under targeted node removal, f in [0,1].
+    Mechanics are taken verbatim from code/s3_resilience.py: `lcc_curves(H, order)` with its
+    default n_steps=100, and `auc_curve` = trapezoid over np.linspace(0, 1, n+1).
+    The tie family uses `order_from_key(key, tie_seed=90001 + s)` for s in range(20), exactly as
+    `evaluate()` does. The single construction-order draw (`*_anchor`) is recorded beside it.
+  denominator: "base = largest connected component of the UNATTACKED induced subgraph (start = 1.0)"
+  subnet_construction: |
+    U = undirected projection of graph.graphml (self-loops dropped), exactly as s3_resilience.main().
+    Subnet node sets: sorted(n for n, d in G.nodes(data=True) if d.get("subnet") == tag),
+    for tag in ("AI", "traditional"). SORTED, never a set -- the set-iteration defect is recorded
+    in s3_resilience.main() and reintroducing it here would make the tie order process-dependent.
+
+# ============================================================================
+# The three new orders -- fixed here, before any number exists
+# ============================================================================
+new_orders:
+  - id: eigenvector
+    definition: |
+      key[n] = nx.eigenvector_centrality(H, max_iter=1000, tol=1.0e-06)[n], on the induced
+      subgraph H. Same tie-family treatment as the four existing orders.
+    known_risk: |
+      Both subnets are DISCONNECTED (AI: 19 components of 56 nodes; traditional: 264 of 1973).
+      On a disconnected graph eigenvector centrality can fail to converge, and when it converges
+      it concentrates mass in the largest component and returns near-zero for the rest, producing
+      a very large tie set. Either outcome is a RESULT about the order, not a reason to swap in a
+      different definition. Replicated networkx calls are made with the same exception handling:
+      a non-convergence is recorded as NOT_ESTIMABLE with the library's own message.
+  - id: kcore
+    definition: |
+      key[n] = core_number[n] * 1.0e6 + degree[n], where core_number = nx.core_number(H) (the
+      standard k-core shell index) and degree is the degree in H. Batch ranking: the shells are
+      computed once on the UNATTACKED subgraph and never recomputed during removal.
+    registered_alternative_rejected: |
+      A SEQUENTIAL peeling attack (recompute cores after each removal, a la CoreHD) is a different
+      object with different dynamics. It is not used here; choosing it later would be a different
+      prereg, not an amendment to this one.
+  - id: collective_influence
+    definition: |
+      CI_l(i) = (deg(i) - 1) * sum over j in Ball(i, l) \ {i} of (deg(j) - 1),
+      computed on H. l is FIXED at 3 for this package. Ball(i, l) = nodes within graph distance l.
+    parameter_note: |
+      l is a free parameter of the method. Fixing it before execution is the whole point: a scan
+      over l reported after seeing the AUCs would be a search over definitions, not a test of one.
+
+not_estimable_rule: |
+  An order is NOT_ESTIMABLE when the library call it is defined by cannot produce a ranking on
+  this graph (raises, does not converge, or returns an all-equal key). The machine message is
+  recorded verbatim in the output. It is never replaced by a nearby definition and never
+  estimated from the other subnets. A NOT_ESTIMABLE order is excluded from group G2 below and the
+  exclusion is stated in every place the group mean appears.
+
+# ============================================================================
+# Comparison 1 -- rank correlation between orders (per subnet)
+# ============================================================================
+rank_correlation:
+  what_is_ranked: "the NODES of the subnet, by each order's key (not by the AUC)"
+  statistic: "Spearman rho (scipy.stats.spearmanr, average ranks for ties)"
+  pairs: "all 21 unordered pairs among the 7 orders, computed separately for each subnet"
+  interval: |
+    2000-replicate percentile bootstrap over NODES (resample with replacement, recompute rho on
+    the resampled (key_a, key_b) pairs). Seed 20261101, from code/config.yaml `gnn.seed` -- the
+    same seed the pipeline's own randomised component uses.
+  degenerate_case: |
+    A pair whose key has a single distinct value on that subnet (e.g. an order that cannot
+    separate any two nodes) has an undefined rho; it is recorded as UNDEFINED with the number of
+    distinct key values, not reported as 0 and not dropped silently.
+
+# ============================================================================
+# Comparison 2 -- does the 63-scenario strategy ranking move?
+# ============================================================================
+strategy_ranking:
+  groups:
+    G1: [degree, betweenness, pagerank, gnn]
+    G2: [eigenvector, kcore, collective_influence]
+  group_value: |
+    A group's R_struct for an A-intensity level is the MEAN of the per-order AUCs in that group
+    that are estimable, computed by the same per-A-level construction s5_analyze.py uses:
+    level 0 keeps every AI-subnet node; level k removes the top-k service nodes ranked by the
+    frozen gnn centrality, with k = max(1, round(A_PCT[k] * n_services)) and
+    A_PCT = {1: 0.01, 2: 0.05, 3: 0.10}.
+  composite_substitution: |
+    For each of the 63 scenarios, r_composite is recomputed per RUN as
+        alpha*w(r_struct(A_level)) + beta*clip(r_dyn,0,1) + gamma*(1 - t_rec_censored/t_max)
+    with alpha=beta=gamma=1/3 normalised by their sum, t_max=50, using the LLM arm's runs only,
+    exactly as s5_analyze.py:1177-1196. The ONLY quantity that changes between G1 and G2 is the
+    structural term. r_dyn and t_rec_censored are read from the frozen runs/sim_runs.jsonl and
+    are never recomputed.
+  primary_endpoint: |
+    Spearman rho between the 63-scenario composite-R ranking under G1 and under G2,
+    plus the size of the top-10 intersection. Bootstrap CI over SCENARIOS (2000 replicates,
+    seed 20261101); the resampling unit is the scenario, matching the unit the ranking is over.
+  secondary_endpoint: |
+    Within each of the 9 intensity strata (fixed intensity vector across the strategies present),
+    the ranking of the strategies that share it, compared across G1 and G2. Reported as a table
+    with per-stratum rho and the strategies that change order. The primary endpoint decides; this
+    is reported because "which strategy ranks first" is what a reader will actually ask.
+  degeneracy_guard: |
+    If the 63 composite values under G2 are separated by less than the run-to-run spread recorded
+    in each scenario's `r_composite_spread95`, the ranking is reported with that fact attached:
+    a ranking whose gaps are smaller than the within-scenario spread is not a ranking.
+
+# ============================================================================
+# Positive controls -- the package is void if either fails
+# ============================================================================
+positive_controls:
+  A_evaluate_machinery: |
+    Recomputing R_struct for each subnet with G1 only (the four existing orders, 20 tie
+    replicates) must reproduce `data/graph/resilience.json` subnets.<tag>.r_struct_mean to within
+    1e-12 absolute. This tests the curve, the AUC, the tie family and the subnet construction at
+    once. A mismatch means this package is measuring something other than R_struct.
+  B_substitution_machinery: |
+    Recomputing the per-A-level R_struct with G1 must reproduce
+    `runs/analysis.json` rq3.r_struct_by_A_level for levels 0..3 to within 1e-12 absolute. This
+    tests the service ranking, the A_PCT removal and the induced-subgraph rebuild.
+    A mismatch voids the strategy-ranking half of the package even if control A passes.
+  C_detector_can_fire: |
+    The rank-correlation code is run on a pair of orders CONSTRUCTED to be identical (degree vs
+    a copy of degree). The result must be rho = 1.0 exactly. A correlation instrument that cannot
+    return 1.0 on identical inputs cannot be trusted to return < 1.0 on different ones.
+
+# ============================================================================
+# Reporting rules
+# ============================================================================
+reporting:
+  heading: "EXPLORATORY"
+  placement: "may be cited as an exploratory sensitivity check; never into the primary evidence chain"
+  bh: "must NOT enter bh_primary or bh_exploratory; this package produces no p-values, only AUCs and rho"
+  composite_r: "the delivered composite R is untouched; the counterfactual is reported under its own name"
+  p_wording: "no p-values are produced here; if one appears it obeys D-115 -- a bound is a number tested against that row's stored value"
+  not_estimable_wording: "'not estimable', never 'no difference' and never 'robust'"
+  robustness_wording: |
+    A high rho is reported as "the ranking is stable under this substitution", never as
+    "the conclusion is robust" -- stability under one family of alternative definitions is not
+    robustness in general, and the words are not interchangeable.
+
+# ============================================================================
+# Freeze rule
+# ============================================================================
+freeze_rule: |
+  This file is registered in MANIFEST.artifacts.jsonl before any line of the analysis runs.
+  Changing any definition above after execution would void the package: the package would be
+  re-opened under a new exp_id with a new id, and this file would stay as the record of what was
+  asked before the answer was known.
+outputs:
+  - runs/exp2/attack_orders_ext/prereg.yaml
+  - runs/exp2/attack_orders_ext/orders_ext.json
+  - runs/exp2/attack_orders_ext/rank_corr.txt

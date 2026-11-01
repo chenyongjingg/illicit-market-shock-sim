@@ -1,0 +1,66 @@
+old leaves=2864 new leaves=2860 changed=9 added=0 removed=4
+
+VERDICT    KIND     KEYPATH / old -> new
+----------------------------------------------------------------------------------------------------------------------
+VOLATILE   changed  generated_utc
+                            old="2026-11-01T06:16:55Z"
+                            new="2026-11-01T06:56:12Z"
+                            why: run clock (generated_utc) -- moved by the act of re-running
+ALLOWED    changed  rq2.paired_within_scenario.edge_jaccard.wilcoxon_method
+                            old="asymptotic"
+                            new="approx"
+                            why: leaf 'wilcoxon_method' under the paired block
+ALLOWED    changed  rq2.paired_within_scenario.edge_jaccard.wilcoxon_p
+                            old=null
+                            new=2.66176119716124e-310
+                            why: leaf 'wilcoxon_p' under the paired block
+ALLOWED    changed  rq2.paired_within_scenario.r_dyn.wilcoxon_method
+                            old="asymptotic"
+                            new="approx"
+                            why: leaf 'wilcoxon_method' under the paired block
+ALLOWED    changed  rq2.paired_within_scenario.r_dyn.wilcoxon_p
+                            old=null
+                            new=1.9446274995358252e-307
+                            why: leaf 'wilcoxon_p' under the paired block
+ALLOWED    changed  rq2.paired_within_scenario.retention_post.wilcoxon_method
+                            old="asymptotic"
+                            new="approx"
+                            why: leaf 'wilcoxon_method' under the paired block
+ALLOWED    changed  rq2.paired_within_scenario.retention_post.wilcoxon_p
+                            old=null
+                            new=6.189265913856175e-221
+                            why: leaf 'wilcoxon_p' under the paired block
+ALLOWED    changed  rq2.paired_within_scenario.substitution_ratio.wilcoxon_method
+                            old="asymptotic"
+                            new="approx"
+                            why: leaf 'wilcoxon_method' under the paired block
+ALLOWED    changed  rq2.paired_within_scenario.substitution_ratio.wilcoxon_p
+                            old=null
+                            new=2.66118142717735e-310
+                            why: leaf 'wilcoxon_p' under the paired block
+ALLOWED    removed  rq2.paired_within_scenario.edge_jaccard.wilcoxon_error
+                            old="`method` must be one of {'approx', 'exact', 'auto'} or an instance of `stats.PermutationMethod`."
+                            why: leaf 'wilcoxon_error' under the paired block
+ALLOWED    removed  rq2.paired_within_scenario.r_dyn.wilcoxon_error
+                            old="`method` must be one of {'approx', 'exact', 'auto'} or an instance of `stats.PermutationMethod`."
+                            why: leaf 'wilcoxon_error' under the paired block
+ALLOWED    removed  rq2.paired_within_scenario.retention_post.wilcoxon_error
+                            old="`method` must be one of {'approx', 'exact', 'auto'} or an instance of `stats.PermutationMethod`."
+                            why: leaf 'wilcoxon_error' under the paired block
+ALLOWED    removed  rq2.paired_within_scenario.substitution_ratio.wilcoxon_error
+                            old="`method` must be one of {'approx', 'exact', 'auto'} or an instance of `stats.PermutationMethod`."
+                            why: leaf 'wilcoxon_error' under the paired block
+
+ALLOWED    12
+VOLATILE   1
+FORBIDDEN  0
+--- positive control 1: perturb a paired-block SCIENTIFIC leaf (mean_ci95[0]) ---
+    0.280692 -> 0.281692
+--- positive control 2: perturb a leaf OUTSIDE the block (rq1.paired_across_attacks.p) ---
+    0.125 -> 0.0625
+    control 1: ALLOWED=0 VOLATILE=0 FORBIDDEN=1
+    control 2: ALLOWED=0 VOLATILE=0 FORBIDDEN=1
+    control 3 (clock only): ALLOWED=0 VOLATILE=1 FORBIDDEN=0
+
+SELFTEST PASS -- the gate bites on a scientific change and forgives the clock
+GATE PASS -- 12 allowed, 1 volatile (run clock), 0 forbidden

@@ -11,7 +11,7 @@ pre-registration it was written against, and the register of every deviation fro
 **Nothing here is a summary of the analysis; it is the analysis.**
 
 ```bash
-python verify_release.py     # 20 checks, ~2 s, no GPU, no network
+python verify_release.py     # 25 checks, ~2 s, no GPU, no network
 ```
 
 If that prints `ALL PASS`, the numbers in this README are the numbers in the shipped files.
@@ -25,7 +25,7 @@ If that prints `ALL PASS`, the numbers in this README are the numbers in the shi
 | 3,454 documents ingested, 249 AI-relevant | `runs/q_checklist.json` → Q1 | `data/raw/ingest_report.json` |
 | extraction gate **fails** (relation micro-F1 0.050 against a pre-registered 0.80) | Q3 | `runs/analysis.json` |
 | AI and traditional subnets are **not comparable**, so no AI-vs-traditional resilience claim is made | `rq1.cross_subnet_comparability` | `runs/analysis.json`, `runs/figures/rq1_*` |
-| LLM arm retains more than the rule arm (+0.293 on `retention_post`, 95% CI [0.281, 0.306], 1,890 paired runs — **no p-value exists**, see limitation 2) | `rq2.paired_within_scenario` | `runs/analysis.json`, `runs/figures/rq2_trajectories.png` |
+| LLM arm retains more than the rule arm (+0.293 on `retention_post`, 95% CI [0.281, 0.306], 1,890 paired runs — the paired test runs, but its p-values are quoted as **bounds, never literals**; see limitation 2) | `rq2.paired_within_scenario` | `runs/analysis.json`, `runs/figures/rq2_trajectories.png` |
 | …but LLM-policy **faithfulness is not established** (0.74 against a 0.70 threshold, Wilson lower bound 0.675) | `rq2.faithful`, `rq2.fidelity_status` | `runs/policy_stats.json` |
 | Best single strategy is A3 (r_composite 0.1975); best combination A3+B3+C3 | `rq3.scenarios` | `runs/analysis.json`, `runs/figures/rq3_scatter.png` |
 | The side-effect axis is **undefined**, so no Pareto frontier is claimed across it | `rq3.side_effect_axis` | `runs/analysis.json` |
@@ -117,34 +117,75 @@ fetched*, so a re-fetch can be compared rather than assumed identical.
 
 ## Pre-registration and deviations
 
-`design/DESIGN.md` was frozen **before any analysis output existed**. `design/DEVIATIONS.md` and
-`design/DEVIATIONS_addendum.md` are the append-only register of every departure from it — entries
-numbered `D-1`…`D-109` plus `DP-1`…`DP-5` — including the ones we would rather not have (a guard that
-was checking the wrong quantity, a standard error derived from an interval width instead of the
-resampling distribution, a fidelity tri-state collapsed to a boolean, and a paired test whose
-`method=` argument name was rejected by SciPy, leaving four `null` p-values that read like
-significance rather than absence). Each entry records what was wrong, what was done, and what changed
-in the outputs.
+`design/DESIGN.md` was frozen **before any analysis output existed**. The register of every departure
+from it is spread over **five files**: the run-time register `design/DEVIATIONS.md` and four sealed
+volumes — `design/DEVIATIONS_addendum.md` (`D-16`…`D-113`, `DP-1`…`DP-5`), `…_addendum_2.md`
+(`D-114`, `D-115`), `…_addendum_3.md` (`D-116`…`D-120`) and `…_window2.md` (`D-116`…`D-121`).
+They include the ones we would rather not have: a guard that was checking the wrong quantity, a
+standard error derived from an interval width instead of the resampling distribution, a fidelity
+tri-state collapsed to a boolean, and a paired test whose `method=` argument name was rejected by
+SciPy — the last one fixed in this tree, and its fix is itself registered twice more, because the
+repaired p-values underflowed and the wording rule written to contain that turned out to be false
+for two of the four metrics. Each entry records what was wrong, what was done, and what changed in
+the outputs.
+
+**Two volumes reused the same identifiers.** `D-116`…`D-120` are defined once in volume 3 and again
+in the window-2 volume — ten different findings carrying five shared IDs. The second volume read
+volume 2's high-water mark (`D-115`) instead of the register's (`D-120`), which is the failure `D-66`
+already rules on. Both volumes are sealed, so the collision is resolved by **citation, not
+renumbering**: `exp_window_20261101#D-116` and `exp_window_2#D-116` are different entries.
+**`design/DEVIATIONS_README.md` is the map** — read it before citing any `D-` number ≥ 116. The
+counts it states are re-derived from the shipped volumes by `verify_release.py` check 4.
 
 `MANIFEST.artifacts.jsonl` records, for every artefact, the command that wrote it and its sha256.
 The manifest is append-only; when a file is rewritten the newest row is the binding one, and
 `verify_release.py` re-hashes the *file* rather than trusting the *row*.
 
-**This manifest is the ledger as of the run shipped here** — its last row is `2026-11-01T06:42:25Z`.
-It is a verbatim prefix of the pipeline's ledger, not a re-written one: no row was edited, added or
-reordered. Anything the pipeline wrote after that timestamp belongs to a later, separate intervention
-and is deliberately not mixed into this release.
+**It is shipped as the pipeline's own ledger, verbatim** — 166 rows, last at
+`2026-11-01T08:21:36Z`, no row edited, added or reordered. Rows written after the main grid closed
+belong to a second, separately-tagged execution window (`exp_window_2`, EXPLORATORY, below); they are
+kept because the ledger is the record of what happened, and the window's outputs are quarantined in
+`runs/exp2/` under their own `closeout2` block in `MANIFEST.final.json`.
+
+## A second execution window — EXPLORATORY, not evidence
+
+After the delivered tree was closed, a second window (`tag=exp_window_2`, `2026-11-01T07:34:57Z` →
+`08:21:36Z`) ran five pre-registered packages using **only** the frozen tree and the frozen grid. Its
+outputs are in `runs/exp2/`, its closeout block is `MANIFEST.final.json` → `closeout2`, its deviations
+are `design/DEVIATIONS_window2.md`.
+
+**None of it enters the paper's evidence chain or `bh_primary`.** The main grid was hashed before the
+window opened and after it closed and is byte-identical file-for-file (`runs/sim_runs.jsonl`
+`ba012991…`, `runs/analysis.json` `7f7f8928…`, `runs/REPORT.md` `61117957…`, `runs/q_checklist.json`
+`56bee6a5…`, `runs/backtest.json` `76279ae3…`), and the code hash never moved.
+
+| Package | Result |
+|---|---|
+| attack-order extension | the ranking is insensitive to the attack order: Spearman **0.9998** against the four published orders (95% CI [0.9982, 1.0]), top-10 intersection 9/10 |
+| minimum detectable effect | at n = 1,890 pairs the MDEs are 0.0097–0.0181; every observed effect is **16–64×** its MDE |
+| calibration robustness, ±50% | **NOT ROBUST** — 3 of 8 perturbed points pass the frozen rule |
+| long horizon, 60 → 180 turns | **not a recovery**: every primary scenario is at a fixed point or in a stationary **period-5 cycle already running at t = 60** (4 static / 6 cycle / 0 trending), and the 63-scenario ranking is identical across the two windows (Spearman 1.000000, max rank shift 0) |
+| three-arm | **NOT_RUN-INHERITED** — the previous window produced no Llama grid, and the weights are behind a gated repo (HTTP 403), so branch (b) of the mandate applies |
+
+The window also recorded three tree facts worth knowing before anyone re-runs the grid: `T0` in
+`code/s4_sim.py:17` is **10**, not 30; `cap *= 0.9` at `:127` is a **retention** factor, not a cost
+(a ×1.5 cost shock must be applied to `c`, not here); and the coarse fallback cell
+`seller|2|0|1` maps to `substitute` while its neighbours map to `migrate`, so the baseline LLM arm
+never migrates and the cost knob is **dead at that point** (all three adjacent values byte-identical).
 
 ## Repository map
 
 ```
 code/            pipeline as it ran (ingest → extract → graph → GNN/resilience → agents → analysis)
-design/          frozen pre-registration + the deviation register
+design/          frozen pre-registration + the deviation register + DEVIATIONS_README.md (the index)
 runs/            outputs: REPORT.md, analysis.json, per-run data, figures, controls
+runs/exp/        window 1's pre-registered packages (EXPLORATORY)
+runs/exp2/       window 2's packages + its closeout evidence (EXPLORATORY — quarantined here)
+ops/             operator scripts, including the _exp2_*.py that produced runs/exp2/
 data/cache/      llm.sqlite — generation cache (6.1 MB)
 data/extracted/  extraction products          data/graph/  graph + resilience products
 data/raw/        ingest_report.json only — provenance for the fetched corpora (not redistributed)
-MANIFEST.*       artefact receipts + model file digests
+MANIFEST.*       artefact receipts + model file digests + MANIFEST.final.json (closeout + closeout2)
 verify_release.py
 ```
 
@@ -155,13 +196,21 @@ Stated here rather than discovered by a reviewer:
 1. **LLM-policy faithfulness is unresolved, not established.** 0.74 agreement on 200 held-out states,
    Wilson 95% [0.675, 0.796], pre-registered threshold 0.70 with the rule "point *and* lower bound".
    The data cannot separate the two sides of the threshold; the paper says "not established".
-2. **The paired significance test never ran — there are no p-values for the RQ2 contrast.** All four
-   predictors in `rq2.paired_within_scenario` carry `wilcoxon_p: null`, because `s5_analyze.py`
-   passed `method="asymptotic"` and this SciPy accepts only `approx`/`exact`/`auto`; the `ValueError`
-   was caught and written into a `wilcoxon_error` field. The effect estimate is unaffected — the mean
-   difference and its normal-approximation CI are computed independently of the test — but **a `null`
-   here means "not computed", never "no difference"**. Quoting it as non-significance would invert
-   its meaning. Deviation D-107; the one-word fix belongs to the next run, not to this delivered tree.
+2. **The paired test now runs, but two of its four p-values are subnormal and may not be quoted as
+   literals.** The earlier delivered tree carried `wilcoxon_p: null` on all four predictors, because
+   `s5_analyze.py` passed `method="asymptotic"`, which this SciPy rejects; the `ValueError` was
+   caught and written into a `wilcoxon_error` field (deviation D-107). The one-word fix — `approx` —
+   is in **this** tree, and all four predictors now carry a value. Two of them, `edge_jaccard` and
+   `substitution_ratio`, are **subnormal doubles** (`2.66e-310`): the arithmetic has bottomed out, so
+   the stored number is a quantisation rather than a measurement (D-111), and printing its digits
+   claims a precision that does not exist. The register's rule (D-115) is that a printed **bound is
+   itself a claim, to be tested against the stored value** — and the obvious ones fail:
+   `p < 2.2e-308` and `p < 1e-300` are both **false** for `retention_post` (`6.19e-221`). What may be
+   written is `p < 1e-200` for all four, or per metric `retention_post < 1e-220`,
+   `r_dyn < 1e-306`, and `< 1e-309` for the two subnormals. The effect estimates and their CIs are
+   unaffected: the mean difference and its normal-approximation CI are computed independently of the
+   test. The general lesson outlives this run — a bound that looks conservative can be the false
+   statement, and "not computed" is never "no difference".
 3. **The policy table covers 1,200 of 10,125 states exactly (11.85%).** Held-out agreement is therefore
    measured at the coarse lookup level, because held-out states are disjoint from table states by
    construction.
@@ -183,5 +232,5 @@ Citation metadata is in `CITATION.cff`.
 
 ---
 
-*Recorded on a single RTX 4090. Pipeline code hash `55505a71431cff70`; all 13 stages completed
-(`runs/PIPELINE_DONE`, `rc=0`).*
+*Recorded on a single RTX 4090. Pipeline code hash `f4328c4a7b0c1b5a`; all 13 stages completed
+(`runs/PIPELINE_DONE`, `rc=0`). The hash covers `code/*.py` and `code/config.yaml` — see limitation 6.*

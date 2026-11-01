@@ -1,0 +1,63 @@
+{
+ "schema": "mdpi3-exp2-three-arm/1",
+ "exp_id": "three_arm",
+ "package": 5,
+ "status": "NOT_RUN-INHERITED",
+ "generated_utc": "2026-11-01T08:18:07Z",
+ "decision_branch": "mandate 5(b) -- the previous window produced no Llama grid, so this package is registered as NOT_RUN-INHERITED and is not re-run",
+ "scan": {
+  "method": "regular FILES only, under runs/ data/ models/, excluding runs/exp2/; a path is not a file (D-102) and a directory named after a package is not the package's output (D-116)",
+  "term": "llama",
+  "n_files": 1,
+  "n_result_files": 0,
+  "n_question_files": 1,
+  "paths": [
+   "runs/exp/backbone_llama/prereg.yaml"
+  ],
+  "classify_rule": "basename prereg.yaml/prereg.yml => QUESTION (a document that asks), everything else => RESULT"
+ },
+ "positive_controls": {
+  "qwen": {
+   "n_files": 23,
+   "n_result": 12,
+   "n_question": 0
+  },
+  "graph": {
+   "n_files": 11,
+   "n_result": 11,
+   "n_question": 0
+  },
+  "detector_fired": true,
+  "note": "the same detector returns non-zero on terms that ARE on this pod, so the zero for 'llama' is evidence rather than a blind spot"
+ },
+ "gated_repo_probe": {
+  "tested": true,
+  "http_status": 403,
+  "at": "2026-11-01T08:18:07Z",
+  "url": "https://hf-mirror.com/meta-llama/Llama-3.1-8B-Instruct/resolve/main/config.json",
+  "hf_token_present": false,
+  "reading": "a 401/403 with no token means the weights cannot be downloaded from here; a 200 would mean the gate is open and the blocker is something else"
+ },
+ "status_of_previous_window": {
+  "path": "runs/exp2/status_of_previous_window.v2.txt",
+  "sha256": "47c9cf4d1201d653744e6ae27d52fbd0589b973ab8464e3ec81ce5d13d9aa63d",
+  "agrees": true
+ },
+ "what_would_be_needed": [
+  "Llama-3.1-8B-Instruct weights on this pod (none present: 0 result files)",
+  "an accepted licence / access token for the gated repository",
+  "a full s4_policy re-run against the Llama backbone, then s4_sim, then the paired comparison -- i.e. a new experimental window, not a re-analysis"
+ ],
+ "consequence": "no three-arm (Qwen vs Llama vs Rule) comparison exists in this window. The paper must not claim one. The two-arm comparison it already reports is unaffected.",
+ "model_weights_found": {
+  "llama": [],
+  "control_qwen": [
+   "models/Qwen2.5-7B-Instruct/model-00001-of-00004.safetensors",
+   "models/Qwen2.5-7B-Instruct/model-00002-of-00004.safetensors",
+   "models/Qwen2.5-7B-Instruct/model-00003-of-00004.safetensors",
+   "models/Qwen2.5-7B-Instruct/model-00004-of-00004.safetensors"
+  ],
+  "control_qwen_n": 4
+ },
+ "verdict": "NOT_RUN_INHERITED"
+}

@@ -1,0 +1,201 @@
+{
+ "schema": "mdpi3-exp2-mde/1",
+ "exp_id": "mde_power",
+ "status": "EXPLORATORY",
+ "generated_utc": "2026-11-01T07:48:04Z",
+ "prereg_sha256": "1245a73ab36bdb57ad229a1711e142f58c5fc704dc68b2480ba6abaf2cc012cf",
+ "code_hash": "f4328c4a7b0c1b5a",
+ "inputs": {
+  "analysis.json": "7f7f8928f45e28e8c340617ea467f9fd5331ab28b7a80ed96ba1280d24dff3c3",
+  "sim_runs.jsonl": "ba0129913f202fcbb8fb3290ddf22e1c2e66a6096eb75a4c52f7432d37542c82"
+ },
+ "design": {
+  "alpha": 0.05,
+  "sides": 2,
+  "power": 0.8,
+  "z975": 1.959963984540054,
+  "z80": 0.8416212335729143,
+  "formula": "MDE = (z_{1-alpha/2} + z_{1-beta}) * sigma_d / sqrt(n)",
+  "n_pairs": 1890,
+  "bootstrap": {
+   "replicates": 2000,
+   "seed": 20261101,
+   "unit": "pairs"
+  }
+ },
+ "controls": {
+  "retention_post": {
+   "n_recomputed": 1890,
+   "n_stored": 1890,
+   "mean_recomputed": 0.29333950317460317,
+   "mean_stored": 0.29333950317460317,
+   "abs_delta_mean": 0.0,
+   "se_recomputed": 0.006452766566611209,
+   "se_stored": 0.006452766566611209,
+   "abs_delta_se": 0.0,
+   "passes": true
+  },
+  "edge_jaccard": {
+   "n_recomputed": 1890,
+   "n_stored": 1890,
+   "mean_recomputed": 0.6829824161499158,
+   "mean_stored": 0.6829824161499158,
+   "abs_delta_mean": 0.0,
+   "se_recomputed": 0.005732564913641347,
+   "se_stored": 0.005732564913641347,
+   "abs_delta_se": 0.0,
+   "passes": true
+  },
+  "substitution_ratio": {
+   "n_recomputed": 1890,
+   "n_stored": 1890,
+   "mean_recomputed": -0.7598708016335182,
+   "mean_stored": -0.7598708016335182,
+   "abs_delta_mean": 0.0,
+   "se_recomputed": 0.004234378574163058,
+   "se_stored": 0.004234378574163058,
+   "abs_delta_se": 0.0,
+   "passes": true
+  },
+  "r_dyn": {
+   "n_recomputed": 1890,
+   "n_stored": 1890,
+   "mean_recomputed": 0.3301229015078055,
+   "mean_stored": 0.3301229015078055,
+   "abs_delta_mean": 0.0,
+   "se_recomputed": 0.0034724097963049804,
+   "se_stored": 0.0034724097963049804,
+   "abs_delta_se": 0.0,
+   "passes": true
+  }
+ },
+ "controls_verdict": "PASS -- recomputed mean and SE reproduce the delivered statistics to <= 1e-9 and the pair count matches",
+ "metrics": [
+  {
+   "metric": "retention_post",
+   "mde": 0.018077975428951534,
+   "mde_ci95": [
+    0.01754164936493098,
+    0.018579271084643818
+   ],
+   "ci_method": "percentile bootstrap over 1890 pairs, 2000 replicates, seed 20261101",
+   "n_pairs": 1890,
+   "sigma_d": 0.280528414115935,
+   "se": 0.006452766566611209,
+   "observed_effect": 0.29333950317460317,
+   "observed_effect_ci95": [
+    0.2806920807040452,
+    0.3059869256451611
+   ],
+   "observed_over_mde": 16.226347044637837,
+   "achieved_power_at_observed": 1.0,
+   "mde_t_variant": 0.01808731224813635,
+   "mde_t_variant_note": "same formula with t quantiles at df=n-1 instead of normal; reported so the normal approximation's cost is visible",
+   "post_hoc": true,
+   "note": "post-hoc descriptive, not an a-priori sample-size argument. The smallest true difference between the two arms that this design (n=1890 pairs, alpha=0.05 two-sided, power=0.80) would have detected at the variability observed here is 0.018078 in retention_post's own units. MDE is for the paired t/z test on the mean difference, NOT for the Wilcoxon signed-rank test quoted in rq2. sigma_d is estimated from this sample, so the MDE is itself an estimate; its bootstrap interval is mde_ci95.",
+   "units_note": "bounded proportion [0,1]",
+   "p_reference": {
+    "class": "normal",
+    "quote_as": "p < 1e-220",
+    "bound_tested_true": true,
+    "quoting_rule": "D-115: quote a tested bound, never the stored literal; the literal is not reproduced anywhere in this file"
+   }
+  },
+  {
+   "metric": "edge_jaccard",
+   "mde": 0.016060269123930642,
+   "mde_ci95": [
+    0.01578402848524648,
+    0.01632460243803558
+   ],
+   "ci_method": "percentile bootstrap over 1890 pairs, 2000 replicates, seed 20261101",
+   "n_pairs": 1890,
+   "sigma_d": 0.24921827365669105,
+   "se": 0.005732564913641347,
+   "observed_effect": 0.6829824161499158,
+   "observed_effect_ci95": [
+    0.6717465889191788,
+    0.6942182433806529
+   ],
+   "observed_over_mde": 42.526212411486696,
+   "achieved_power_at_observed": 1.0,
+   "mde_t_variant": 0.016068563848605923,
+   "mde_t_variant_note": "same formula with t quantiles at df=n-1 instead of normal; reported so the normal approximation's cost is visible",
+   "post_hoc": true,
+   "note": "post-hoc descriptive, not an a-priori sample-size argument. The smallest true difference between the two arms that this design (n=1890 pairs, alpha=0.05 two-sided, power=0.80) would have detected at the variability observed here is 0.0160603 in edge_jaccard's own units. MDE is for the paired t/z test on the mean difference, NOT for the Wilcoxon signed-rank test quoted in rq2. sigma_d is estimated from this sample, so the MDE is itself an estimate; its bootstrap interval is mde_ci95.",
+   "units_note": "bounded proportion [0,1]",
+   "p_reference": {
+    "class": "subnormal",
+    "quote_as": "p < 1e-309",
+    "bound_tested_true": true,
+    "quoting_rule": "D-115: quote a tested bound, never the stored literal; the literal is not reproduced anywhere in this file"
+   }
+  },
+  {
+   "metric": "substitution_ratio",
+   "mde": 0.011862972421269491,
+   "mde_ci95": [
+    0.011547379726752509,
+    0.012166952804374472
+   ],
+   "ci_method": "percentile bootstrap over 1890 pairs, 2000 replicates, seed 20261101",
+   "n_pairs": 1890,
+   "sigma_d": 0.18408592561256798,
+   "se": 0.004234378574163058,
+   "observed_effect": -0.7598708016335182,
+   "observed_effect_ci95": [
+    -0.7681701836388778,
+    -0.7515714196281585
+   ],
+   "observed_over_mde": 64.05399714755488,
+   "achieved_power_at_observed": 1.0,
+   "mde_t_variant": 0.011869099347867392,
+   "mde_t_variant_note": "same formula with t quantiles at df=n-1 instead of normal; reported so the normal approximation's cost is visible",
+   "post_hoc": true,
+   "note": "post-hoc descriptive, not an a-priori sample-size argument. The smallest true difference between the two arms that this design (n=1890 pairs, alpha=0.05 two-sided, power=0.80) would have detected at the variability observed here is 0.011863 in substitution_ratio's own units. MDE is for the paired t/z test on the mean difference, NOT for the Wilcoxon signed-rank test quoted in rq2. sigma_d is estimated from this sample, so the MDE is itself an estimate; its bootstrap interval is mde_ci95.",
+   "units_note": "signed proportion, can be negative",
+   "p_reference": {
+    "class": "subnormal",
+    "quote_as": "p < 1e-309",
+    "bound_tested_true": true,
+    "quoting_rule": "D-115: quote a tested bound, never the stored literal; the literal is not reproduced anywhere in this file"
+   }
+  },
+  {
+   "metric": "r_dyn",
+   "mde": 0.009728251956558697,
+   "mde_ci95": [
+    0.009430395031685558,
+    0.010031734066046077
+   ],
+   "ci_method": "percentile bootstrap over 1890 pairs, 2000 replicates, seed 20261101",
+   "n_pairs": 1890,
+   "sigma_d": 0.1509599957262432,
+   "se": 0.0034724097963049804,
+   "observed_effect": 0.3301229015078055,
+   "observed_effect_ci95": [
+    0.32331697830704775,
+    0.3369288247085632
+   ],
+   "observed_over_mde": 33.93445225123304,
+   "achieved_power_at_observed": 1.0,
+   "mde_t_variant": 0.009733276353779486,
+   "mde_t_variant_note": "same formula with t quantiles at df=n-1 instead of normal; reported so the normal approximation's cost is visible",
+   "post_hoc": true,
+   "note": "post-hoc descriptive, not an a-priori sample-size argument. The smallest true difference between the two arms that this design (n=1890 pairs, alpha=0.05 two-sided, power=0.80) would have detected at the variability observed here is 0.00972825 in r_dyn's own units. MDE is for the paired t/z test on the mean difference, NOT for the Wilcoxon signed-rank test quoted in rq2. sigma_d is estimated from this sample, so the MDE is itself an estimate; its bootstrap interval is mde_ci95.",
+   "units_note": "normalised dynamic-resilience ratio",
+   "p_reference": {
+    "class": "normal",
+    "quote_as": "p < 1e-306",
+    "bound_tested_true": true,
+    "quoting_rule": "D-115: quote a tested bound, never the stored literal; the literal is not reproduced anywhere in this file"
+   }
+  }
+ ],
+ "interpretation_guard": [
+  "post-hoc descriptive; not an a-priori sample-size argument",
+  "MDE belongs to the paired t/z test on the mean difference, not to the Wilcoxon test rq2 reports",
+  "sigma_d is sample-estimated, so the MDE carries its own uncertainty (mde_ci95)",
+  "MDEs across metrics are in different units and are not comparable to each other"
+ ]
+}

@@ -1,0 +1,39 @@
+Status of the previous experimental window -- VERSION 2 (supersedes version 1)
+measured_utc : 2026-11-01T07:35:33Z
+measured_on  : pod. Regular files only; directories are never counted as data.
+why v2     : version 1 (sha 7335f59aaa2856a7afadaeaaaacaa53da9b9ce2e26d3b96d111a6227cf0577d9, 1860 B) answered 'does Llama data exist' by counting
+             PATHS containing 'llama'. Its only hit was the package directory
+             runs/exp/backbone_llama -- a folder, not an output -- so it reported
+             'Llama artefacts exist' about a package that produced none.
+             Registered as D-116. Version 1 is kept unmodified as the record.
+
+--- detector, with the controls that make a negative meaningful ---
+rule        : walk runs/, data/, models/; collect REGULAR FILES whose relative path
+              contains the term; classify by basename: prereg.yaml/prereg.yml -> QUESTION, else RESULT.
+control qwen  : 12 file(s) -- detector fires, as it must (Qwen weights are here)
+control graph : 11 file(s) -- detector fires on the frozen graph
+controls pass : YES
+
+--- the question: does any Llama grid data exist? ---
+files with 'llama' in the path : 1  (1 QUESTION, 0 RESULT)
+  QUESTION    10669 B  runs/exp/backbone_llama/prereg.yaml
+model directories on the pod :
+  Qwen2.5-7B-Instruct        12 file(s)
+llama weight directories : NONE
+RESULT files : 0
+
+READING: No Llama grid data exists on this pod. The only file that mentions Llama is the prereg.yaml of the previous window's package, which is a document asking a question. Package 5 is therefore registered NOT_RUN-INHERITED: there is nothing to re-analyse, and producing the data would require weights the probe below shows are still gated.
+
+--- gated-repository probe (read-only HEAD, no bytes stored) ---
+  url                          https://hf-mirror.com/meta-llama/Llama-3.1-8B-Instruct/resolve/main/config.json
+  probed_utc                   2026-11-01T07:35:33Z
+  http_status                  403
+  body                         
+  env_HF_TOKEN                 ABSENT
+  env_HUGGING_FACE_HUB_TOKEN   ABSENT
+  env_HUGGINGFACE_TOKEN        ABSENT
+  home_huggingface_dir         ABSENT
+  cached_token_file            ABSENT
+
+A 403 here is an authorisation answer, not a transport failure: substituting a
+third-party re-upload would name a different object than the prereg names.

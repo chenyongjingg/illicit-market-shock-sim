@@ -1,0 +1,19 @@
+run_utc: 2026-11-01T07:21:25Z
+pod code_hash (f4328c4a-style): f4328c4a7b0c1b5a
+
+subnet pools from graph.graphml: AI=70 traditional=3391 nodes; undirected projection |E|=2319
+
+=== PART 1: stored verdict, then recomputed ===
+verdict        : NOT_COMPARABLE
+failed_checks  : HAS_GIANT, DENSITY_WITHIN_5X, SIZE_WITHIN_10X
+stored reason  : AI: 19 components, largest 6 of 56 nodes (10.7%), density 0.02468; traditional: 264 components, largest 1116 of 1973 nodes (56.6%), density 0.00116
+consequence    : R_struct per attack is reported as a WITHIN-SUBNET descriptive only; the AI-vs-traditional contrast is NOT_ESTIMABLE under either denominator and must not be quoted as a resilience difference.
+
+subnet        n_rec    n_stored m_rec   dens_rec dens_str largest   agreement
+AI            56       56       38      0.024675 0.024675 6         OK
+traditional   1973     1973     2265    0.001164 0.001164 1116      OK
+
+size ratio recomputed : 35.232142857142854   stored checks.SIZE_WITHIN_10X.ratio : 35.232142857142854  (MATCH)
+density ratio recomputed: 21.193304091052436   stored : 21.193304091052436  (MATCH)
+
+Recomputation agrees with the stored artefact: YES

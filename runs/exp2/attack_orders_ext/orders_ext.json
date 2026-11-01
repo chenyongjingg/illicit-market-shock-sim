@@ -1,0 +1,1477 @@
+{
+ "schema": "mdpi3-exp2-attack-orders/1",
+ "exp_id": "attack_orders_ext",
+ "status": "EXPLORATORY",
+ "generated_utc": "2026-11-01T07:43:46Z",
+ "revision": "v2",
+ "revision_note": "D-117: control C's pass rule corrected from an exact [1.0, 1.0] interval test to point-estimate + tolerance, and each intensity stratum now carries a discriminability flag. No computed quantity changes; superseded v1 is kept under superseded/.",
+ "supersedes_v1_sha256": "8f17035a982e3a61e4127ede0186f2f11a6c3bf5bb9f837c8fb3ed02cf3e635b (orders_ext.json) / 235a77cd98c8597a2e7af18884c5a044071d901fbac42dc570fea5f78fbd19d6 (rank_corr.txt)",
+ "prereg_sha256": "4c086efad4ae8a035328469aeca4316902cc3375b9c954225c13c58a3fb82fb1",
+ "code_hash": "f4328c4a7b0c1b5a",
+ "inputs": {
+  "graph.graphml": "004fee6a7e82f7d97f92a720fb5a9533bfe37d7d7d943e28e085de2090c67ad0",
+  "gnn_centrality.json": "b795f9ab64036991c3f5ce0227e92779d62b8f764832dc4b66c6f6bdb6dfa290",
+  "resilience.json": "a922245558d1490b0dea5418c168edf231442a90afb99a775a4d630fbe9dea62",
+  "analysis.json": "7f7f8928f45e28e8c340617ea467f9fd5331ab28b7a80ed96ba1280d24dff3c3",
+  "sim_runs.jsonl": "ba0129913f202fcbb8fb3290ddf22e1c2e66a6096eb75a4c52f7432d37542c82"
+ },
+ "definitions": {
+  "endpoint": "AUC of LCC-fraction curve over f in [0,1], tie-family mean over 20 replicates",
+  "tie_seed_rule": "order_from_key(key, tie_seed=90001+s), s in range(20)",
+  "collective_influence_l": 3,
+  "n_steps": 100
+ },
+ "subnets": {
+  "AI": {
+   "n": 56,
+   "m": 38,
+   "declared_n": 70,
+   "base": 6,
+   "ncomp": 19,
+   "orders": {
+    "degree": {
+     "mean": 0.35333333333333333,
+     "n_replicates": 20,
+     "min": 0.3133333333333334,
+     "max": 0.37833333333333324,
+     "sd": 0.016964014199999253,
+     "ci95": [
+      0.31570833333333337,
+      0.3751666666666666
+     ],
+     "anchor": 0.31000000000000005,
+     "distinct_key_values": 5,
+     "n_nodes": 56,
+     "status": "OK"
+    },
+    "betweenness": {
+     "mean": 0.3837499999999999,
+     "n_replicates": 20,
+     "min": 0.3166666666666667,
+     "max": 0.49500000000000005,
+     "sd": 0.04301445170585759,
+     "ci95": [
+      0.31745833333333334,
+      0.47916666666666663
+     ],
+     "anchor": 0.355,
+     "distinct_key_values": 5,
+     "n_nodes": 56,
+     "status": "OK"
+    },
+    "pagerank": {
+     "mean": 0.2990833333333333,
+     "n_replicates": 20,
+     "min": 0.27999999999999997,
+     "max": 0.3366666666666667,
+     "sd": 0.014234884771028005,
+     "ci95": [
+      0.27999999999999997,
+      0.331125
+     ],
+     "anchor": 0.3066666666666667,
+     "distinct_key_values": 9,
+     "n_nodes": 56,
+     "status": "OK"
+    },
+    "gnn": {
+     "mean": 0.5019166666666666,
+     "n_replicates": 20,
+     "min": 0.4966666666666666,
+     "max": 0.5083333333333334,
+     "sd": 0.003085584763595652,
+     "ci95": [
+      0.4974583333333332,
+      0.5083333333333334
+     ],
+     "anchor": 0.4966666666666666,
+     "distinct_key_values": 31,
+     "n_nodes": 56,
+     "status": "OK"
+    },
+    "eigenvector": {
+     "mean": 0.469,
+     "n_replicates": 20,
+     "min": 0.45833333333333326,
+     "max": 0.4766666666666666,
+     "sd": 0.005201495511442412,
+     "ci95": [
+      0.4599166666666666,
+      0.4766666666666666
+     ],
+     "anchor": 0.45833333333333326,
+     "distinct_key_values": 10,
+     "n_nodes": 56,
+     "status": "OK"
+    },
+    "kcore": {
+     "mean": 0.38283333333333325,
+     "n_replicates": 20,
+     "min": 0.34500000000000003,
+     "max": 0.4099999999999999,
+     "sd": 0.016989375765132975,
+     "ci95": [
+      0.3457916666666667,
+      0.4052499999999999
+     ],
+     "anchor": 0.34500000000000003,
+     "distinct_key_values": 6,
+     "n_nodes": 56,
+     "status": "OK"
+    },
+    "collective_influence": {
+     "mean": 0.6139166666666668,
+     "n_replicates": 20,
+     "min": 0.5283333333333334,
+     "max": 0.7100000000000001,
+     "sd": 0.0482794958778799,
+     "ci95": [
+      0.5425833333333334,
+      0.7028750000000001
+     ],
+     "anchor": 0.47166666666666673,
+     "distinct_key_values": 2,
+     "n_nodes": 56,
+     "status": "OK"
+    },
+    "_G1_mean": {
+     "mean": 0.3845208333333333,
+     "members": [
+      "degree",
+      "betweenness",
+      "pagerank",
+      "gnn"
+     ]
+    },
+    "_G2_mean": {
+     "mean": 0.4885833333333333,
+     "members": [
+      "eigenvector",
+      "kcore",
+      "collective_influence"
+     ],
+     "n_members_used": 3,
+     "not_estimable_excluded": []
+    }
+   }
+  },
+  "traditional": {
+   "n": 1973,
+   "m": 2265,
+   "declared_n": 3391,
+   "base": 1116,
+   "ncomp": 264,
+   "orders": {
+    "degree": {
+     "mean": 0.025136200716845875,
+     "n_replicates": 20,
+     "min": 0.024318996415770604,
+     "max": 0.025546594982078848,
+     "sd": 0.0002976421432548636,
+     "ci95": [
+      0.02444242831541218,
+      0.025542338709677415
+     ],
+     "anchor": 0.025071684587813614,
+     "distinct_key_values": 33,
+     "n_nodes": 1973,
+     "status": "OK"
+    },
+    "betweenness": {
+     "mean": 0.03666532258064517,
+     "n_replicates": 20,
+     "min": 0.03616487455197133,
+     "max": 0.037508960573476705,
+     "sd": 0.0003293821371468482,
+     "ci95": [
+      0.03616487455197133,
+      0.037325940860215054
+     ],
+     "anchor": 0.03702508960573478,
+     "distinct_key_values": 315,
+     "n_nodes": 1973,
+     "status": "OK"
+    },
+    "pagerank": {
+     "mean": 0.029247311827956996,
+     "n_replicates": 20,
+     "min": 0.02924731182795699,
+     "max": 0.02924731182795699,
+     "sd": 6.938893903907228e-18,
+     "ci95": [
+      0.02924731182795699,
+      0.02924731182795699
+     ],
+     "anchor": 0.02924731182795699,
+     "distinct_key_values": 648,
+     "n_nodes": 1973,
+     "status": "OK"
+    },
+    "gnn": {
+     "mean": 0.2946214157706094,
+     "n_replicates": 20,
+     "min": 0.2946057347670251,
+     "max": 0.294641577060932,
+     "sd": 1.0928594012240249e-05,
+     "ci95": [
+      0.2946057347670251,
+      0.294641577060932
+     ],
+     "anchor": 0.2945878136200717,
+     "distinct_key_values": 1157,
+     "n_nodes": 1973,
+     "status": "OK"
+    },
+    "eigenvector": {
+     "mean": 0.0904386200716846,
+     "n_replicates": 20,
+     "min": 0.09043010752688173,
+     "max": 0.09044802867383514,
+     "sd": 4.457829019297115e-06,
+     "ci95": [
+      0.09043010752688173,
+      0.09044802867383514
+     ],
+     "anchor": 0.09043010752688173,
+     "distinct_key_values": 647,
+     "n_nodes": 1973,
+     "status": "OK"
+    },
+    "kcore": {
+     "mean": 0.0379068100358423,
+     "n_replicates": 20,
+     "min": 0.037616487455197134,
+     "max": 0.03815412186379929,
+     "sd": 0.00017818703615384322,
+     "ci95": [
+      0.037637768817204306,
+      0.03814986559139785
+     ],
+     "anchor": 0.03796594982078854,
+     "distinct_key_values": 85,
+     "n_nodes": 1973,
+     "status": "OK"
+    },
+    "collective_influence": {
+     "mean": 0.04019802867383514,
+     "n_replicates": 20,
+     "min": 0.038933691756272405,
+     "max": 0.041272401433691756,
+     "sd": 0.0006751237630429617,
+     "ci95": [
+      0.03905712365591398,
+      0.04119578853046595
+     ],
+     "anchor": 0.042688172043010765,
+     "distinct_key_values": 353,
+     "n_nodes": 1973,
+     "status": "OK"
+    },
+    "_G1_mean": {
+     "mean": 0.09641756272401436,
+     "members": [
+      "degree",
+      "betweenness",
+      "pagerank",
+      "gnn"
+     ]
+    },
+    "_G2_mean": {
+     "mean": 0.05618115292712069,
+     "members": [
+      "eigenvector",
+      "kcore",
+      "collective_influence"
+     ],
+     "n_members_used": 3,
+     "not_estimable_excluded": []
+    }
+   }
+  }
+ },
+ "controls": {
+  "A_evaluate_machinery": {
+   "AI": {
+    "recomputed": 0.3845208333333333,
+    "stored": 0.3845208333333333,
+    "abs_delta": 0.0,
+    "passes_1e-12": true
+   },
+   "traditional": {
+    "recomputed": 0.09641756272401436,
+    "stored": 0.09641756272401436,
+    "abs_delta": 0.0,
+    "passes_1e-12": true
+   }
+  },
+  "B_substitution_machinery": {
+   "recomputed": {
+    "0": 0.09543313172043012,
+    "1": 0.09394020270270273,
+    "2": 0.09213248574144488,
+    "3": 0.0903720682302772
+   },
+   "stored": {
+    "0": 0.09543313172043012,
+    "1": 0.09394020270270273,
+    "2": 0.09213248574144488,
+    "3": 0.0903720682302772
+   },
+   "abs_delta": {
+    "0": 0.0,
+    "1": 0.0,
+    "2": 0.0,
+    "3": 0.0
+   },
+   "anchor_recomputed": {
+    "0": 0.09608870967741936,
+    "1": 0.09468243243243245,
+    "2": 0.09274239543726237,
+    "3": 0.0902905117270789
+   },
+   "anchor_stored": {
+    "0": 0.09608870967741936,
+    "1": 0.09468243243243245,
+    "2": 0.09274239543726237,
+    "3": 0.0902905117270789
+   },
+   "passes_1e-12": true
+  },
+  "C_correlation_detector_fires": {
+   "spearman_rho": 1.0,
+   "ci95": [
+    0.9999999999999998,
+    1.0
+   ],
+   "n_boot_valid": 2000,
+   "n_boot_undefined": 0,
+   "n": 56,
+   "resampling_unit": "subnet nodes",
+   "passes": true,
+   "pass_rule": "point estimate exactly 1.0 AND the bootstrap 2.5th percentile >= 1 - 1e-12. The first version of this check demanded an exactly [1.0, 1.0] interval and failed on 1 - 2.2e-16: a percentile computed from float means, not a property of the detector (D-117). The prereg asks that identical inputs return 1.0; the point estimate does."
+  }
+ },
+ "rank_correlation": {
+  "AI": {
+   "degree|betweenness": {
+    "spearman_rho": 0.8721274276274655,
+    "ci95": [
+     0.7083650182765462,
+     1.0
+    ],
+    "n_boot_valid": 2000,
+    "n_boot_undefined": 0,
+    "n": 56,
+    "resampling_unit": "subnet nodes",
+    "status": "OK"
+   },
+   "degree|pagerank": {
+    "spearman_rho": 0.6976217135663382,
+    "ci95": [
+     0.5441786802862718,
+     0.8111829915280802
+    ],
+    "n_boot_valid": 2000,
+    "n_boot_undefined": 0,
+    "n": 56,
+    "resampling_unit": "subnet nodes",
+    "status": "OK"
+   },
+   "degree|gnn": {
+    "spearman_rho": 0.3596021378114558,
+    "ci95": [
+     0.1370093184527284,
+     0.5457824881496396
+    ],
+    "n_boot_valid": 2000,
+    "n_boot_undefined": 0,
+    "n": 56,
+    "resampling_unit": "subnet nodes",
+    "status": "OK"
+   },
+   "degree|eigenvector": {
+    "spearman_rho": 0.42069158292204845,
+    "ci95": [
+     0.21525948486119376,
+     0.6021195529361685
+    ],
+    "n_boot_valid": 2000,
+    "n_boot_undefined": 0,
+    "n": 56,
+    "resampling_unit": "subnet nodes",
+    "status": "OK"
+   },
+   "degree|kcore": {
+    "spearman_rho": 0.9876722306116452,
+    "ci95": [
+     0.962585720076556,
+     1.0
+    ],
+    "n_boot_valid": 2000,
+    "n_boot_undefined": 0,
+    "n": 56,
+    "resampling_unit": "subnet nodes",
+    "status": "OK"
+   },
+   "degree|collective_influence": {
+    "spearman_rho": 0.38943595813450327,
+    "ci95": [
+     0.19923029589877114,
+     0.6204917874383477
+    ],
+    "n_boot_valid": 1900,
+    "n_boot_undefined": 100,
+    "n": 56,
+    "resampling_unit": "subnet nodes",
+    "status": "OK"
+   },
+   "betweenness|pagerank": {
+    "spearman_rho": 0.6848942671781011,
+    "ci95": [
+     0.5104482376962316,
+     0.8106844407847875
+    ],
+    "n_boot_valid": 2000,
+    "n_boot_undefined": 0,
+    "n": 56,
+    "resampling_unit": "subnet nodes",
+    "status": "OK"
+   },
+   "betweenness|gnn": {
+    "spearman_rho": 0.3644595443713124,
+    "ci95": [
+     0.1392246822081461,
+     0.5541041138813609
+    ],
+    "n_boot_valid": 2000,
+    "n_boot_undefined": 0,
+    "n": 56,
+    "resampling_unit": "subnet nodes",
+    "status": "OK"
+   },
+   "betweenness|eigenvector": {
+    "spearman_rho": 0.29441726899399306,
+    "ci95": [
+     0.06783096393960565,
+     0.5020701197028667
+    ],
+    "n_boot_valid": 2000,
+    "n_boot_undefined": 0,
+    "n": 56,
+    "resampling_unit": "subnet nodes",
+    "status": "OK"
+   },
+   "betweenness|kcore": {
+    "spearman_rho": 0.7858426472168358,
+    "ci95": [
+     0.5653754464048706,
+     1.0
+    ],
+    "n_boot_valid": 2000,
+    "n_boot_undefined": 0,
+    "n": 56,
+    "resampling_unit": "subnet nodes",
+    "status": "OK"
+   },
+   "betweenness|collective_influence": {
+    "spearman_rho": -0.11037729619881438,
+    "ci95": [
+     -0.18634430263406,
+     -0.05485808112136471
+    ],
+    "n_boot_valid": 1899,
+    "n_boot_undefined": 101,
+    "n": 56,
+    "resampling_unit": "subnet nodes",
+    "status": "OK"
+   },
+   "pagerank|gnn": {
+    "spearman_rho": -0.25655884775153087,
+    "ci95": [
+     -0.552009844770687,
+     0.044342066178480646
+    ],
+    "n_boot_valid": 2000,
+    "n_boot_undefined": 0,
+    "n": 56,
+    "resampling_unit": "subnet nodes",
+    "status": "OK"
+   },
+   "pagerank|eigenvector": {
+    "spearman_rho": -0.3359433600938294,
+    "ci95": [
+     -0.6385672356622727,
+     -0.03196741911425533
+    ],
+    "n_boot_valid": 2000,
+    "n_boot_undefined": 0,
+    "n": 56,
+    "resampling_unit": "subnet nodes",
+    "status": "OK"
+   },
+   "pagerank|kcore": {
+    "spearman_rho": 0.6652082420344424,
+    "ci95": [
+     0.5171888485664626,
+     0.7744742719075005
+    ],
+    "n_boot_valid": 2000,
+    "n_boot_undefined": 0,
+    "n": 56,
+    "resampling_unit": "subnet nodes",
+    "status": "OK"
+   },
+   "pagerank|collective_influence": {
+    "spearman_rho": 0.1285145215684182,
+    "ci95": [
+     0.038658328504801324,
+     0.24327077766792532
+    ],
+    "n_boot_valid": 1911,
+    "n_boot_undefined": 89,
+    "n": 56,
+    "resampling_unit": "subnet nodes",
+    "status": "OK"
+   },
+   "gnn|eigenvector": {
+    "spearman_rho": 0.7870556630707554,
+    "ci95": [
+     0.6162220753309289,
+     0.8884260011138696
+    ],
+    "n_boot_valid": 2000,
+    "n_boot_undefined": 0,
+    "n": 56,
+    "resampling_unit": "subnet nodes",
+    "status": "OK"
+   },
+   "gnn|kcore": {
+    "spearman_rho": 0.33514820269856815,
+    "ci95": [
+     0.11921628547938065,
+     0.5134607913369231
+    ],
+    "n_boot_valid": 2000,
+    "n_boot_undefined": 0,
+    "n": 56,
+    "resampling_unit": "subnet nodes",
+    "status": "OK"
+   },
+   "gnn|collective_influence": {
+    "spearman_rho": 0.03694245521614983,
+    "ci95": [
+     -0.08114037568364502,
+     0.15893897193589177
+    ],
+    "n_boot_valid": 1884,
+    "n_boot_undefined": 116,
+    "n": 56,
+    "resampling_unit": "subnet nodes",
+    "status": "OK"
+   },
+   "eigenvector|kcore": {
+    "spearman_rho": 0.4344672652758593,
+    "ci95": [
+     0.23127795142220514,
+     0.6275803384951172
+    ],
+    "n_boot_valid": 2000,
+    "n_boot_undefined": 0,
+    "n": 56,
+    "resampling_unit": "subnet nodes",
+    "status": "OK"
+   },
+   "eigenvector|collective_influence": {
+    "spearman_rho": 0.2924330679027615,
+    "ci95": [
+     0.14897537639101277,
+     0.45802075323775737
+    ],
+    "n_boot_valid": 1910,
+    "n_boot_undefined": 90,
+    "n": 56,
+    "resampling_unit": "subnet nodes",
+    "status": "OK"
+   },
+   "kcore|collective_influence": {
+    "spearman_rho": 0.5278901419831635,
+    "ci95": [
+     0.3022572030432077,
+     0.738683064209745
+    ],
+    "n_boot_valid": 1901,
+    "n_boot_undefined": 99,
+    "n": 56,
+    "resampling_unit": "subnet nodes",
+    "status": "OK"
+   }
+  },
+  "traditional": {
+   "degree|betweenness": {
+    "spearman_rho": 0.8615778525473299,
+    "ci95": [
+     0.8414657474044352,
+     0.8812481832251715
+    ],
+    "n_boot_valid": 2000,
+    "n_boot_undefined": 0,
+    "n": 1973,
+    "resampling_unit": "subnet nodes",
+    "status": "OK"
+   },
+   "degree|pagerank": {
+    "spearman_rho": 0.6950228561376656,
+    "ci95": [
+     0.6704213187842448,
+     0.7185211654108267
+    ],
+    "n_boot_valid": 2000,
+    "n_boot_undefined": 0,
+    "n": 1973,
+    "resampling_unit": "subnet nodes",
+    "status": "OK"
+   },
+   "degree|gnn": {
+    "spearman_rho": 0.14188266878582068,
+    "ci95": [
+     0.10411499932392639,
+     0.1818738223333476
+    ],
+    "n_boot_valid": 2000,
+    "n_boot_undefined": 0,
+    "n": 1973,
+    "resampling_unit": "subnet nodes",
+    "status": "OK"
+   },
+   "degree|eigenvector": {
+    "spearman_rho": 0.39387905320890737,
+    "ci95": [
+     0.35108971410880213,
+     0.43390964338127364
+    ],
+    "n_boot_valid": 2000,
+    "n_boot_undefined": 0,
+    "n": 1973,
+    "resampling_unit": "subnet nodes",
+    "status": "OK"
+   },
+   "degree|kcore": {
+    "spearman_rho": 0.9921604421690545,
+    "ci95": [
+     0.9900863152021564,
+     0.9939281965715561
+    ],
+    "n_boot_valid": 2000,
+    "n_boot_undefined": 0,
+    "n": 1973,
+    "resampling_unit": "subnet nodes",
+    "status": "OK"
+   },
+   "degree|collective_influence": {
+    "spearman_rho": 0.8775435916858216,
+    "ci95": [
+     0.8567421622139673,
+     0.8974183063563468
+    ],
+    "n_boot_valid": 2000,
+    "n_boot_undefined": 0,
+    "n": 1973,
+    "resampling_unit": "subnet nodes",
+    "status": "OK"
+   },
+   "betweenness|pagerank": {
+    "spearman_rho": 0.5822765245030549,
+    "ci95": [
+     0.5529176550501302,
+     0.6094081203252155
+    ],
+    "n_boot_valid": 2000,
+    "n_boot_undefined": 0,
+    "n": 1973,
+    "resampling_unit": "subnet nodes",
+    "status": "OK"
+   },
+   "betweenness|gnn": {
+    "spearman_rho": 0.12048751390621326,
+    "ci95": [
+     0.08381501169677882,
+     0.155673646160739
+    ],
+    "n_boot_valid": 2000,
+    "n_boot_undefined": 0,
+    "n": 1973,
+    "resampling_unit": "subnet nodes",
+    "status": "OK"
+   },
+   "betweenness|eigenvector": {
+    "spearman_rho": 0.44927809274358727,
+    "ci95": [
+     0.41199268835206543,
+     0.48598762121017675
+    ],
+    "n_boot_valid": 2000,
+    "n_boot_undefined": 0,
+    "n": 1973,
+    "resampling_unit": "subnet nodes",
+    "status": "OK"
+   },
+   "betweenness|kcore": {
+    "spearman_rho": 0.8613856940529001,
+    "ci95": [
+     0.8399402210554067,
+     0.880236729796842
+    ],
+    "n_boot_valid": 2000,
+    "n_boot_undefined": 0,
+    "n": 1973,
+    "resampling_unit": "subnet nodes",
+    "status": "OK"
+   },
+   "betweenness|collective_influence": {
+    "spearman_rho": 0.8889920743473739,
+    "ci95": [
+     0.8662640387666557,
+     0.909474220320912
+    ],
+    "n_boot_valid": 2000,
+    "n_boot_undefined": 0,
+    "n": 1973,
+    "resampling_unit": "subnet nodes",
+    "status": "OK"
+   },
+   "pagerank|gnn": {
+    "spearman_rho": -0.1554362226525708,
+    "ci95": [
+     -0.19760525904912551,
+     -0.1146897147530128
+    ],
+    "n_boot_valid": 2000,
+    "n_boot_undefined": 0,
+    "n": 1973,
+    "resampling_unit": "subnet nodes",
+    "status": "OK"
+   },
+   "pagerank|eigenvector": {
+    "spearman_rho": -0.3041768593576762,
+    "ci95": [
+     -0.3590723880942174,
+     -0.24924128540271956
+    ],
+    "n_boot_valid": 2000,
+    "n_boot_undefined": 0,
+    "n": 1973,
+    "resampling_unit": "subnet nodes",
+    "status": "OK"
+   },
+   "pagerank|kcore": {
+    "spearman_rho": 0.6657109421409034,
+    "ci95": [
+     0.6401970508455438,
+     0.6897542310372866
+    ],
+    "n_boot_valid": 2000,
+    "n_boot_undefined": 0,
+    "n": 1973,
+    "resampling_unit": "subnet nodes",
+    "status": "OK"
+   },
+   "pagerank|collective_influence": {
+    "spearman_rho": 0.5432191882430754,
+    "ci95": [
+     0.5134670403509466,
+     0.5738660212784827
+    ],
+    "n_boot_valid": 2000,
+    "n_boot_undefined": 0,
+    "n": 1973,
+    "resampling_unit": "subnet nodes",
+    "status": "OK"
+   },
+   "gnn|eigenvector": {
+    "spearman_rho": 0.3105084063196698,
+    "ci95": [
+     0.26180796484481783,
+     0.3562415952272089
+    ],
+    "n_boot_valid": 2000,
+    "n_boot_undefined": 0,
+    "n": 1973,
+    "resampling_unit": "subnet nodes",
+    "status": "OK"
+   },
+   "gnn|kcore": {
+    "spearman_rho": 0.14582976307326162,
+    "ci95": [
+     0.10702803686261991,
+     0.18320477439273616
+    ],
+    "n_boot_valid": 2000,
+    "n_boot_undefined": 0,
+    "n": 1973,
+    "resampling_unit": "subnet nodes",
+    "status": "OK"
+   },
+   "gnn|collective_influence": {
+    "spearman_rho": 0.1375409062431076,
+    "ci95": [
+     0.1013705988361876,
+     0.17271649636653288
+    ],
+    "n_boot_valid": 2000,
+    "n_boot_undefined": 0,
+    "n": 1973,
+    "resampling_unit": "subnet nodes",
+    "status": "OK"
+   },
+   "eigenvector|kcore": {
+    "spearman_rho": 0.4266998283602368,
+    "ci95": [
+     0.38648776253474,
+     0.4674196611254143
+    ],
+    "n_boot_valid": 2000,
+    "n_boot_undefined": 0,
+    "n": 1973,
+    "resampling_unit": "subnet nodes",
+    "status": "OK"
+   },
+   "eigenvector|collective_influence": {
+    "spearman_rho": 0.5203726424151385,
+    "ci95": [
+     0.4858483173420841,
+     0.5529246277253326
+    ],
+    "n_boot_valid": 2000,
+    "n_boot_undefined": 0,
+    "n": 1973,
+    "resampling_unit": "subnet nodes",
+    "status": "OK"
+   },
+   "kcore|collective_influence": {
+    "spearman_rho": 0.9039609608573664,
+    "ci95": [
+     0.8870298978645605,
+     0.9198727821093068
+    ],
+    "n_boot_valid": 2000,
+    "n_boot_undefined": 0,
+    "n": 1973,
+    "resampling_unit": "subnet nodes",
+    "status": "OK"
+   }
+  }
+ },
+ "strategy_ranking": {
+  "groups": {
+   "G1": [
+    "degree",
+    "betweenness",
+    "pagerank",
+    "gnn"
+   ],
+   "G2": [
+    "eigenvector",
+    "kcore",
+    "collective_influence"
+   ]
+  },
+  "r_struct_by_level": {
+   "G1": {
+    "0": 0.09543313172043012,
+    "1": 0.09394020270270273,
+    "2": 0.09213248574144488,
+    "3": 0.0903720682302772
+   },
+   "G2": {
+    "0": 0.054968040621266444,
+    "1": 0.05538408408408407,
+    "2": 0.057529626108998734,
+    "3": 0.05006823027718549
+   }
+  },
+  "weights_normalised": {
+   "alpha": 0.3333333333,
+   "beta": 0.3333333333,
+   "gamma": 0.3333333334
+  },
+  "n_scenarios": 63,
+  "primary": {
+   "spearman_rho": 0.9998079877112136,
+   "ci95": [
+    0.9981742125534483,
+    1.0
+   ],
+   "n_boot_valid": 2000,
+   "n_boot_undefined": 0,
+   "n": 63,
+   "resampling_unit": "scenarios"
+  },
+  "top10": {
+   "g1": [
+    "B1",
+    "C1",
+    "B1+C1",
+    "A1",
+    "B2",
+    "C2",
+    "A1+B1",
+    "A1+C1",
+    "A1+B1+C1",
+    "B2+C1"
+   ],
+   "g2": [
+    "B1",
+    "C1",
+    "B1+C1",
+    "A1",
+    "B2",
+    "C2",
+    "A1+B1",
+    "A1+C1",
+    "A1+B1+C1",
+    "A1+B2"
+   ],
+   "intersection_size": 9,
+   "intersection": [
+    "A1",
+    "A1+B1",
+    "A1+B1+C1",
+    "A1+C1",
+    "B1",
+    "B1+C1",
+    "B2",
+    "C1",
+    "C2"
+   ]
+  },
+  "strata": {
+   "1": {
+    "members": [
+     "A1",
+     "B1",
+     "C1"
+    ],
+    "rho": 1.0,
+    "rank_g1": [
+     "B1",
+     "C1",
+     "A1"
+    ],
+    "rank_g2": [
+     "B1",
+     "C1",
+     "A1"
+    ],
+    "n_distinct_A_levels": 2,
+    "discriminative": true,
+    "discriminability_note": "members carry different A levels, so the substitution can reorder them"
+   },
+   "1+1": {
+    "members": [
+     "A1+B1",
+     "A1+C1",
+     "B1+C1"
+    ],
+    "rho": 1.0,
+    "rank_g1": [
+     "B1+C1",
+     "A1+B1",
+     "A1+C1"
+    ],
+    "rank_g2": [
+     "B1+C1",
+     "A1+B1",
+     "A1+C1"
+    ],
+    "n_distinct_A_levels": 2,
+    "discriminative": true,
+    "discriminability_note": "members carry different A levels, so the substitution can reorder them"
+   },
+   "1+1+2": {
+    "members": [
+     "A1+B1+C2",
+     "A1+B2+C1",
+     "A2+B1+C1"
+    ],
+    "rho": 1.0,
+    "rank_g1": [
+     "A1+B2+C1",
+     "A1+B1+C2",
+     "A2+B1+C1"
+    ],
+    "rank_g2": [
+     "A1+B2+C1",
+     "A1+B1+C2",
+     "A2+B1+C1"
+    ],
+    "n_distinct_A_levels": 2,
+    "discriminative": true,
+    "discriminability_note": "members carry different A levels, so the substitution can reorder them"
+   },
+   "1+1+3": {
+    "members": [
+     "A1+B1+C3",
+     "A1+B3+C1",
+     "A3+B1+C1"
+    ],
+    "rho": 1.0,
+    "rank_g1": [
+     "A1+B3+C1",
+     "A1+B1+C3",
+     "A3+B1+C1"
+    ],
+    "rank_g2": [
+     "A1+B3+C1",
+     "A1+B1+C3",
+     "A3+B1+C1"
+    ],
+    "n_distinct_A_levels": 2,
+    "discriminative": true,
+    "discriminability_note": "members carry different A levels, so the substitution can reorder them"
+   },
+   "1+2": {
+    "members": [
+     "A1+B2",
+     "A1+C2",
+     "A2+B1",
+     "A2+C1",
+     "B1+C2",
+     "B2+C1"
+    ],
+    "rho": 0.942857142857143,
+    "rank_g1": [
+     "B2+C1",
+     "A1+B2",
+     "B1+C2",
+     "A1+C2",
+     "A2+B1",
+     "A2+C1"
+    ],
+    "rank_g2": [
+     "A1+B2",
+     "B2+C1",
+     "B1+C2",
+     "A1+C2",
+     "A2+B1",
+     "A2+C1"
+    ],
+    "n_distinct_A_levels": 3,
+    "discriminative": true,
+    "discriminability_note": "members carry different A levels, so the substitution can reorder them"
+   },
+   "1+2+2": {
+    "members": [
+     "A1+B2+C2",
+     "A2+B1+C2",
+     "A2+B2+C1"
+    ],
+    "rho": 1.0,
+    "rank_g1": [
+     "A1+B2+C2",
+     "A2+B2+C1",
+     "A2+B1+C2"
+    ],
+    "rank_g2": [
+     "A1+B2+C2",
+     "A2+B2+C1",
+     "A2+B1+C2"
+    ],
+    "n_distinct_A_levels": 2,
+    "discriminative": true,
+    "discriminability_note": "members carry different A levels, so the substitution can reorder them"
+   },
+   "1+2+3": {
+    "members": [
+     "A1+B2+C3",
+     "A1+B3+C2",
+     "A2+B1+C3",
+     "A2+B3+C1",
+     "A3+B1+C2",
+     "A3+B2+C1"
+    ],
+    "rho": 1.0,
+    "rank_g1": [
+     "A1+B3+C2",
+     "A1+B2+C3",
+     "A2+B3+C1",
+     "A2+B1+C3",
+     "A3+B1+C2",
+     "A3+B2+C1"
+    ],
+    "rank_g2": [
+     "A1+B3+C2",
+     "A1+B2+C3",
+     "A2+B3+C1",
+     "A2+B1+C3",
+     "A3+B1+C2",
+     "A3+B2+C1"
+    ],
+    "n_distinct_A_levels": 3,
+    "discriminative": true,
+    "discriminability_note": "members carry different A levels, so the substitution can reorder them"
+   },
+   "1+3": {
+    "members": [
+     "A1+B3",
+     "A1+C3",
+     "A3+B1",
+     "A3+C1",
+     "B1+C3",
+     "B3+C1"
+    ],
+    "rho": 1.0,
+    "rank_g1": [
+     "B3+C1",
+     "B1+C3",
+     "A1+B3",
+     "A1+C3",
+     "A3+C1",
+     "A3+B1"
+    ],
+    "rank_g2": [
+     "B3+C1",
+     "B1+C3",
+     "A1+B3",
+     "A1+C3",
+     "A3+C1",
+     "A3+B1"
+    ],
+    "n_distinct_A_levels": 3,
+    "discriminative": true,
+    "discriminability_note": "members carry different A levels, so the substitution can reorder them"
+   },
+   "1+3+3": {
+    "members": [
+     "A1+B3+C3",
+     "A3+B1+C3",
+     "A3+B3+C1"
+    ],
+    "rho": 1.0,
+    "rank_g1": [
+     "A1+B3+C3",
+     "A3+B1+C3",
+     "A3+B3+C1"
+    ],
+    "rank_g2": [
+     "A1+B3+C3",
+     "A3+B1+C3",
+     "A3+B3+C1"
+    ],
+    "n_distinct_A_levels": 2,
+    "discriminative": true,
+    "discriminability_note": "members carry different A levels, so the substitution can reorder them"
+   },
+   "2": {
+    "members": [
+     "A2",
+     "B2",
+     "C2"
+    ],
+    "rho": 1.0,
+    "rank_g1": [
+     "B2",
+     "C2",
+     "A2"
+    ],
+    "rank_g2": [
+     "B2",
+     "C2",
+     "A2"
+    ],
+    "n_distinct_A_levels": 2,
+    "discriminative": true,
+    "discriminability_note": "members carry different A levels, so the substitution can reorder them"
+   },
+   "2+2": {
+    "members": [
+     "A2+B2",
+     "A2+C2",
+     "B2+C2"
+    ],
+    "rho": 1.0,
+    "rank_g1": [
+     "B2+C2",
+     "A2+B2",
+     "A2+C2"
+    ],
+    "rank_g2": [
+     "B2+C2",
+     "A2+B2",
+     "A2+C2"
+    ],
+    "n_distinct_A_levels": 2,
+    "discriminative": true,
+    "discriminability_note": "members carry different A levels, so the substitution can reorder them"
+   },
+   "2+2+3": {
+    "members": [
+     "A2+B2+C3",
+     "A2+B3+C2",
+     "A3+B2+C2"
+    ],
+    "rho": 1.0,
+    "rank_g1": [
+     "A2+B3+C2",
+     "A2+B2+C3",
+     "A3+B2+C2"
+    ],
+    "rank_g2": [
+     "A2+B3+C2",
+     "A2+B2+C3",
+     "A3+B2+C2"
+    ],
+    "n_distinct_A_levels": 2,
+    "discriminative": true,
+    "discriminability_note": "members carry different A levels, so the substitution can reorder them"
+   },
+   "2+3": {
+    "members": [
+     "A2+B3",
+     "A2+C3",
+     "A3+B2",
+     "A3+C2",
+     "B2+C3",
+     "B3+C2"
+    ],
+    "rho": 1.0,
+    "rank_g1": [
+     "B3+C2",
+     "B2+C3",
+     "A2+B3",
+     "A2+C3",
+     "A3+C2",
+     "A3+B2"
+    ],
+    "rank_g2": [
+     "B3+C2",
+     "B2+C3",
+     "A2+B3",
+     "A2+C3",
+     "A3+C2",
+     "A3+B2"
+    ],
+    "n_distinct_A_levels": 3,
+    "discriminative": true,
+    "discriminability_note": "members carry different A levels, so the substitution can reorder them"
+   },
+   "2+3+3": {
+    "members": [
+     "A2+B3+C3",
+     "A3+B2+C3",
+     "A3+B3+C2"
+    ],
+    "rho": 1.0,
+    "rank_g1": [
+     "A2+B3+C3",
+     "A3+B2+C3",
+     "A3+B3+C2"
+    ],
+    "rank_g2": [
+     "A2+B3+C3",
+     "A3+B2+C3",
+     "A3+B3+C2"
+    ],
+    "n_distinct_A_levels": 2,
+    "discriminative": true,
+    "discriminability_note": "members carry different A levels, so the substitution can reorder them"
+   },
+   "3": {
+    "members": [
+     "A3",
+     "B3",
+     "C3"
+    ],
+    "rho": 1.0,
+    "rank_g1": [
+     "B3",
+     "C3",
+     "A3"
+    ],
+    "rank_g2": [
+     "B3",
+     "C3",
+     "A3"
+    ],
+    "n_distinct_A_levels": 2,
+    "discriminative": true,
+    "discriminability_note": "members carry different A levels, so the substitution can reorder them"
+   },
+   "3+3": {
+    "members": [
+     "A3+B3",
+     "A3+C3",
+     "B3+C3"
+    ],
+    "rho": 1.0,
+    "rank_g1": [
+     "B3+C3",
+     "A3+C3",
+     "A3+B3"
+    ],
+    "rank_g2": [
+     "B3+C3",
+     "A3+C3",
+     "A3+B3"
+    ],
+    "n_distinct_A_levels": 2,
+    "discriminative": true,
+    "discriminability_note": "members carry different A levels, so the substitution can reorder them"
+   }
+  },
+  "composite_means": {
+   "G1": {
+    "A1": 0.6617333554012597,
+    "A2": 0.27082542234081386,
+    "A3": 0.1974975829417744,
+    "B1": 0.6778275406797092,
+    "B2": 0.6076875712327792,
+    "B3": 0.3178438978010021,
+    "C1": 0.6774083285499966,
+    "C2": 0.6068271878240104,
+    "C3": 0.31683387930697665,
+    "A1+B1": 0.46606253973161244,
+    "A1+B2": 0.3242585262268568,
+    "A1+B3": 0.29705228560827823,
+    "A2+B1": 0.26072856364734587,
+    "A2+B2": 0.24948706086409272,
+    "A2+B3": 0.23676210564422892,
+    "A3+B1": 0.19016637961404045,
+    "A3+B2": 0.18195339041203035,
+    "A3+B3": 0.1727691326995255,
+    "A1+C1": 0.44954354597701246,
+    "A1+C2": 0.3120197541872261,
+    "A1+C3": 0.2954635132994533,
+    "A2+C1": 0.26045293600137354,
+    "A2+C2": 0.2488339775562776,
+    "A2+C3": 0.236120165754041,
+    "A3+C1": 0.19061280013899115,
+    "A3+C2": 0.18300407702056135,
+    "A3+C3": 0.1745838756261819,
+    "B1+C1": 0.6651443772716292,
+    "B1+C2": 0.32399609352426734,
+    "B1+C3": 0.30764462378245905,
+    "B2+C1": 0.32441713450303833,
+    "B2+C2": 0.31181104387562897,
+    "B2+C3": 0.29723878063446924,
+    "B3+C1": 0.308475260593541,
+    "B3+C2": 0.2976560892353772,
+    "B3+C3": 0.28514437721162894,
+    "A1+B1+C1": 0.3247664256503406,
+    "A1+B1+C2": 0.302285327851796,
+    "A1+B1+C3": 0.2870129828256722,
+    "A1+B2+C1": 0.3030244533882186,
+    "A1+B2+C2": 0.2911328292934213,
+    "A1+B2+C3": 0.2774611534344849,
+    "A1+B3+C1": 0.2883128719907411,
+    "A1+B3+C2": 0.27818936902067243,
+    "A1+B3+C3": 0.26638812182716876,
+    "A2+B1+C1": 0.25161625483974154,
+    "A2+B1+C2": 0.24118552430760906,
+    "A2+B1+C3": 0.22942146233256042,
+    "A2+B2+C1": 0.24147491671555052,
+    "A2+B2+C2": 0.2324070873386693,
+    "A2+B2+C3": 0.221912103341441,
+    "A2+B3+C1": 0.2300451998883325,
+    "A2+B3+C2": 0.22221010251452597,
+    "A2+B3+C3": 0.213197919837597,
+    "A3+B1+C1": 0.18410769812566555,
+    "A3+B1+C2": 0.17719143725520947,
+    "A3+B1+C3": 0.16947577140228753,
+    "A3+B2+C1": 0.1767420398620439,
+    "A3+B2+C2": 0.17071781330955663,
+    "A3+B2+C3": 0.16376587729931172,
+    "A3+B3+C1": 0.16840083022842048,
+    "A3+B3+C2": 0.16330827707749082,
+    "A3+B3+C3": 0.15732792849344776
+   },
+   "G2": {
+    "A1": 0.6488813158630051,
+    "A2": 0.25929113579781854,
+    "A3": 0.18406297029208732,
+    "B1": 0.6643391769813367,
+    "B2": 0.5941992075344069,
+    "B3": 0.30435553410262967,
+    "C1": 0.6639199648516241,
+    "C2": 0.5933388241256381,
+    "C3": 0.30334551560860423,
+    "A1+B1": 0.45321050019335796,
+    "A1+B2": 0.31140648668860244,
+    "A1+B3": 0.28420024607002387,
+    "A2+B1": 0.24919427710435063,
+    "A2+B2": 0.23795277432109743,
+    "A2+B3": 0.22522781910123366,
+    "A3+B1": 0.17673176696435336,
+    "A3+B2": 0.1685187777623433,
+    "A3+B3": 0.15933452004983836,
+    "A1+C1": 0.4366915064387581,
+    "A1+C2": 0.2991677146489718,
+    "A1+C3": 0.28261147376119883,
+    "A2+C1": 0.24891864945837822,
+    "A2+C2": 0.23729969101328227,
+    "A2+C3": 0.22458587921104575,
+    "A3+C1": 0.17717818748930403,
+    "A3+C2": 0.16956946437087422,
+    "A3+C3": 0.16114926297649482,
+    "B1+C1": 0.6516560135732564,
+    "B1+C2": 0.3105077298258949,
+    "B1+C3": 0.29415626008408663,
+    "B2+C1": 0.3109287708046659,
+    "B2+C2": 0.29832268017725666,
+    "B2+C3": 0.28375041693609687,
+    "B3+C1": 0.2949868968951686,
+    "B3+C2": 0.2841677255370048,
+    "B3+C3": 0.2716560135132565,
+    "A1+B1+C1": 0.31191438611208616,
+    "A1+B1+C2": 0.28943328831354176,
+    "A1+B1+C3": 0.27416094328741797,
+    "A1+B2+C1": 0.29017241384996423,
+    "A1+B2+C2": 0.2782807897551669,
+    "A1+B2+C3": 0.26460911389623054,
+    "A1+B3+C1": 0.2754608324524867,
+    "A1+B3+C2": 0.26533732948241806,
+    "A1+B3+C3": 0.25353608228891444,
+    "A2+B1+C1": 0.24008196829674627,
+    "A2+B1+C2": 0.22965123776461382,
+    "A2+B1+C3": 0.21788717578956515,
+    "A2+B2+C1": 0.22994063017255525,
+    "A2+B2+C2": 0.22087280079567406,
+    "A2+B2+C3": 0.21037781679844572,
+    "A2+B3+C1": 0.21851091334533726,
+    "A2+B3+C2": 0.21067581597153065,
+    "A2+B3+C3": 0.2016636332946017,
+    "A3+B1+C1": 0.17067308547597845,
+    "A3+B1+C2": 0.16375682460552235,
+    "A3+B1+C3": 0.15604115875260047,
+    "A3+B2+C1": 0.16330742721235678,
+    "A3+B2+C2": 0.15728320065986956,
+    "A3+B2+C3": 0.1503312646496246,
+    "A3+B3+C1": 0.15496621757873338,
+    "A3+B3+C2": 0.14987366442780367,
+    "A3+B3+C3": 0.14389331584376067
+   }
+  },
+  "degeneracy_guard": {
+   "max_abs_shift": 0.013488363698372807,
+   "scenarios_shifted": 63,
+   "compared_against_within_scenario_spread": {
+    "unit": "half-width of r_composite_spread95 (the 2.5/97.5 percentiles of the 30 per-run composite values) -- the range 95% of SINGLE runs fall in",
+    "n_scenarios_with_spread": 63,
+    "n_shift_exceeds_spread": 22,
+    "examples": [
+     "A1+B1+C2",
+     "A1+B1+C3",
+     "A1+B2+C1",
+     "A1+B2+C2",
+     "A1+B2+C3",
+     "A1+B3+C2",
+     "A1+B3+C3",
+     "A1+C2"
+    ],
+    "reading": "a shift smaller than the run-to-run spread has not moved the scenario in any sense a 30-seed run could resolve; a shift larger than it has"
+   },
+   "note": "the structural term is the only thing that changes between G1 and G2"
+  }
+ },
+ "verdict": "OK",
+ "finished_utc": "2026-11-01T07:46:07Z"
+}

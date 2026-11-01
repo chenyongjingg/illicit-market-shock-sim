@@ -577,7 +577,7 @@ def signed_rank(diffs):
     has_ties = bool(n_eff and len(np.unique(absd)) < n_eff)
     exact_ok = bool(0 < n_eff <= 25 and not has_ties)
     out = {"n_input": int(len(d)), "n_nonzero": n_eff, "n_ties_abs_diff": has_ties,
-           "method": "exact" if exact_ok else ("none" if not n_eff else "asymptotic"),
+           "method": "exact" if exact_ok else ("none" if not n_eff else "approx"),
            "p": None}
     if exact_ok:
         out["min_attainable_p_two_sided"] = 2.0 / (2 ** n_eff)
@@ -595,7 +595,7 @@ def signed_rank(diffs):
     else:
         try:
             out["p"] = float(st.wilcoxon(nz, zero_method="wilcox", alternative="two-sided",
-                                         method=("exact" if exact_ok else "asymptotic")).pvalue)
+                                         method=("exact" if exact_ok else "approx")).pvalue)
         except Exception as e:
             out["error"] = str(e)[:120]
     return out

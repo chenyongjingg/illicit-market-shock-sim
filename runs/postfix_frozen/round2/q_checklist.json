@@ -1,0 +1,80 @@
+[
+ {
+  "q": "Q1",
+  "assertion": "per-source counts + event_time monthly coverage; missing months not interpolated",
+  "status": "PASS",
+  "detail": "3454 docs; dedup 0.03761493452215102; AI-relevant 249"
+ },
+ {
+  "q": "Q2",
+  "assertion": "AI/traditional partition mutually exclusive & exhaustive",
+  "status": "PASS",
+  "detail": "AI=70 traditional=3391 total=3461"
+ },
+ {
+  "q": "Q3",
+  "assertion": "relation gate PASS (entity F1 NOT_ESTIMABLE by design: no semantic gold)",
+  "status": "FAIL/NA",
+  "detail": "relation micro-F1=0.05025125628140704; gate=FAIL; entity gate=NOT_ESTIMABLE; market edges=NOT_ESTIMABLE; domain={'schema_relation_types': 17, 'scored_relation_types': 4, 'relation_types_with_gold': 2, 'gold_instances': 42, 'documents_scored': 120, 'documents_extracted': 649}; scored_only_f1=0.1075268817204301; scored_only_ci95=[0.024096, 0.195652]"
+ },
+ {
+  "q": "Q4",
+  "assertion": "synthetic consistency/ppl; distribution alignment labelled implementation consistency",
+  "status": "PASS",
+  "detail": "kept=1175 consistency=0.06978723404255319"
+ },
+ {
+  "q": "Q5",
+  "assertion": "per-attack AUCs + mean + null model + bootstrap",
+  "status": "PASS",
+  "detail": "AI n=70"
+ },
+ {
+  "q": "Q6",
+  "assertion": "F(t), T_rec truncation, unrecovered rate",
+  "status": "PASS",
+  "detail": "{'llm': 0.8936507936507937, 'rule': 0.8322751322751323}"
+ },
+ {
+  "q": "Q7",
+  "assertion": "63-scenario parameter table",
+  "status": "PASS",
+  "detail": "63 scenarios"
+ },
+ {
+  "q": "Q8",
+  "assertion": "decision calls vs 56.7M reconciliation; seeds; model params",
+  "status": "PASS",
+  "detail": "policy states=1200 agreement=0.74 levels={'coarse': 200} exact_cov=0.11851851851851852"
+ },
+ {
+  "q": "Q9",
+  "assertion": "primary endpoints + BH family",
+  "status": "DEFERRED",
+  "detail": "{'status': 'NOT_ESTIMABLE', 'reason': 'rq2 status=FIDELITY_UNRESOLVED'}  [not PASS: the assertion does not admit NOT_ESTIMABLE, and the detail reports it -- the check ran, the quantity was not computed]"
+ },
+ {
+  "q": "Q10",
+  "assertion": "2023 anchors provenance; NOT_ESTIMABLE if insufficient",
+  "status": "PASS",
+  "detail": "{'Genesis_Market_seizure': ('NOT_ESTIMABLE', {'Russian Market': 0, '2easy': 0, 'Exodus': 0, 'Genesis Market': 0}), 'RagnarLocker_takedown': ('NOT_ESTIMABLE', {'RagnarLocker': 0})}"
+ },
+ {
+  "q": "Q11",
+  "assertion": "external correlation n/rho/CI exploratory",
+  "status": "FAIL/NA",
+  "detail": "not run: public enforcement target lists not ingested; marked exploratory/NOT_DONE"
+ },
+ {
+  "q": "Q12",
+  "assertion": "synthetic safety guardrail log",
+  "status": "PASS",
+  "detail": "dropped=17 hits={'python ': 12, 'ssh ': 2, 'wallet': 3}"
+ },
+ {
+  "q": "Q13",
+  "assertion": "two independent reruns (distribution level)",
+  "status": "FAIL/NA",
+  "detail": "single run; rerun not executed in this window"
+ }
+]

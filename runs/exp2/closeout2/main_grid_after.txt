@@ -1,0 +1,26 @@
+# Main-grid byte check -- AFTER (experimental window 2)
+# Command behind every line below: `cd /root/mdpi3 && sha256sum <file>` on the pod.
+
+captured_utc : 2026-11-01T08:21:35Z
+captured_by  : closeout (package 6), after every window-2 write
+tree         : /root/mdpi3
+code_hash    : f4328c4a7b0c1b5a
+ledger_rows  : 165
+ledger_sha   : bb2849017128cba0963f828fd7c0c61fe1ae3d3f6be0d1582878a7e4ed60db79
+final_json   : 58972a81a225a5e180bf08297f3bd68e8a52fed5815365107a14fbb3386bac45
+
+sha256  bytes   mtime_utc              file
+ba0129913f202fcbb8fb3290ddf22e1c2e66a6096eb75a4c52f7432d37542c82  3962707  2026-11-01T05:45:43Z  runs/sim_runs.jsonl
+7f7f8928f45e28e8c340617ea467f9fd5331ab28b7a80ed96ba1280d24dff3c3   125084  2026-11-01T06:56:50Z  runs/analysis.json
+61117957e2d420e18dc0a71c03daab525c920fa548f9eb78a3650bec5dd36d97    67102  2026-11-01T06:56:51Z  runs/REPORT.md
+56bee6a53722b3ee45341693fa4baca76cd29564f4608080245a1aa236bcd927     2843  2026-11-01T06:56:51Z  runs/q_checklist.json
+76279ae32466e8bbc58bdd31553ebfa2a18c9994b09e749bd9e1077f2f49ee07     9951  2026-11-01T06:17:33Z  runs/backtest.json
+
+comparison to main_grid_before.txt (sha256 85769931f8cdc3272363757d9363c9b2938fd4a7accb680ba4d5c7f28e83b6a7):
+  runs/sim_runs.jsonl          before ba0129913f202fcb  after ba0129913f202fcb  bytes 3962707/3962707  IDENTICAL
+  runs/analysis.json           before 7f7f8928f45e28e8  after 7f7f8928f45e28e8  bytes 125084/125084  IDENTICAL
+  runs/REPORT.md               before 61117957e2d420e1  after 61117957e2d420e1  bytes 67102/67102  IDENTICAL
+  runs/q_checklist.json        before 56bee6a53722b3ee  after 56bee6a53722b3ee  bytes 2843/2843  IDENTICAL
+  runs/backtest.json           before 76279ae32466e8bb  after 76279ae32466e8bb  bytes 9951/9951  IDENTICAL
+
+verdict: PASS -- every main-grid file is byte-identical to the BEFORE capture

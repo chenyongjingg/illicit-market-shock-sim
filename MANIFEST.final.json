@@ -1,0 +1,732 @@
+{
+ "schema": "mdpi3-manifest-final/1",
+ "generated_utc": "2026-11-01T07:10:41Z",
+ "generated_by": "ops/_write_manifest_final.py on the pod (closing window, last execution window before the server is shut down)",
+ "final_tree": {
+  "code_hash": "f4328c4a7b0c1b5a",
+  "command": "cat /root/mdpi3/code/*.py /root/mdpi3/code/config.yaml | sha256sum | cut -c1-16",
+  "run1_delivery_tree": "55505a71431cff70",
+  "mixed_tree": true,
+  "note": "This is a MIXED tree and always was: the 13 stages were produced under different hashes. Each stage's own receipt is the truth for its own artifacts; there is no single hash that covers the whole delivery."
+ },
+ "stage_receipts": {
+  "runs/stage_preflight.code.sha": "873e3d62fb216cca",
+  "runs/stage_report.code.sha": "55505a71431cff70",
+  "runs/stage_s0_ingest.code.sha": "12b24ef418935eb1",
+  "runs/stage_s1_extract.code.sha": "12b24ef418935eb1",
+  "runs/stage_s1_gold.code.sha": "873e3d62fb216cca",
+  "runs/stage_s1_synth.code.sha": "12b24ef418935eb1",
+  "runs/stage_s2_graph.code.sha": "873e3d62fb216cca",
+  "runs/stage_s3_gnn.code.sha": "873e3d62fb216cca",
+  "runs/stage_s3_resil.code.sha": "e678437a0b09a478",
+  "runs/stage_s4_policy.code.sha": "873e3d62fb216cca",
+  "runs/stage_s4_sim.code.sha": "873e3d62fb216cca",
+  "runs/stage_s5_analyze.code.sha": "55505a71431cff70",
+  "runs/stage_s5_backtest.code.sha": "55505a71431cff70",
+  "runs/postfix/stage_report.code.sha": "f4328c4a7b0c1b5a",
+  "runs/postfix/stage_s5_analyze.code.sha": "f4328c4a7b0c1b5a"
+ },
+ "stage_receipts_note": "runs/stage_s5_analyze.code.sha and runs/stage_report.code.sha still read 55505a71431cff70 and are therefore FALSE for the artifacts written at 06:56. They were deliberately not overwritten: they are the run-1 historical receipt and the closing-window instruction forbids overwriting them. The governing receipts are runs/postfix/stage_*.code.sha, and the per-artifact mapping is artifacts[].code_hash_produced_by below.",
+ "artifacts": [
+  {
+   "path": "runs/analysis.json",
+   "sha256": "7f7f8928f45e28e8c340617ea467f9fd5331ab28b7a80ed96ba1280d24dff3c3",
+   "bytes": 125084,
+   "code_hash_produced_by": "runs/postfix/stage_s5_analyze.code.sha (f4328c4a7b0c1b5a)",
+   "supersedes": "runs/postfix_frozen/analysis.json 74f5edd0...",
+   "note": "round 2: wilcoxon_p now produced for the 4 scenarios and wilcoxon_method is a string scipy accepts (D-107). Gate: 12 ALLOWED / 1 VOLATILE / 0 FORBIDDEN.",
+   "inputs": {
+    "recorded": true,
+    "manifest_tag": "d107_fix_round2",
+    "n": 8,
+    "missing": [],
+    "chain": [
+     {
+      "path": "runs/sim_sensitivity.jsonl",
+      "sha256": "df86356fa9acee241fee252a5f1c06fe3709e0e42b12fa381e7f3c1f36b2fd0a"
+     },
+     {
+      "path": "runs/sim_runs.jsonl",
+      "sha256": "ba0129913f202fcbb8fb3290ddf22e1c2e66a6096eb75a4c52f7432d37542c82"
+     },
+     {
+      "path": "runs/policy_stats.json",
+      "sha256": "5d38ffc8b998ee0332fb3b81ddbf22ae74879d284332a755931da33d1069d691"
+     },
+     {
+      "path": "runs/sim_stats.json",
+      "sha256": "a9de5a4d3f753dca0ae19adb8c35a82ea3ef0bb932fe51c18ec73afb391275ea"
+     },
+     {
+      "path": "data/graph/resilience.json",
+      "sha256": "a922245558d1490b0dea5418c168edf231442a90afb99a775a4d630fbe9dea62"
+     },
+     {
+      "path": "data/graph/graph.graphml",
+      "sha256": "004fee6a7e82f7d97f92a720fb5a9533bfe37d7d7d943e28e085de2090c67ad0"
+     },
+     {
+      "path": "data/graph/gnn_centrality.json",
+      "sha256": "b795f9ab64036991c3f5ce0227e92779d62b8f764832dc4b66c6f6bdb6dfa290"
+     },
+     {
+      "path": "code/config.yaml",
+      "sha256": "5749ad4ee40194b1f45c9447674058867ca9caff6a3b33088c878e033ab514f7"
+     }
+    ]
+   }
+  },
+  {
+   "path": "runs/REPORT.md",
+   "sha256": "61117957e2d420e18dc0a71c03daab525c920fa548f9eb78a3650bec5dd36d97",
+   "bytes": 67102,
+   "code_hash_produced_by": "runs/postfix/stage_report.code.sha (f4328c4a7b0c1b5a)",
+   "supersedes": "runs/postfix_frozen/REPORT.md cb246830...",
+   "note": "prints the four paired p values at full float precision; two are subnormal (D-111) and the literal digits must not be quoted as evidence.",
+   "inputs": {
+    "recorded": true,
+    "manifest_tag": "d107_fix_round2",
+    "n": 15,
+    "missing": [],
+    "chain": [
+     {
+      "path": "runs/analysis.json",
+      "sha256": "7f7f8928f45e28e8c340617ea467f9fd5331ab28b7a80ed96ba1280d24dff3c3"
+     },
+     {
+      "path": "runs/sim_runs.jsonl",
+      "sha256": "ba0129913f202fcbb8fb3290ddf22e1c2e66a6096eb75a4c52f7432d37542c82"
+     },
+     {
+      "path": "runs/backtest.json",
+      "sha256": "76279ae32466e8bbc58bdd31553ebfa2a18c9994b09e749bd9e1077f2f49ee07"
+     },
+     {
+      "path": "runs/policy_stats.json",
+      "sha256": "5d38ffc8b998ee0332fb3b81ddbf22ae74879d284332a755931da33d1069d691"
+     },
+     {
+      "path": "runs/equivalence.json",
+      "sha256": "00befeda50eff358b8e83c2d1eb93ec7f035b83cabc3e8e394a9c86dbe4709e7"
+     },
+     {
+      "path": "data/raw/ingest_report.json",
+      "sha256": "c82241db7acc75119ea102637317d064a571f8a7b236f274637823914881ed49"
+     },
+     {
+      "path": "data/graph/graph_stats.json",
+      "sha256": "89f1bc5f1e071351a95d5e47446b8cd711837fca37ae58c52abc3a83da85db51"
+     },
+     {
+      "path": "data/graph/resilience.json",
+      "sha256": "a922245558d1490b0dea5418c168edf231442a90afb99a775a4d630fbe9dea62"
+     },
+     {
+      "path": "data/extracted/gold_eval.json",
+      "sha256": "edaf369fe1a227e2a7068f11b66d56175f4af91136ee11a53e5bba2d18165bd6"
+     },
+     {
+      "path": "data/extracted/synth_stats.json",
+      "sha256": "d2cdfc0357324e1746aae537d62a6977ac2192426053a745c660cc1f984fd11e"
+     },
+     {
+      "path": "data/extracted/extract_stats.json",
+      "sha256": "dde50c92a8762af3334b45f8ce0d9e952ca80a410bb2ecda0801f1d76ce7a8e4"
+     },
+     {
+      "path": "runs/scenario_table.json",
+      "sha256": "b8590beaf1a044256e1d7cf5f0e46bc3229870ae0e65220b407702a6cdd0f871"
+     },
+     {
+      "path": "runs/s2b_edge_versions.json",
+      "sha256": "d408a662bd53ef74674fbed8708d4c3635a1782483bb8bf0f496fd2074c8448f"
+     },
+     {
+      "path": "DEVIATIONS.md",
+      "sha256": "8c58731b3e1c65c5a9c0bfc649a1e21b0a74949034e4e48dcef142271c380ede"
+     },
+     {
+      "path": "code/config.yaml",
+      "sha256": "5749ad4ee40194b1f45c9447674058867ca9caff6a3b33088c878e033ab514f7"
+     }
+    ]
+   }
+  },
+  {
+   "path": "runs/q_checklist.json",
+   "sha256": "56bee6a53722b3ee45341693fa4baca76cd29564f4608080245a1aa236bcd927",
+   "bytes": 2843,
+   "code_hash_produced_by": "runs/postfix/stage_report.code.sha (f4328c4a7b0c1b5a)",
+   "note": "byte-identical to both frozen copies: the Q results do not read the paired p",
+   "inputs": {
+    "recorded": false,
+    "why": "not in the manifest: the Q checklist is written by report.py and no row of MANIFEST.artifacts.jsonl carries an input list for it",
+    "next_round": true
+   }
+  },
+  {
+   "path": "runs/backtest.json",
+   "sha256": "76279ae32466e8bbc58bdd31553ebfa2a18c9994b09e749bd9e1077f2f49ee07",
+   "bytes": 9951,
+   "code_hash_produced_by": "runs/stage_s5_backtest.code.sha (55505a71431cff70)",
+   "note": "not re-run in this window; unchanged since the run-1 delivery",
+   "inputs": {
+    "recorded": false,
+    "why": "no manifest row for this path carries a non-empty inputs list"
+   }
+  },
+  {
+   "path": "DEVIATIONS_addendum.md",
+   "sha256": "353930c3f30302ee4a1cbc63d10a14195c9b425541e3877f72ca86e04905f046",
+   "bytes": 148023,
+   "code_hash_produced_by": "n/a (document)",
+   "inputs": {
+    "recorded": "n/a"
+   }
+  },
+  {
+   "path": "runs/postfix/RECEIPTS.md",
+   "sha256": "105d6896470746b89c5638677213e2c03e6d15f2acc40723a2c959394bbab7bf",
+   "bytes": 2164,
+   "code_hash_produced_by": "n/a (document)",
+   "note": "states which receipt governs which artifact and why runs/stage_*.code.sha still reads the run-1 tree",
+   "inputs": {
+    "recorded": "n/a"
+   }
+  },
+  {
+   "path": "runs/postfix/_d107_diff_gate_v2.out",
+   "sha256": "a92b85328c8bd17c0cfa2f149848edc737027fd7b93659ca113907156a14670f",
+   "bytes": 4064,
+   "code_hash_produced_by": "n/a (instrument output)",
+   "note": "the gate verdict this window rests on",
+   "inputs": {
+    "recorded": "n/a"
+   }
+  },
+  {
+   "path": "runs/postfix/_diag_ai_nodes.out",
+   "sha256": "31128cfda28342342e1860abbe9f1de6f3b6761431848d09d977858450dd7295",
+   "bytes": 2203,
+   "code_hash_produced_by": "n/a (instrument output)",
+   "note": "70 vs 56 diagnosis (D-110)",
+   "inputs": {
+    "recorded": "n/a"
+   }
+  }
+ ],
+ "local_documents": {
+  "measured_utc": "2026-11-01T07:10:37Z",
+  "note": "measured on the local machine and uploaded; these two files are never pushed to the pod, so the pod cannot hash them itself",
+  "documents": [
+   {
+    "path": "MDPI3_现状基线计划书_v6.md",
+    "role": "the plan of record: section 3 status table, the addendum seal, the D-107/D-110/D-111 rows, the section 8 backfill",
+    "bytes": 142644,
+    "sha256": "210d825acac7505f996ffca87199855528c335ce274fbb0ac6fd284c9dfd8d6e"
+   },
+   {
+    "path": "REPORT_writing_skeleton.md",
+    "role": "the writing skeleton: what REPORT.md must and must not say, including the RQ1 gate",
+    "bytes": 30569,
+    "sha256": "7ea0ff5c7f15e912a66a86227470ac054a904d086c03629cb682031ad084930a"
+   }
+  ]
+ },
+ "frozen_copies": [
+  {
+   "path": "runs/postfix_frozen/DEVIATIONS_addendum.md.new.0bytes",
+   "bytes": 0,
+   "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+   "path": "runs/postfix_frozen/REPORT.md",
+   "bytes": 66508,
+   "sha256": "cb246830405cbe90aba88d6d6e9f340421c71284c5f47ade3be8f61ede878c78"
+  },
+  {
+   "path": "runs/postfix_frozen/analysis.json",
+   "bytes": 125517,
+   "sha256": "74f5edd0d014375de581f165d338146a3e0c6e0fe4dc553d1d91b1f7586ecb58"
+  },
+  {
+   "path": "runs/postfix_frozen/backtest.json",
+   "bytes": 9951,
+   "sha256": "76279ae32466e8bbc58bdd31553ebfa2a18c9994b09e749bd9e1077f2f49ee07"
+  },
+  {
+   "path": "runs/postfix_frozen/q_checklist.json",
+   "bytes": 2843,
+   "sha256": "56bee6a53722b3ee45341693fa4baca76cd29564f4608080245a1aa236bcd927"
+  },
+  {
+   "path": "runs/postfix_frozen/report.py.orig",
+   "bytes": 27213,
+   "sha256": "b78345f16805c66aa213fea08ce2050fa881da929a8303538d7ed651f3891ae1"
+  },
+  {
+   "path": "runs/postfix_frozen/s5_analyze.py.orig",
+   "bytes": 86849,
+   "sha256": "2b8052bba151ed15328f86dae1b0e237ecd80de5526783a828f08ee38eec54bb"
+  },
+  {
+   "path": "runs/postfix_frozen/round2/REPORT.md",
+   "bytes": 66805,
+   "sha256": "902ab48f52afe2cf3e58fc35b39cdfd0a6fa1d75b3a3b0951a4b3cb83ecc1edf"
+  },
+  {
+   "path": "runs/postfix_frozen/round2/analysis.json",
+   "bytes": 125100,
+   "sha256": "dafdda5c7fe82bc8ff9cd54351abf7e56e11ba01605683315dfc09cc4cab0e06"
+  },
+  {
+   "path": "runs/postfix_frozen/round2/q_checklist.json",
+   "bytes": 2843,
+   "sha256": "56bee6a53722b3ee45341693fa4baca76cd29564f4608080245a1aa236bcd927"
+  },
+  {
+   "path": "runs/postfix_frozen/round2/s5_analyze.py",
+   "bytes": 86845,
+   "sha256": "79455cd0af1e0dc0536fdaed390e5c8891e1bc31145c8c2b8bc48a44db3ad4ee"
+  }
+ ],
+ "deviations_addendum": {
+  "path": "DEVIATIONS_addendum.md",
+  "sha256": "353930c3f30302ee4a1cbc63d10a14195c9b425541e3877f72ca86e04905f046",
+  "bytes": 148023,
+  "entries": 88,
+  "breakdown": {
+   "D": 83,
+   "DP": 5
+  },
+  "top_level_bullets": 88,
+  "contract": "top-level == kind-marked, 88 == 88",
+  "contract_holds": true,
+  "volume_2": {
+   "path": "DEVIATIONS_addendum_2.md",
+   "sha256": "bded231b4db62311b77a1d34d77b6f53e4d76669b56a31b2c607330c93d7e2ac",
+   "bytes": 8501,
+   "entries": 2,
+   "top_level_bullets": 2,
+   "contract_holds": true,
+   "note": "continuation volume, not a revision: volume 1 is unmodified and its seal still describes it. Retrieval must scan BOTH volumes; each volume's kind-marker contract holds on its own."
+  },
+  "total_entries_both_volumes": 90,
+  "sealed_utc": "2026-11-01T06:58:35Z",
+  "seal_command": "sha256sum /root/mdpi3/DEVIATIONS_addendum.md",
+  "unseal_rule": "any later append must first be unsealed with a stated reason and a new sha; this block then becomes stale and must be rewritten, not patched"
+ },
+ "closeout": {
+  "processes": {
+   "checked_with": "ps -eo pid,lstart,args",
+   "matched": [],
+   "self_matches_excluded": 0,
+   "verdict": "NO_WAITER_PROCESSES",
+   "all_processes": 14
+  },
+  "heartbeat": {
+   "path": "runs/supplement/waiter.heartbeat",
+   "state": "PRESENT",
+   "bytes": 21,
+   "mtime_utc": "2026-11-01T05:28:01Z",
+   "verdict": "STOPPED -- declared on the basis of the file's last write time, not inferred from silence"
+  },
+  "waiter_exit": {
+   "path": "runs/supplement/waiter.exit",
+   "state": "PRESENT",
+   "bytes": 39,
+   "mtime_utc": "2026-11-01T05:28:01Z"
+  },
+  "supplement_lock": {
+   "path": "runs/.supplement.lock",
+   "state": "PRESENT",
+   "bytes": 0,
+   "mtime_utc": "2026-11-01T04:46:01Z",
+   "note": "a 0-byte file is the lock's path, not evidence that anyone holds it; flock is advisory and the holder is gone"
+  },
+  "pipeline_done": {
+   "path": "runs/PIPELINE_DONE",
+   "state": "PRESENT",
+   "bytes": 0,
+   "mtime_utc": "2026-11-01T06:17:35Z",
+   "note": "predates the 06:56 re-run: the artifacts are newer than the marker"
+  },
+  "supplement_took_over": {
+   "path": "runs/SUPPLEMENT_TOOK_OVER",
+   "state": "ABSENT"
+  },
+  "zero_byte_corpse": {
+   "path": "runs/postfix_frozen/DEVIATIONS_addendum.md.new.0bytes",
+   "state": "PRESENT",
+   "bytes": 0,
+   "mtime_utc": "2026-11-01T06:21:36Z",
+   "note": "a 0-byte write of a 148 kB document, moved out of the tree root so nobody reads it as a truncated registry; its manifest row is unchanged"
+  },
+  "manifest_lines": 134,
+  "manifest_lines_note": "SNAPSHOT at generation, not a live number: MANIFEST.final.json is itself registered in the manifest, so registering it moves the count. The row named 'manifest_reopened_twice_closed' states the closing count.",
+  "tree_state": "FROZEN. No stage will be run again on this machine; the server is being shut down after this window.",
+  "exp_window_20261101": {
+   "purpose": "pre-shutdown experimental window: three pre-registered packages, run after the peer closeout window and under a separate assignment",
+   "owner": "reviewer-side execution agent; the peer closeout window's rows carry tag=closeout_20261101, this window's carry tag=exp_window_20261101",
+   "authority": "task assignment: three packages only; no re-run of any existing stage; no change to criteria, thresholds, scenario grid or subnet definitions; new artefacts only under runs/exp/<id>/",
+   "time_source": "pod `date -u`, measured at write time",
+   "start_utc": "2026-11-01T07:16:23Z",
+   "end_utc": "2026-11-01T07:25:56Z",
+   "preregs": {
+    "backbone_llama": {
+     "path": "runs/exp/backbone_llama/prereg.yaml",
+     "sha256": "4450b831a17fbdaeeea7b756c7fb8a8d6c049abf2741fad58594662158746683"
+    },
+    "rq1_diag": {
+     "path": "runs/exp/rq1_diag/prereg.yaml",
+     "sha256": "c7cf6fa85c39c2a7ec51ab002a9b721fc695f5862204fc34b4181196901a9ea3"
+    },
+    "closeout": {
+     "path": "runs/exp/closeout/prereg.yaml",
+     "sha256": "24b2e388feb9d1b65d56c928661425a80a970b88c73c0fdbe53304540fe242ad"
+    }
+   },
+   "packages": {
+    "A_backbone_llama": {
+     "status": "NOT_ESTIMABLE",
+     "machine_reason": "meta-llama/Llama-3.1-8B-Instruct returned HTTP 403 (gated) and the pod holds no HuggingFace credential (no ~/.huggingface, no token file, 0 HF_*/HUGGING* env vars). Disk (77 GB free) and GPU (24,564 MiB) are not the constraint.",
+     "acceptance_numbers_produced": 0,
+     "registered_as": "pre-registered, awaiting run-2",
+     "unblock": "token with 'access to public gated repositories' enabled; prereg unchanged",
+     "premise_correction": "the assignment specified 4-bit 'same quantisation as s4_policy'; s4_policy runs bf16 (code/llm.py:45, config model.dtype). Prereg frozen to bf16; see D-116."
+    },
+    "B_rq1_diag": {
+     "status": "DONE",
+     "diagnosis": "rq1.cross_subnet_comparability recomputed from graph.graphml: AI n=56 m=38 density 0.024675 largest 6 of 19 components; traditional n=1973 m=2265 density 0.001164 largest 1116 of 264. Size ratio 35.232142857142854 and density ratio 21.193304091052436 both match the stored checks exactly.",
+     "sweep_positive_control": "k=70, random.Random(11), first 300 replicates reproduce the stored bootstrap_auc_diff mean -0.3928388888888888 / sd 0.25558058185750065 / n=300 with delta 0.0e+00 on both",
+     "sweep_result": "0.5x k=35 mean -0.485038 CI [-0.722, -0.004020833333334117]; 0.75x k=52 mean -0.43621498809523807 CI [-0.7316666666666667, 0.03833333333333333]; 1.0x k=70 mean -0.3813140833333333 CI [-0.6749999999999999, 0.027562499999999737]. The interval contains zero at the two larger sizes.",
+     "status_ceiling": "EXPLORATORY; never body text, never abstract",
+     "changes_rq1_verdict": false
+    },
+    "C_closeout": {
+     "status": "DONE",
+     "wording_gate": "PASS, 0 operative violations. 'p < 2.2e-308' 5x all in the register as meta-reference or superseded operative text; '次正规下溢' 0x; raw subnormal literals 0x in runs/REPORT.md and 5x in the register; plan documents clean at all 13 XML parts of the .docx and across the .md.",
+     "gate_report": "runs/exp/closeout/p_value_wording_gate.txt",
+     "registration_completeness": "D-111 present in volume 1, D-115 in volume 2; three-sentence cross-volume retrieval rule present at line 40; sealed-history table retains fc7420bde9154c24d4046cc6e2e34536602a116ddbe576e43d802febb50c753e (3,934 B, 1 entry, sealed 2026-11-01T07:08:04Z). No gap."
+    }
+   },
+   "artifacts": {
+    "runs/exp/backbone_llama/prereg.yaml": {
+     "sha256": "4450b831a17fbdaeeea7b756c7fb8a8d6c049abf2741fad58594662158746683",
+     "bytes": 10669
+    },
+    "runs/exp/rq1_diag/prereg.yaml": {
+     "sha256": "c7cf6fa85c39c2a7ec51ab002a9b721fc695f5862204fc34b4181196901a9ea3",
+     "bytes": 8702
+    },
+    "runs/exp/rq1_diag/run_rq1_diag.py": {
+     "sha256": "f5fbe3f51e74e08e222590bb5ef2e06186633f86c550ce80f67cf23b10cbb606",
+     "bytes": 11903
+    },
+    "runs/exp/rq1_diag/not_comparable_reason.txt": {
+     "sha256": "045726747b0c8107cd3c966cad4e16208c68682918fa645d53b2beb6905e6dbb",
+     "bytes": 1162
+    },
+    "runs/exp/rq1_diag/sweep.json": {
+     "sha256": "e2d0003b078d3c7caeb97367dc2fa0a5b570f90d74e79f573319442da93a661f",
+     "bytes": 1963
+    },
+    "runs/exp/rq1_diag/run.log": {
+     "sha256": "c1ebcc3ab737b390af9072f52b2e6eb748dc0ee8b8e3470e969ffb4c0c046b61",
+     "bytes": 2901
+    },
+    "runs/exp/rq1_diag/pycache_guard.txt": {
+     "sha256": "9d097117a288584893cb87e00d7f4bd2ebe9b4e9fb826bb2993b15cef882ccda",
+     "bytes": 171
+    },
+    "runs/exp/closeout/prereg.yaml": {
+     "sha256": "24b2e388feb9d1b65d56c928661425a80a970b88c73c0fdbe53304540fe242ad",
+     "bytes": 6298
+    },
+    "runs/exp/closeout/main_grid_before.txt": {
+     "sha256": "913c0a4395c699c63900d647a3174da4c1740e74e1d321b8f5d6b8ed9cb35bb6",
+     "bytes": 2042
+    },
+    "runs/exp/closeout/p_value_wording_gate.txt": {
+     "sha256": "26d4124cd2c8ced3f31dfb69083b73cd76edfabd03b2b6ab04e9ca7cfd8f67ac",
+     "bytes": 8349
+    },
+    "runs/exp/_exp_register.py": {
+     "sha256": "0344cfdb23538efc695b364d2138c9c816c3615f2a43aaefee3c73aa149a644d",
+     "bytes": 4078
+    },
+    "DEVIATIONS_addendum_3.md": {
+     "sha256": "f7c391c9d4a5c1c6cf114f0804598b7ef9f7e08d9cb8d286e95287a93c7a0b9a",
+     "bytes": 12892
+    }
+   },
+   "main_grid_byte_check": {
+    "files": [
+     "runs/sim_runs.jsonl",
+     "runs/analysis.json",
+     "runs/REPORT.md",
+     "runs/q_checklist.json",
+     "runs/backtest.json"
+    ],
+    "before_utc": "2026-11-01T07:16:23Z",
+    "after_utc": "2026-11-01T07:25:56Z",
+    "before": {
+     "runs/sim_runs.jsonl": "ba0129913f202fcbb8fb3290ddf22e1c2e66a6096eb75a4c52f7432d37542c82",
+     "runs/analysis.json": "7f7f8928f45e28e8c340617ea467f9fd5331ab28b7a80ed96ba1280d24dff3c3",
+     "runs/REPORT.md": "61117957e2d420e18dc0a71c03daab525c920fa548f9eb78a3650bec5dd36d97",
+     "runs/q_checklist.json": "56bee6a53722b3ee45341693fa4baca76cd29564f4608080245a1aa236bcd927",
+     "runs/backtest.json": "76279ae32466e8bbc58bdd31553ebfa2a18c9994b09e749bd9e1077f2f49ee07"
+    },
+    "after": {
+     "runs/sim_runs.jsonl": "ba0129913f202fcbb8fb3290ddf22e1c2e66a6096eb75a4c52f7432d37542c82",
+     "runs/analysis.json": "7f7f8928f45e28e8c340617ea467f9fd5331ab28b7a80ed96ba1280d24dff3c3",
+     "runs/REPORT.md": "61117957e2d420e18dc0a71c03daab525c920fa548f9eb78a3650bec5dd36d97",
+     "runs/q_checklist.json": "56bee6a53722b3ee45341693fa4baca76cd29564f4608080245a1aa236bcd927",
+     "runs/backtest.json": "76279ae32466e8bbc58bdd31553ebfa2a18c9994b09e749bd9e1077f2f49ee07"
+    },
+    "verdict": "IDENTICAL",
+    "note": "both ends measured with `sha256sum` on the pod; before values also cross-checked against the 06:19 snapshot and the ~07:00 pull"
+   },
+   "deviations_added": [
+    "D-116",
+    "D-117",
+    "D-118",
+    "D-119",
+    "D-120"
+   ],
+   "deviations_volume": {
+    "path": "DEVIATIONS_addendum_3.md",
+    "sha256": "f7c391c9d4a5c1c6cf114f0804598b7ef9f7e08d9cb8d286e95287a93c7a0b9a",
+    "entries": 5,
+    "total_across_volumes": 95
+   },
+   "generated_utc_note": "this file's top-level generated_utc is unchanged at its original value and is no longer the file's last-write time: that value records when the file was generated, this block records when it was extended. Both facts are kept rather than merged into one timestamp that would be true of neither.",
+   "does_not_change": "runs/sim_runs.jsonl, runs/analysis.json, runs/REPORT.md, runs/q_checklist.json, runs/backtest.json, DEVIATIONS_addendum.md, DEVIATIONS_addendum_2.md, and every closeout.* and stage_receipts.* key written by the peer window"
+  }
+ },
+ "verification": {
+  "diff_gate_v2": "12 ALLOWED / 1 VOLATILE (generated_utc) / 0 FORBIDDEN, RC=0; --selftest PASS: a paired-block scientific leaf is FORBIDDEN, an out-of-block leaf is FORBIDDEN, a clock-only change is VOLATILE",
+  "plan_v6_table": "74 rows = 65 (C30/R31/M3/X1) + 9 discipline rows; reproduced by ops/_count_v6_table.py, which reads the table back out of the file",
+  "q_checklist": "NOT all PASS and unchanged by this window: 9 PASS, 3 FAIL/NA (Q3, Q11, Q13), 1 DEFERRED (Q9). The gate as written -- 'every Q PASS' -- cannot pass and never could; the file is byte-identical to the pre-fix frozen copy, so this is pre-existing state registered under D-97, not a regression from the D-107 fix.",
+  "addendum": "88 entries in volume 1 (83 D + 5 DP), contract HOLDS (88 == 88); volume 2 adds 2 entries (contract holds); total both volumes 90"
+ },
+ "next_round": [
+  "runs/q_checklist.json and runs/backtest.json input chains were never recorded; recorded here as NOT_RECORDED rather than guessed",
+  "runs/stage_s5_analyze.code.sha and runs/stage_report.code.sha still name the run-1 tree; a future run must re-stamp them by running through run_all.sh, never by hand-editing them",
+  "runs/stage_s5_analyze.ok and runs/stage_report.ok predate the 06:56 artifacts, so a future run_all.sh would skip both stages and treat 06:56 artifacts as finished",
+  "the two subnormal p values (D-111) are stored as floats; a future run should store p as a '<1e-300' bound so no reader can quote digits that carry no information",
+  "llm.sqlite still has no manifest receipt"
+ ],
+ "manifest_of_record": "MANIFEST.artifacts.jsonl (134 lines at closeout); this window's rows are tagged d107_fix_20261101, d107_fix_20261101b, d107_fix_round2, sealed_20261101, sealed_20261101_correction",
+ "closeout2": {
+  "tag": "exp_window_2",
+  "opened_utc": "2026-11-01T07:34:57Z",
+  "opened_utc_source": "earliest `t` among ledger rows tagged exp_window_2; not typed",
+  "closed_utc": "2026-11-01T08:21:36Z",
+  "status": "EXPLORATORY -- none of it enters the main evidence chain or bh_primary",
+  "previous_window_declaration": "the window sealed at 2026-11-01T07:26:37Z (tag=exp_window_20261101) is unchanged: no file it produced was rewritten, and every value in it stands as sealed",
+  "main_grid": {
+   "before_capture": {
+    "path": "runs/exp2/closeout2/main_grid_before.txt",
+    "sha256": "85769931f8cdc3272363757d9363c9b2938fd4a7accb680ba4d5c7f28e83b6a7"
+   },
+   "after_capture": {
+    "path": "runs/exp2/closeout2/main_grid_after.txt",
+    "sha256": "aba9019deedb8a40bc7a7b2110e5f77176878a3ca498e74390572b06e89297be"
+   },
+   "files_compared": [
+    "runs/sim_runs.jsonl",
+    "runs/analysis.json",
+    "runs/REPORT.md",
+    "runs/q_checklist.json",
+    "runs/backtest.json"
+   ],
+   "all_identical": true,
+   "per_file": [
+    {
+     "file": "runs/sim_runs.jsonl",
+     "sha256": "ba0129913f202fcbb8fb3290ddf22e1c2e66a6096eb75a4c52f7432d37542c82",
+     "bytes": 3962707,
+     "identical_to_before": true
+    },
+    {
+     "file": "runs/analysis.json",
+     "sha256": "7f7f8928f45e28e8c340617ea467f9fd5331ab28b7a80ed96ba1280d24dff3c3",
+     "bytes": 125084,
+     "identical_to_before": true
+    },
+    {
+     "file": "runs/REPORT.md",
+     "sha256": "61117957e2d420e18dc0a71c03daab525c920fa548f9eb78a3650bec5dd36d97",
+     "bytes": 67102,
+     "identical_to_before": true
+    },
+    {
+     "file": "runs/q_checklist.json",
+     "sha256": "56bee6a53722b3ee45341693fa4baca76cd29564f4608080245a1aa236bcd927",
+     "bytes": 2843,
+     "identical_to_before": true
+    },
+    {
+     "file": "runs/backtest.json",
+     "sha256": "76279ae32466e8bbc58bdd31553ebfa2a18c9994b09e749bd9e1077f2f49ee07",
+     "bytes": 9951,
+     "identical_to_before": true
+    }
+   ]
+  },
+  "code_hash": "f4328c4a7b0c1b5a",
+  "packages": {
+   "1_attack_orders_ext": {
+    "status": "DONE",
+    "artefact": {
+     "path": "runs/exp2/attack_orders_ext/orders_ext.json",
+     "sha256": "c057c312b7ececcceacc7896b2779a7a845fbc451c4342ae3644d41733f70aac",
+     "bytes": 33954
+    },
+    "headline": {
+     "spearman_rho_vs_four_orders": 0.9998079877112136,
+     "ci95": [
+      0.9981742125534483,
+      1.0
+     ],
+     "top10_intersection": 9,
+     "top10_denominator": 10
+    }
+   },
+   "2_mde_power": {
+    "status": "DONE",
+    "artefact": {
+     "path": "runs/exp2/mde_power/mde.json",
+     "sha256": "b5b05e4a8ae75fa87e222f8d5b8ceb2a2c0f39e120ea25dac85c0c4490d2d369",
+     "bytes": 8543
+    },
+    "headline": {
+     "retention_post": {
+      "mde": 0.018077975428951534,
+      "mde_ci95": [
+       0.01754164936493098,
+       0.018579271084643818
+      ],
+      "observed_over_mde": 16.226347044637837
+     },
+     "edge_jaccard": {
+      "mde": 0.016060269123930642,
+      "mde_ci95": [
+       0.01578402848524648,
+       0.01632460243803558
+      ],
+      "observed_over_mde": 42.526212411486696
+     },
+     "substitution_ratio": {
+      "mde": 0.011862972421269491,
+      "mde_ci95": [
+       0.011547379726752509,
+       0.012166952804374472
+      ],
+      "observed_over_mde": 64.05399714755488
+     },
+     "r_dyn": {
+      "mde": 0.009728251956558697,
+      "mde_ci95": [
+       0.009430395031685558,
+       0.010031734066046077
+      ],
+      "observed_over_mde": 33.93445225123304
+     }
+    }
+   },
+   "3_calib_robust": {
+    "status": "DONE",
+    "artefact": {
+     "path": "runs/exp2/calib_robust/calib_robust.json",
+     "sha256": "2d944cabc7b0a4f78be57eb4ea9354b016a8e3baaa85d67b00aaa6fbbc9f7db4",
+     "bytes": 11239
+    },
+    "headline": {
+     "verdict": "NOT_ROBUST",
+     "n_points_passing": 3,
+     "n_points": 8,
+     "rule": "all eight non-baseline points: rho(all63) >= 0.9 AND rho(A>0) >= 0.9 AND top-10 intersection >= 8 AND the migration knob was exercised"
+    }
+   },
+   "4_long_horizon": {
+    "status": "DONE",
+    "artefact": {
+     "path": "runs/exp2/long_horizon/long_horizon.json",
+     "sha256": "b766cb9a02e287cdfcbda47996c522fad1a7183cec71ce5b73d475ff38aa8900",
+     "bytes": 14592
+    },
+    "headline": {
+     "answer": "no. Every primary scenario is at a fixed point or in a stationary period-5 cycle by t = 60; the segment t in [60,180) contains no recovery, only that cycle. The 63-scenario ranking is identical between the two windows (Spearman 1.000000, every rank unchanged).",
+     "n_static": 4,
+     "n_stationary_cycle": 6,
+     "n_trending": 0,
+     "spearman_rankA_rankB": 1.0,
+     "max_abs_rank_shift": 0
+    }
+   },
+   "5_three_arm": {
+    "status": "NOT_RUN-INHERITED",
+    "artefact": {
+     "path": "runs/exp2/three_arm/NOT_RUN_INHERITED.json",
+     "sha256": "ce07b950526c26432f32936620cbd5df6a4efbb882bf1379b37b9b2b34359ae5",
+     "bytes": 2557
+    },
+    "headline": "the previous window produced no Llama grid; mandate branch (b) applies, so the package is registered and not re-run"
+   }
+  },
+  "deviations": {
+   "volume": "runs/exp2/closeout2/DEVIATIONS_window2.md",
+   "sha256": "f98edbf69438fed7fa3c49309283406b37c5cff12b58b94cb662cdc2b7b3da10",
+   "n_top_level_bullets": 6,
+   "n_kind_marked": 6,
+   "seal_contract_holds": true,
+   "seal_contract": "top-level bullets == kind-marked bullets, checked on this volume alone and never summed with another volume first",
+   "new_entries": [
+    "D-116",
+    "D-117",
+    "D-118",
+    "D-119",
+    "D-120",
+    "D-121"
+   ]
+  },
+  "wording_gate": {
+   "path": "runs/exp2/closeout2/wording_gate.txt",
+   "sha256": "a96a44da6708d1a851537320e7a4f9e9554f1f917bd77554427f6a6b28ed21e5",
+   "passes": true,
+   "files_scanned": 43,
+   "subnormal_literals_found": 0,
+   "stored_literals_found": 0,
+   "positive_controls_fired": {
+    "subnormal_probe": true,
+    "literal_probe": true,
+    "legal_probe": true
+   },
+   "bounds": {
+    "retention_post": {
+     "bound": "1e-220",
+     "stored_lt_bound": true
+    },
+    "r_dyn": {
+     "bound": "1e-306",
+     "stored_lt_bound": true
+    },
+    "edge_jaccard": {
+     "bound": "1e-309",
+     "stored_lt_bound": true
+    },
+    "substitution_ratio": {
+     "bound": "1e-309",
+     "stored_lt_bound": true
+    }
+   }
+  },
+  "ledger": {
+   "path": "MANIFEST.artifacts.jsonl",
+   "rows_before_closing_row": 165,
+   "sha256_before_closing_row": "bb2849017128cba0963f828fd7c0c61fe1ae3d3f6be0d1582878a7e4ed60db79"
+  }
+ }
+}

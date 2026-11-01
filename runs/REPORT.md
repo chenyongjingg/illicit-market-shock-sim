@@ -1,5 +1,5 @@
 # MDPI3 automated pipeline report
-Generated 2026-11-01T06:17:35Z (UTC). Pod timezone UTC.
+Generated 2026-11-01T06:56:51Z (UTC). Pod timezone UTC.
 Plan: `MDPI3_方案完善版.docx`, sha256 `6c6ec4bb…ab070c`.
 ## 1. Run summary
 - documents: **3454** (dedup dropped 135), AI-relevant: **249**
@@ -614,12 +614,11 @@ The right-hand column is NOT a confidence interval and must not be read as one: 
    "frac_zero": 0.0,
    "n_nonzero_pairs": 1890,
    "n_ties_abs_diff": false,
-   "wilcoxon_method": "asymptotic",
-   "wilcoxon_p": null,
+   "wilcoxon_method": "approx",
+   "wilcoxon_p": 6.189265913856175e-221,
    "min_attainable_p_two_sided": null,
    "exact_floor_applies": false,
-   "floor_not_applicable_reason": "no exact null distribution was used (n_nonzero=1890 > 25), so this test has no 2/2^n floor",
-   "wilcoxon_error": "`method` must be one of {'approx', 'exact', 'auto'} or an instance of `stats.PermutationMethod`."
+   "floor_not_applicable_reason": "no exact null distribution was used (n_nonzero=1890 > 25), so this test has no 2/2^n floor"
   },
   "edge_jaccard": {
    "llm_minus_rule_mean": 0.6829824161499158,
@@ -634,7 +633,7 @@ The right-hand column is NOT a confidence interval and must not be read as one: 
     "lo": 0.28572527895344363,
     "hi": 1.0,
     "n": 1890,
-    "definition": "2.5/97.5 percentiles of the per-unit differenc
+    "definition": "2.5/97.5 percentiles of the per-unit differences: the range in which 95% of SINGLE differences fall. NOT an interval for the mean -- it is about sqrt(n) 
 ```
 
 ## 6. RQ3 (strategies)
@@ -1106,3 +1105,5 @@ Seeded **before any analysis output exists** (2026-11-01T00:55Z). Later entries 
 - **D-34** [2026-11-01T06:11:51Z] market_relation_window_rate=0.8000 < floor 0.85; evidence grounding is too weak for an entailment substitute on this run.
 - **DP-3** [2026-11-01T06:12:00Z] market layer has n_market_edges=11 (status EXPLORATORY): no hypothesis test on it, and no market-layer number may be quoted in an abstract. Structural descriptors are reported twice (263 edges with 'related-to', 2068 without).
 - **D-41** [2026-11-01T06:16:55Z] RQ1 paired test over n_nonzero=4 attacks has a minimum attainable exact two-sided p of 0.125 > 0.05: plan section 6's 'paired test' requirement cannot be met on this dimension. The size-matched bootstrap is the primary evidence; the paired p is descriptive only.
+- **D-41** [2026-11-01T06:49:10Z] RQ1 paired test over n_nonzero=4 attacks has a minimum attainable exact two-sided p of 0.125 > 0.05: plan section 6's 'paired test' requirement cannot be met on this dimension. The size-matched bootstrap is the primary evidence; the paired p is descriptive only.
+- **D-41** [2026-11-01T06:56:12Z] RQ1 paired test over n_nonzero=4 attacks has a minimum attainable exact two-sided p of 0.125 > 0.05: plan section 6's 'paired test' requirement cannot be met on this dimension. The size-matched bootstrap is the primary evidence; the paired p is descriptive only.

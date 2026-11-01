@@ -1,0 +1,94 @@
+{
+ "exploratory": true,
+ "status_ceiling": "exploratory signal only; never body text, never abstract",
+ "generated_utc": "2026-11-01T07:21:25Z",
+ "estimator": "code/s3_resilience.py:327-352 bootstrap_auc_diff, imported via s3_resilience",
+ "rng": "random.Random(11)",
+ "replicates_requested": 2000,
+ "sampled_per_side": 70,
+ "positive_control": {
+  "k": 70,
+  "replicates": 300,
+  "got_mean": -0.3928388888888888,
+  "got_sd": 0.25558058185750065,
+  "got_n": 300,
+  "stored_mean": -0.3928388888888888,
+  "stored_sd": 0.25558058185750065,
+  "stored_n": 300,
+  "reproduced_exactly": true
+ },
+ "arms": {
+  "0.5": {
+   "mult": 0.5,
+   "k": 35,
+   "n_valid": 2000,
+   "n_total": 2000,
+   "mean": -0.485038,
+   "sd": 0.20507615347942948,
+   "ci95": [
+    -0.722,
+    -0.004020833333334117
+   ],
+   "induced_edges_ai": {
+    "mean": 9.2845,
+    "min": 1,
+    "max": 17
+   },
+   "induced_edges_traditional": {
+    "mean": 0.2145,
+    "min": 0,
+    "max": 4
+   },
+   "induced_nodes_ai_mean": 27.9985,
+   "induced_nodes_traditional_mean": 20.2915
+  },
+  "0.75": {
+   "mult": 0.75,
+   "k": 52,
+   "n_valid": 2000,
+   "n_total": 2000,
+   "mean": -0.43621498809523807,
+   "sd": 0.2577674164656468,
+   "ci95": [
+    -0.7316666666666667,
+    0.03833333333333333
+   ],
+   "induced_edges_ai": {
+    "mean": 20.853,
+    "min": 13,
+    "max": 30
+   },
+   "induced_edges_traditional": {
+    "mean": 0.553,
+    "min": 0,
+    "max": 7
+   },
+   "induced_nodes_ai_mean": 41.639,
+   "induced_nodes_traditional_mean": 30.2605
+  },
+  "1": {
+   "mult": 1.0,
+   "k": 70,
+   "n_valid": 2000,
+   "n_total": 2000,
+   "mean": -0.3813140833333333,
+   "sd": 0.26004058465628554,
+   "ci95": [
+    -0.6749999999999999,
+    0.027562499999999737
+   ],
+   "induced_edges_ai": {
+    "mean": 38.0,
+    "min": 38,
+    "max": 38
+   },
+   "induced_edges_traditional": {
+    "mean": 0.962,
+    "min": 0,
+    "max": 7
+   },
+   "induced_nodes_ai_mean": 56.0,
+   "induced_nodes_traditional_mean": 40.6685
+  }
+ }
+}
