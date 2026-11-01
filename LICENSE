@@ -19,10 +19,3 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
-
----
-
-Third-party data fetched by this pipeline (MITRE ATT&CK, CISA KEV, CIRCL MISP
-OSINT, arXiv metadata) is not redistributed here. Each source keeps its own
-licence; see `data/raw/ingest_report.json` for the URL and sha256 of every file
-as fetched, and run `python code/s0_ingest.py` to retrieve it yourself.

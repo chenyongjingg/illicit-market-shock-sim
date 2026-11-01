@@ -1,0 +1,17 @@
+Third-party data
+================
+
+The MIT licence above covers the code and the analysis outputs in this repository.
+
+Third-party data fetched by this pipeline is NOT redistributed here. Each source keeps
+its own licence:
+
+  MITRE ATT&CK (STIX 2.1)  — Apache License 2.0, The MITRE Corporation
+  CISA KEV                 — U.S. Government work, public domain
+  CIRCL MISP OSINT         — see the source's own terms
+  arXiv metadata           — arXiv API terms of use
+  Public vendor pages      — quoted under fair use for research
+
+data/raw/ingest_report.json records the URL, byte count and sha256 of every file as
+originally fetched. Run `python code/s0_ingest.py` to retrieve the sources yourself;
+the file-level digests are the pin, not the repository revision.

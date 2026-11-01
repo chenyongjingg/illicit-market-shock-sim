@@ -160,7 +160,7 @@ Stated here rather than discovered by a reviewer:
 
 ## Licence and citation
 
-Code: MIT (`LICENSE`). Third-party data is not redistributed; each source keeps its own licence.
+Code and analysis outputs: MIT (`LICENSE`). Third-party data is not redistributed; each source keeps its own licence (`NOTICE`).
 Citation metadata is in `CITATION.cff`.
 
 ---
