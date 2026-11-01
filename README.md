@@ -25,7 +25,7 @@ If that prints `ALL PASS`, the numbers in this README are the numbers in the shi
 | 3,454 documents ingested, 249 AI-relevant | `runs/q_checklist.json` → Q1 | `data/raw/ingest_report.json` |
 | extraction gate **fails** (relation micro-F1 0.050 against a pre-registered 0.80) | Q3 | `runs/analysis.json` |
 | AI and traditional subnets are **not comparable**, so no AI-vs-traditional resilience claim is made | `rq1.cross_subnet_comparability` | `runs/analysis.json`, `runs/figures/rq1_*` |
-| LLM arm retains more than the rule arm (+0.293 on `retention_post`, 1,890 paired runs) | `rq2.paired_within_scenario` | `runs/analysis.json`, `runs/figures/rq2_trajectories.png` |
+| LLM arm retains more than the rule arm (+0.293 on `retention_post`, 95% CI [0.281, 0.306], 1,890 paired runs — **no p-value exists**, see limitation 2) | `rq2.paired_within_scenario` | `runs/analysis.json`, `runs/figures/rq2_trajectories.png` |
 | …but LLM-policy **faithfulness is not established** (0.74 against a 0.70 threshold, Wilson lower bound 0.675) | `rq2.faithful`, `rq2.fidelity_status` | `runs/policy_stats.json` |
 | Best single strategy is A3 (r_composite 0.1975); best combination A3+B3+C3 | `rq3.scenarios` | `runs/analysis.json`, `runs/figures/rq3_scatter.png` |
 | The side-effect axis is **undefined**, so no Pareto frontier is claimed across it | `rq3.side_effect_axis` | `runs/analysis.json` |
@@ -118,15 +118,22 @@ fetched*, so a re-fetch can be compared rather than assumed identical.
 ## Pre-registration and deviations
 
 `design/DESIGN.md` was frozen **before any analysis output existed**. `design/DEVIATIONS.md` and
-`design/DEVIATIONS_addendum.md` are the append-only register of every departure from it — 100 numbered
-entries, including the ones we would rather not have (a guard that was checking the wrong quantity, a
-standard error derived from an interval width instead of the resampling distribution, a fidelity
-tri-state that had been collapsed to a boolean). Each entry records what was wrong, what was done, and
-what changed in the outputs.
+`design/DEVIATIONS_addendum.md` are the append-only register of every departure from it — entries
+numbered `D-1`…`D-109` plus `DP-1`…`DP-5` — including the ones we would rather not have (a guard that
+was checking the wrong quantity, a standard error derived from an interval width instead of the
+resampling distribution, a fidelity tri-state collapsed to a boolean, and a paired test whose
+`method=` argument name was rejected by SciPy, leaving four `null` p-values that read like
+significance rather than absence). Each entry records what was wrong, what was done, and what changed
+in the outputs.
 
 `MANIFEST.artifacts.jsonl` records, for every artefact, the command that wrote it and its sha256.
 The manifest is append-only; when a file is rewritten the newest row is the binding one, and
 `verify_release.py` re-hashes the *file* rather than trusting the *row*.
+
+**This manifest is the ledger as of the run shipped here** — its last row is `2026-11-01T06:42:25Z`.
+It is a verbatim prefix of the pipeline's ledger, not a re-written one: no row was edited, added or
+reordered. Anything the pipeline wrote after that timestamp belongs to a later, separate intervention
+and is deliberately not mixed into this release.
 
 ## Repository map
 
@@ -148,15 +155,26 @@ Stated here rather than discovered by a reviewer:
 1. **LLM-policy faithfulness is unresolved, not established.** 0.74 agreement on 200 held-out states,
    Wilson 95% [0.675, 0.796], pre-registered threshold 0.70 with the rule "point *and* lower bound".
    The data cannot separate the two sides of the threshold; the paper says "not established".
-2. **The policy table covers 1,200 of 10,125 states exactly (11.85%).** Held-out agreement is therefore
+2. **The paired significance test never ran — there are no p-values for the RQ2 contrast.** All four
+   predictors in `rq2.paired_within_scenario` carry `wilcoxon_p: null`, because `s5_analyze.py`
+   passed `method="asymptotic"` and this SciPy accepts only `approx`/`exact`/`auto`; the `ValueError`
+   was caught and written into a `wilcoxon_error` field. The effect estimate is unaffected — the mean
+   difference and its normal-approximation CI are computed independently of the test — but **a `null`
+   here means "not computed", never "no difference"**. Quoting it as non-significance would invert
+   its meaning. Deviation D-107; the one-word fix belongs to the next run, not to this delivered tree.
+3. **The policy table covers 1,200 of 10,125 states exactly (11.85%).** Held-out agreement is therefore
    measured at the coarse lookup level, because held-out states are disjoint from table states by
    construction.
-3. **Platforms are exogenous.** They enter as a health vector and supply/demand multipliers, not as
+4. **Platforms are exogenous.** They enter as a health vector and supply/demand multipliers, not as
    decision-making agents.
-4. **The side-effect axis is undefined**, so the strategy comparison is two-dimensional, not three.
-5. **The code hash below covers `code/*.py` and `config.yaml` only.** The shell entry points
+5. **The side-effect axis is undefined**, so the strategy comparison is two-dimensional, not three.
+6. **The code hash below covers `code/*.py` and `config.yaml` only.** The shell entry points
    (`run_all.sh`, `supervise.sh`, `watchdog.sh`) and all data are outside it — so the hash identifies
    the analysis code, not the whole tree (deviation D-85).
+7. **RQ1's paired test cannot reach significance by construction.** Only four attacks have a non-zero
+   RQ1 contrast, so the exact two-sided Wilcoxon floor is *p* = 0.125 — above any conventional
+   threshold. The size-matched bootstrap is the primary evidence there; the paired *p* is descriptive
+   only (deviation D-41).
 
 ## Licence and citation
 

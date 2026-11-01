@@ -114,9 +114,16 @@ latest = {}
 for r in rows:
     latest[r["path"].replace("/root/mdpi3/", "")] = r
 
+# Two registers are shipped under design/ while their receipts name the pipeline
+# root. Without this map the receipt loop files them under "not shipped here" and
+# they are never re-hashed -- the file sits next to the manifest with a receipt it
+# does not answer to. Map them so the receipt is actually tested.
+SHIPPED_AT = {"DEVIATIONS.md": "design/DEVIATIONS.md",
+              "DEVIATIONS_addendum.md": "design/DEVIATIONS_addendum.md"}
+
 ok_n, miss_n, bad_n = 0, 0, 0
 for rel, r in latest.items():
-    local = os.path.join(ROOT, rel.replace("/", os.sep))
+    local = os.path.join(ROOT, SHIPPED_AT.get(rel, rel).replace("/", os.sep))
     if not os.path.exists(local):
         miss_n += 1
         continue
