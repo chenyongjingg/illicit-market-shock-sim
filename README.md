@@ -1,5 +1,7 @@
 # illicit-market-shock-sim
 
+[![verify](https://github.com/chenyongjingg/illicit-market-shock-sim/actions/workflows/verify.yml/badge.svg)](https://github.com/chenyongjingg/illicit-market-shock-sim/actions/workflows/verify.yml)
+
 A pre-registered, single-GPU pipeline that builds an illicit-online-market graph from **public threat
 intelligence only**, then simulates how that market responds to enforcement shocks — platform removal,
 cost shock, demand shock — comparing an LLM-driven policy against a rule-based bandit.
@@ -9,7 +11,7 @@ pre-registration it was written against, and the register of every deviation fro
 **Nothing here is a summary of the analysis; it is the analysis.**
 
 ```bash
-python verify_release.py     # 18 checks, ~2 s, no GPU, no network
+python verify_release.py     # 20 checks, ~2 s, no GPU, no network
 ```
 
 If that prints `ALL PASS`, the numbers in this README are the numbers in the shipped files.
@@ -27,6 +29,18 @@ If that prints `ALL PASS`, the numbers in this README are the numbers in the shi
 | …but LLM-policy **faithfulness is not established** (0.74 against a 0.70 threshold, Wilson lower bound 0.675) | `rq2.faithful`, `rq2.fidelity_status` | `runs/policy_stats.json` |
 | Best single strategy is A3 (r_composite 0.1975); best combination A3+B3+C3 | `rq3.scenarios` | `runs/analysis.json`, `runs/figures/rq3_scatter.png` |
 | The side-effect axis is **undefined**, so no Pareto frontier is claimed across it | `rq3.side_effect_axis` | `runs/analysis.json` |
+| The historical backtest returns **NOT_ESTIMABLE** at both enforcement anchors | `runs/backtest.json` → `anchors` | Genesis Market seizure (2023-04-04), RagnarLocker takedown (2023-10-20) |
+
+### What the labels mean
+
+| Label | Question it answers | Where the answer is |
+|---|---|---|
+| **RQ1 — structure** | Is the AI-native subnet structurally more or less fragile than the traditional one under node removal? | `rq1.per_attack`, `rq1.cross_subnet_comparability` |
+| **RQ2 — behaviour** | Do LLM-driven actors retain more market function than a rule-based bandit after a shock? | `rq2.paired_within_scenario` |
+| **RQ3 — strategies** | Which combinations of shocks (A platform removal, B cost shock, C demand shock) leave the most function? | `rq3.scenarios` (63 scenarios × 30 seeds) |
+| **backtest** | Does the model reproduce two historical enforcement events? | `runs/backtest.json` |
+
+RQ1 is deliberately answered with a *negative* result: the two subnets differ in size by 35× and in density by 21×, so the comparison fails its own pre-registered comparability checks and no AI-vs-traditional resilience claim is made. What survives is the within-subnet description.
 
 ## What failed, and is reported as failed
 

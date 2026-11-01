@@ -1,0 +1,21 @@
+name: verify
+
+# Runs the released verifier exactly as a reader would: no GPU, no network, stdlib only.
+# If this badge is green, the numbers in README.md match the files in this repository.
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Verify release against itself
+        run: python verify_release.py

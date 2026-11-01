@@ -84,6 +84,12 @@ check("pre-registered checks: 9 PASS", sum(s == "PASS" for s in status), 9)
 check("pre-registered checks: 3 FAIL/NA", sum(s.startswith("FAIL") for s in status), 3)
 check("pre-registered checks: 1 DEFERRED", sum(s == "DEFERRED" for s in status), 1)
 
+B = load("runs/backtest.json")
+_anch = B.get("anchors", {})
+check("backtest anchors = 2", len(_anch), 2)
+check("backtest: every anchor is NOT_ESTIMABLE (no retrospective claim made)",
+      all(v.get("status") == "NOT_ESTIMABLE" for v in _anch.values()), True)
+
 q3 = [q for q in Q if q["q"] == "Q3"][0]
 # Q3's detail is a printed string, so parse the number back out of it: this checks
 # the value the checklist actually rendered, not a value re-derived from elsewhere.
