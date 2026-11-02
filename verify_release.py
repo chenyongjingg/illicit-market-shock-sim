@@ -216,6 +216,93 @@ check("window-2 volume: both shipped copies match the seal recorded in MANIFEST.
        sha256(os.path.join(ROOT, "runs", "exp2", "closeout2", "DEVIATIONS_window2.md"))),
       (_seal, _seal))
 
+print("\n5. complete file manifest  (MANIFEST.files.jsonl  <->  every file in the tree)")
+# MANIFEST.artifacts.jsonl is the pipeline's own ledger and covers the files the
+# stages wrote. The paper's Code Availability describes a file-level manifest with
+# a SHA-256 beside each path, so this listing covers the whole tree, including the
+# hand-written documents that no stage wrote and no ledger row names.
+MM = os.path.join(ROOT, "MANIFEST.files.jsonl")
+if not os.path.exists(MM):
+    print("  FAIL  MANIFEST.files.jsonl is missing")
+    FAILS.append("files manifest missing")
+    N += 1
+else:
+    listed = {}
+    for line in io.open(MM, encoding="utf-8"):
+        if line.strip():
+            r = json.loads(line)
+            listed[r["path"]] = r
+    on_disk = []
+    for dirpath, dirnames, filenames in os.walk(ROOT):
+        dirnames[:] = [d for d in dirnames if d != ".git"]
+        for name in filenames:
+            rel = os.path.relpath(os.path.join(dirpath, name), ROOT).replace(os.sep, "/")
+            on_disk.append(rel)
+    # The listing cannot contain its own digest; it says so in a row with a null
+    # digest, and that row is the only place a null is allowed.
+    nulls = [q for q, r in listed.items() if r.get("sha256") is None]
+    check("only the listing itself carries a null digest", nulls, ["MANIFEST.files.jsonl"])
+    check("every file in the tree is listed", sorted(set(on_disk) - set(listed)), [])
+    check("the listing names no file that is absent", sorted(set(listed) - set(on_disk)), [])
+    bad = [q for q in on_disk if q in listed and listed[q].get("sha256")
+           and listed[q]["sha256"] != sha256(os.path.join(ROOT, q.replace("/", os.sep)))]
+    check("every listed file hashes to its recorded digest", bad, [])
+    print("        %d files re-hashed from disk" % len([q for q in on_disk if q != "MANIFEST.files.jsonl"]))
+
+print("\n6. the composite decomposition  (runs/rq3_decomposition.json  <->  analysis.json + config)")
+# Table 5a is read from a file that is itself a derivation. This recomputes the
+# derivation in stdlib Python from the two inputs it claims, so the table cannot
+# drift from them; tools/derive_rq3_decomposition.py is the same check with numpy.
+DQ = load("runs/rq3_decomposition.json")
+_cfg = io.open(os.path.join(ROOT, "code", "config.yaml"), encoding="utf-8").read()
+_mw = re.search(r"weights:\s*\{([^}]*)\}", _cfg)
+_kv = dict((k.strip(), float(v)) for k, v in
+           (pair.split(":") for pair in _mw.group(1).split(","))) if _mw else {}
+_mt = re.search(r"^\s*t_max:\s*([0-9.]+)", _cfg, flags=re.M)
+check("weights in config.yaml: alpha/beta/gamma sum to 1", round(sum(_kv.values()), 9), 1.0)
+check("the decomposition records the same weights as config.yaml",
+      all(abs(_kv[k] - DQ["weights"][k]) < 1e-12 for k in ("alpha", "beta", "gamma")), True)
+check("t_max in config.yaml = 50", float(_mt.group(1)) if _mt else None, 50.0)
+_t = float(_mt.group(1))
+_sc = A["rq3"]["scenarios"]
+check("decomposition covers all 63 scenarios", (DQ["n_scenarios"], len(DQ["rows"])), (63, 63))
+_wsum = sum(_kv.values())
+_resid = []
+for r in DQ["rows"]:
+    s = _sc[r["scenario"]]
+    a = (_kv["alpha"] / _wsum) * min(max(s["r_struct"], 0.0), 1.0)
+    b = (_kv["beta"] / _wsum) * s["r_dyn_mean_clipped"]
+    c = (_kv["gamma"] / _wsum) * (1.0 - s["t_rec_mean_censored_filled"] / _t)
+    _resid.append(abs(a + b + c - s["r_composite_mean"]))
+    _resid.append(abs(a - r["a_struct"]))
+# The residual is not required to be exactly zero -- summing three floats in a
+# different order moves the last bit -- so it is required to be below 1e-12, and
+# the recorded residual is held to the same bound rather than to a literal 0.
+check("every composite recomputes from its three terms, to within 1e-12",
+      (round(max(_resid), 12) <= 1e-12, float(DQ["max_abs_residual"]) <= 1e-12), (True, True))
+print("        largest residual this run %.3e ; recorded %.3e"
+      % (max(_resid), float(DQ["max_abs_residual"])))
+check("structural term spans 0.0017 across the grid (the paper's headline)",
+      round(DQ["term_summary"]["a_struct"]["range"], 4), 0.0017)
+
+print("\n7. claim map  (CLAIMS.md  <->  runs/CLAIMS.json  <->  the files it names)")
+CM = os.path.join(ROOT, "CLAIMS.md")
+if not os.path.exists(CM):
+    print("  FAIL  CLAIMS.md is missing")
+    FAILS.append("CLAIMS.md missing")
+    N += 1
+else:
+    _text = io.open(CM, encoding="utf-8").read()
+    _rows = [l for l in _text.splitlines() if l.startswith("| ") and l[2].isdigit()]
+    check("CLAIMS.md lists 41 rows (one per reported quantity)", len(_rows), 41)
+    CJ = load("runs/CLAIMS.json")
+    check("CLAIMS.json carries the same 41 rows", len(CJ["rows"]), 41)
+    _named = set(re.findall(r"`([A-Za-z0-9_./-]+\.(?:json|jsonl|md|yaml|py|txt|graphml|npz|sqlite))`", _text))
+    _absent = sorted(q for q in _named
+                     if not os.path.exists(os.path.join(ROOT, q.replace("/", os.sep))))
+    check("every artifact CLAIMS.md names is shipped here", _absent, [])
+
+
 print("\n%d checks, %d failed" % (N, len(FAILS)))
 if FAILS:
     print("FAILED:")

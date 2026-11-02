@@ -11,16 +11,29 @@ pre-registration it was written against, and the register of every deviation fro
 **Nothing here is a summary of the analysis; it is the analysis.**
 
 ```bash
-python verify_release.py     # 25 checks, ~2 s, no GPU, no network
+python verify_release.py     # 38 checks, ~3 s, no GPU, no network, stdlib only
 ```
 
 If that prints `ALL PASS`, the numbers in this README are the numbers in the shipped files.
 
-**The tree the manuscript was written against is tag `v1.0.3`** — `runs/analysis.json` at
-`7f7f8928f45e28e8…` from the code tree `f4328c4a7b0c1b5a`. The earlier tags `v1.0.0`–`v1.0.2` predate
-the D-107 fix to the paired-test method and carry no *p*-values for the four paired comparisons
-(`wilcoxon_p: null`); the paper's Section 3.6 and its subnormal *p*-value convention describe the
-`v1.0.3` tree, not those. The older tags are kept as history, not as the archival copy.
+### Start here (a reviewer's ten minutes)
+
+| Step | What you get |
+|---|---|
+| 1. `REVIEWER_GUIDE.md` | the premise in four sentences; the five things the paper refuses to claim and the key path that forces each refusal; three ways to try to break the archive |
+| 2. `python verify_release.py` | re-derives the headline numbers from the shipped artifacts, re-hashes **every file in the tree** against `MANIFEST.files.jsonl`, and re-reads the deviation register from the volumes themselves |
+| 3. `CLAIMS.md` | the paper's Supplementary Table S1 as data: 41 rows, one per quantitative statement, each naming its artifact, the key path inside it and that file's SHA-256 |
+| 4. `design/DEVIATIONS_README.md` | the index to 5 volumes and 121 deviation entries, including the seven defects shipped rather than hidden |
+
+**The archival tree the manuscript cites is tag `v1.1.0`.** It carries the same analysis as `v1.0.3`
+— `runs/analysis.json` is byte-identical between them, 125,084 B at `7f7f8928f45e28e8…`, produced by
+code tree `f4328c4a7b0c1b5a` — and adds the two things a tag cannot be amended to gain:
+`MANIFEST.files.jsonl`, which puts a SHA-256 beside every path in the tree (231 entries: 230 files,
+plus the listing itself, whose digest cell is null because a file cannot contain its own hash), and `runs/rq3_decomposition.json`, the
+derivation Table 5a is read from, with `tools/derive_rq3_decomposition.py` recomputing it. Tags
+`v1.0.0`–`v1.0.2` predate the D-107 fix to the paired-test method and carry no *p*-values for the
+four paired comparisons (`wilcoxon_p: null`); the paper's Section 3.6 and its subnormal *p*-value
+convention describe the `v1.0.3` and `v1.1.0` trees, not those. The older tags are kept as history.
 
 ---
 
@@ -100,6 +113,15 @@ The two unavailable sources are recorded as unavailable rather than silently ski
 
 ```bash
 python verify_release.py
+```
+
+**Re-derive a shipped file instead of trusting it** (each is a `--check` that recomputes the file and
+exits non-zero if it would change):
+
+```bash
+python tools/make_files_manifest.py --check        # re-hashes every file against MANIFEST.files.jsonl
+python tools/derive_rq3_decomposition.py --check   # Table 5a from runs/analysis.json + code/config.yaml
+python tools/make_claims_md.py --check             # re-renders CLAIMS.md from runs/CLAIMS.json
 ```
 
 **Re-run the full pipeline.** Needs one CUDA GPU (~24 GB) and the Qwen2.5-7B-Instruct weights
@@ -182,17 +204,24 @@ never migrates and the cost knob is **dead at that point** (all three adjacent v
 ## Repository map
 
 ```
-code/            pipeline as it ran (ingest → extract → graph → GNN/resilience → agents → analysis)
-design/          frozen pre-registration + the deviation register + DEVIATIONS_README.md (the index)
-runs/            outputs: REPORT.md, analysis.json, per-run data, figures, controls
-runs/exp/        window 1's pre-registered packages (EXPLORATORY)
-runs/exp2/       window 2's packages + its closeout evidence (EXPLORATORY — quarantined here)
-ops/             operator scripts, including the _exp2_*.py that produced runs/exp2/
-data/cache/      llm.sqlite — generation cache (6.1 MB)
-data/extracted/  extraction products          data/graph/  graph + resilience products
-data/raw/        ingest_report.json only — provenance for the fetched corpora (not redistributed)
-MANIFEST.*       artefact receipts + model file digests + MANIFEST.final.json (closeout + closeout2)
-verify_release.py
+REVIEWER_GUIDE.md   start here: the premise, the five refusals, three things to try to break
+CLAIMS.md           Supplementary Table S1 as data — 41 rows, artifact + key path + sha256
+verify_release.py   the whole verification, stdlib only (~3 s); CI runs the same file
+code/               pipeline as it ran (ingest → extract → graph → GNN/resilience → agents → analysis)
+design/             frozen pre-registration + the deviation register + DEVIATIONS_README.md (the index)
+runs/               outputs: REPORT.md, analysis.json, per-run data, figures, controls,
+                    CLAIMS.json (CLAIMS.md is rendered from it) and rq3_decomposition.json
+runs/exp/           window 1's pre-registered packages (EXPLORATORY)
+runs/exp2/          window 2's packages + its closeout evidence (EXPLORATORY — quarantined here)
+ops/                operator scripts, including the _exp2_*.py that produced runs/exp2/
+tools/              derivation and rendering scripts that regenerate shipped files (each has --check)
+data/cache/         llm.sqlite — generation cache (6.1 MB)
+data/extracted/     extraction products          data/graph/  graph + resilience products
+data/raw/           ingest_report.json only — provenance for the fetched corpora (not redistributed)
+MANIFEST.files.jsonl    every file in this tree, with its sha256 (checked by verify_release.py §5)
+MANIFEST.artifacts.jsonl artefact receipts: the command that wrote each file and its sha256
+MANIFEST.model.json     the 15 GB model weights, pinned by file digest (not redistributed)
+MANIFEST.final.json     closeout blocks for both execution windows
 ```
 
 ## Known limitations
