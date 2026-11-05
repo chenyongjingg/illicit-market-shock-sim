@@ -10,7 +10,7 @@
 {"path": "MANIFEST.model.json", "bytes": 2723, "sha256": "31bd72ab95a68a6eae0cc81f89cce0703d4fba57eba3066d908477d87114d226"}
 {"path": "NOTICE", "bytes": 777, "sha256": "b406243f94a89b61d9666bae5f186852fd2959a58271bf4ec48a3fb933593371"}
 {"path": "README.md", "bytes": 19269, "sha256": "7bff354647a954650af29bf105dbd1e0e5e5fd226a30d2869b1584611c772887"}
-{"path": "REVIEWER_GUIDE.md", "bytes": 5472, "sha256": "fabc70886a29ae29c96d35aff9a84dcfb9dcf223b62a722be9e9ad7ca610c1d7"}
+{"path": "REVIEWER_GUIDE.md", "bytes": 5755, "sha256": "796ed88d53a73728b7de669691d9e6c6631e75b1b46085b294f854a0c706fca4"}
 {"path": "code/check_env.py", "bytes": 4152, "sha256": "dc831d6e0b4609750a6e47ecda11d4273277ece05feb3e0e0ac620adc97fe305"}
 {"path": "code/common.py", "bytes": 6918, "sha256": "8936ddb35b61ecb7fca5e39ac200bbaee225773c078594c8fcbdf08fea49a21b"}
 {"path": "code/config.json", "bytes": 3217, "sha256": "0bab180d1eed083ee1ed8e2c6083d6c223870a0de0eeb850d5d34b18b74dcd05"}

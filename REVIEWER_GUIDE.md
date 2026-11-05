@@ -1,5 +1,9 @@
 # Reviewer's guide
 
+This guide is Supplementary Material S3. Supplementary Material S1 (the traceability map) and
+S2 (post-shock trajectories) travel with the manuscript; `CLAIMS.md` here is the archival
+counterpart of S1.
+
 Ten minutes, no GPU, no network. Everything below runs from a clean checkout of the cited tag.
 
 ## 1. The premise, in four sentences
@@ -40,10 +44,11 @@ A refusal is harder to fake than a positive result, so these are the fastest thi
 
 ## 4. Where each number comes from
 
-`CLAIMS.md` is the archive's copy of the paper's Supplementary Material S1: 41 rows, one per
-quantitative statement, each naming the artifact, the key path inside it, and the SHA-256 of the
-file as shipped. Start there when a number looks wrong; it will either reproduce or it will not,
-and the row says which bytes to look at.
+`CLAIMS.md` mirrors the paper's Supplementary Material S1: 41 rows, one per quantitative
+statement, each naming the artifact and the key path inside it. It goes one step past the
+uploaded table by also giving the SHA-256 of the shipped file, so a row here says not only where
+the number is read from but which bytes were read. Start there when a number looks wrong; it will
+either reproduce or it will not.
 
 ## 5. Three things worth trying to break
 
